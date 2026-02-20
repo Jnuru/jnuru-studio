@@ -35,35 +35,62 @@
         <h1 class="display italic">Designing a single vehicle page as a shared system</h1>
 
         <div class="prose">
-          <p><strong>Overview:</strong> One paragraph on the problem and what you built.</p>
-          <p><strong>Role:</strong> UI/UX + front-end implementation (edit to match truth).</p>
-          <p><strong>Tools:</strong> Whatever tools you actually used.</p>
+          <p><strong>Overview:</strong> I inherited vehicle detail and SEO landing pages that drifted year to year. Each model update introduced layout changes, duplicated work, and inconsistent interaction patterns. I rebuilt the vehicle page into a single reusable system—one structure that scales across model years while staying consistent, efficient, and adaptable.</p>
+
+          <p><strong>Role:</strong> UI/UX design + front-end implementation. Defined layout architecture, component rules, and interaction patterns while implementing the structure in HTML/CSS with lightweight JS behaviors.</p>
+
+          <p><strong>Tools:</strong> HTML, CSS, Bootstrap-style layout grid, light JavaScript for tabs/anchors, OEM asset references, internal CMS structure.</p>
         </div>
 
         <div class="divider" style="margin:32px 0;"></div>
 
         <div class="prose">
           <h2 class="display">Problem</h2>
-          <p>What was broken / inefficient / inconsistent?</p>
+          <p>
+            Vehicle pages were functioning as isolated builds instead of a unified system. Small updates—new trims, new features, minor design changes—often required rebuilding sections from scratch. Over time, this created inconsistency in layout, user flow, and styling between model years.
+          </p>
+          <p>
+            The experience needed to feel modern and OEM-inspired, but without sacrificing production speed or structural consistency.
+          </p>
 
           <h2 class="display">Constraints</h2>
           <ul class="list">
-            <li>Constraint #1</li>
-            <li>Constraint #2</li>
-            <li>Constraint #3</li>
+            <li>Single-page structure for SEO and user flow.</li>
+            <li>Must scale across 2024 → 2025 → 2026 → 2027+ without layout rewrites.</li>
+            <li>Compatible with dealership site widgets (chat, accessibility overlays, inventory tools).</li>
+            <li>Fast to update when model-year content changes.</li>
           </ul>
 
           <h2 class="display">Solution</h2>
-          <p>Describe the system decisions: components, layout rules, reuse, scalability.</p>
+          <p>
+            I established a universal page template with a locked structural skeleton and reusable modules. The structure stays identical year to year. Updates happen at the component level—not the layout level.
+          </p>
+
+          <ul class="list">
+            <li><strong>Universal structure:</strong> Hero → Intro → Color Options → Explore Tabs (Exterior / Interior / Features / Performance / Safety) → Trims → Powertrains → Inventory CTA.</li>
+            <li><strong>Reusable modules:</strong> Color selector component, standardized explore tabs, and a trims system that renders consistently across screen sizes.</li>
+            <li><strong>Interaction rules:</strong> Scroll-to anchors and predictable section hierarchy so users can jump directly to trims, safety, performance, or design.</li>
+            <li><strong>OEM-inspired refinement:</strong> Rather than redesigning the structure, I layered in select OEM-style patterns (stat bars, cleaner trim cards, tighter spacing rhythm) to elevate the presentation while preserving the system.</li>
+          </ul>
+
+          <h2 class="display">System Evolution</h2>
+          <ul class="list">
+            <li><strong>2024 baseline:</strong> Established foundation but lacked structural consistency across years.</li>
+            <li><strong>2025 template lock:</strong> Introduced a universal layout that could be reused across multiple models.</li>
+            <li><strong>2026 refinement:</strong> Improved trims hierarchy and simplified interaction patterns.</li>
+            <li><strong>2027 upgrade:</strong> Added OEM-inspired presentation elements (hero stat bar, stronger trim cards, clearer powertrain split) without changing the core structure.</li>
+          </ul>
 
           <h2 class="display">Outcome</h2>
           <ul class="list">
-            <li>Result #1 (metric if you have it)</li>
-            <li>Result #2</li>
+            <li>Consistent experience across multiple model years.</li>
+            <li>Reduced rebuild time through component reuse.</li>
+            <li>Improved visual polish while maintaining structural discipline.</li>
+            <li>Scalable template ready for future model updates.</li>
           </ul>
 
           <p class="muted">
-            Optional: <a href="#" class="card__link">View live example →</a>
+            <a href="https://www.kia.fusz.com/2027-kia-telluride-in-st-louis/" class="card__link" target="_blank" rel="noopener">View live example →</a>
           </p>
         </div>
 
