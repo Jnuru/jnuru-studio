@@ -1,6 +1,3 @@
-
-
-
 @import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap");
 
 :root{
@@ -9,6 +6,10 @@
   --muted:#6B6A66;
   --divider:#D6D3CC;
   --link:#5F6C7B;
+
+  /* Earth accent (subtle, not loud) */
+  --earth:#2F3E34;
+  --earth-soft: rgba(47,62,52,.12);
 
   --serif:"Libre Baskerville", Georgia, "Times New Roman", serif;
   --sans:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -96,10 +97,46 @@ body{
 }
 .theme-toggle:hover{ color: var(--fg); }
 
-/* Hero */
+/* Hero (now supports background image + overlay) */
 .hero{
+  position: relative;
+  overflow: hidden;
   padding: clamp(76px, 10vw, 130px) 0 clamp(64px, 9vw, 120px);
 }
+
+/* Background media container from updated HTML */
+.hero__media{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero__media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.02);
+  filter: contrast(0.95) saturate(0.95);
+}
+
+/* Overlay for readability (earthy tint) */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background: linear-gradient(
+    to bottom,
+    rgba(47,62,52,0.62),
+    rgba(47,62,52,0.22)
+  );
+}
+
+.hero__content{
+  position: relative;
+  z-index: 1;
+}
+
 .hero__title{
   font-family: var(--serif);
   font-weight: 400;
@@ -108,12 +145,15 @@ body{
   letter-spacing: -0.02em;
   max-width: 18ch;
   margin: 0 0 22px;
+  color: #ffffff;
+  text-shadow: 0 2px 18px rgba(0,0,0,0.35);
 }
 .hero__sub{
   margin: 0;
   font-size: var(--body);
-  color: var(--muted);
   max-width: 46ch;
+  color: rgba(255,255,255,0.86);
+  text-shadow: 0 2px 14px rgba(0,0,0,0.25);
 }
 
 /* Section basics */
@@ -176,7 +216,7 @@ body{
   font-size: var(--body);
 }
 
-/* Two column section like your screenshot */
+/* Two column section */
 .two-col{
   display:grid;
   grid-template-columns: 1.6fr 0.9fr;
@@ -221,6 +261,31 @@ body{
   padding: 20px 20px 18px;
   background: rgba(255,255,255,0.25);
 }
+
+/* Card thumbnail (Cloudinary images) */
+.card__thumb{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: calc(var(--radius) + 4px);
+  margin: 2px 0 14px;
+  border: 1px solid var(--divider);
+  background: rgba(0,0,0,0.04);
+}
+.card__thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display:block;
+  transform: scale(1.01);
+}
+
+/* Slight elevation on hover (subtle) */
+.card:hover{
+  border-color: var(--earth-soft);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+}
+
 .card__title{
   font-family: var(--serif);
   font-weight: 400;
@@ -238,7 +303,10 @@ body{
   text-decoration: none;
   border-bottom: 1px solid currentColor;
 }
-.card__link:hover{ opacity: 0.8; }
+.card__link:hover{
+  color: var(--earth);
+  opacity: 1;
+}
 
 /* Contact */
 .contact{
@@ -265,6 +333,7 @@ body{
 }
 .button:hover{
   background: rgba(255,255,255,0.45);
+  border-color: var(--earth-soft);
 }
 
 /* Footer */
@@ -278,13 +347,17 @@ body{
   flex-wrap: wrap;
 }
 
-/* Dark theme (optional) */
+/* Dark theme */
 .dark{
   --bg:#121212;
   --fg:#f1f1ee;
   --muted:#b5b3ad;
   --divider:#2b2b2b;
   --link:#c8d1db;
+
+  /* keep earth tone usable in dark mode */
+  --earth:#9FB3A2;
+  --earth-soft: rgba(159,179,162,.18);
 }
 .dark .card,
 .dark .callout{
@@ -292,4 +365,11 @@ body{
 }
 .dark .button:hover{
   background: rgba(255,255,255,0.06);
+}
+.dark .hero::after{
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.60),
+    rgba(0,0,0,0.25)
+  );
 }
