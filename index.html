@@ -5,43 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>jnuru.studio</title>
 
-  <meta name="description" content="Editorial portfolio for jnuru.studio — systems, form, reason." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <!-- HEADER -->
-  <header class="site-header" data-header>
-    <div class="wrap header__inner">
-      <a class="brand" href="#top" aria-label="jnuru.studio home">
-        <span class="brand__name">jnuru.studio</span>
-        <span class="brand__meta">systems • form • reason</span>
-      </a>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <a class="brand__name" href="#">jnuru.studio</a>
+          <p class="brand__meta">systems • form • reason</p>
+        </div>
 
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="#work">Work</a>
-        <a href="#philosophy">Philosophy</a>
-        <a href="#contact">Contact</a>
-        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
-          <span aria-hidden="true">◐</span>
-        </button>
-      </nav>
+        <nav class="nav">
+          <a href="#work">Work</a>
+          <a href="#philosophy">Philosophy</a>
+          <a href="#contact">Contact</a>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
+            <span aria-hidden="true">◐</span>
+          </button>
+        </nav>
+      </div>
     </div>
   </header>
 
-  <main id="top">
-    <!-- HERO (FULL BLEED) -->
-    <section class="hero" aria-label="Hero">
-      <!-- HERO IMAGE PLACEHOLDER: replace with your Adobe Stock / Cloudinary image -->
+  <main>
+    <!-- HERO -->
+    <section class="hero">
       <div
         class="hero__media"
-        style="background-image:url('https://res.cloudinary.com/drnccrw0a/image/upload/v1771969222/AdobeStock_1584645119_okv4j8.jpg');"
         role="img"
-        aria-label="Atmospheric street scene"
-      ></div>
+        aria-label="Architectural wall with soft shadows"
+        style="background-image: url('https://res.cloudinary.com/drnccrw0a/image/upload/v1771969222/AdobeStock_1584645119_okv4j8.jpg');">
+      </div>
 
-      <div class="wrap hero__inner">
-        <p class="hero__eyebrow">EDITORIAL PORTFOLIO</p>
+      <div class="wrap hero__content">
+        <p class="kicker hero__kicker">EDITORIAL PORTFOLIO</p>
 
         <h1 class="hero__title">
           Good design honors the dream behind the work.
@@ -52,145 +51,142 @@
         </p>
 
         <div class="hero__actions">
-          <a class="btn" href="#work">View work</a>
-          <a class="btn btn--ghost" href="#contact">Contact</a>
-        </div>
-      </div>
-
-      <div class="hero__fade" aria-hidden="true"></div>
-    </section>
-
-    <!-- WORK -->
-    <section class="section section--work" id="work">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="section-kicker">SELECTED WORK</p>
-          <h2 class="section-title">Case studies & shipped systems</h2>
-        </div>
-
-        <div class="cases">
-          <!-- CASE 1 -->
-          <article class="case">
-            <a class="case__media" href="case-vehicle-system.html" aria-label="Open case study: single vehicle page system">
-              <!-- IMAGE PLACEHOLDER -->
-              <img
-                src="https://res.cloudinary.com/drnccrw0a/image/upload/v1771969295/1920-hero_gammwv.jpg"
-                alt="Vehicle trims layout system screenshot"
-                loading="lazy"
-              />
-            </a>
-
-            <div class="case__body">
-              <p class="case__kicker">CASE STUDY</p>
-              <h3 class="case__title">Designing a single vehicle page as a shared system</h3>
-              <p class="case__meta">Internal product • Automotive • Ongoing</p>
-
-              <a class="case__link" href="case-vehicle-system.html">View details →</a>
-            </div>
-          </article>
-
-          <!-- CASE 2 -->
-          <article class="case">
-            <a class="case__media" href="case-studies/service-center.html" aria-label="Open case study: service page template">
-              <!-- IMAGE PLACEHOLDER -->
-              <img
-                src="https://res.cloudinary.com/drnccrw0a/image/upload/v1771969380/Screenshot_2026-02-23_160951_gpkfwc.webp"
-                alt="Service center hero layout screenshot"
-                loading="lazy"
-              />
-            </a>
-
-            <div class="case__body">
-              <p class="case__kicker">CASE STUDY</p>
-              <h3 class="case__title">Service page template with SEO-first structure</h3>
-              <p class="case__meta">Web design • Dealership sites • Shipped</p>
-
-              <a class="case__link" href="case-studies/service-center.html">View details →</a>
-            </div>
-          </article>
-
-          <!-- CASE 3 (OPTIONAL / EXPERIMENT) -->
-          <article class="case case--wide">
-            <a class="case__media" href="#" aria-label="Open experiment: minimal portfolio system">
-              <!-- IMAGE PLACEHOLDER -->
-              <img
-                src="https://res.cloudinary.com/drnccrw0a/image/upload/v1771950418/samples/paper.png"
-                alt="Minimal layout experiment screenshot"
-                loading="lazy"
-              />
-            </a>
-
-            <div class="case__body">
-              <p class="case__kicker">EXPERIMENT</p>
-              <h3 class="case__title">Minimal portfolio system (static, fast, calm)</h3>
-              <p class="case__meta">Personal • Design system • In progress</p>
-
-              <a class="case__link" href="#">View details →</a>
-            </div>
-          </article>
+          <a class="hero__cta" href="#work">View work →</a>
         </div>
       </div>
     </section>
+
+    <div class="divider"></div>
 
     <!-- PHILOSOPHY -->
-    <section class="section section--philosophy" id="philosophy">
+    <section class="section" id="philosophy">
       <div class="wrap">
-        <div class="section-head">
-          <p class="section-kicker">PHILOSOPHY</p>
-          <h2 class="section-title">Design is translation, not decoration.</h2>
-        </div>
+        <p class="kicker">PHILOSOPHY / BELIEFS</p>
 
-        <div class="editorial">
-          <div class="editorial__text">
-            <p>
-              Before layout or interaction, I look for what the work is trying to honor —
-              the story, the intention, and the person behind it.
-            </p>
-            <p>
-              I’m not interested in visuals with no meaning.
-              Clarity matters. Structure matters. Restraint matters.
-            </p>
+        <h2 class="display italic">
+          I’m drawn to work where the challenge isn’t just visual, but personal.
+        </h2>
 
-            <ul class="bullets">
-              <li>What someone is trying to say before they know how to say it</li>
-              <li>The tension between vision and execution</li>
-              <li>The system that lets the story scale without losing soul</li>
-            </ul>
-          </div>
-
-          <aside class="note">
-            <p class="note__kicker">NOTE</p>
-            <p class="note__title">Code serves the idea — never the other way around.</p>
-            <p class="note__body">
-              Calm interfaces. Strong structure. Editorial pacing. Subtle character.
-            </p>
-          </aside>
+        <div class="prose">
+          <p>
+            Before thinking about layouts or interactions, I ask what the work needs to honor —
+            the story, the intention, and the person behind it. My goal is to create digital
+            systems that feel aligned, human, and true to their origin.
+          </p>
+          <p>
+            I’m uninterested in work that’s visually impressive but empty of meaning.
+            Clarity matters. Story matters. Alignment matters.
+          </p>
         </div>
       </div>
     </section>
+
+    <div class="divider"></div>
+
+    <!-- HOW I THINK -->
+    <section class="section" id="thinking">
+      <div class="wrap two-col">
+        <div>
+          <p class="kicker">HOW I THINK ABOUT DESIGN</p>
+          <h2 class="display">Design, for me, is an act of translation.</h2>
+
+          <p class="label">I look for:</p>
+          <ul class="list">
+            <li>What someone is trying to say before they know how to say it</li>
+            <li>The tension between vision and execution</li>
+            <li>The structure that allows a story to live and grow</li>
+          </ul>
+
+          <p class="muted">
+            The result should feel like an extension of the person behind it — with just
+            enough perspective to give it shape, order, and clarity.
+          </p>
+        </div>
+
+        <aside class="callout">
+          <p class="kicker">NOTES</p>
+          <p class="callout__title italic">Code serves the idea — never the other way around.</p>
+          <p class="callout__body">
+            I build calm interfaces, strong structure, and systems that scale without losing soul.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- DESIGN & CODE -->
+    <section class="section" id="work">
+      <div class="wrap">
+        <p class="kicker">DESIGN & CODE</p>
+        <h2 class="display italic">I’m a visually led designer who understands code as a structural tool.</h2>
+
+        <div class="prose">
+          <p class="label">I use code to:</p>
+          <ul class="list">
+            <li>Shape interactions</li>
+            <li>Clarify systems</li>
+            <li>Support expression, not overpower it</li>
+          </ul>
+
+          <p class="muted">
+            I focus on design-led systems and thoughtful implementation. When deeper engineering is
+            required, collaboration is part of the process.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <p class="kicker">CASE STUDY</p>
+            <h3 class="card__title">Designing a single vehicle page as a shared system</h3>
+            <p class="card__meta">Internal product • Automotive • Ongoing</p>
+            <a class="card__link" href="case-vehicle-system.html">
+              View details →
+            </a>
+          </article>
+
+          <article class="card">
+            <p class="kicker">CASE STUDY</p>
+            <h3 class="card__title">Service page template with SEO-first structure</h3>
+            <p class="card__meta">Web design • Dealership sites • Shipped</p>
+            <a class="card__link" href="case-studies/service-center.html">
+              View details →
+            </a>
+          </article>
+
+          <article class="card">
+            <p class="kicker">EXPERIMENT</p>
+            <h3 class="card__title">Minimal portfolio system (static, fast, calm)</h3>
+            <p class="card__meta">Personal • Design system • In progress</p>
+            <a class="card__link" href="#">
+              View details →
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
 
     <!-- CONTACT -->
-    <section class="section section--contact" id="contact">
+    <section class="section" id="contact">
       <div class="wrap">
-        <div class="section-head">
-          <p class="section-kicker">CONTACT</p>
-          <h2 class="section-title">
-            If the goal is “make it look nice,” I’m not your guy.
-          </h2>
-        </div>
+        <p class="kicker">CONTACT</p>
+        <h2 class="display">
+          If the goal is simply “make it look nice,” I’m probably not the right fit.
+        </h2>
 
         <div class="contact">
-          <a class="btn" href="mailto:hello@jnuru.studio">hello@jnuru.studio</a>
-          <p class="contact__meta">Based in St. Louis • Available for select freelance projects</p>
+          <a class="button" href="mailto:hello@jnuru.studio">hello@jnuru.studio</a>
+          <p class="muted">Based in St. Louis • Available for select freelance projects</p>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="footer">
       <div class="wrap footer__inner">
-        <p>© <span id="year"></span> jnuru.studio</p>
-        <p>HTML/CSS/JS • Hosted on GitHub Pages</p>
+        <p class="muted">© <span id="year"></span> jnuru.studio</p>
+        <p class="muted">Built with HTML/CSS/JS • Hosted on GitHub Pages</p>
       </div>
     </footer>
   </main>
