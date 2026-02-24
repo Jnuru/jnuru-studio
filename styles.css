@@ -28,6 +28,7 @@
 
 html{ font-size:16px; }
 *{ box-sizing:border-box; }
+
 body{
   margin:0;
   background:var(--bg);
@@ -42,6 +43,13 @@ body{
   max-width: var(--wrap);
   margin: 0 auto;
   padding: 0 var(--pad);
+}
+
+/* ✅ GLOBAL MEDIA SAFETY (THIS IS THE MAIN FIX) */
+img, video, svg{
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Header */
@@ -132,7 +140,7 @@ body{
   font-size: var(--label);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--earth); /* green hint */
+  color: var(--earth);
   margin: 0 0 18px;
 }
 
@@ -144,7 +152,6 @@ body{
   margin: 0 0 20px;
   max-width: 46ch;
 }
-
 .italic{ font-style: italic; }
 
 .prose p{
@@ -178,7 +185,7 @@ body{
   font-size: var(--body);
 }
 
-/* Two column section like your screenshot */
+/* Two column section */
 .two-col{
   display:grid;
   grid-template-columns: 1.6fr 0.9fr;
@@ -217,34 +224,55 @@ body{
 @media (max-width: 980px){
   .cards{ grid-template-columns: 1fr; }
 }
+
 .card{
   border: 1px solid var(--divider);
-  border-top: 2px solid var(--earth-line); /* subtle green accent */
+  border-top: 2px solid var(--earth-line);
   border-radius: var(--radius);
   padding: 20px 20px 18px;
   background: rgba(255,255,255,0.25);
+  overflow: hidden;                 /* ✅ prevents image bleed */
+  display: flex;                    /* ✅ supports consistent stacking */
+  flex-direction: column;
+  gap: 10px;
   transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 .card:hover{
   border-color: var(--earth-line);
   box-shadow: 0 12px 32px rgba(63,84,70,.12);
 }
+
+/* ✅ CARD IMAGE FRAME
+   Use either: <img class="card__img" ...>
+   or just put an <img> inside .card and it will still behave. */
+.card__img,
+.card img{
+  width: 100%;
+  height: 180px;               /* controlled height */
+  object-fit: cover;           /* crop nicely */
+  border-radius: 8px;
+  border: 1px solid var(--divider);
+  background: rgba(255,255,255,0.55);
+}
+
 .card__title{
   font-family: var(--serif);
   font-weight: 400;
   font-size: 1.2rem;
   line-height: 1.25;
-  margin: 10px 0 10px;
+  margin: 6px 0 0;
 }
 .card__meta{
-  margin: 0 0 14px;
+  margin: 0 0 6px;
   color: var(--muted);
   font-size: 0.95rem;
 }
+
 .card__link{
   color: var(--earth);
   text-decoration: none;
   border-bottom: 1px solid var(--earth-line);
+  width: fit-content;
 }
 .card__link:hover{
   border-bottom-color: var(--earth);
@@ -299,7 +327,6 @@ body{
   --divider:#2b2b2b;
   --link:#c8d1db;
 
-  /* keep the same earth hue; tweak transparencies for dark */
   --earth:#8FB59D;
   --earth-soft: rgba(143,181,157,.12);
   --earth-line: rgba(143,181,157,.38);
