@@ -1,14 +1,17 @@
-// Footer year
-document.getElementById("year").textContent = new Date().getFullYear();
+(() => {
+  // Footer year
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Theme toggle (optional)
-const btn = document.querySelector("[data-theme-toggle]");
-const root = document.documentElement;
+  // Theme toggle (stores preference)
+  const toggle = document.querySelector("[data-theme-toggle]");
+  const root = document.documentElement;
 
-const saved = localStorage.getItem("theme");
-if (saved === "dark") root.classList.add("dark");
+  const saved = localStorage.getItem("jnuru_theme");
+  if (saved === "dark") root.classList.add("dark");
 
-btn?.addEventListener("click", () => {
-  root.classList.toggle("dark");
-  localStorage.setItem("theme", root.classList.contains("dark") ? "dark" : "light");
-});
+  toggle?.addEventListener("click", () => {
+    root.classList.toggle("dark");
+    localStorage.setItem("jnuru_theme", root.classList.contains("dark") ? "dark" : "light");
+  });
+})();
