@@ -47,6 +47,10 @@
   --body: 1.05rem;
   --small: 0.95rem;
   --label: 0.72rem;
+
+  /* Liquid cards */
+  --card-h: 420px;
+  --card-radius: 20px;
 }
 
 html{ font-size:16px; }
@@ -337,7 +341,7 @@ body{
   font-size: 0.98rem;
 }
 
-/* --------- Cards (image-ready + glass) --------- */
+/* --------- Cards grid --------- */
 .cards{
   margin-top: var(--s4);
   display:grid;
@@ -349,7 +353,130 @@ body{
   .cards{ grid-template-columns: 1fr; }
 }
 
-/* base card */
+/* --------- LIQUID CARDS (new) --------- */
+.liquid-card{
+  position: relative;
+  height: var(--card-h);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  cursor: pointer;
+  transform: translateZ(0);
+  box-shadow: 0 22px 70px rgba(0,0,0,0.10);
+  border: 1px solid rgba(42,42,40,0.10);
+  background: rgba(255,255,255,0.10);
+}
+
+.liquid-card__bg{
+  position:absolute;
+  inset:0;
+}
+
+.liquid-card__bg img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  transform: scale(1.06);
+  filter: saturate(0.95) contrast(0.98);
+  transition: transform .8s ease, filter .8s ease;
+}
+
+/* subtle film / tint so all screenshots feel cohesive */
+.liquid-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(1200px 520px at 15% 10%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.00) 55%),
+    linear-gradient(135deg, rgba(63,79,69,0.18) 0%, rgba(63,79,69,0.00) 55%),
+    linear-gradient(to top, rgba(12,12,12,0.45) 0%, rgba(12,12,12,0.12) 55%, rgba(12,12,12,0.06) 100%);
+  pointer-events:none;
+  z-index: 1;
+}
+
+/* the actual glass overlay surface */
+.liquid-card__glass{
+  position:absolute;
+  inset:0;
+  z-index: 2;
+  padding: 28px;
+  display:flex;
+  flex-direction: column;
+  justify-content:flex-end;
+
+  /* Apple-ish glass surface */
+  background: linear-gradient(
+    to top,
+    rgba(255,255,255,0.24) 0%,
+    rgba(255,255,255,0.12) 40%,
+    rgba(255,255,255,0.06) 100%
+  );
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+
+  border-top: 1px solid rgba(255,255,255,0.28);
+
+  /* inner highlight + depth */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.38),
+    inset 0 -1px 0 rgba(0,0,0,0.10);
+}
+
+.liquid-card__kicker{
+  color: rgba(255,255,255,0.78);
+}
+
+.liquid-card__title{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.45rem;
+  line-height: 1.18;
+  margin: 10px 0 10px;
+  color: rgba(255,255,255,0.95);
+  max-width: 28ch;
+}
+
+.liquid-card__meta{
+  margin: 0 0 14px;
+  color: rgba(255,255,255,0.72);
+  font-size: 0.98rem;
+  max-width: 46ch;
+}
+
+.liquid-card__link{
+  color: rgba(255,255,255,0.86);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.45);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  width: fit-content;
+  padding-bottom: 3px;
+}
+
+.liquid-card__link:hover{
+  color: rgba(255,255,255,0.98);
+  border-bottom-color: rgba(255,255,255,0.85);
+}
+
+.liquid-card:hover .liquid-card__bg img{
+  transform: scale(1.12);
+  filter: saturate(1.0) contrast(1.02);
+}
+
+.liquid-card:hover{
+  box-shadow: 0 26px 84px rgba(0,0,0,0.14);
+}
+
+/* reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce){
+  .liquid-card__bg img{ transition: none; }
+  .liquid-card{ transition: none; }
+}
+
+/* --------- Legacy card styles (kept for other pages) --------- */
 .card{
   border: 1px solid rgba(42,42,40,0.10);
   border-radius: var(--radius);
@@ -360,7 +487,6 @@ body{
   box-shadow: 0 14px 40px rgba(0,0,0,0.06);
 }
 
-/* media card variant */
 .card--media{
   padding: 18px;
 }
@@ -481,11 +607,45 @@ body{
   border-bottom-color: rgba(255,255,255,0.10);
 }
 
-.dark .card,
 .dark .callout{
   background: rgba(255,255,255,0.04);
   border-color: rgba(255,255,255,0.10);
   box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+}
+
+.dark .liquid-card{
+  border-color: rgba(255,255,255,0.12);
+  box-shadow: 0 22px 70px rgba(0,0,0,0.55);
+}
+
+.dark .liquid-card__glass{
+  background: linear-gradient(
+    to top,
+    rgba(18,18,18,0.55) 0%,
+    rgba(18,18,18,0.30) 45%,
+    rgba(18,18,18,0.10) 100%
+  );
+  border-top-color: rgba(255,255,255,0.10);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.10),
+    inset 0 -1px 0 rgba(0,0,0,0.35);
+}
+
+.dark .liquid-card__kicker{
+  color: rgba(255,255,255,0.70);
+}
+
+.dark .liquid-card__title{
+  color: rgba(255,255,255,0.92);
+}
+
+.dark .liquid-card__meta{
+  color: rgba(255,255,255,0.70);
+}
+
+.dark .liquid-card__link{
+  color: rgba(255,255,255,0.84);
+  border-bottom-color: rgba(255,255,255,0.40);
 }
 
 .dark .button{
