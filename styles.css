@@ -20,6 +20,10 @@
   --glass-shadow: 0 20px 60px rgba(0,0,0,0.10);
   --glass-blur: 26px;
 
+  /* Motion */
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --dur: 220ms;
+
   /* Fonts */
   --serif:"Libre Baskerville", Georgia, "Times New Roman", serif;
   --sans:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -342,19 +346,21 @@ body{
   border-radius: calc(var(--radius) + 10px);
   overflow: hidden;
   border: 1px solid rgba(42,42,40,0.06);
+  isolation: isolate;
 }
 
 .work-surface::before{
   content:"";
   position:absolute;
-  inset:-60px;
+  inset:-80px;
   background:
-    radial-gradient(700px 320px at 20% 0%, rgba(120,170,255,0.20), rgba(0,0,0,0) 60%),
-    radial-gradient(680px 360px at 80% 35%, rgba(180,120,255,0.18), rgba(0,0,0,0) 62%),
-    radial-gradient(560px 320px at 55% 95%, rgba(120,255,210,0.12), rgba(0,0,0,0) 60%);
-  filter: blur(18px);
+    radial-gradient(720px 340px at 18% 8%, rgba(120,170,255,0.30), rgba(0,0,0,0) 60%),
+    radial-gradient(720px 420px at 84% 40%, rgba(180,120,255,0.26), rgba(0,0,0,0) 64%),
+    radial-gradient(620px 360px at 52% 105%, rgba(120,255,210,0.18), rgba(0,0,0,0) 62%);
+  filter: blur(22px);
   transform: translateZ(0);
   pointer-events:none;
+  z-index: 0;
 }
 
 .work-surface::after{
@@ -362,9 +368,10 @@ body{
   position:absolute;
   inset:0;
   background: rgba(255,255,255,0.10);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
   pointer-events:none;
+  z-index: 0;
 }
 
 /* --------- Cards (LIQUID GLASS) --------- */
@@ -374,10 +381,20 @@ body{
   display:grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--s3);
+  align-items: stretch;
 }
 
 @media (max-width: 980px){
   .cards{ grid-template-columns: 1fr; }
+}
+
+/* Featured card spans 2 columns on desktop */
+.card--featured{
+  grid-column: span 2;
+}
+
+@media (max-width: 980px){
+  .card--featured{ grid-column: auto; }
 }
 
 .card{
@@ -386,48 +403,56 @@ body{
   padding: var(--s4);
   overflow: hidden;
 
-  /* actual liquid glass */
   background: var(--glass-fill);
   border: 1px solid var(--glass-stroke);
   backdrop-filter: blur(var(--glass-blur)) saturate(180%) contrast(1.05);
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%) contrast(1.05);
   box-shadow: var(--glass-shadow);
   transform: translateZ(0);
+
+  transition:
+    transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    background var(--dur) var(--ease);
+}
+
+/* fallback if blur isn't supported */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
+  .card{
+    background: rgba(255,255,255,0.70);
+  }
+  .dark .card{
+    background: rgba(20,20,20,0.72);
+  }
 }
 
 .card::before{
-  /* top-left specular highlight */
   content:"";
   position:absolute;
   inset:-2px;
   border-radius: inherit;
   background:
-    radial-gradient(120% 80% at 18% 12%, rgba(255,255,255,0.70), rgba(255,255,255,0.0) 55%);
+    radial-gradient(120% 80% at 18% 12%, rgba(255,255,255,0.78), rgba(255,255,255,0.0) 55%);
   opacity: 0.55;
   pointer-events:none;
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
 
 .card::after{
-  /* edge glow / secondary highlight */
   content:"";
   position:absolute;
   inset:0;
   border-radius: inherit;
   background:
-    linear-gradient(135deg, rgba(255,255,255,0.42), rgba(255,255,255,0.06));
+    linear-gradient(135deg, rgba(255,255,255,0.48), rgba(255,255,255,0.06));
   mix-blend-mode: overlay;
-  opacity: 0.35;
+  opacity: 0.32;
   pointer-events:none;
+  transition: opacity var(--dur) var(--ease);
 }
 
-.card--glass{
-  /* optional hook for future variations */
-}
-
-.card > *{
-  position: relative;
-  z-index: 1;
-}
+.card > *{ position: relative; z-index: 1; }
 
 .card__title{
   font-family: var(--serif);
@@ -435,6 +460,17 @@ body{
   font-size: 1.28rem;
   line-height: 1.22;
   margin: var(--s2) 0 var(--s1);
+  max-width: 28ch;
+}
+
+/* NEW: Impact line */
+.card__impact{
+  margin: 0 0 var(--s2);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(47,60,52,0.78);
 }
 
 .card__meta{
@@ -452,10 +488,43 @@ body{
   letter-spacing: 0.18em;
   text-transform: uppercase;
   padding-bottom: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .card__link:hover{
   border-bottom-color: rgba(47,60,52,0.85);
+}
+
+/* Hover: make it feel alive (not loud) */
+.card:hover{
+  transform: translateY(-6px);
+  border-color: rgba(42,42,40,0.18);
+  box-shadow: 0 26px 80px rgba(0,0,0,0.14);
+}
+
+.card:hover::before{
+  opacity: 0.72;
+  transform: translateY(-6px);
+}
+
+.card:hover::after{
+  opacity: 0.45;
+}
+
+/* Featured: slightly clearer glass + stronger edge */
+.card--featured{
+  background: rgba(255,255,255,0.20);
+  border-color: rgba(42,42,40,0.14);
+}
+
+.card--featured .card__title{
+  font-size: 1.38rem;
+}
+
+.card--featured .card__impact{
+  color: rgba(47,60,52,0.88);
 }
 
 /* --------- Contact --------- */
@@ -484,10 +553,12 @@ body{
   letter-spacing: 0.18em;
   text-transform: uppercase;
   box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  transition: background var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
 
 .button:hover{
   background: rgba(255,255,255,0.30);
+  transform: translateY(-2px);
 }
 
 /* Footer */
@@ -533,6 +604,10 @@ body{
   background: rgba(255,255,255,0.04);
 }
 
+.dark .card__impact{
+  color: rgba(255,255,255,0.70);
+}
+
 .dark .card__link{
   color: rgba(255,255,255,0.84);
   border-bottom-color: rgba(255,255,255,0.22);
@@ -542,3 +617,12 @@ body{
   border-bottom-color: rgba(255,255,255,0.55);
 }
 
+.dark .card:hover{
+  border-color: rgba(255,255,255,0.16);
+  box-shadow: 0 28px 90px rgba(0,0,0,0.70);
+}
+
+.dark .card--featured{
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.14);
+}
