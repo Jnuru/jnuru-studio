@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Case Study — Service Center Redesign | jnuru.studio</title>
+  <title>Case Study — Service Center Template | jnuru.studio</title>
   <link rel="stylesheet" href="../styles.css" />
 </head>
 
-<body>
+<body class="page--case">
   <header class="site-header">
     <div class="wrap">
       <div class="topbar">
@@ -28,75 +28,272 @@
     </div>
   </header>
 
-  <main>
-    <section class="section">
+  <!-- PROGRESS RAIL -->
+  <nav class="case-rail" aria-label="Case study progress">
+    <a class="case-rail__dot" href="#top"><span>Start</span></a>
+    <a class="case-rail__dot" href="#problem"><span>Problem</span></a>
+    <a class="case-rail__dot" href="#constraints"><span>Constraints</span></a>
+    <a class="case-rail__dot" href="#approach"><span>Approach</span></a>
+    <a class="case-rail__dot" href="#system"><span>System</span></a>
+    <a class="case-rail__dot" href="#outcome"><span>Outcome</span></a>
+  </nav>
+
+  <main id="top">
+    <!-- CASE HERO -->
+    <section class="case-hero">
       <div class="wrap">
-        <p class="kicker">CASE STUDY</p>
-        <h1 class="display italic">Modernizing a dealership service center page</h1>
+        <div class="case-hero__top">
+          <p class="kicker">CASE STUDY</p>
 
-        <div class="prose">
-          <p>
-            <strong>Overview:</strong> The Mazda Service Center page needed structural cleanup and visual modernization.
-            The goal was to improve hierarchy, make the content easier to scan, and elevate the overall feel—
-            without breaking dealership CMS constraints or SEO structure.
+          <h1 class="case-title">
+            Service center page template with SEO-first structure
+          </h1>
+
+          <p class="case-lede">
+            A calmer, more scannable service page system that improves hierarchy and conversion without breaking CMS + SEO constraints.
           </p>
 
-          <p><strong>Role:</strong> UI/UX refinement + front-end implementation</p>
-          <p><strong>Tools:</strong> HTML, CSS, Bootstrap grid patterns, dealership CMS components</p>
+          <div class="case-meta">
+            <div class="case-meta__row">
+              <span class="case-meta__label">Role</span>
+              <span class="case-meta__value">UI/UX refinement • Front-end implementation</span>
+            </div>
+            <div class="case-meta__row">
+              <span class="case-meta__label">Scope</span>
+              <span class="case-meta__value">Mazda service center page system</span>
+            </div>
+            <div class="case-meta__row">
+              <span class="case-meta__label">Tools</span>
+              <span class="case-meta__value">HTML • CSS • Bootstrap grid patterns • CMS components</span>
+            </div>
+            <div class="case-meta__row">
+              <span class="case-meta__label">Timeline</span>
+              <span class="case-meta__value">2026</span>
+            </div>
+          </div>
         </div>
 
-        <div class="divider" style="margin:32px 0;"></div>
+        <!-- IMAGE 1/5 (HERO) — 1600×900 -->
+        <figure class="case-media case-media--hero">
+          <img
+            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1600'%20height='900'%3E%3Cdefs%3E%3CradialGradient%20id='g'%20cx='18%25'%20cy='20%25'%20r='90%25'%3E%3Cstop%20offset='0%25'%20stop-color='%23e7efe8'/%3E%3Cstop%20offset='60%25'%20stop-color='%23f3f0e9'/%3E%3Cstop%20offset='100%25'%20stop-color='%23dfe7e1'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width='1600'%20height='900'%20fill='url(%23g)'/%3E%3Ctext%20x='80'%20y='120'%20fill='%233F4F45'%20font-size='40'%20font-family='Arial'%20opacity='0.55'%3EReplace%20Hero%20Image%20(1600%C3%97900)%3C/text%3E%3C/svg%3E"
+            alt="Replace hero image (1600×900)"
+            loading="lazy"
+          />
+          <figcaption class="case-caption">
+            Replace with a wide screenshot or calm mock — headline, trust block, and CTA visible.
+          </figcaption>
+        </figure>
 
-        <div class="prose">
-          <h2 class="display">The Problem</h2>
-          <ul class="list">
-            <li>Visually heavy hero with weak hierarchy.</li>
-            <li>Inconsistent spacing and section rhythm.</li>
-            <li>Important information (hours, contact, value props) not clearly surfaced.</li>
-            <li>Content blocks felt stitched together instead of systemized.</li>
-            <li>Mobile experience lacked intention.</li>
-          </ul>
+        <div class="case-hero__down">
+          <a class="case-down" href="#problem">Continue →</a>
+        </div>
+      </div>
+    </section>
 
-          <h2 class="display">The Approach</h2>
-          <p>
-            Instead of redesigning from scratch, I restructured the existing layout into a cleaner,
-            more modern system that could be reused across other service pages.
-          </p>
+    <div class="divider"></div>
 
-          <ul class="list">
-            <li><strong>Hero simplification:</strong> Clear headline + supporting text + focused CTA.</li>
-            <li><strong>Structured trust block:</strong> Hours, phone, and “why service with us” surfaced cleanly.</li>
-            <li><strong>Service grid:</strong> Card-style layout for common services to improve scannability.</li>
-            <li><strong>Amenities section:</strong> Clean chip-style presentation for quick value communication.</li>
-            <li><strong>Facility imagery:</strong> Balanced image layout to add credibility and human presence.</li>
-            <li><strong>Stronger closing CTA:</strong> Clear “Schedule Service” emphasis at both top and bottom.</li>
-          </ul>
+    <!-- 01 PROBLEM -->
+    <section class="case-section" id="problem">
+      <div class="wrap case-grid">
+        <div class="case-grid__left">
+          <p class="case-step">01 — Problem</p>
+          <h2 class="case-h2">The page felt heavy, stitched together, and hard to scan.</h2>
 
-          <h2 class="display">Design Principles Applied</h2>
-          <ul class="list">
-            <li>Clear visual hierarchy (headline → value → action).</li>
-            <li>Breathing room between sections.</li>
-            <li>Consistent button styling and CTA emphasis.</li>
-            <li>OEM-inspired cleanliness without overcomplicating layout.</li>
-          </ul>
+          <div class="case-prose">
+            <p>
+              The Mazda Service Center page needed structural cleanup and visual modernization.
+              The goal was to improve hierarchy, make the content easier to scan, and elevate the overall feel —
+              without breaking CMS constraints or SEO structure.
+            </p>
 
-          <h2 class="display">Outcome</h2>
-          <ul class="list">
-            <li>Cleaner, more modern presentation.</li>
-            <li>Improved readability and scan flow.</li>
-            <li>Stronger conversion emphasis on scheduling service.</li>
-            <li>Reusable section pattern for other dealership service pages.</li>
-          </ul>
-
-          <p class="muted" style="margin-top:24px;">
-            <a href="https://www.mazda.fusz.com/lou-fusz-mazda-service-center/" target="_blank" rel="noopener" class="card__link">
-              View live service page →
-            </a>
-          </p>
+            <ul class="case-list">
+              <li>Visually heavy hero with weak hierarchy</li>
+              <li>Inconsistent spacing and section rhythm</li>
+              <li>Key info (hours, contact, value props) not clearly surfaced</li>
+              <li>Content blocks felt stitched together instead of systemized</li>
+              <li>Mobile experience lacked intention</li>
+            </ul>
+          </div>
         </div>
 
-        <div style="margin-top:36px;">
+        <div class="case-grid__right">
+          <!-- IMAGE 2/5 — 1600×900 -->
+          <figure class="case-media">
+            <img
+              src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1600'%20height='900'%3E%3Cdefs%3E%3CradialGradient%20id='g'%20cx='55%25'%20cy='20%25'%20r='90%25'%3E%3Cstop%20offset='0%25'%20stop-color='%23eef2ee'/%3E%3Cstop%20offset='62%25'%20stop-color='%23f3f0e9'/%3E%3Cstop%20offset='100%25'%20stop-color='%23e0e6df'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width='1600'%20height='900'%20fill='url(%23g)'/%3E%3Ctext%20x='80'%20y='120'%20fill='%233F4F45'%20font-size='38'%20font-family='Arial'%20opacity='0.55'%3EReplace%20Problem%20Image%20(1600%C3%97900)%3C/text%3E%3C/svg%3E"
+              alt="Replace problem section image (1600×900)"
+              loading="lazy"
+            />
+            <figcaption class="case-caption">
+              Use a “before” screenshot showing the heavy hero and weak hierarchy.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 CONSTRAINTS -->
+    <section class="case-section" id="constraints">
+      <div class="wrap case-grid">
+        <div class="case-grid__left">
+          <p class="case-step">02 — Constraints</p>
+          <h2 class="case-h2">Modernize without breaking the platform.</h2>
+
+          <div class="case-prose">
+            <p>
+              This wasn’t a greenfield redesign. The page had to remain compatible with the dealership CMS,
+              preserve SEO structure, and keep production practical for future service pages.
+            </p>
+
+            <ul class="case-list">
+              <li>Keep single-page SEO structure intact</li>
+              <li>Work within CMS components + layout constraints</li>
+              <li>Support third-party overlays (chat, accessibility, etc.)</li>
+              <li>Maintain quick update paths for service content</li>
+              <li>Improve mobile rhythm without “custom app” complexity</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="case-grid__right">
+          <!-- IMAGE 3/5 — 1600×900 -->
+          <figure class="case-media">
+            <img
+              src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1600'%20height='900'%3E%3Cdefs%3E%3CradialGradient%20id='g'%20cx='22%25'%20cy='22%25'%20r='90%25'%3E%3Cstop%20offset='0%25'%20stop-color='%23edf1ee'/%3E%3Cstop%20offset='58%25'%20stop-color='%23f3f0e9'/%3E%3Cstop%20offset='100%25'%20stop-color='%23dde6df'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width='1600'%20height='900'%20fill='url(%23g)'/%3E%3Ctext%20x='80'%20y='120'%20fill='%233F4F45'%20font-size='38'%20font-family='Arial'%20opacity='0.55'%3EReplace%20Constraints%20Image%20(1600%C3%97900)%3C/text%3E%3C/svg%3E"
+              alt="Replace constraints section image (1600×900)"
+              loading="lazy"
+            />
+            <figcaption class="case-caption">
+              Use a “CMS reality” shot or a simple diagram of constraints (SEO + components).
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 APPROACH -->
+    <section class="case-section" id="approach">
+      <div class="wrap case-grid">
+        <div class="case-grid__left">
+          <p class="case-step">03 — Approach</p>
+          <h2 class="case-h2">Restructure into a reusable, calmer system.</h2>
+
+          <div class="case-prose">
+            <p>
+              Instead of redesigning from scratch, I rebuilt the page into a cleaner structure that could be reused
+              across service pages — improving hierarchy, scan flow, and CTA clarity.
+            </p>
+
+            <div class="case-cards">
+              <div class="case-card">
+                <p class="case-card__kicker">Step 1</p>
+                <p class="case-card__title">Hero simplification</p>
+                <p class="case-card__body">Clear headline + supporting text + focused CTA, without visual noise.</p>
+              </div>
+
+              <div class="case-card">
+                <p class="case-card__kicker">Step 2</p>
+                <p class="case-card__title">Trust block and scannability</p>
+                <p class="case-card__body">Hours, phone, and “why service here” surfaced as a clean unit.</p>
+              </div>
+
+              <div class="case-card">
+                <p class="case-card__kicker">Step 3</p>
+                <p class="case-card__title">Reusable sections</p>
+                <p class="case-card__body">Service grid + amenities chips + facility imagery + strong closing CTA.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-grid__right">
+          <!-- IMAGE 4/5 — 1600×900 -->
+          <figure class="case-media">
+            <img
+              src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1600'%20height='900'%3E%3Cdefs%3E%3CradialGradient%20id='g'%20cx='60%25'%20cy='25%25'%20r='90%25'%3E%3Cstop%20offset='0%25'%20stop-color='%23e9efe7'/%3E%3Cstop%20offset='60%25'%20stop-color='%23f3f0e9'/%3E%3Cstop%20offset='100%25'%20stop-color='%23dfe7e1'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width='1600'%20height='900'%20fill='url(%23g)'/%3E%3Ctext%20x='80'%20y='120'%20fill='%233F4F45'%20font-size='38'%20font-family='Arial'%20opacity='0.55'%3EReplace%20Approach%20Image%20(1600%C3%97900)%3C/text%3E%3C/svg%3E"
+              alt="Replace approach section image (1600×900)"
+              loading="lazy"
+            />
+            <figcaption class="case-caption">
+              Use a screenshot highlighting the trust block or service grid (one clear slice).
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 SYSTEM -->
+    <section class="case-section" id="system">
+      <div class="wrap">
+        <p class="case-step">04 — System</p>
+        <h2 class="case-h2 case-h2--wide">Template sections designed to be reused across service pages.</h2>
+
+        <div class="case-prose case-prose--wide">
+          <p>
+            The design principles were simple: hierarchy first, spacing as structure, and consistent CTA emphasis.
+            The output is a page that feels calmer and more intentional while staying compatible with platform realities.
+          </p>
+
+          <ul class="case-list case-list--wide">
+            <li><strong>Hero:</strong> headline → value → action (no extra noise)</li>
+            <li><strong>Trust block:</strong> hours + phone + “why service” surfaced early</li>
+            <li><strong>Service grid:</strong> card layout for scannable service categories</li>
+            <li><strong>Amenities:</strong> chip-style value props (fast read)</li>
+            <li><strong>Imagery:</strong> facility credibility without overwhelming the layout</li>
+            <li><strong>Closing CTA:</strong> “Schedule Service” emphasized top + bottom</li>
+          </ul>
+        </div>
+
+        <!-- IMAGE 5/5 — 1600×900 -->
+        <figure class="case-media case-media--full">
+          <img
+            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1600'%20height='900'%3E%3Cdefs%3E%3CradialGradient%20id='g'%20cx='28%25'%20cy='18%25'%20r='90%25'%3E%3Cstop%20offset='0%25'%20stop-color='%23eef2ee'/%3E%3Cstop%20offset='58%25'%20stop-color='%23f3f0e9'/%3E%3Cstop%20offset='100%25'%20stop-color='%23dde6df'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width='1600'%20height='900'%20fill='url(%23g)'/%3E%3Ctext%20x='80'%20y='120'%20fill='%233F4F45'%20font-size='38'%20font-family='Arial'%20opacity='0.55'%3EReplace%20System%20Image%20(1600%C3%97900)%3C/text%3E%3C/svg%3E"
+            alt="Replace system section image (1600×900)"
+            loading="lazy"
+          />
+          <figcaption class="case-caption">
+            Use a “final” screenshot that shows the new hierarchy and calmer rhythm.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 05 OUTCOME -->
+    <section class="case-section" id="outcome">
+      <div class="wrap">
+        <p class="case-step">05 — Outcome</p>
+        <h2 class="case-h2 case-h2--wide">Cleaner scan flow, stronger trust, clearer conversion.</h2>
+
+        <div class="case-outcomes">
+          <div class="case-outcome">
+            <p class="case-outcome__num">01</p>
+            <p class="case-outcome__title">Modernized structure</p>
+            <p class="case-outcome__body">Cleaner hierarchy and spacing rhythm without disrupting SEO structure.</p>
+          </div>
+
+          <div class="case-outcome">
+            <p class="case-outcome__num">02</p>
+            <p class="case-outcome__title">Improved scannability</p>
+            <p class="case-outcome__body">Service info becomes easier to find: hours, contact, value props, services.</p>
+          </div>
+
+          <div class="case-outcome">
+            <p class="case-outcome__num">03</p>
+            <p class="case-outcome__title">Reusable template</p>
+            <p class="case-outcome__body">Section pattern can be reused across other dealership service pages.</p>
+          </div>
+        </div>
+
+        <p class="case-links">
+          <a href="https://www.mazda.fusz.com/lou-fusz-mazda-service-center/" target="_blank" rel="noopener" class="card__link">
+            View live service page →
+          </a>
+        </p>
+
+        <div class="case-footer-nav">
           <a class="button" href="../index.html#work">← Back to Work</a>
+          <a class="button" href="../case-vehicle-system.html">Next Case →</a>
         </div>
       </div>
     </section>
@@ -104,7 +301,7 @@
     <footer class="footer">
       <div class="wrap footer__inner">
         <p class="muted">© <span id="year"></span> jnuru.studio</p>
-        <p class="muted">Built with HTML/CSS/JS • Hosted on Netlify</p>
+        <p class="muted">Built with HTML/CSS/JS • Hosted on GitHub Pages</p>
       </div>
     </footer>
   </main>
