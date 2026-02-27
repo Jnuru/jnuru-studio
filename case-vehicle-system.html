@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body>
+<body class="page--case">
   <header class="site-header">
     <div class="wrap">
       <div class="topbar">
@@ -28,74 +28,267 @@
     </div>
   </header>
 
-  <main>
-    <section class="section">
+  <!-- PROGRESS RAIL (A) -->
+  <nav class="case-rail" aria-label="Case study progress">
+    <a class="case-rail__dot" href="#top"><span>Start</span></a>
+    <a class="case-rail__dot" href="#problem"><span>Problem</span></a>
+    <a class="case-rail__dot" href="#constraints"><span>Constraints</span></a>
+    <a class="case-rail__dot" href="#approach"><span>Approach</span></a>
+    <a class="case-rail__dot" href="#system"><span>System</span></a>
+    <a class="case-rail__dot" href="#outcome"><span>Outcome</span></a>
+  </nav>
+
+  <main id="top">
+    <!-- CASE HERO -->
+    <section class="case-hero">
       <div class="wrap">
-        <p class="kicker">CASE STUDY</p>
-        <h1 class="display italic">Designing a single vehicle page as a shared system</h1>
+        <div class="case-hero__top">
+          <p class="kicker">CASE STUDY</p>
 
-        <div class="prose">
-          <p><strong>Overview:</strong> I inherited vehicle detail and SEO landing pages that drifted year to year. Each model update introduced layout changes, duplicated work, and inconsistent interaction patterns. I rebuilt the vehicle page into a single reusable system—one structure that scales across model years while staying consistent, efficient, and adaptable.</p>
+          <h1 class="case-title">
+            Designing a single vehicle page as a shared system
+          </h1>
 
-          <p><strong>Role:</strong> UI/UX design + front-end implementation. Defined layout architecture, component rules, and interaction patterns while implementing the structure in HTML/CSS with lightweight JS behaviors.</p>
+          <p class="case-lede">
+            A reusable structure that scales across model years while staying consistent, fast, and OEM-inspired.
+          </p>
 
-          <p><strong>Tools:</strong> HTML, CSS, Bootstrap-style layout grid, light JavaScript for tabs/anchors, OEM asset references, internal CMS structure.</p>
+          <div class="case-meta">
+            <div class="case-meta__row">
+              <span class="case-meta__label">Role</span>
+              <span class="case-meta__value">UI/UX • Front-end implementation</span>
+            </div>
+            <div class="case-meta__row">
+              <span class="case-meta__label">Scope</span>
+              <span class="case-meta__value">Vehicle SEO + model-year system</span>
+            </div>
+            <div class="case-meta__row">
+              <span class="case-meta__label">Tools</span>
+              <span class="case-meta__value">HTML • CSS • light JS • CMS structure</span>
+            </div>
+            <div class="case-meta__row">
+              <span class="case-meta__label">Timeline</span>
+              <span class="case-meta__value">2024 → 2027</span>
+            </div>
+          </div>
         </div>
 
-        <div class="divider" style="margin:32px 0;"></div>
+        <!-- IMAGE 1/5 (HERO) — 1600×900 -->
+        <figure class="case-media case-media--hero">
+          <img
+            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1600'%20height='900'%3E%3Cdefs%3E%3CradialGradient%20id='g'%20cx='18%25'%20cy='20%25'%20r='90%25'%3E%3Cstop%20offset='0%25'%20stop-color='%23e7efe8'/%3E%3Cstop%20offset='60%25'%20stop-color='%23f3f0e9'/%3E%3Cstop%20offset='100%25'%20stop-color='%23dfe7e1'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width='1600'%20height='900'%20fill='url(%23g)'/%3E%3Ctext%20x='80'%20y='120'%20fill='%233F4F45'%20font-size='40'%20font-family='Arial'%20opacity='0.55'%3EReplace%20Hero%20Image%20(1600%C3%97900)%3C/text%3E%3C/svg%3E"
+            alt="Replace hero image (1600×900)"
+            loading="lazy"
+          />
+          <figcaption class="case-caption">
+            Replace with a wide, calm screenshot or mock — OEM-inspired layout, not a collage.
+          </figcaption>
+        </figure>
 
-        <div class="prose">
-          <h2 class="display">Problem</h2>
-          <p>
-            Vehicle pages were functioning as isolated builds instead of a unified system. Small updates—new trims, new features, minor design changes—often required rebuilding sections from scratch. Over time, this created inconsistency in layout, user flow, and styling between model years.
-          </p>
-          <p>
-            The experience needed to feel modern and OEM-inspired, but without sacrificing production speed or structural consistency.
-          </p>
+        <div class="case-hero__down">
+          <a class="case-down" href="#problem">Continue →</a>
+        </div>
+      </div>
+    </section>
 
-          <h2 class="display">Constraints</h2>
-          <ul class="list">
-            <li>Single-page structure for SEO and user flow.</li>
-            <li>Must scale across 2024 → 2025 → 2026 → 2027+ without layout rewrites.</li>
-            <li>Compatible with dealership site widgets (chat, accessibility overlays, inventory tools).</li>
-            <li>Fast to update when model-year content changes.</li>
-          </ul>
+    <div class="divider"></div>
 
-          <h2 class="display">Solution</h2>
-          <p>
-            I established a universal page template with a locked structural skeleton and reusable modules. The structure stays identical year to year. Updates happen at the component level—not the layout level.
-          </p>
+    <!-- SECTION: PROBLEM -->
+    <section class="case-section" id="problem">
+      <div class="wrap case-grid">
+        <div class="case-grid__left">
+          <p class="case-step">01 — Problem</p>
+          <h2 class="case-h2">Year-to-year drift created inconsistency and wasted time.</h2>
 
-          <ul class="list">
-            <li><strong>Universal structure:</strong> Hero → Intro → Color Options → Explore Tabs (Exterior / Interior / Features / Performance / Safety) → Trims → Powertrains → Inventory CTA.</li>
-            <li><strong>Reusable modules:</strong> Color selector component, standardized explore tabs, and a trims system that renders consistently across screen sizes.</li>
-            <li><strong>Interaction rules:</strong> Scroll-to anchors and predictable section hierarchy so users can jump directly to trims, safety, performance, or design.</li>
-            <li><strong>OEM-inspired refinement:</strong> Rather than redesigning the structure, I layered in select OEM-style patterns (stat bars, cleaner trim cards, tighter spacing rhythm) to elevate the presentation while preserving the system.</li>
-          </ul>
+          <div class="case-prose">
+            <p>
+              I inherited vehicle detail and SEO landing pages that drifted year to year.
+              Each update introduced layout changes, duplicated work, and inconsistent interaction patterns.
+              The pages were functioning as isolated builds instead of a unified system.
+            </p>
 
-          <h2 class="display">System Evolution</h2>
-          <ul class="list">
-            <li><strong>2024 baseline:</strong> Established foundation but lacked structural consistency across years.</li>
-            <li><strong>2025 template lock:</strong> Introduced a universal layout that could be reused across multiple models.</li>
-            <li><strong>2026 refinement:</strong> Improved trims hierarchy and simplified interaction patterns.</li>
-            <li><strong>2027 upgrade:</strong> Added OEM-inspired presentation elements (hero stat bar, stronger trim cards, clearer powertrain split) without changing the core structure.</li>
-          </ul>
-
-          <h2 class="display">Outcome</h2>
-          <ul class="list">
-            <li>Consistent experience across multiple model years.</li>
-            <li>Reduced rebuild time through component reuse.</li>
-            <li>Improved visual polish while maintaining structural discipline.</li>
-            <li>Scalable template ready for future model updates.</li>
-          </ul>
-
-          <p class="muted">
-            <a href="https://www.kia.fusz.com/2027-kia-telluride-in-st-louis/" class="card__link" target="_blank" rel="noopener">View live example →</a>
-          </p>
+            <ul class="case-list">
+              <li>Inconsistent layout rhythm across model years</li>
+              <li>Repeated rebuilds for small changes (trims, features, media)</li>
+              <li>Interaction patterns varied across pages (tabs, anchors, hierarchy)</li>
+            </ul>
+          </div>
         </div>
 
-        <div style="margin-top:36px;">
+        <div class="case-grid__right">
+          <!-- IMAGE 2/5 — 1600×900 -->
+          <figure class="case-media">
+            <img
+              src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1600'%20height='900'%3E%3Cdefs%3E%3CradialGradient%20id='g'%20cx='55%25'%20cy='20%25'%20r='90%25'%3E%3Cstop%20offset='0%25'%20stop-color='%23eef2ee'/%3E%3Cstop%20offset='62%25'%20stop-color='%23f3f0e9'/%3E%3Cstop%20offset='100%25'%20stop-color='%23e0e6df'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width='1600'%20height='900'%20fill='url(%23g)'/%3E%3Ctext%20x='80'%20y='120'%20fill='%233F4F45'%20font-size='38'%20font-family='Arial'%20opacity='0.55'%3EReplace%20Problem%20Image%20(1600%C3%97900)%3C/text%3E%3C/svg%3E"
+              alt="Replace problem section image (1600×900)"
+              loading="lazy"
+            />
+            <figcaption class="case-caption">
+              Use a “before” screenshot or a composite showing drift (spacing, styling, hierarchy).
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: CONSTRAINTS -->
+    <section class="case-section" id="constraints">
+      <div class="wrap case-grid">
+        <div class="case-grid__left">
+          <p class="case-step">02 — Constraints</p>
+          <h2 class="case-h2">OEM-inspired polish without sacrificing production speed.</h2>
+
+          <div class="case-prose">
+            <p>
+              The experience needed to feel modern and OEM-inspired, but the system had to stay stable.
+              This wasn’t a redesign project — it was a structural discipline project.
+            </p>
+
+            <ul class="case-list">
+              <li>Single-page structure for SEO + user flow</li>
+              <li>Must scale across 2024 → 2027+ without layout rewrites</li>
+              <li>Compatible with dealership widgets (chat, accessibility, inventory tools)</li>
+              <li>Fast to update as model-year content changes</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="case-grid__right">
+          <!-- IMAGE 3/5 — 1600×900 -->
+          <figure class="case-media">
+            <img
+              src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1600'%20height='900'%3E%3Cdefs%3E%3CradialGradient%20id='g'%20cx='22%25'%20cy='22%25'%20r='90%25'%3E%3Cstop%20offset='0%25'%20stop-color='%23edf1ee'/%3E%3Cstop%20offset='58%25'%20stop-color='%23f3f0e9'/%3E%3Cstop%20offset='100%25'%20stop-color='%23dde6df'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width='1600'%20height='900'%20fill='url(%23g)'/%3E%3Ctext%20x='80'%20y='120'%20fill='%233F4F45'%20font-size='38'%20font-family='Arial'%20opacity='0.55'%3EReplace%20Constraints%20Image%20(1600%C3%97900)%3C/text%3E%3C/svg%3E"
+              alt="Replace constraints section image (1600×900)"
+              loading="lazy"
+            />
+            <figcaption class="case-caption">
+              Use a “CMS / platform” reality shot or a simple diagram of the constraints.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: APPROACH -->
+    <section class="case-section" id="approach">
+      <div class="wrap case-grid">
+        <div class="case-grid__left">
+          <p class="case-step">03 — Approach</p>
+          <h2 class="case-h2">Lock the skeleton. Let modules evolve.</h2>
+
+          <div class="case-prose">
+            <p>
+              I established a universal template with a locked structural skeleton and reusable modules.
+              The structure stays identical year to year. Updates happen at the component level — not the layout level.
+            </p>
+
+            <div class="case-cards">
+              <div class="case-card">
+                <p class="case-card__kicker">Step 1</p>
+                <p class="case-card__title">Define a universal page sequence</p>
+                <p class="case-card__body">Hero → Intro → Color Options → Explore Tabs → Trims → Powertrains → Inventory CTA.</p>
+              </div>
+
+              <div class="case-card">
+                <p class="case-card__kicker">Step 2</p>
+                <p class="case-card__title">Build reusable modules</p>
+                <p class="case-card__body">Color selector, Explore tabs, trim cards, and predictable section hierarchy.</p>
+              </div>
+
+              <div class="case-card">
+                <p class="case-card__kicker">Step 3</p>
+                <p class="case-card__title">Layer OEM-inspired refinement</p>
+                <p class="case-card__body">Stat bars, tighter rhythm, clearer trim hierarchy — without changing the skeleton.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-grid__right">
+          <!-- IMAGE 4/5 — 1600×900 -->
+          <figure class="case-media">
+            <img
+              src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1600'%20height='900'%3E%3Cdefs%3E%3CradialGradient%20id='g'%20cx='60%25'%20cy='25%25'%20r='90%25'%3E%3Cstop%20offset='0%25'%20stop-color='%23e9efe7'/%3E%3Cstop%20offset='60%25'%20stop-color='%23f3f0e9'/%3E%3Cstop%20offset='100%25'%20stop-color='%23dfe7e1'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width='1600'%20height='900'%20fill='url(%23g)'/%3E%3Ctext%20x='80'%20y='120'%20fill='%233F4F45'%20font-size='38'%20font-family='Arial'%20opacity='0.55'%3EReplace%20Approach%20Image%20(1600%C3%97900)%3C/text%3E%3C/svg%3E"
+              alt="Replace approach section image (1600×900)"
+              loading="lazy"
+            />
+            <figcaption class="case-caption">
+              Use a clean “system” screenshot: tabs, trims, or a component slice — not everything at once.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: SYSTEM -->
+    <section class="case-section" id="system">
+      <div class="wrap">
+        <p class="case-step">04 — System</p>
+        <h2 class="case-h2 case-h2--wide">A reusable template that stays stable while the content changes.</h2>
+
+        <div class="case-prose case-prose--wide">
+          <p>
+            The key was predictability: consistent hierarchy, consistent modules, consistent interaction rules.
+            Users can jump directly to trims, safety, performance, or design. Teams can update content without rewriting layout.
+          </p>
+
+          <ul class="case-list case-list--wide">
+            <li><strong>Universal structure:</strong> fixed section order and naming so every vehicle page feels familiar.</li>
+            <li><strong>Reusable modules:</strong> color selector + explore tabs + trim system that holds across breakpoints.</li>
+            <li><strong>Interaction rules:</strong> anchors and predictable hierarchy for fast scanning and navigation.</li>
+            <li><strong>OEM-inspired refinement:</strong> visual polish layered on top without changing core structure.</li>
+          </ul>
+        </div>
+
+        <!-- IMAGE 5/5 — 1600×900 -->
+        <figure class="case-media case-media--full">
+          <img
+            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1600'%20height='900'%3E%3Cdefs%3E%3CradialGradient%20id='g'%20cx='28%25'%20cy='18%25'%20r='90%25'%3E%3Cstop%20offset='0%25'%20stop-color='%23eef2ee'/%3E%3Cstop%20offset='58%25'%20stop-color='%23f3f0e9'/%3E%3Cstop%20offset='100%25'%20stop-color='%23dde6df'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width='1600'%20height='900'%20fill='url(%23g)'/%3E%3Ctext%20x='80'%20y='120'%20fill='%233F4F45'%20font-size='38'%20font-family='Arial'%20opacity='0.55'%3EReplace%20System%20Image%20(1600%C3%97900)%3C/text%3E%3C/svg%3E"
+            alt="Replace system section image (1600×900)"
+            loading="lazy"
+          />
+          <figcaption class="case-caption">
+            Use a “final” screenshot showing the stabilized structure and OEM-inspired polish.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- SECTION: OUTCOME -->
+    <section class="case-section" id="outcome">
+      <div class="wrap">
+        <p class="case-step">05 — Outcome</p>
+        <h2 class="case-h2 case-h2--wide">Consistency, speed, and a template that survives change.</h2>
+
+        <div class="case-outcomes">
+          <div class="case-outcome">
+            <p class="case-outcome__num">01</p>
+            <p class="case-outcome__title">Reduced rebuild work</p>
+            <p class="case-outcome__body">Updates moved from layout rewrites to module updates.</p>
+          </div>
+
+          <div class="case-outcome">
+            <p class="case-outcome__num">02</p>
+            <p class="case-outcome__title">Consistent experience</p>
+            <p class="case-outcome__body">Predictable hierarchy and interaction across model years.</p>
+          </div>
+
+          <div class="case-outcome">
+            <p class="case-outcome__num">03</p>
+            <p class="case-outcome__title">OEM-inspired polish</p>
+            <p class="case-outcome__body">Improved presentation without breaking the system discipline.</p>
+          </div>
+        </div>
+
+        <p class="case-links">
+          <a class="card__link" href="https://www.kia.fusz.com/2027-kia-telluride-in-st-louis/" target="_blank" rel="noopener">
+            View live example →
+          </a>
+        </p>
+
+        <div class="case-footer-nav">
           <a class="button" href="index.html#work">← Back to Work</a>
+          <a class="button" href="case-studies/service-center.html">Next Case →</a>
         </div>
       </div>
     </section>
@@ -103,7 +296,7 @@
     <footer class="footer">
       <div class="wrap footer__inner">
         <p class="muted">© <span id="year"></span> jnuru.studio</p>
-        <p class="muted">Built with HTML/CSS/JS • Hosted on Netlify</p>
+        <p class="muted">Built with HTML/CSS/JS • Hosted on GitHub Pages</p>
       </div>
     </footer>
   </main>
