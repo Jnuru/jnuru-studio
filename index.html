@@ -138,53 +138,73 @@
         <!-- surface behind the cards so the blur has something to blur -->
         <div class="work-surface">
           <div class="cards">
-            <article class="card card--glass">
+
+            <article
+              class="card card--glass"
+              role="link"
+              tabindex="0"
+              aria-label="View case study: Designing a single vehicle page as a shared system"
+              onclick="location.href='case-vehicle-system.html';"
+              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();location.href='case-vehicle-system.html';}">
               <p class="kicker">CASE STUDY</p>
 
-              <!-- NEW: chips -->
-              <div class="card__chips">
+              <div class="card__chips" aria-label="Status and year">
                 <span class="chip">Ongoing</span>
                 <span class="chip">2026</span>
               </div>
 
               <h3 class="card__title">Designing a single vehicle page as a shared system</h3>
-              <p class="card__meta">Internal product • Automotive • Ongoing</p>
-              <a class="card__link" href="case-vehicle-system.html">
+              <p class="card__meta">Internal product • Automotive</p>
+
+              <a class="card__link" href="case-vehicle-system.html" aria-label="View details for vehicle page system case study">
                 View details →
               </a>
             </article>
 
-            <article class="card card--glass">
+            <article
+              class="card card--glass"
+              role="link"
+              tabindex="0"
+              aria-label="View case study: Service page template with SEO-first structure"
+              onclick="location.href='case-studies/service-center.html';"
+              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();location.href='case-studies/service-center.html';}">
               <p class="kicker">CASE STUDY</p>
 
-              <!-- NEW: chips -->
-              <div class="card__chips">
+              <div class="card__chips" aria-label="Status and year">
                 <span class="chip">Shipped</span>
                 <span class="chip">2026</span>
               </div>
 
               <h3 class="card__title">Service page template with SEO-first structure</h3>
-              <p class="card__meta">Web design • Dealership sites • Shipped</p>
-              <a class="card__link" href="case-studies/service-center.html">
+              <p class="card__meta">Web design • Dealership sites</p>
+
+              <a class="card__link" href="case-studies/service-center.html" aria-label="View details for service center case study">
                 View details →
               </a>
             </article>
 
-            <article class="card card--glass">
+            <article
+              class="card card--glass"
+              role="link"
+              tabindex="0"
+              aria-label="View experiment: Minimal portfolio system (static, fast, calm)"
+              onclick="location.href='#';"
+              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();location.href='#';}">
               <p class="kicker">EXPERIMENT</p>
 
-              <!-- NEW: chips -->
-              <div class="card__chips">
+              <div class="card__chips" aria-label="Status and year">
                 <span class="chip">In progress</span>
                 <span class="chip">2026</span>
               </div>
 
               <h3 class="card__title">Minimal portfolio system (static, fast, calm)</h3>
-              <p class="card__meta">Personal • Design system • In progress</p>
-              <a class="card__link" href="#">
+              <p class="card__meta">Personal • Design system</p>
+
+              <a class="card__link" href="#" aria-label="View details for minimal portfolio system experiment">
                 View details →
               </a>
             </article>
+
           </div>
         </div>
 
