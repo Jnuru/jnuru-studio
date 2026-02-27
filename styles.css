@@ -648,6 +648,22 @@ body{
   flex-wrap: wrap;
 }
 
+/* Shared link style reused in case study */
+.card__link{
+  color: var(--forest-ink);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(47,60,52,0.35);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding-bottom: 3px;
+}
+
+.card__link:hover{
+  border-bottom-color: rgba(47,60,52,0.85);
+}
+
 /* --------- Dark theme --------- */
 .dark{
   --bg:#121212;
@@ -722,4 +738,394 @@ body{
 
 .dark .work-head__link::after{
   background: rgba(255,255,255,0.22);
+}
+
+.dark .card__link{
+  color: rgba(255,255,255,0.84);
+  border-bottom-color: rgba(255,255,255,0.22);
+}
+
+.dark .card__link:hover{
+  border-bottom-color: rgba(255,255,255,0.55);
+}
+
+/* =========================================================
+   CASE STUDY (SCOPED) — forward motion, calm, editorial
+   ========================================================= */
+
+.page--case main{
+  position: relative;
+}
+
+/* Make anchor jumps land cleanly under sticky header */
+.page--case section[id]{
+  scroll-margin-top: 90px;
+}
+
+/* Progress rail (desktop only) */
+.case-rail{
+  position: fixed;
+  left: clamp(10px, 2vw, 28px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  gap: 12px;
+  z-index: 60;
+}
+
+.case-rail__dot{
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(42,42,40,0.22);
+  background: rgba(255,255,255,0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+  text-decoration: none;
+  position: relative;
+}
+
+.case-rail__dot span{
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(42,42,40,0.55);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: opacity 160ms ease;
+}
+
+.case-rail__dot:hover{
+  border-color: rgba(63,79,69,0.40);
+}
+
+.case-rail__dot:hover span{
+  opacity: 1;
+}
+
+@media (max-width: 980px){
+  .case-rail{ display:none; }
+}
+
+/* Case hero */
+.case-hero{
+  padding: var(--s6) 0 var(--s6);
+}
+
+.case-title{
+  margin: 0 0 14px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 1.3rem + 2.4vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  max-width: 22ch;
+}
+
+.case-lede{
+  margin: 0 0 var(--s3);
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 70ch;
+}
+
+.case-meta{
+  display: grid;
+  gap: 10px;
+  margin-top: var(--s3);
+  padding: 16px 18px;
+  border-radius: calc(var(--radius) + 6px);
+  border: 1px solid rgba(42,42,40,0.10);
+  background: rgba(255,255,255,0.16);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.06);
+}
+
+.case-meta__row{
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 14px;
+}
+
+.case-meta__label{
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(42,42,40,0.55);
+}
+
+.case-meta__value{
+  font-size: var(--small);
+  color: var(--fg);
+}
+
+.case-media{
+  margin: var(--s4) 0 0;
+  border-radius: calc(var(--radius) + 10px);
+  overflow: hidden;
+  border: 1px solid rgba(42,42,40,0.10);
+  background: rgba(255,255,255,0.14);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.10);
+}
+
+.case-media img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.case-media--hero{
+  margin-top: var(--s4);
+}
+
+.case-caption{
+  margin: 0;
+  padding: 12px 16px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(42,42,40,0.55);
+  background: rgba(255,255,255,0.18);
+  border-top: 1px solid rgba(42,42,40,0.08);
+}
+
+.case-hero__down{
+  margin-top: var(--s4);
+}
+
+.case-down{
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--forest-ink);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(47,60,52,0.35);
+  padding-bottom: 3px;
+}
+
+.case-down:hover{
+  border-bottom-color: rgba(47,60,52,0.85);
+}
+
+/* Case sections */
+.case-section{
+  padding: var(--s6) 0;
+}
+
+.case-grid{
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+
+@media (max-width: 960px){
+  .case-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+.case-step{
+  margin: 0 0 10px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(42,42,40,0.55);
+}
+
+.case-h2{
+  margin: 0 0 var(--s2);
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  max-width: 26ch;
+}
+
+.case-h2--wide{
+  max-width: 40ch;
+}
+
+.case-prose p{
+  margin: 0 0 var(--s2);
+  font-size: var(--body);
+  color: var(--fg);
+  max-width: 70ch;
+}
+
+.case-list{
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.case-list li{
+  color: var(--muted);
+  font-size: var(--body);
+}
+
+.case-prose--wide{
+  max-width: 78ch;
+}
+
+.case-list--wide{
+  max-width: 78ch;
+}
+
+.case-media--full{
+  margin-top: var(--s4);
+}
+
+/* Approach cards (quiet system blocks) */
+.case-cards{
+  margin-top: var(--s3);
+  display: grid;
+  gap: 14px;
+}
+
+.case-card{
+  border-radius: calc(var(--radius) + 6px);
+  padding: 16px 18px;
+  border: 1px solid rgba(42,42,40,0.10);
+  background: rgba(255,255,255,0.16);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.06);
+}
+
+.case-card__kicker{
+  margin: 0 0 8px;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(42,42,40,0.55);
+}
+
+.case-card__title{
+  margin: 0 0 6px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.22;
+}
+
+.case-card__body{
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+/* Outcome grid */
+.case-outcomes{
+  margin-top: var(--s3);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 22px);
+}
+
+@media (max-width: 860px){
+  .case-outcomes{
+    grid-template-columns: 1fr;
+  }
+}
+
+.case-outcome{
+  border-radius: calc(var(--radius) + 6px);
+  padding: 16px 18px;
+  border: 1px solid rgba(42,42,40,0.10);
+  background: rgba(255,255,255,0.16);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.06);
+}
+
+.case-outcome__num{
+  margin: 0 0 10px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(42,42,40,0.55);
+}
+
+.case-outcome__title{
+  margin: 0 0 6px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.22;
+}
+
+.case-outcome__body{
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.case-links{
+  margin-top: var(--s4);
+}
+
+.case-footer-nav{
+  margin-top: var(--s4);
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Dark case study tweaks */
+.dark .case-meta,
+.dark .case-card,
+.dark .case-outcome{
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.10);
+  box-shadow: 0 22px 70px rgba(0,0,0,0.55);
+}
+
+.dark .case-meta__label,
+.dark .case-step,
+.dark .case-caption,
+.dark .case-outcome__num,
+.dark .case-card__kicker{
+  color: rgba(255,255,255,0.60);
+}
+
+.dark .case-lede,
+.dark .case-card__body,
+.dark .case-outcome__body,
+.dark .case-list li{
+  color: rgba(255,255,255,0.72);
+}
+
+.dark .case-media{
+  border-color: rgba(255,255,255,0.10);
+}
+
+.dark .case-caption{
+  background: rgba(255,255,255,0.04);
+  border-top-color: rgba(255,255,255,0.10);
+}
+
+.dark .case-rail__dot{
+  border-color: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+}
+
+.dark .case-rail__dot span{
+  color: rgba(255,255,255,0.60);
 }
