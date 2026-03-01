@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experiment — Minimal Portfolio System | jnuru.studio</title>
+
+  <!-- Base site styles -->
+  <link rel="stylesheet" href="../../styles.css" />
+
+  <!-- Page-specific override styles (this is the spice) -->
+  <link rel="stylesheet" href="minimal-portfolio.css" />
+
+  <!-- Fonts (match your brand stack) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+
+<body class="exp">
+  <header class="site-header exp-header">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <a class="brand__name" href="../../index.html">jnuru.studio</a>
+          <p class="brand__meta">systems • form • reason</p>
+        </div>
+
+        <nav class="nav">
+          <a href="../../index.html#work">Work</a>
+          <a href="../../index.html#philosophy">Philosophy</a>
+          <a href="../../index.html#contact">Contact</a>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
+            <span aria-hidden="true">◐</span>
+          </button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="exp-main">
+    <!-- HERO / TITLE BLOCK -->
+    <section class="exp-hero">
+      <div class="wrap exp-wrap">
+        <p class="kicker exp-kicker">EXPERIMENT</p>
+
+        <h1 class="exp-title">
+          Minimal portfolio system<br />
+          <span class="exp-title__sub">(static, fast, calm)</span>
+        </h1>
+
+        <div class="exp-meta">
+          <p class="exp-signal">VISUAL RHYTHM • GRID TENSION • TECHNICAL LAYOUT STUDY</p>
+          <p class="exp-voice">
+            A small playground page to test restraint, composition, and image-led scanning — without losing structure.
+          </p>
+        </div>
+
+        <div class="exp-actions">
+          <a class="button exp-btn" href="#sections">Begin →</a>
+          <a class="exp-quietlink" href="../../index.html#work">Back to Work</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMAGE LED STRIP -->
+    <section class="exp-strip" aria-label="Image strip">
+      <div class="wrap exp-wrap">
+        <div class="exp-strip__grid">
+          <!-- Replace src with your own images later -->
+          <figure class="exp-img exp-img--tall">
+            <img
+              src="https://images.unsplash.com/photo-1526481280695-3c687fd5432c?auto=format&fit=crop&w=1400&q=80"
+              alt="Placeholder portrait"
+              loading="lazy"
+            />
+            <figcaption>Presence</figcaption>
+          </figure>
+
+          <figure class="exp-img">
+            <img
+              src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=80"
+              alt="Placeholder desk"
+              loading="lazy"
+            />
+            <figcaption>Systems</figcaption>
+          </figure>
+
+          <figure class="exp-img exp-img--wide">
+            <img
+              src="https://images.unsplash.com/photo-1526481280695-3c687fd5432c?auto=format&fit=crop&w=1800&q=80"
+              alt="Placeholder wide"
+              loading="lazy"
+            />
+            <figcaption>Quiet motion</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION INDEX -->
+    <section class="exp-index" id="sections">
+      <div class="wrap exp-wrap">
+        <div class="exp-index__head">
+          <h2 class="exp-h2">A small set of sections.</h2>
+          <p class="exp-muted">Not a case study. A controlled experiment.</p>
+        </div>
+
+        <div class="exp-cards">
+          <a class="exp-card" href="#foundation">
+            <p class="exp-card__num">01</p>
+            <p class="exp-card__title">Foundation</p>
+            <p class="exp-card__sub">type, spacing, and rhythm</p>
+          </a>
+
+          <a class="exp-card" href="#layout">
+            <p class="exp-card__num">02</p>
+            <p class="exp-card__title">Layout study</p>
+            <p class="exp-card__sub">grid tension + offsets</p>
+          </a>
+
+          <a class="exp-card" href="#images">
+            <p class="exp-card__num">03</p>
+            <p class="exp-card__title">Image language</p>
+            <p class="exp-card__sub">a “you” in visuals</p>
+          </a>
+
+          <a class="exp-card" href="#notes">
+            <p class="exp-card__num">04</p>
+            <p class="exp-card__title">Notes</p>
+            <p class="exp-card__sub">rules that keep it calm</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOUNDATION -->
+    <section class="exp-section" id="foundation">
+      <div class="wrap exp-wrap exp-two">
+        <div class="exp-block">
+          <p class="kicker">FOUNDATION</p>
+          <h2 class="exp-h2">Restraint with intent.</h2>
+          <p class="exp-body">
+            This page exists to test “alive but settled.” That means: fewer words, stronger hierarchy,
+            and images doing the heavy lifting.
+          </p>
+
+          <ul class="exp-list">
+            <li>Type does the leadership.</li>
+            <li>Spacing is the personality.</li>
+            <li>Color is a whisper, not a banner.</li>
+          </ul>
+        </div>
+
+        <aside class="exp-aside">
+          <p class="exp-aside__label">Brand voice</p>
+          <p class="exp-aside__mono">
+            calm • precise • human<br />
+            systems-first, not decorative<br />
+            visual proof > claims
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- LAYOUT STUDY -->
+    <section class="exp-section" id="layout">
+      <div class="wrap exp-wrap">
+        <p class="kicker">TECHNICAL LAYOUT STUDY</p>
+        <h2 class="exp-h2">Grid tension, controlled.</h2>
+        <p class="exp-body exp-body--narrow">
+          Slight offsets create motion without animation. The eye keeps moving even when nothing “moves.”
+        </p>
+
+        <div class="exp-layout">
+          <div class="exp-panel exp-panel--a">
+            <p class="exp-panel__kicker">Rule</p>
+            <p class="exp-panel__title">One loud thing per section.</p>
+            <p class="exp-panel__body">Everything else supports it. No competing headlines.</p>
+          </div>
+
+          <div class="exp-panel exp-panel--b">
+            <p class="exp-panel__kicker">Rule</p>
+            <p class="exp-panel__title">Images must earn space.</p>
+            <p class="exp-panel__body">If it’s decorative, cut it. If it explains you, keep it.</p>
+          </div>
+
+          <div class="exp-panel exp-panel--c">
+            <p class="exp-panel__kicker">Rule</p>
+            <p class="exp-panel__title">Accent stays rare.</p>
+            <p class="exp-panel__body">Forest green appears as a detail, not a theme park.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMAGES -->
+    <section class="exp-section" id="images">
+      <div class="wrap exp-wrap">
+        <p class="kicker">IMAGE LANGUAGE</p>
+        <h2 class="exp-h2">A “you” in pictures.</h2>
+        <p class="exp-body exp-body--narrow">
+          Pick 5 images that describe you without explaining you. Architecture. Instruments. Hands. Process.
+          A calm portrait. Something unfinished.
+        </p>
+
+        <div class="exp-gallery">
+          <figure class="exp-shot">
+            <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58?auto=format&fit=crop&w=1400&q=80" alt="Placeholder" loading="lazy">
+            <figcaption>Process</figcaption>
+          </figure>
+
+          <figure class="exp-shot exp-shot--tall">
+            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1400&q=80" alt="Placeholder" loading="lazy">
+            <figcaption>Build</figcaption>
+          </figure>
+
+          <figure class="exp-shot">
+            <img src="https://images.unsplash.com/photo-1526481280695-3c687fd5432c?auto=format&fit=crop&w=1400&q=80" alt="Placeholder" loading="lazy">
+            <figcaption>Presence</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTES -->
+    <section class="exp-section" id="notes">
+      <div class="wrap exp-wrap exp-notes">
+        <p class="kicker">NOTES</p>
+        <h2 class="exp-h2">Rules that keep it calm.</h2>
+
+        <div class="exp-notes__grid">
+          <div class="exp-note">
+            <p class="exp-note__title">No empty sections.</p>
+            <p class="exp-note__body">If it doesn’t say something, remove it or merge it.</p>
+          </div>
+
+          <div class="exp-note">
+            <p class="exp-note__title">One motion cue.</p>
+            <p class="exp-note__body">Offsets + spacing rhythm. Not animations everywhere.</p>
+          </div>
+
+          <div class="exp-note">
+            <p class="exp-note__title">Type scale stays consistent.</p>
+            <p class="exp-note__body">The “experiment” is layout + imagery, not random typography.</p>
+          </div>
+        </div>
+
+        <div class="exp-end">
+          <a class="button exp-btn" href="../../index.html#work">Back to Work →</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer exp-footer">
+      <div class="wrap footer__inner">
+        <p class="muted">© <span id="year"></span> jnuru.studio</p>
+        <p class="muted">Minimal system • intentional deviations</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="../../script.js" defer></script>
+</body>
+</html>
