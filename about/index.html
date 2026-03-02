@@ -32,19 +32,39 @@
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="about-hero">
-      <div class="wrap about-hero__inner">
-        <p class="kicker">ABOUT</p>
+ <!-- HERO (image + overlay + typed identity) -->
+<section class="about-hero about-hero--image">
+  <!-- background image layer -->
+  <div class="about-hero__media" aria-hidden="true">
+    <!-- Option A: use your image URL (Cloudinary recommended) -->
+    <img
+      src="https://res.cloudinary.com/drnccrw0a/image/upload/v1771969222/AdobeStock_1584645119_okv4j8.jpg"
+      alt=""
+      loading="eager"
+    />
+  </div>
 
-        <h1 class="display italic about-hero__title">Design is a responsibility.</h1>
+  <!-- content layer -->
+  <div class="wrap about-hero__inner">
+    <p class="kicker about-hero__kicker">ABOUT</p>
 
-        <p class="about-hero__lead">
-          I build calm, structured systems for people who care deeply about what they’re creating.
-          The work should feel inevitable — not decorated.
-        </p>
-      </div>
-    </section>
+    <h1 class="about-hero__headline">
+      <span class="hero-static">I’m a </span>
+      <span class="hero-type-wrap">
+        <span id="heroType" class="hero-type"></span>
+        <span class="type-caret hero-caret" aria-hidden="true"></span>
+      </span>
+    </h1>
+
+    <p class="about-hero__lead">
+      Design is a responsibility.
+      <span class="about-hero__sublead">
+        I build calm, structured systems for people who care deeply about what they’re creating.
+        The work should feel inevitable — not decorated.
+      </span>
+    </p>
+  </div>
+</section>
 
     <div class="divider"></div>
 
