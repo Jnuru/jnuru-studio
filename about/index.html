@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — jnuru.studio</title>
 
-  <!-- IMPORTANT: absolute paths -->
-  <link rel="stylesheet" href="/styles.css" />
+  <!-- IMPORTANT: path goes up one level -->
+  <link rel="stylesheet" href="../styles.css" />
 </head>
 
 <body>
@@ -20,8 +20,8 @@
 
         <nav class="nav">
           <a href="/#work">Work</a>
+          <a class="is-active" href="/about/">About</a>
           <a href="/#philosophy">Philosophy</a>
-          <a href="/about/">About</a>
           <a href="/#contact">Contact</a>
           <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
             <span aria-hidden="true">◐</span>
@@ -33,48 +33,66 @@
 
   <main>
 
-    <section class="section about">
-      <div class="wrap">
+    <!-- ABOUT HERO (typography-first, no stock hero) -->
+    <section class="about-hero">
+      <div class="wrap about-hero__inner">
         <p class="kicker">ABOUT</p>
 
-        <h2 class="display italic">
+        <h1 class="display italic about-hero__title">
           Design is a responsibility.
-        </h2>
+        </h1>
 
-        <div class="about__grid">
+        <p class="about-hero__lead">
+          I build calm, structured systems for people who care deeply about what they’re creating.
+          The work should feel inevitable — not decorated.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- PHILOSOPHY / TRUTH LAYER (press + hold) -->
+    <section class="section about" id="about">
+      <div class="wrap">
+        <div class="about__grid about__grid--wide">
           <div class="about__left">
+            <p class="kicker">HOW I THINK</p>
+
+            <h2 class="display italic">
+              Quiet systems. Strong rules. No noise.
+            </h2>
+
             <p class="about__lead">
-              I build calm, structured systems for people who care deeply about what they’re creating.
-              The work should feel inevitable — not decorated.
+              I optimize for clarity under constraint — CMS realities, SEO structure, real deadlines.
+              I simplify before I stylize.
             </p>
 
-            <div class="truth">
-              <button class="truth__item" type="button" data-truth>
+            <div class="truth" aria-label="Press and hold cards">
+              <button class="truth__item" type="button" data-truth aria-label="Press and hold to reveal details">
                 <span class="truth__front">I design systems, not pages.</span>
-                <span class="truth__back">
-                  Shared templates. Locked layout skeletons. Reusable modules.
-                  Fewer rebuilds. Less visual drift.
+                <span class="truth__back" aria-hidden="true">
+                  Shared templates • locked skeletons • reusable modules • fewer rebuilds • less visual drift.
                 </span>
               </button>
 
-              <button class="truth__item" type="button" data-truth>
+              <button class="truth__item" type="button" data-truth aria-label="Press and hold to reveal details">
                 <span class="truth__front">Clarity under constraint matters more than aesthetics.</span>
-                <span class="truth__back">
-                  CMS realities. SEO structure. Real deadlines.
-                  I simplify before I stylize.
+                <span class="truth__back" aria-hidden="true">
+                  CMS + SEO realities • content limits • speed • consistency • predictable components.
                 </span>
               </button>
 
-              <button class="truth__item" type="button" data-truth>
+              <button class="truth__item" type="button" data-truth aria-label="Press and hold to reveal details">
                 <span class="truth__front">I’m selective about what I ship.</span>
-                <span class="truth__back">
-                  No trend-chasing. No decorative motion.
-                  No components without rules.
+                <span class="truth__back" aria-hidden="true">
+                  No trend-chasing • no decorative motion • no components without rules • no fake voice.
                 </span>
               </button>
             </div>
 
-            <p class="muted about__hint">Press and hold to see how I think.</p>
+            <p class="muted about__hint">
+              Press and hold to reveal what I mean.
+            </p>
           </div>
 
           <aside class="about__right">
@@ -87,21 +105,130 @@
                 <li>Structure scales better than style</li>
               </ul>
             </div>
+
+            <div class="about__card about__card--soft">
+              <p class="label">Focus</p>
+              <ul class="list">
+                <li>Systems + templates</li>
+                <li>Design that holds up in production</li>
+                <li>Editorial clarity</li>
+              </ul>
+            </div>
           </aside>
         </div>
       </div>
     </section>
 
+    <div class="divider"></div>
+
+    <!-- IMAGE ANCHOR (your photo, full-bleed feel) -->
+    <section class="about-photo">
+      <div class="wrap">
+        <p class="kicker">WHO I AM</p>
+      </div>
+
+      <div class="about-photo__frame">
+        <!-- replace src with your own file or Cloudinary -->
+        <img
+          class="about-photo__img"
+          src="https://res.cloudinary.com/drnccrw0a/image/upload/v1771969222/AdobeStock_1584645119_okv4j8.jpg"
+          alt="Portrait of Jnuru"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="wrap">
+        <p class="muted about-photo__caption">
+          Designer focused on systems, typography, and structure that scales.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- PROCESS (simple, clean, not agency-corny) -->
+    <section class="section about-process">
+      <div class="wrap">
+        <p class="kicker">THE PROCESS</p>
+        <h2 class="display italic">How I work</h2>
+
+        <div class="process-grid">
+          <div class="process-step">
+            <p class="process-step__num">01</p>
+            <h3 class="process-step__title">Discovery</h3>
+            <p class="process-step__body">What’s the idea, and what must it honor?</p>
+          </div>
+
+          <div class="process-step">
+            <p class="process-step__num">02</p>
+            <h3 class="process-step__title">Clarity</h3>
+            <p class="process-step__body">Reduce the noise. Lock the hierarchy.</p>
+          </div>
+
+          <div class="process-step">
+            <p class="process-step__num">03</p>
+            <h3 class="process-step__title">Structure</h3>
+            <p class="process-step__body">Build rules, not one-off screens.</p>
+          </div>
+
+          <div class="process-step">
+            <p class="process-step__num">04</p>
+            <h3 class="process-step__title">Delivery</h3>
+            <p class="process-step__body">Ship clean. Maintainable. Fast.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- VALUES (3-column like your reference, but your words) -->
+    <section class="section about-values">
+      <div class="wrap">
+        <p class="kicker">WHAT DRIVES ME</p>
+
+        <div class="values-grid">
+          <div class="value">
+            <h3 class="value__title">Authenticity</h3>
+            <p class="value__body">The work should sound like the person behind it.</p>
+          </div>
+          <div class="value">
+            <h3 class="value__title">Discipline</h3>
+            <p class="value__body">Strong decisions. Repeatable systems. No fluff.</p>
+          </div>
+          <div class="value">
+            <h3 class="value__title">Intentionality</h3>
+            <p class="value__body">Every line earns its place.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CONTACT CTA -->
+    <section class="section" id="contact">
+      <div class="wrap">
+        <p class="kicker">CONTACT</p>
+        <h2 class="display">If the goal is “make it look nice,” I’m probably not the right fit.</h2>
+
+        <div class="contact">
+          <a class="button" href="mailto:hello@jnuru.studio">hello@jnuru.studio</a>
+          <p class="muted">Based in St. Louis • Available for select projects</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <p class="muted">© <span id="year"></span> jnuru.studio</p>
+        <p class="muted">Built with HTML/CSS/JS • Hosted on GitHub Pages</p>
+      </div>
+    </footer>
+
   </main>
 
-  <footer class="footer">
-    <div class="wrap footer__inner">
-      <p class="muted">© <span id="year"></span> jnuru.studio</p>
-      <p class="muted">Built with HTML/CSS/JS • Hosted on GitHub Pages</p>
-    </div>
-  </footer>
-
-  <!-- IMPORTANT: absolute path -->
-  <script src="/script.js" defer></script>
+  <!-- IMPORTANT: path goes up one level -->
+  <script src="../script.js" defer></script>
 </body>
 </html>
