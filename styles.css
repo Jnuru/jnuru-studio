@@ -1131,37 +1131,18 @@ body{
 }
 
 
-/* =========================
-   ABOUT PAGE — TheaterJS version (alive, calm, not gimmicky)
+/* =========================================================
+   ABOUT PAGE — Clean rhythm + strong typed moment
    Paste at END of styles.css
-   Requires: body.page--about + #aboutType
-   ========================= */
+   ========================================================= */
 
-/* Page-only soft lighting so it doesn’t feel flat */
-.page--about main{
-  position: relative;
-  isolation: isolate;
-}
-
-.page--about main::before{
-  content:"";
-  position: absolute;
-  inset: -120px -40px auto -40px;
-  height: 520px;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(700px 360px at 18% 12%, rgba(63,79,69,0.14), rgba(0,0,0,0) 60%),
-    radial-gradient(720px 420px at 86% 34%, rgba(110,140,125,0.10), rgba(0,0,0,0) 62%);
-  filter: blur(18px);
-}
-
-/* About hero spacing (less empty) */
+/* Hero spacing tightened */
 .about-hero{
   padding: clamp(46px, 6vw, 86px) 0;
 }
+
 .about-hero__inner{ max-width: 980px; }
-.about-hero__title{ margin-top: 10px; }
+
 .about-hero__lead{
   margin-top: 18px;
   max-width: 72ch;
@@ -1174,18 +1155,19 @@ body{
 .section.about-process,
 .section.about-values{ padding: clamp(56px, 7vw, 98px) 0; }
 
-/* Two column */
+/* Two column layout */
 .about__grid--wide{
   display: grid;
   grid-template-columns: 1.35fr 0.85fr;
   gap: clamp(18px, 4vw, 44px);
   align-items: start;
 }
+
 @media (max-width: 900px){
   .about__grid--wide{ grid-template-columns: 1fr; }
 }
 
-/* Right-side cards feel intentional */
+/* Right-side cards */
 .about__card{
   background: rgba(255,255,255,0.18);
   border: 1px solid rgba(42,42,40,0.10);
@@ -1196,81 +1178,60 @@ body{
   -webkit-backdrop-filter: blur(14px) saturate(160%);
   box-shadow: 0 14px 40px rgba(0,0,0,0.06);
 }
-.about__card--soft{ background: rgba(255,255,255,0.12); }
+
+.about__card--soft{
+  background: rgba(255,255,255,0.12);
+}
 
 /* =========================
-   TheaterJS Typed Line
+   Typed Moment
    ========================= */
 
-/* A “stage” for the typed line */
-.about-type-wrap{
-  margin-top: 18px;
-  padding: 14px 16px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.14);
-  border: 1px solid rgba(42,42,40,0.10);
-  backdrop-filter: blur(14px) saturate(160%);
-  -webkit-backdrop-filter: blur(14px) saturate(160%);
-  box-shadow: 0 12px 34px rgba(0,0,0,0.06);
-  position: relative;
-  overflow: hidden;
+.about-principles__line{
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 1rem + 0.6vw, 1.35rem);
+  line-height: 1.35;
+  margin: 16px 0 0;
+  max-width: 56ch;
+  min-height: 3.2em; /* prevents layout jump */
 }
 
-/* subtle diagonal sheen */
-.about-type-wrap::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  background: linear-gradient(
-    135deg,
-    rgba(63,79,69,0.16) 0%,
-    rgba(63,79,69,0.00) 45%
-  );
-  pointer-events:none;
-}
-
-.about-type{
-  margin: 0;
-  font-family: var(--mono);
-  font-size: clamp(0.92rem, 0.85rem + 0.25vw, 1.02rem);
-  line-height: 1.8;
-  letter-spacing: 0.02em;
-  color: rgba(42,42,40,0.82);
-  position: relative;
-  z-index: 1;
-  min-height: 3.2em; /* prevents layout jump while typing */
-  max-width: 70ch;
-}
-
-/* Caret (clean, not cheesy) */
-.about-type::after{
-  content:"";
+/* Caret */
+.type-caret{
   display: inline-block;
   width: 10px;
-  height: 1.05em;
-  margin-left: 6px;
-  transform: translateY(2px);
-  background: rgba(63,79,69,0.55);
-  border-radius: 2px;
-  animation: aboutCaret 900ms steps(1) infinite;
+  margin-left: 4px;
+  border-bottom: 2px solid rgba(63,79,69,0.55);
+  transform: translateY(-2px);
+  animation: caretBlink 900ms steps(1) infinite;
 }
 
-@keyframes aboutCaret{
-  0%, 49%{ opacity: 1; }
-  50%, 100%{ opacity: 0; }
+@keyframes caretBlink{
+  50%{ opacity: 0; }
 }
 
-/* Small hint line under typed block */
+.dark .type-caret{
+  border-bottom-color: rgba(255,255,255,0.55);
+}
+
+/* Hint text */
 .about__hint{
   margin-top: 12px;
-  color: rgba(42,42,40,0.60);
   font-size: var(--small);
+  color: rgba(42,42,40,0.60);
+}
+
+.dark .about__hint{
+  color: rgba(255,255,255,0.65);
 }
 
 /* =========================
-   Photo section (more premium)
+   Photo section
    ========================= */
-.about-photo{ padding: clamp(46px, 7vw, 98px) 0; }
+
+.about-photo{
+  padding: clamp(46px, 7vw, 98px) 0;
+}
 
 .about-photo__frame{
   margin: 18px auto 14px;
@@ -1283,7 +1244,6 @@ body{
   position: relative;
 }
 
-/* add a soft vignette so any portrait looks intentional */
 .about-photo__frame::after{
   content:"";
   position:absolute;
@@ -1297,18 +1257,23 @@ body{
   pointer-events:none;
 }
 
-.about-photo__img{ width: 100%; height: auto; display: block; }
-.about-photo__caption{ max-width: 80ch; }
+.about-photo__img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
 /* =========================
-   Process + Values (kept, tightened)
+   Process + Values
    ========================= */
+
 .process-grid{
   margin-top: 22px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(12px, 2vw, 20px);
 }
+
 .process-step{
   padding: 16px;
   border: 1px solid rgba(42,42,40,0.10);
@@ -1318,6 +1283,7 @@ body{
   -webkit-backdrop-filter: blur(12px) saturate(150%);
   box-shadow: 0 12px 32px rgba(0,0,0,0.05);
 }
+
 .process-step__num{
   font-family: var(--mono);
   font-size: 0.68rem;
@@ -1325,11 +1291,20 @@ body{
   opacity: 0.55;
   margin-bottom: 10px;
 }
-.process-step__title{ margin: 0 0 8px; font-size: 16px; }
-.process-step__body{ margin: 0; opacity: 0.85; line-height: 1.6; }
+
+.process-step__title{
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.process-step__body{
+  margin: 0;
+  opacity: 0.85;
+  line-height: 1.6;
+}
 
 @media (max-width: 900px){
-  .process-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .process-grid{ grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 560px){
   .process-grid{ grid-template-columns: 1fr; }
@@ -1341,6 +1316,7 @@ body{
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(14px, 2.5vw, 24px);
 }
+
 .value{
   padding: 18px;
   border: 1px solid rgba(42,42,40,0.10);
@@ -1350,6 +1326,7 @@ body{
   -webkit-backdrop-filter: blur(12px) saturate(150%);
   box-shadow: 0 12px 32px rgba(0,0,0,0.05);
 }
+
 .value__title{ margin: 0 0 10px; }
 .value__body{ margin: 0; opacity: 0.85; line-height: 1.65; }
 
@@ -1357,23 +1334,11 @@ body{
   .values-grid{ grid-template-columns: 1fr; }
 }
 
-/* Dark theme tweaks */
 .dark .about__card,
-.dark .about-type-wrap,
 .dark .process-step,
 .dark .value{
   background: rgba(255,255,255,0.06);
   border-color: rgba(255,255,255,0.10);
   box-shadow: 0 22px 70px rgba(0,0,0,0.55);
-}
-
-.dark .about-type{
-  color: rgba(255,255,255,0.78);
-}
-.dark .about-type::after{
-  background: rgba(255,255,255,0.55);
-}
-.dark .about__hint{
-  color: rgba(255,255,255,0.65);
 }
 
