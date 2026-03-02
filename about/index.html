@@ -10,7 +10,6 @@
 </head>
 
 <body class="page--about">
-
   <header class="site-header">
     <div class="wrap">
       <div class="topbar">
@@ -33,15 +32,12 @@
   </header>
 
   <main>
-
     <!-- HERO -->
     <section class="about-hero">
       <div class="wrap about-hero__inner">
         <p class="kicker">ABOUT</p>
 
-        <h1 class="display italic about-hero__title">
-          Design is a responsibility.
-        </h1>
+        <h1 class="display italic about-hero__title">Design is a responsibility.</h1>
 
         <p class="about-hero__lead">
           I build calm, structured systems for people who care deeply about what they’re creating.
@@ -56,29 +52,22 @@
     <section class="section about" id="about">
       <div class="wrap">
         <div class="about__grid about__grid--wide">
-
           <div class="about__left">
             <p class="kicker">HOW I THINK</p>
 
-            <h2 class="display italic">
-              Quiet systems. Strong rules. No noise.
-            </h2>
+            <h2 class="display italic">Quiet systems. Strong rules. No noise.</h2>
 
             <p class="about__lead">
               I optimize for clarity under constraint — CMS realities, SEO structure, real deadlines.
               I simplify before I stylize.
             </p>
 
-            <!-- TheaterJS Principles -->
-            <div class="about-principles" aria-label="How I think principles">
-              <p class="about-principles__label">Principles</p>
-
-              <p class="about-principles__line" id="aboutType"></p>
-
-              <p class="about-principles__hint muted">
-                Three rules. One pass. No loop.
-              </p>
+            <!-- THEATER MOMENT (highest-interest placement: right after the lead) -->
+            <div class="about-type-wrap" aria-label="Typed principles">
+              <p class="about-type" id="aboutType"></p>
             </div>
+
+            <p class="muted about__hint">Three rules. One pass. No loop.</p>
           </div>
 
           <aside class="about__right">
@@ -101,7 +90,6 @@
               </ul>
             </div>
           </aside>
-
         </div>
       </div>
     </section>
@@ -139,39 +127,29 @@
         <h2 class="display italic">How I work</h2>
 
         <div class="process-grid">
-
           <div class="process-step">
             <p class="process-step__num">01</p>
             <h3 class="process-step__title">Discovery</h3>
-            <p class="process-step__body">
-              What’s the idea, and what must it honor?
-            </p>
+            <p class="process-step__body">What’s the idea, and what must it honor?</p>
           </div>
 
           <div class="process-step">
             <p class="process-step__num">02</p>
             <h3 class="process-step__title">Clarity</h3>
-            <p class="process-step__body">
-              Reduce the noise. Lock the hierarchy.
-            </p>
+            <p class="process-step__body">Reduce the noise. Lock the hierarchy.</p>
           </div>
 
           <div class="process-step">
             <p class="process-step__num">03</p>
             <h3 class="process-step__title">Structure</h3>
-            <p class="process-step__body">
-              Build rules, not one-off screens.
-            </p>
+            <p class="process-step__body">Build rules, not one-off screens.</p>
           </div>
 
           <div class="process-step">
             <p class="process-step__num">04</p>
             <h3 class="process-step__title">Delivery</h3>
-            <p class="process-step__body">
-              Ship clean. Maintainable. Fast.
-            </p>
+            <p class="process-step__body">Ship clean. Maintainable. Fast.</p>
           </div>
-
         </div>
       </div>
     </section>
@@ -186,23 +164,17 @@
         <div class="values-grid">
           <div class="value">
             <h3 class="value__title">Authenticity</h3>
-            <p class="value__body">
-              The work should sound like the person behind it.
-            </p>
+            <p class="value__body">The work should sound like the person behind it.</p>
           </div>
 
           <div class="value">
             <h3 class="value__title">Discipline</h3>
-            <p class="value__body">
-              Strong decisions. Repeatable systems. No fluff.
-            </p>
+            <p class="value__body">Strong decisions. Repeatable systems. No fluff.</p>
           </div>
 
           <div class="value">
             <h3 class="value__title">Intentionality</h3>
-            <p class="value__body">
-              Every line earns its place.
-            </p>
+            <p class="value__body">Every line earns its place.</p>
           </div>
         </div>
       </div>
@@ -215,17 +187,11 @@
       <div class="wrap">
         <p class="kicker">CONTACT</p>
 
-        <h2 class="display">
-          If the goal is “make it look nice,” I’m probably not the right fit.
-        </h2>
+        <h2 class="display">If the goal is “make it look nice,” I’m probably not the right fit.</h2>
 
         <div class="contact">
-          <a class="button" href="mailto:hello@jnuru.studio">
-            hello@jnuru.studio
-          </a>
-          <p class="muted">
-            Based in St. Louis • Available for select projects
-          </p>
+          <a class="button" href="mailto:hello@jnuru.studio">hello@jnuru.studio</a>
+          <p class="muted">Based in St. Louis • Available for select projects</p>
         </div>
       </div>
     </section>
@@ -236,14 +202,12 @@
         <p class="muted">Built with HTML/CSS/JS • Hosted on GitHub Pages</p>
       </div>
     </footer>
-
   </main>
 
-  <!-- TheaterJS -->
+  <!-- TheaterJS (loads before your deferred script.js runs) -->
   <script src="https://cdn.jsdelivr.net/npm/theaterjs@3.0.0/dist/theater.min.js"></script>
 
   <!-- Your JS -->
   <script src="../script.js" defer></script>
-
 </body>
 </html>
