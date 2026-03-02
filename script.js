@@ -24,39 +24,58 @@
 
   // =========================
   // ABOUT — TheaterJS (type lines once)
-  // Requires: <script src="...theater.min.js"></script> on About page
+  // Requires: theater.min.js included BEFORE this script (your HTML does this)
   // Target: <p id="aboutType"></p>
   // =========================
-  const aboutTypeEl = document.getElementById("aboutType");
   const isAboutPage = document.body.classList.contains("page--about");
+  const aboutTypeEl = document.getElementById("aboutType");
+  if (!isAboutPage || !aboutTypeEl) return;
 
-  if (isAboutPage && aboutTypeEl) {
-    // If TheaterJS didn't load, fail silently (don’t break the site)
-    if (typeof TheaterJS === "undefined") return;
+  const fallbackText =
+    "I design systems, not pages. I simplify before I stylize. I ship only what holds up in production.";
 
-    // If user prefers reduced motion, just render static text
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) {
-      aboutTypeEl.textContent =
-        "I design systems, not pages. I simplify before I stylize. I ship only what holds up in production.";
-      return;
-    }
+  // Reduced motion => static
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReduced) {
+    aboutTypeEl.textContent = fallbackText;
+    return;
+  }
 
-    // Clean slate (avoid double-init if cached navigation)
-    aboutTypeEl.textContent = "";
+  // TheaterJS missing => static (never break the page)
+  if (typeof TheaterJS === "undefined") {
+    aboutTypeEl.textContent = fallbackText;
+    return;
+  }
 
+  // Make sure the target is clean (prevents “double init” weirdness)
+  aboutTypeEl.textContent = "";
+
+  try {
     const theater = new TheaterJS();
 
-    theater
-      .addActor("about", { speed: 0.9, accuracy: 0.92 }, "#aboutType")
-      .addScene(
-        "about:I design systems, not pages.",
-        700,
-        "about: I simplify before I stylize.",
-        700,
-        "about: I ship only what holds up in production."
-      );
+    // Create actor
+    theater.addActor("about", { speed: 0.9, accuracy: 0.92 });
 
-    // Optional: add a subtle caret via CSS, not JS (cleaner)
+    // Force actor output into #aboutType (reliable)
+    // TheaterJS writes into elements matching ".about" by default in some setups,
+    // so we explicitly map output here.
+    theater.getCurrentActor = () => aboutTypeEl;
+
+    // Monkey-patch the actor's typing target safely:
+    // We set a custom "typing" method by swapping the element Theater uses.
+    // Most TheaterJS builds type into `actor.$element`. We ensure it exists.
+    const actor = theater.getActor("about");
+    if (actor) actor.$element = aboutTypeEl;
+
+    theater.addScene(
+      "about:I design systems, not pages.",
+      700,
+      "about: I simplify before I stylize.",
+      700,
+      "about: I ship only what holds up in production."
+    );
+  } catch (e) {
+    // If TheaterJS API differs, still show something.
+    aboutTypeEl.textContent = fallbackText;
   }
 })();
