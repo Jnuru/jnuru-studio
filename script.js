@@ -12,54 +12,50 @@
 
   toggle?.addEventListener("click", () => {
     root.classList.toggle("dark");
-    localStorage.setItem(
-      "jnuru_theme",
-      root.classList.contains("dark") ? "dark" : "light"
-    );
+    localStorage.setItem("jnuru_theme", root.classList.contains("dark") ? "dark" : "light");
   });
 
- // =========================
-// ABOUT — Press & hold reveal (single source of truth)
-// =========================
-(() => {
+  // =========================
+  // ABOUT — Press & hold reveal (single source of truth)
+  // =========================
   const items = document.querySelectorAll("[data-truth]");
   if (!items.length) return;
 
   const HOLD_MS = 220;
-  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   items.forEach((btn) => {
     let timer = null;
+    let revealed = false;
 
-    const show = () => btn.classList.add("is-revealed");
-    const hide = () => btn.classList.remove("is-revealed");
+    const reveal = () => {
+      revealed = true;
+      btn.classList.add("is-revealed");
+    };
 
-    const start = () => {
-      if (prefersReduced) return btn.classList.toggle("is-revealed");
-      timer = window.setTimeout(show, HOLD_MS);
+    const hide = () => {
+      revealed = false;
+      btn.classList.remove("is-revealed");
+    };
+
+    const start = (e) => {
+      // Prevent iOS text selection / long-press weirdness
+      e.preventDefault();
+      timer = setTimeout(reveal, HOLD_MS);
     };
 
     const end = () => {
-      window.clearTimeout(timer);
+      clearTimeout(timer);
       timer = null;
-      hide();
+      if (revealed) hide();
     };
 
-    // Best cross-platform: pointer events
+    // Pointer events = best cross-platform
     btn.addEventListener("pointerdown", start);
     btn.addEventListener("pointerup", end);
     btn.addEventListener("pointercancel", end);
     btn.addEventListener("pointerleave", end);
 
-    // Keyboard accessibility
-    btn.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") start();
-    });
-    btn.addEventListener("keyup", (e) => {
-      if (e.key === "Enter" || e.key === " ") end();
-    });
-
-    // Click fallback (desktop)
+    // Tap fallback = toggle
     btn.addEventListener("click", () => {
       btn.classList.toggle("is-revealed");
     });
