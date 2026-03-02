@@ -18,51 +18,31 @@
     );
   });
 
-  // =========================
-  // ABOUT — Press & hold reveal (single source of truth)
-  // =========================
+ // =========================
+// ABOUT — Press & hold reveal (single source of truth)
+// =========================
+(() => {
   const items = document.querySelectorAll("[data-truth]");
   if (!items.length) return;
 
-  const HOLD_MS = 250;
+  const HOLD_MS = 220;
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   items.forEach((btn) => {
     let timer = null;
-    let isHolding = false;
 
-    const reveal = () => {
-      isHolding = true;
-      btn.classList.add("is-revealed");
-      btn.setAttribute("aria-pressed", "true");
-    };
-
-    const hide = () => {
-      isHolding = false;
-      btn.classList.remove("is-revealed");
-      btn.setAttribute("aria-pressed", "false");
-    };
+    const show = () => btn.classList.add("is-revealed");
+    const hide = () => btn.classList.remove("is-revealed");
 
     const start = () => {
-      clearTimeout(timer);
-
-      if (prefersReduced) {
-        // For reduced motion, behave like a toggle
-        btn.classList.toggle("is-revealed");
-        btn.setAttribute(
-          "aria-pressed",
-          btn.classList.contains("is-revealed") ? "true" : "false"
-        );
-        return;
-      }
-
-      timer = setTimeout(reveal, HOLD_MS);
+      if (prefersReduced) return btn.classList.toggle("is-revealed");
+      timer = window.setTimeout(show, HOLD_MS);
     };
 
     const end = () => {
-      clearTimeout(timer);
+      window.clearTimeout(timer);
       timer = null;
-      if (isHolding) hide(); // true press-and-hold behavior
+      hide();
     };
 
     // Best cross-platform: pointer events
@@ -71,16 +51,17 @@
     btn.addEventListener("pointercancel", end);
     btn.addEventListener("pointerleave", end);
 
-    // Keyboard accessibility: toggle
+    // Keyboard accessibility
     btn.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        btn.classList.toggle("is-revealed");
-        btn.setAttribute(
-          "aria-pressed",
-          btn.classList.contains("is-revealed") ? "true" : "false"
-        );
-      }
+      if (e.key === "Enter" || e.key === " ") start();
+    });
+    btn.addEventListener("keyup", (e) => {
+      if (e.key === "Enter" || e.key === " ") end();
+    });
+
+    // Click fallback (desktop)
+    btn.addEventListener("click", () => {
+      btn.classList.toggle("is-revealed");
     });
   });
 })();
