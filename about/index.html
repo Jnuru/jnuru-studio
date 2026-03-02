@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — jnuru.studio</title>
 
-  <!-- IMPORTANT: path goes up one level -->
+  <!-- Styles -->
   <link rel="stylesheet" href="../styles.css" />
 </head>
 
-<body>
+<body class="page--about">
+
   <header class="site-header">
     <div class="wrap">
       <div class="topbar">
@@ -33,7 +34,7 @@
 
   <main>
 
-    <!-- ABOUT HERO (typography-first, no stock hero) -->
+    <!-- HERO -->
     <section class="about-hero">
       <div class="wrap about-hero__inner">
         <p class="kicker">ABOUT</p>
@@ -51,10 +52,11 @@
 
     <div class="divider"></div>
 
-    <!-- PHILOSOPHY / TRUTH LAYER (press + hold) -->
+    <!-- HOW I THINK -->
     <section class="section about" id="about">
       <div class="wrap">
         <div class="about__grid about__grid--wide">
+
           <div class="about__left">
             <p class="kicker">HOW I THINK</p>
 
@@ -67,32 +69,16 @@
               I simplify before I stylize.
             </p>
 
-            <div class="truth" aria-label="Press and hold cards">
-              <button class="truth__item" type="button" data-truth aria-label="Press and hold to reveal details">
-                <span class="truth__front">I design systems, not pages.</span>
-                <span class="truth__back" aria-hidden="true">
-                  Shared templates • locked skeletons • reusable modules • fewer rebuilds • less visual drift.
-                </span>
-              </button>
+            <!-- TheaterJS Principles -->
+            <div class="about-principles" aria-label="How I think principles">
+              <p class="about-principles__label">Principles</p>
 
-              <button class="truth__item" type="button" data-truth aria-label="Press and hold to reveal details">
-                <span class="truth__front">Clarity under constraint matters more than aesthetics.</span>
-                <span class="truth__back" aria-hidden="true">
-                  CMS + SEO realities • content limits • speed • consistency • predictable components.
-                </span>
-              </button>
+              <p class="about-principles__line" id="aboutType"></p>
 
-              <button class="truth__item" type="button" data-truth aria-label="Press and hold to reveal details">
-                <span class="truth__front">I’m selective about what I ship.</span>
-                <span class="truth__back" aria-hidden="true">
-                  No trend-chasing • no decorative motion • no components without rules • no fake voice.
-                </span>
-              </button>
+              <p class="about-principles__hint muted">
+                Three rules. One pass. No loop.
+              </p>
             </div>
-
-            <p class="muted about__hint">
-              Press and hold to reveal what I mean.
-            </p>
           </div>
 
           <aside class="about__right">
@@ -115,20 +101,20 @@
               </ul>
             </div>
           </aside>
+
         </div>
       </div>
     </section>
 
     <div class="divider"></div>
 
-    <!-- IMAGE ANCHOR (your photo, full-bleed feel) -->
+    <!-- PHOTO -->
     <section class="about-photo">
       <div class="wrap">
         <p class="kicker">WHO I AM</p>
       </div>
 
       <div class="about-photo__frame">
-        <!-- replace src with your own file or Cloudinary -->
         <img
           class="about-photo__img"
           src="https://res.cloudinary.com/drnccrw0a/image/upload/v1771969222/AdobeStock_1584645119_okv4j8.jpg"
@@ -146,43 +132,53 @@
 
     <div class="divider"></div>
 
-    <!-- PROCESS (simple, clean, not agency-corny) -->
+    <!-- PROCESS -->
     <section class="section about-process">
       <div class="wrap">
         <p class="kicker">THE PROCESS</p>
         <h2 class="display italic">How I work</h2>
 
         <div class="process-grid">
+
           <div class="process-step">
             <p class="process-step__num">01</p>
             <h3 class="process-step__title">Discovery</h3>
-            <p class="process-step__body">What’s the idea, and what must it honor?</p>
+            <p class="process-step__body">
+              What’s the idea, and what must it honor?
+            </p>
           </div>
 
           <div class="process-step">
             <p class="process-step__num">02</p>
             <h3 class="process-step__title">Clarity</h3>
-            <p class="process-step__body">Reduce the noise. Lock the hierarchy.</p>
+            <p class="process-step__body">
+              Reduce the noise. Lock the hierarchy.
+            </p>
           </div>
 
           <div class="process-step">
             <p class="process-step__num">03</p>
             <h3 class="process-step__title">Structure</h3>
-            <p class="process-step__body">Build rules, not one-off screens.</p>
+            <p class="process-step__body">
+              Build rules, not one-off screens.
+            </p>
           </div>
 
           <div class="process-step">
             <p class="process-step__num">04</p>
             <h3 class="process-step__title">Delivery</h3>
-            <p class="process-step__body">Ship clean. Maintainable. Fast.</p>
+            <p class="process-step__body">
+              Ship clean. Maintainable. Fast.
+            </p>
           </div>
+
         </div>
       </div>
     </section>
 
     <div class="divider"></div>
 
-    <!-- VALUES (3-column like your reference, but your words) -->
+    <!-- VALUES -->
     <section class="section about-values">
       <div class="wrap">
         <p class="kicker">WHAT DRIVES ME</p>
@@ -190,15 +186,23 @@
         <div class="values-grid">
           <div class="value">
             <h3 class="value__title">Authenticity</h3>
-            <p class="value__body">The work should sound like the person behind it.</p>
+            <p class="value__body">
+              The work should sound like the person behind it.
+            </p>
           </div>
+
           <div class="value">
             <h3 class="value__title">Discipline</h3>
-            <p class="value__body">Strong decisions. Repeatable systems. No fluff.</p>
+            <p class="value__body">
+              Strong decisions. Repeatable systems. No fluff.
+            </p>
           </div>
+
           <div class="value">
             <h3 class="value__title">Intentionality</h3>
-            <p class="value__body">Every line earns its place.</p>
+            <p class="value__body">
+              Every line earns its place.
+            </p>
           </div>
         </div>
       </div>
@@ -206,15 +210,22 @@
 
     <div class="divider"></div>
 
-    <!-- CONTACT CTA -->
+    <!-- CONTACT -->
     <section class="section" id="contact">
       <div class="wrap">
         <p class="kicker">CONTACT</p>
-        <h2 class="display">If the goal is “make it look nice,” I’m probably not the right fit.</h2>
+
+        <h2 class="display">
+          If the goal is “make it look nice,” I’m probably not the right fit.
+        </h2>
 
         <div class="contact">
-          <a class="button" href="mailto:hello@jnuru.studio">hello@jnuru.studio</a>
-          <p class="muted">Based in St. Louis • Available for select projects</p>
+          <a class="button" href="mailto:hello@jnuru.studio">
+            hello@jnuru.studio
+          </a>
+          <p class="muted">
+            Based in St. Louis • Available for select projects
+          </p>
         </div>
       </div>
     </section>
@@ -228,7 +239,11 @@
 
   </main>
 
-  <!-- IMPORTANT: path goes up one level -->
+  <!-- TheaterJS -->
+  <script src="https://cdn.jsdelivr.net/npm/theaterjs@3.0.0/dist/theater.min.js"></script>
+
+  <!-- Your JS -->
   <script src="../script.js" defer></script>
+
 </body>
 </html>
