@@ -1131,103 +1131,108 @@ body{
 }
 
 
-/* =========================================================
-   ABOUT PAGE — editorial layout + press/hold truth cards
+/* =========================
+   ABOUT PAGE — stronger rhythm + better reveal
    Paste at END of styles.css
-   ========================================================= */
+   ========================= */
 
-/* About hero spacing (matches your reference rhythm) */
+/* hero spacing (less empty) */
 .about-hero{
-  padding: clamp(44px, 6vw, 92px) 0;
+  padding: clamp(44px, 6vw, 84px) 0;
 }
-.about-hero__inner{
-  max-width: 920px;
-}
-.about-hero__title{
-  margin-top: 8px;
-}
+.about-hero__inner{ max-width: 960px; }
+.about-hero__title{ margin-top: 10px; }
 .about-hero__lead{
-  margin-top: 16px;
+  margin-top: 18px;
   max-width: 72ch;
   font-size: clamp(16px, 2vw, 18px);
   line-height: 1.75;
-  color: var(--muted);
 }
 
-/* About grid */
-.about__grid{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--s4);
-}
+/* section cadence (your page felt too tall + flat) */
+.section.about{ padding: clamp(54px, 7vw, 96px) 0; }
+.section.about-process,
+.section.about-values{ padding: clamp(54px, 7vw, 96px) 0; }
 
+/* two column */
 .about__grid--wide{
-  grid-template-columns: 1.45fr 0.95fr;
-  gap: clamp(20px, 4vw, 56px);
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  gap: clamp(18px, 4vw, 44px);
   align-items: start;
 }
-
 @media (max-width: 900px){
   .about__grid--wide{ grid-template-columns: 1fr; }
 }
 
-/* Left column lead copy */
-.about__lead{
-  margin: 12px 0 18px;
-  max-width: 70ch;
-  color: var(--fg);
+/* right-side cards: make them feel intentional, not “default box” */
+.about__card{
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(42,42,40,0.10);
+  border-radius: 18px;
+  padding: 18px 18px;
+  margin-bottom: 14px;
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.06);
+}
+.about__card--soft{
+  background: rgba(255,255,255,0.12);
 }
 
-/* Truth cards (press + hold reveal) */
+/* TRUTH LIST */
 .truth{
   display: grid;
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 18px;
+  max-width: 720px;
 }
 
-/* Make the button feel like a calm "chip/card", not an ugly input */
+/* button base */
 .truth__item{
   width: 100%;
   text-align: left;
-
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 14px 16px;
-
-  border: 1px solid rgba(42,42,40,0.12);
-  background: rgba(255,255,255,0.16);
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-
+  position: relative;
+  overflow: hidden;
   cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-tap-highlight-color: transparent;
 
-  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(42,42,40,0.12);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.05);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
 }
 
-/* “earned motion”, tiny */
 .truth__item:hover{
-  border-color: rgba(63,79,69,0.25);
-}
-.truth__item:focus-visible{
-  outline: 2px solid rgba(63,79,69,0.35);
-  outline-offset: 3px;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+  border-color: rgba(63,79,69,0.22);
 }
 
-/* Front line */
+/* “pressing” feel (this is what your interaction lacked) */
+.truth__item.is-pressing{
+  transform: translateY(0px) scale(0.99);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+  border-color: rgba(63,79,69,0.30);
+}
+
+/* front/back text */
 .truth__front{
   display: block;
-  font-family: var(--sans);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--fg);
 }
-
-/* Hidden details */
 .truth__back{
   display: block;
-  margin-top: 10px;
+  margin-top: 8px;
   color: var(--muted);
 
   opacity: 0;
@@ -1235,135 +1240,101 @@ body{
   max-height: 0;
   overflow: hidden;
 
-  transition: opacity 180ms ease, transform 180ms ease, max-height 220ms ease;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    max-height 220ms ease;
 }
 
-/* JS toggles .is-revealed */
+/* revealed state */
 .truth__item.is-revealed{
-  border-color: rgba(63,79,69,0.30);
-  box-shadow: 0 16px 44px rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.22);
+  border-color: rgba(63,79,69,0.28);
 }
 .truth__item.is-revealed .truth__back{
   opacity: 1;
   transform: translateY(0);
-  max-height: 120px; /* enough for 2 lines */
+  max-height: 120px;
 }
 
-/* Hint */
+/* hint line */
 .about__hint{
-  margin-top: 14px;
-  font-size: var(--small);
+  margin-top: 12px;
   color: rgba(42,42,40,0.60);
+  font-size: var(--small);
 }
 
-/* Right column cards */
-.about__card{
-  border-radius: 16px;
-  padding: 16px 18px;
-  border: 1px solid rgba(42,42,40,0.10);
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(16px) saturate(150%);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
-  box-shadow: 0 12px 36px rgba(0,0,0,0.06);
-}
-
-.about__card--soft{
-  background: rgba(255,255,255,0.08);
-}
-
-/* Photo section */
-.about-photo{
-  padding: clamp(34px, 5vw, 86px) 0;
-}
+/* photo section */
+.about-photo{ padding: clamp(44px, 7vw, 96px) 0; }
 .about-photo__frame{
   margin: 18px auto 14px;
-  width: min(1200px, 100%);
+  width: 100%;
+  max-width: 1200px;
   overflow: hidden;
-  border-radius: 18px;
+  border-radius: 22px;
   border: 1px solid rgba(42,42,40,0.10);
-  background: rgba(255,255,255,0.08);
   box-shadow: 0 18px 60px rgba(0,0,0,0.10);
 }
-.about-photo__img{
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.about-photo__caption{
-  max-width: 80ch;
-}
+.about-photo__img{ width: 100%; height: auto; display: block; }
+.about-photo__caption{ max-width: 80ch; }
 
-/* Process grid */
+/* process */
 .process-grid{
   margin-top: 22px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(12px, 2vw, 22px);
+  gap: clamp(12px, 2vw, 20px);
 }
 .process-step{
-  padding: 16px 16px;
+  padding: 16px;
   border: 1px solid rgba(42,42,40,0.10);
-  border-radius: 16px;
-  background: rgba(255,255,255,0.10);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.05);
 }
 .process-step__num{
   font-family: var(--mono);
   font-size: 0.68rem;
   letter-spacing: 0.22em;
-  text-transform: uppercase;
   opacity: 0.55;
-  margin: 0 0 10px;
+  margin-bottom: 10px;
 }
-.process-step__title{
-  margin: 0 0 8px;
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 1rem;
+.process-step__title{ margin: 0 0 8px; font-size: 16px; }
+.process-step__body{ margin: 0; opacity: 0.85; line-height: 1.6; }
+
+@media (max-width: 900px){
+  .process-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-.process-step__body{
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.65;
+@media (max-width: 560px){
+  .process-grid{ grid-template-columns: 1fr; }
 }
 
-/* Values grid */
+/* values */
 .values-grid{
   margin-top: 18px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(14px, 2.5vw, 28px);
+  gap: clamp(14px, 2.5vw, 24px);
 }
 .value{
-  padding: 18px 18px;
+  padding: 18px;
   border: 1px solid rgba(42,42,40,0.10);
-  border-radius: 16px;
-  background: rgba(255,255,255,0.10);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.05);
 }
-.value__title{
-  margin: 0 0 10px;
-  font-family: var(--sans);
-  font-weight: 500;
-}
-.value__body{
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.7;
-}
+.value__title{ margin: 0 0 10px; }
+.value__body{ margin: 0; opacity: 0.85; line-height: 1.65; }
 
-/* Responsive */
-@media (max-width: 980px){
-  .process-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 700px){
-  .process-grid{ grid-template-columns: 1fr; }
+@media (max-width: 900px){
   .values-grid{ grid-template-columns: 1fr; }
 }
 
-/* Dark theme support */
+/* Dark theme tweaks */
 .dark .truth__item,
 .dark .about__card,
 .dark .process-step,
@@ -1372,18 +1343,11 @@ body{
   border-color: rgba(255,255,255,0.10);
   box-shadow: 0 22px 70px rgba(0,0,0,0.55);
 }
-
-.dark .about-hero__lead,
-.dark .truth__back,
-.dark .process-step__body,
-.dark .value__body,
+.dark .truth__item.is-revealed{
+  border-color: rgba(120,170,140,0.22);
+}
 .dark .about__hint{
-  color: rgba(255,255,255,0.72);
+  color: rgba(255,255,255,0.65);
 }
-
-.dark .truth__front{
-  color: rgba(255,255,255,0.92);
-}
-
 
 
