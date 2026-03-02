@@ -23,59 +23,72 @@
   });
 
   // =========================
-  // ABOUT — TheaterJS (type lines once)
-  // Requires: theater.min.js included BEFORE this script (your HTML does this)
-  // Target: <p id="aboutType"></p>
+  // ABOUT — Native typewriter (no libraries)
   // =========================
   const isAboutPage = document.body.classList.contains("page--about");
-  const aboutTypeEl = document.getElementById("aboutType");
-  if (!isAboutPage || !aboutTypeEl) return;
+  const el = document.getElementById("aboutType");
 
-  const fallbackText =
-    "I design systems, not pages. I simplify before I stylize. I ship only what holds up in production.";
+  if (isAboutPage && el) {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Reduced motion => static
-  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (prefersReduced) {
-    aboutTypeEl.textContent = fallbackText;
-    return;
-  }
+    const lines = [
+      "I design systems, not pages.",
+      "I simplify before I stylize.",
+      "I ship only what holds up in production."
+    ];
 
-  // TheaterJS missing => static (never break the page)
-  if (typeof TheaterJS === "undefined") {
-    aboutTypeEl.textContent = fallbackText;
-    return;
-  }
+    // Reduced motion = instant text
+    if (prefersReduced) {
+      el.textContent = lines.join(" ");
+      return;
+    }
 
-  // Make sure the target is clean (prevents “double init” weirdness)
-  aboutTypeEl.textContent = "";
+    // Prevent double-run (Safari bfcache etc.)
+    if (el.dataset.typed === "1") return;
+    el.dataset.typed = "1";
 
-  try {
-    const theater = new TheaterJS();
+    const type = (text, speed = 22) =>
+      new Promise((resolve) => {
+        let i = 0;
+        const tick = () => {
+          el.textContent += text.charAt(i);
+          i++;
+          if (i < text.length) {
+            setTimeout(tick, speed);
+          } else {
+            resolve();
+          }
+        };
+        tick();
+      });
 
-    // Create actor
-    theater.addActor("about", { speed: 0.9, accuracy: 0.92 });
+    const pause = (ms) => new Promise((r) => setTimeout(r, ms));
 
-    // Force actor output into #aboutType (reliable)
-    // TheaterJS writes into elements matching ".about" by default in some setups,
-    // so we explicitly map output here.
-    theater.getCurrentActor = () => aboutTypeEl;
+    const startTyping = async () => {
+      el.textContent = "";
 
-    // Monkey-patch the actor's typing target safely:
-    // We set a custom "typing" method by swapping the element Theater uses.
-    // Most TheaterJS builds type into `actor.$element`. We ensure it exists.
-    const actor = theater.getActor("about");
-    if (actor) actor.$element = aboutTypeEl;
+      for (let i = 0; i < lines.length; i++) {
+        if (i > 0) {
+          el.textContent += " ";
+          await pause(160);
+        }
 
-    theater.addScene(
-      "about:I design systems, not pages.",
-      700,
-      "about: I simplify before I stylize.",
-      700,
-      "about: I ship only what holds up in production."
+        await type(lines[i], 22);
+        await pause(420);
+      }
+    };
+
+    // Start typing when visible (feels intentional)
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          io.disconnect();
+          startTyping();
+        }
+      },
+      { threshold: 0.35 }
     );
-  } catch (e) {
-    // If TheaterJS API differs, still show something.
-    aboutTypeEl.textContent = fallbackText;
+
+    io.observe(el);
   }
 })();
