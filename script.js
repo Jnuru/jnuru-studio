@@ -12,105 +12,75 @@
 
   toggle?.addEventListener("click", () => {
     root.classList.toggle("dark");
-    localStorage.setItem("jnuru_theme", root.classList.contains("dark") ? "dark" : "light");
+    localStorage.setItem(
+      "jnuru_theme",
+      root.classList.contains("dark") ? "dark" : "light"
+    );
   });
-})();
 
-
-
-
-// existing code here...
-
-// ===============================
-// About page — Truth Layer
-// ===============================
-(() => {
+  // =========================
+  // ABOUT — Press & hold reveal (single source of truth)
+  // =========================
   const items = document.querySelectorAll("[data-truth]");
   if (!items.length) return;
 
+  const HOLD_MS = 250;
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   items.forEach((btn) => {
     let timer = null;
-
-    const holdStart = () => {
-      if (prefersReduced) {
-        btn.classList.toggle("is-held");
-        return;
-      }
-      timer = setTimeout(() => btn.classList.add("is-held"), 140);
-    };
-
-    const holdEnd = () => {
-      clearTimeout(timer);
-      btn.classList.remove("is-held");
-    };
-
-    btn.addEventListener("mousedown", holdStart);
-    btn.addEventListener("mouseup", holdEnd);
-    btn.addEventListener("mouseleave", holdEnd);
-
-    btn.addEventListener("touchstart", holdStart, { passive: true });
-    btn.addEventListener("touchend", holdEnd);
-    btn.addEventListener("touchcancel", holdEnd);
-
-    btn.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") holdStart();
-    });
-    btn.addEventListener("keyup", (e) => {
-      if (e.key === "Enter" || e.key === " ") holdEnd();
-    });
-  });
-})();
-
-
-
-// =========================
-// ABOUT — Press & hold reveal
-// =========================
-(() => {
-  const items = document.querySelectorAll('[data-truth]');
-  if (!items.length) return;
-
-  const HOLD_MS = 220; // short + snappy (iPhone friendly)
-
-  items.forEach((btn) => {
-    let timer = null;
-    let holding = false;
+    let isHolding = false;
 
     const reveal = () => {
-      holding = true;
-      btn.classList.add('is-revealed');
+      isHolding = true;
+      btn.classList.add("is-revealed");
+      btn.setAttribute("aria-pressed", "true");
     };
 
     const hide = () => {
-      holding = false;
-      btn.classList.remove('is-revealed');
+      isHolding = false;
+      btn.classList.remove("is-revealed");
+      btn.setAttribute("aria-pressed", "false");
     };
 
-    const start = (e) => {
-      // prevent iOS long-press text selection / weirdness
-      e.preventDefault();
+    const start = () => {
+      clearTimeout(timer);
+
+      if (prefersReduced) {
+        // For reduced motion, behave like a toggle
+        btn.classList.toggle("is-revealed");
+        btn.setAttribute(
+          "aria-pressed",
+          btn.classList.contains("is-revealed") ? "true" : "false"
+        );
+        return;
+      }
+
       timer = setTimeout(reveal, HOLD_MS);
     };
 
     const end = () => {
       clearTimeout(timer);
       timer = null;
-
-      // If they actually held, release hides it (true "press and hold")
-      if (holding) hide();
+      if (isHolding) hide(); // true press-and-hold behavior
     };
 
-    // Touch + Pointer (best cross-platform)
-    btn.addEventListener('pointerdown', start);
-    btn.addEventListener('pointerup', end);
-    btn.addEventListener('pointercancel', end);
-    btn.addEventListener('pointerleave', end);
+    // Best cross-platform: pointer events
+    btn.addEventListener("pointerdown", start);
+    btn.addEventListener("pointerup", end);
+    btn.addEventListener("pointercancel", end);
+    btn.addEventListener("pointerleave", end);
 
-    // Fallback: keyboard / click toggles
-    btn.addEventListener('click', () => {
-      btn.classList.toggle('is-revealed');
+    // Keyboard accessibility: toggle
+    btn.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        btn.classList.toggle("is-revealed");
+        btn.setAttribute(
+          "aria-pressed",
+          btn.classList.contains("is-revealed") ? "true" : "false"
+        );
+      }
     });
   });
 })();
