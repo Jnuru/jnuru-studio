@@ -92,3 +92,34 @@
     io.observe(el);
   }
 })();
+
+
+  // =========================
+  // ABOUT HERO — TheaterJS identity type (one pass)
+  // Target: <span id="heroType"></span>
+  // =========================
+  const heroTypeEl = document.getElementById("heroType");
+
+  if (isAboutPage && heroTypeEl) {
+    if (typeof TheaterJS === "undefined") return;
+
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const identityLine = "system-focused freelance designer.";
+
+    if (prefersReduced) {
+      heroTypeEl.textContent = identityLine;
+    } else {
+      // avoid double init
+      if (heroTypeEl.dataset.typed === "1") return;
+      heroTypeEl.dataset.typed = "1";
+
+      heroTypeEl.textContent = "";
+
+      const theaterHero = new TheaterJS();
+      theaterHero
+        .addActor("hero", { speed: 0.9, accuracy: 0.92 }, "#heroType")
+        .addScene(`hero:${identityLine}`);
+    }
+  }
+
