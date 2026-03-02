@@ -61,3 +61,98 @@
 .about__hint {
   margin-top: 10px;
 }
+
+
+
+/* =========================
+   ABOUT — Truth Layer
+   ========================= */
+
+.about__grid{
+  display:grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: clamp(20px, 4vw, 48px);
+  align-items:start;
+}
+
+@media (max-width: 860px){
+  .about__grid{ grid-template-columns: 1fr; }
+}
+
+.about__lead{
+  max-width: 62ch;
+  margin-top: 10px;
+}
+
+.truth{
+  margin-top: 18px;
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+}
+
+.truth__item{
+  /* make it not look like a default button */
+  appearance:none;
+  border: 1px solid var(--line, rgba(0,0,0,0.14));
+  background: var(--surface, rgba(255,255,255,0.55));
+  color: inherit;
+  text-align:left;
+  width: 100%;
+  border-radius: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+  position: relative;
+  overflow:hidden;
+
+  /* calm feel */
+  transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+}
+
+.truth__item:focus-visible{
+  outline: 2px solid var(--ink, #111);
+  outline-offset: 3px;
+}
+
+.truth__item:hover{
+  border-color: rgba(0,0,0,0.22);
+  transform: translateY(-1px);
+}
+
+/* The two layers */
+.truth__front,
+.truth__back{
+  display:block;
+  line-height: 1.35;
+}
+
+.truth__front{
+  font-weight: 500;
+}
+
+.truth__back{
+  margin-top: 8px;
+  color: var(--muted, rgba(0,0,0,0.62));
+  font-size: 0.95em;
+
+  /* hidden by default */
+  max-height: 0;
+  opacity: 0;
+  overflow:hidden;
+  transition: max-height 180ms ease, opacity 180ms ease;
+}
+
+/* When revealed */
+.truth__item.is-revealed{
+  background: rgba(255,255,255,0.72);
+  border-color: rgba(0,0,0,0.26);
+}
+
+.truth__item.is-revealed .truth__back{
+  max-height: 140px;
+  opacity: 1;
+}
+
+.about__hint{
+  margin-top: 12px;
+}
