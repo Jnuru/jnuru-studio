@@ -1,14 +1,155 @@
 /* =========================
-   ABOUT PAGE (editorial rhythm)
+   ABOUT — editorial page (full)
+   Drop-in styles for your About page sections
    ========================= */
 
-.about-hero { padding: clamp(40px, 6vw, 84px) 0; }
-.about-hero__inner { max-width: 920px; }
-.about-hero__title { margin-top: 10px; }
+/* Page section rhythm */
+.section {
+  padding: clamp(56px, 7vw, 110px) 0;
+}
 
-.about-hero .kicker{
-  opacity: 0.6;
-  letter-spacing: 0.22em;
+.wrap {
+  width: min(1100px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* Small label/kicker */
+.kicker,
+.label {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+/* Display headline */
+.display {
+  font-size: clamp(36px, 5.4vw, 64px);
+  line-height: 1.02;
+  margin: 0;
+}
+
+.italic {
+  font-style: italic;
+}
+
+/* Lead copy */
+.about__lead {
+  margin-top: 18px;
+  max-width: 72ch;
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.75;
+  opacity: 0.92;
+}
+
+/* Grid layout */
+.about__grid,
+.about__grid--wide {
+  margin-top: clamp(20px, 3vw, 34px);
+  display: grid;
+  grid-template-columns: 1.6fr 0.9fr;
+  gap: clamp(18px, 4vw, 44px);
+  align-items: start;
+}
+
+.about__hint {
+  margin-top: 12px;
+  opacity: 0.65;
+  font-size: 14px;
+}
+
+/* Cards */
+.about__card {
+  background: rgba(0, 0, 0, 0.015);
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.about__card--soft {
+  background: rgba(0, 0, 0, 0.012);
+}
+
+/* Lists */
+.label {
+  margin: 0 0 12px;
+}
+
+.list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.list li {
+  margin: 10px 0;
+  line-height: 1.55;
+  opacity: 0.9;
+}
+
+/* =========================
+   Truth Layer — press & hold reveal (iPhone-friendly)
+   ========================= */
+
+.truth {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.truth__item {
+  width: 100%;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+
+  padding: 14px 14px;
+  border-radius: 14px;
+
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+
+  /* iOS / mobile interaction fixes */
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.truth__front {
+  display: block;
+  font-weight: 600;
+}
+
+.truth__back {
+  display: block;
+  margin-top: 8px;
+
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.truth__item.is-revealed .truth__back {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   About hero (optional wrapper if you use it)
+   ========================= */
+
+.about-hero {
+  padding: clamp(40px, 6vw, 84px) 0;
+}
+
+.about-hero__inner {
+  max-width: 920px;
+}
+
+.about-hero__title {
+  margin-top: 10px;
 }
 
 .about-hero__lead {
@@ -16,116 +157,40 @@
   max-width: 72ch;
   font-size: clamp(16px, 2vw, 18px);
   line-height: 1.7;
-  opacity: 0.9;
 }
-
-.about__grid--wide {
-  grid-template-columns: 1.5fr 0.9fr;
-  gap: clamp(18px, 4vw, 40px);
-  align-items: start;
-}
-
-.about__lead { margin: 14px 0 18px; max-width: 70ch; }
 
 /* =========================
-   Truth Layer (press + hold)
+   Photo section (optional)
    ========================= */
 
-.truth { display: grid; gap: 12px; margin-top: 16px; }
+.about-photo {
+  padding: clamp(30px, 5vw, 70px) 0;
+}
 
-.truth__item {
+.about-photo__frame {
   width: 100%;
-  text-align: left;
-  background: rgba(0,0,0,0.015);
-  border: 1px solid rgba(0,0,0,0.10);
-  border-radius: 16px;
-  padding: 16px 16px;
-  position: relative;
+  max-width: 1200px;
+  margin: 18px auto 14px;
+
   overflow: hidden;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
 }
 
-.truth__item:hover{
-  border-color: rgba(0,0,0,0.18);
-  background: rgba(0,0,0,0.02);
-}
-
-.truth__item:focus-visible{
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.10);
-}
-
-.truth__front {
+.about-photo__img {
+  width: 100%;
+  height: auto;
   display: block;
-  font-weight: 600;
-  letter-spacing: -0.01em;
 }
 
-.truth__back {
-  display: block;
-  margin-top: 8px;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 160ms ease, transform 160ms ease;
+.about-photo__caption {
+  max-width: 80ch;
+  opacity: 0.85;
   line-height: 1.65;
 }
 
-.truth__item.is-revealed .truth__back {
-  opacity: 0.88;
-  transform: translateY(0);
-}
-
-.about__hint { margin-top: 12px; }
-
 /* =========================
-   Right column cards
-   ========================= */
-
-.about__card {
-  background: rgba(0,0,0,0.015);
-  border: 1px solid rgba(0,0,0,0.10);
-  border-radius: 16px;
-  padding: 16px;
-  margin-bottom: 14px;
-}
-
-.about__card--soft {
-  background: rgba(0,0,0,0.012);
-}
-
-/* Make the right column hold the rhythm */
-@media (min-width: 901px){
-  .about__right{
-    position: sticky;
-    top: 96px;
-  }
-}
-
-/* =========================
-   Photo section
-   ========================= */
-
-.about-photo { padding: clamp(30px, 5vw, 70px) 0; }
-
-.about-photo__frame {
-  margin: 18px 0 14px;
-  width: 100%;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: hidden;
-  border-radius: 18px;
-  border: 1px solid rgba(0,0,0,0.10);
-}
-
-.about-photo__img { width: 100%; height: auto; display: block; }
-
-.about-photo__caption { max-width: 80ch; }
-
-/* =========================
-   Process (How I Work)
+   Process section
    ========================= */
 
 .process-grid {
@@ -137,10 +202,9 @@
 
 .process-step {
   padding: 14px;
-  border: 1px solid rgba(0,0,0,0.10);
+  border: 1px solid rgba(0, 0, 0, 0.10);
   border-radius: 16px;
-  background: rgba(0,0,0,0.015);
-  border-top: 2px solid rgba(0,0,0,0.14);
+  background: rgba(0, 0, 0, 0.02);
 }
 
 .process-step__num {
@@ -153,7 +217,6 @@
 .process-step__title {
   margin: 0 0 8px;
   font-size: 16px;
-  letter-spacing: -0.01em;
 }
 
 .process-step__body {
@@ -163,7 +226,7 @@
 }
 
 /* =========================
-   Values
+   Values section
    ========================= */
 
 .values-grid {
@@ -175,15 +238,13 @@
 
 .value {
   padding: 16px;
-  border: 1px solid rgba(0,0,0,0.10);
+  border: 1px solid rgba(0, 0, 0, 0.10);
   border-radius: 16px;
-  background: rgba(0,0,0,0.015);
-  border-top: 2px solid rgba(0,0,0,0.12);
+  background: rgba(0, 0, 0, 0.02);
 }
 
 .value__title {
   margin: 0 0 8px;
-  letter-spacing: -0.01em;
 }
 
 .value__body {
@@ -197,7 +258,20 @@
    ========================= */
 
 @media (max-width: 900px) {
-  .about__grid--wide { grid-template-columns: 1fr; }
-  .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .values-grid { grid-template-columns: 1fr; }
+  .wrap {
+    width: min(1100px, calc(100% - 28px));
+  }
+
+  .about__grid,
+  .about__grid--wide {
+    grid-template-columns: 1fr;
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
 }
