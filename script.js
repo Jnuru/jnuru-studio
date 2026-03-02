@@ -62,3 +62,55 @@
     });
   });
 })();
+
+
+
+// =========================
+// ABOUT — Press & hold reveal
+// =========================
+(() => {
+  const items = document.querySelectorAll('[data-truth]');
+  if (!items.length) return;
+
+  const HOLD_MS = 220; // short + snappy (iPhone friendly)
+
+  items.forEach((btn) => {
+    let timer = null;
+    let holding = false;
+
+    const reveal = () => {
+      holding = true;
+      btn.classList.add('is-revealed');
+    };
+
+    const hide = () => {
+      holding = false;
+      btn.classList.remove('is-revealed');
+    };
+
+    const start = (e) => {
+      // prevent iOS long-press text selection / weirdness
+      e.preventDefault();
+      timer = setTimeout(reveal, HOLD_MS);
+    };
+
+    const end = () => {
+      clearTimeout(timer);
+      timer = null;
+
+      // If they actually held, release hides it (true "press and hold")
+      if (holding) hide();
+    };
+
+    // Touch + Pointer (best cross-platform)
+    btn.addEventListener('pointerdown', start);
+    btn.addEventListener('pointerup', end);
+    btn.addEventListener('pointercancel', end);
+    btn.addEventListener('pointerleave', end);
+
+    // Fallback: keyboard / click toggles
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('is-revealed');
+    });
+  });
+})();
