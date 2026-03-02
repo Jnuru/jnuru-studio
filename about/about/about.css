@@ -5,11 +5,18 @@
 .about-hero { padding: clamp(40px, 6vw, 84px) 0; }
 .about-hero__inner { max-width: 920px; }
 .about-hero__title { margin-top: 10px; }
+
+.about-hero .kicker{
+  opacity: 0.6;
+  letter-spacing: 0.22em;
+}
+
 .about-hero__lead {
   margin-top: 18px;
   max-width: 72ch;
   font-size: clamp(16px, 2vw, 18px);
   line-height: 1.7;
+  opacity: 0.9;
 }
 
 .about__grid--wide {
@@ -20,37 +27,64 @@
 
 .about__lead { margin: 14px 0 18px; max-width: 70ch; }
 
+/* =========================
+   Truth Layer (press + hold)
+   ========================= */
+
 .truth { display: grid; gap: 12px; margin-top: 16px; }
+
 .truth__item {
   width: 100%;
   text-align: left;
-  background: rgba(0,0,0,0.03);
-  border: 1px solid rgba(0,0,0,0.12);
-  border-radius: 14px;
-  padding: 14px 14px;
+  background: rgba(0,0,0,0.015);
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 16px;
+  padding: 16px 16px;
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
-.truth__front { display: block; font-weight: 600; }
+.truth__item:hover{
+  border-color: rgba(0,0,0,0.18);
+  background: rgba(0,0,0,0.02);
+}
+
+.truth__item:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.10);
+}
+
+.truth__front {
+  display: block;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
 .truth__back {
   display: block;
   margin-top: 8px;
   opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 180ms ease, transform 180ms ease;
+  transform: translateY(4px);
+  transition: opacity 160ms ease, transform 160ms ease;
+  line-height: 1.65;
 }
 
 .truth__item.is-revealed .truth__back {
-  opacity: 1;
+  opacity: 0.88;
   transform: translateY(0);
 }
 
 .about__hint { margin-top: 12px; }
 
+/* =========================
+   Right column cards
+   ========================= */
+
 .about__card {
-  background: rgba(0,0,0,0.02);
+  background: rgba(0,0,0,0.015);
   border: 1px solid rgba(0,0,0,0.10);
   border-radius: 16px;
   padding: 16px;
@@ -58,10 +92,23 @@
 }
 
 .about__card--soft {
-  background: rgba(0,0,0,0.015);
+  background: rgba(0,0,0,0.012);
 }
 
+/* Make the right column hold the rhythm */
+@media (min-width: 901px){
+  .about__right{
+    position: sticky;
+    top: 96px;
+  }
+}
+
+/* =========================
+   Photo section
+   ========================= */
+
 .about-photo { padding: clamp(30px, 5vw, 70px) 0; }
+
 .about-photo__frame {
   margin: 18px 0 14px;
   width: 100%;
@@ -72,8 +119,14 @@
   border-radius: 18px;
   border: 1px solid rgba(0,0,0,0.10);
 }
+
 .about-photo__img { width: 100%; height: auto; display: block; }
+
 .about-photo__caption { max-width: 80ch; }
+
+/* =========================
+   Process (How I Work)
+   ========================= */
 
 .process-grid {
   margin-top: 22px;
@@ -86,7 +139,8 @@
   padding: 14px;
   border: 1px solid rgba(0,0,0,0.10);
   border-radius: 16px;
-  background: rgba(0,0,0,0.02);
+  background: rgba(0,0,0,0.015);
+  border-top: 2px solid rgba(0,0,0,0.14);
 }
 
 .process-step__num {
@@ -96,8 +150,21 @@
   margin-bottom: 8px;
 }
 
-.process-step__title { margin: 0 0 8px; font-size: 16px; }
-.process-step__body { margin: 0; opacity: 0.85; line-height: 1.6; }
+.process-step__title {
+  margin: 0 0 8px;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+
+.process-step__body {
+  margin: 0;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+/* =========================
+   Values
+   ========================= */
 
 .values-grid {
   margin-top: 18px;
@@ -110,12 +177,25 @@
   padding: 16px;
   border: 1px solid rgba(0,0,0,0.10);
   border-radius: 16px;
-  background: rgba(0,0,0,0.02);
+  background: rgba(0,0,0,0.015);
+  border-top: 2px solid rgba(0,0,0,0.12);
 }
-.value__title { margin: 0 0 8px; }
-.value__body { margin: 0; opacity: 0.85; line-height: 1.65; }
 
-/* Responsive */
+.value__title {
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+.value__body {
+  margin: 0;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+/* =========================
+   Responsive
+   ========================= */
+
 @media (max-width: 900px) {
   .about__grid--wide { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
