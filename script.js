@@ -1,63 +1,66 @@
+// =========================
+// ABOUT — Press & hold reveal (clean)
+// =========================
 (() => {
-  // Footer year
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // Theme toggle (stores preference)
-  const toggle = document.querySelector("[data-theme-toggle]");
-  const root = document.documentElement;
-
-  const saved = localStorage.getItem("jnuru_theme");
-  if (saved === "dark") root.classList.add("dark");
-
-  toggle?.addEventListener("click", () => {
-    root.classList.toggle("dark");
-    localStorage.setItem("jnuru_theme", root.classList.contains("dark") ? "dark" : "light");
-  });
-
-  // =========================
-  // ABOUT — Press & hold reveal (single source of truth)
-  // =========================
   const items = document.querySelectorAll("[data-truth]");
   if (!items.length) return;
 
-  const HOLD_MS = 220;
+  const HOLD_MS = 180;
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   items.forEach((btn) => {
-    let timer = null;
-    let revealed = false;
+    let t = null;
+    let held = false;
 
-    const reveal = () => {
-      revealed = true;
+    const show = () => {
+      held = true;
       btn.classList.add("is-revealed");
+      btn.setAttribute("aria-expanded", "true");
     };
 
     const hide = () => {
-      revealed = false;
+      held = false;
       btn.classList.remove("is-revealed");
+      btn.setAttribute("aria-expanded", "false");
     };
 
     const start = (e) => {
-      // Prevent iOS text selection / long-press weirdness
-      e.preventDefault();
-      timer = setTimeout(reveal, HOLD_MS);
+      // Don’t block mouse clicks; only avoid touch long-press weirdness
+      if (e.pointerType === "touch") e.preventDefault();
+
+      if (prefersReduced) {
+        btn.classList.toggle("is-revealed");
+        return;
+      }
+
+      btn.classList.add("is-pressing");
+      t = setTimeout(show, HOLD_MS);
     };
 
     const end = () => {
-      clearTimeout(timer);
-      timer = null;
-      if (revealed) hide();
+      btn.classList.remove("is-pressing");
+      clearTimeout(t);
+      t = null;
+      if (held) hide();
     };
 
-    // Pointer events = best cross-platform
     btn.addEventListener("pointerdown", start);
     btn.addEventListener("pointerup", end);
     btn.addEventListener("pointercancel", end);
     btn.addEventListener("pointerleave", end);
 
-    // Tap fallback = toggle
+    // Keyboard: hold space/enter
+    btn.addEventListener("keydown", (e) => {
+      if (e.key === " " || e.key === "Enter") start({ pointerType: "keyboard", preventDefault(){} });
+    });
+    btn.addEventListener("keyup", (e) => {
+      if (e.key === " " || e.key === "Enter") end();
+    });
+
+    // Optional: click toggles on desktop
     btn.addEventListener("click", () => {
       btn.classList.toggle("is-revealed");
+      btn.setAttribute("aria-expanded", btn.classList.contains("is-revealed") ? "true" : "false");
     });
   });
 })();
