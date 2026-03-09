@@ -1271,4 +1271,61 @@ body{
     object-position: center 10%;
   }
 }
+/* =========================
+   VALUES — Editorial layout
+   ========================= */
 
+.values-layout{
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: clamp(40px,6vw,100px);
+  align-items: start;
+}
+
+.values-intro{
+  max-width: 420px;
+}
+
+.values-intro__text{
+  margin-top: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.values-list{
+  display: grid;
+  gap: 36px;
+}
+
+.value{
+  padding-bottom: 26px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.dark .value{
+  border-color: rgba(255,255,255,0.12);
+}
+
+.value__title{
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.value__body{
+  color: var(--muted);
+  max-width: 48ch;
+}
+
+/* mobile */
+
+@media (max-width:900px){
+
+  .values-layout{
+    grid-template-columns:1fr;
+  }
+
+  .values-list{
+    margin-top:30px;
+  }
+
+}
