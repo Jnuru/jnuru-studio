@@ -6,7 +6,7 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   // =========================
-  // Theme toggle (stores preference)
+  // Theme toggle
   // =========================
   const toggle = document.querySelector("[data-theme-toggle]");
   const root = document.documentElement;
@@ -23,103 +23,93 @@
   });
 
   // =========================
-  // ABOUT — Native typewriter (no libraries)
+  // About page typing
   // =========================
   const isAboutPage = document.body.classList.contains("page--about");
-  const el = document.getElementById("aboutType");
+  if (!isAboutPage) return;
 
-  if (isAboutPage && el) {
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const heroEl = document.getElementById("heroType");
+  const aboutEl = document.getElementById("aboutType");
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const lines = [
-      "I design systems, not pages.",
-      "I simplify before I stylize.",
-      "I ship only what holds up in production."
-    ];
+  const heroText = "system-focused freelance designer.";
+  const aboutLines = [
+    "I design systems, not pages.",
+    "I simplify before I stylize.",
+    "I ship only what holds up in production."
+  ];
 
-    // Reduced motion = instant text
-    if (prefersReduced) {
-      el.textContent = lines.join(" ");
-      return;
-    }
+  if (prefersReduced) {
+    if (heroEl) heroEl.textContent = heroText;
+    if (aboutEl) aboutEl.textContent = aboutLines.join(" ");
+    return;
+  }
 
-    // Prevent double-run (Safari bfcache etc.)
-    if (el.dataset.typed === "1") return;
-    el.dataset.typed = "1";
-
-    const type = (text, speed = 22) =>
-      new Promise((resolve) => {
-        let i = 0;
-        const tick = () => {
-          el.textContent += text.charAt(i);
-          i++;
-          if (i < text.length) {
-            setTimeout(tick, speed);
-          } else {
-            resolve();
-          }
-        };
-        tick();
-      });
-
-    const pause = (ms) => new Promise((r) => setTimeout(r, ms));
-
-    const startTyping = async () => {
+  const typeText = (el, text, speed = 28) =>
+    new Promise((resolve) => {
+      if (!el) return resolve();
+      let i = 0;
       el.textContent = "";
 
-      for (let i = 0; i < lines.length; i++) {
-        if (i > 0) {
-          el.textContent += " ";
-          await pause(160);
+      const tick = () => {
+        el.textContent += text.charAt(i);
+        i++;
+        if (i < text.length) {
+          setTimeout(tick, speed);
+        } else {
+          resolve();
         }
+      };
 
-        await type(lines[i], 22);
-        await pause(420);
+      if (!text.length) return resolve();
+      tick();
+    });
+
+  const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  const runHero = async () => {
+    if (!heroEl || heroEl.dataset.typed === "1") return;
+    heroEl.dataset.typed = "1";
+    await typeText(heroEl, heroText, 26);
+  };
+
+  const runAbout = async () => {
+    if (!aboutEl || aboutEl.dataset.typed === "1") return;
+    aboutEl.dataset.typed = "1";
+    aboutEl.textContent = "";
+
+    for (let i = 0; i < aboutLines.length; i++) {
+      if (i > 0) {
+        aboutEl.textContent += " ";
+        await pause(140);
       }
-    };
+      await typeText(
+        { 
+          get textContent() { return aboutEl.textContent; },
+          set textContent(value) { aboutEl.textContent = value; }
+        },
+        aboutLines[i],
+        22
+      );
+      await pause(260);
+    }
+  };
 
-    // Start typing when visible (feels intentional)
+  // hero starts immediately
+  runHero();
+
+  // about starts when visible
+  if (aboutEl) {
     const io = new IntersectionObserver(
       (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
+        if (entries.some((entry) => entry.isIntersecting)) {
           io.disconnect();
-          startTyping();
+          runAbout();
         }
       },
       { threshold: 0.35 }
     );
 
-    io.observe(el);
+    io.observe(aboutEl);
   }
 })();
-
-
-  // =========================
-  // ABOUT HERO — TheaterJS identity type (one pass)
-  // Target: <span id="heroType"></span>
-  // =========================
-  const heroTypeEl = document.getElementById("heroType");
-
-  if (isAboutPage && heroTypeEl) {
-    if (typeof TheaterJS === "undefined") return;
-
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    const identityLine = "system-focused freelance designer.";
-
-    if (prefersReduced) {
-      heroTypeEl.textContent = identityLine;
-    } else {
-      // avoid double init
-      if (heroTypeEl.dataset.typed === "1") return;
-      heroTypeEl.dataset.typed = "1";
-
-      heroTypeEl.textContent = "";
-
-      const theaterHero = new TheaterJS();
-      theaterHero
-        .addActor("hero", { speed: 0.9, accuracy: 0.92 }, "#heroType")
-        .addScene(`hero:${identityLine}`);
-    }
-  }
-
