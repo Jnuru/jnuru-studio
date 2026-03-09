@@ -1328,4 +1328,60 @@ body{
     margin-top:30px;
   }
 
+} 
+
+
+
+
+
+
+
+/* =========================
+   WHO I AM
+   ========================= */
+
+.about-identity{
+  padding: clamp(80px,10vw,140px) 0;
 }
+
+.about-identity__grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px,6vw,80px);
+  align-items:center;
+}
+
+.about-identity__image img{
+  width:100%;
+  height:auto;
+  border-radius:6px;
+}
+
+.about-identity__content{
+  max-width:480px;
+}
+
+.about-identity__content p{
+  margin-top:14px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+@media (max-width:900px){
+
+  .about-identity__grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
