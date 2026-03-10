@@ -413,9 +413,9 @@ body{
   border-radius: calc(var(--radius) + 10px);
   overflow: hidden;
   border: 1px solid rgba(42,42,40,0.06);
+  isolation: isolate;
 }
 
-/* Forest hue blobs behind the work grid */
 .work-surface::before{
   content:"";
   position:absolute;
@@ -427,16 +427,16 @@ body{
   filter: blur(18px);
   transform: translateZ(0);
   pointer-events:none;
+  z-index: 0;
 }
 
 .work-surface::after{
   content:"";
   position:absolute;
   inset:0;
-  background: rgba(255,255,255,0.10);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.04);
   pointer-events:none;
+  z-index: 0;
 }
 
 /* --------- PROJECT GRID --------- */
@@ -553,16 +553,16 @@ body{
 
 /* Editorial variant */
 .project-card__media--editorial{
+  aspect-ratio: auto !important;
+  min-height: 220px;
   display: flex;
   align-items: flex-end;
-  padding: 28px;
+  padding: 24px;
   background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0.20) 0%,
-      rgba(255,255,255,0.06) 100%
-    ),
+    radial-gradient(120% 90% at 18% 12%, rgba(255,255,255,0.58), rgba(255,255,255,0) 58%),
+    linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%),
     #F3F0E8;
+  border-bottom: 1px solid rgba(42,42,40,0.08);
 }
 
 .project-card__media--editorial::before{
@@ -570,8 +570,7 @@ body{
   position:absolute;
   inset:0;
   background:
-    radial-gradient(120% 90% at 18% 12%, rgba(255,255,255,0.58), rgba(255,255,255,0) 58%),
-    linear-gradient(to bottom, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.04) 100%);
+    linear-gradient(to bottom, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.03) 100%);
   pointer-events:none;
   z-index:1;
 }
@@ -579,7 +578,7 @@ body{
 .editorial-cover{
   position: relative;
   z-index: 2;
-  max-width: 280px;
+  max-width: 260px;
 }
 
 .editorial-cover__kicker{
@@ -595,8 +594,8 @@ body{
   margin: 0 0 10px;
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(1.2rem, 1rem + 0.5vw, 1.5rem);
-  line-height: 1.24;
+  font-size: clamp(1.15rem, 1rem + 0.45vw, 1.4rem);
+  line-height: 1.2;
   letter-spacing: -0.01em;
   color: var(--fg);
 }
@@ -766,7 +765,7 @@ body{
 }
 
 .dark .work-surface::after{
-  background: rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.03);
 }
 
 .dark .work-surface::before{
@@ -793,11 +792,7 @@ body{
 
 .dark .project-card__media--editorial{
   background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0.05) 0%,
-      rgba(255,255,255,0.02) 100%
-    ),
+    linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%),
     rgba(255,255,255,0.03);
 }
 
@@ -863,7 +858,6 @@ body{
   scroll-margin-top: 90px;
 }
 
-/* Progress rail (desktop only) */
 .case-rail{
   position: fixed;
   left: clamp(10px, 2vw, 28px);
