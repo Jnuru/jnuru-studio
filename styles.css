@@ -12,6 +12,7 @@
   --forest:#3F4F45;
   --forest-ink:#2F3C34;
   --forest-soft: rgba(63,79,69,0.10);
+  --forest-deep:#071712;
 
   /* Liquid glass system */
   --glass-fill: rgba(255,255,255,0.16);
@@ -474,9 +475,9 @@ body{
 
 .project-card:hover,
 .project-card:focus-visible{
-  transform: translateY(-3px);
-  box-shadow: 0 22px 56px rgba(0,0,0,0.10);
-  border-color: rgba(63,79,69,0.22);
+  transform: translateY(-4px);
+  box-shadow: 0 28px 70px rgba(0,0,0,0.12);
+  border-color: rgba(63,79,69,0.25);
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -531,8 +532,12 @@ body{
 
 .project-card:hover .project-card__media img,
 .project-card:focus-visible .project-card__media img{
-  transform: scale(1.035);
-  filter: saturate(0.98) contrast(0.98) brightness(0.94);
+  transform: scale(1.045);
+  filter: saturate(1) contrast(1) brightness(0.95);
+}
+
+.project-card:hover .project-card__title{
+  color: var(--forest-ink);
 }
 
 .project-card--minimal .project-card__body{
@@ -582,6 +587,7 @@ body{
     linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%),
     #F3F0E8;
   border-bottom: 1px solid rgba(42,42,40,0.08);
+  border-top: 3px solid var(--forest-deep);
 }
 
 .project-card__media--editorial::before{
@@ -592,6 +598,13 @@ body{
     linear-gradient(to bottom, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.03) 100%);
   pointer-events:none;
   z-index:1;
+}
+
+.project-card--minimal:hover .project-card__media--editorial{
+  background:
+    radial-gradient(120% 90% at 18% 12%, rgba(255,255,255,0.44), rgba(255,255,255,0) 58%),
+    linear-gradient(180deg, rgba(7,23,18,0.08) 0%, rgba(255,255,255,0.05) 100%),
+    #F1EEE7;
 }
 
 .editorial-cover{
@@ -655,6 +668,7 @@ body{
   line-height: 1.16;
   letter-spacing: -0.01em;
   max-width: 30ch;
+  transition: color 180ms ease;
 }
 
 .project-card__signal{
@@ -682,6 +696,7 @@ body{
   color: var(--forest-ink);
   position: relative;
   width: fit-content;
+  transition: color 180ms ease, letter-spacing 180ms ease;
 }
 
 .project-card__cta::after{
@@ -697,6 +712,7 @@ body{
 
 .project-card:hover .project-card__cta{
   color: var(--forest);
+  letter-spacing: 0.16em;
 }
 
 /* --------- Contact --------- */
@@ -770,6 +786,7 @@ body{
   --forest:#6f8a7a;
   --forest-ink:#dfe8e2;
   --forest-soft: rgba(111,138,122,0.10);
+  --forest-deep:#071712;
 
   --glass-fill: rgba(255,255,255,0.06);
   --glass-stroke: rgba(255,255,255,0.10);
@@ -836,6 +853,10 @@ body{
 
 .dark .project-card:hover{
   border-color: rgba(120,170,140,0.22);
+}
+
+.dark .project-card:hover .project-card__title{
+  color: rgba(255,255,255,0.96);
 }
 
 .dark .editorial-cover__kicker,
