@@ -533,6 +533,28 @@ body{
   filter: saturate(0.98) contrast(0.98) brightness(0.94);
 }
 
+
+
+.project-card--minimal .project-card__body{
+  gap: 14px;
+}
+
+.project-card--minimal .project-card__signal{
+  margin: 0;
+}
+
+.project-card--minimal .project-card__meta{
+  margin: 0;
+}
+
+.project-card--minimal .project-card__cta{
+  margin-top: 6px;
+}
+
+
+
+
+
 /* Per-project crop control */
 .project-card__media--mazda img{
   object-position: 60% 46%;
