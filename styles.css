@@ -459,7 +459,7 @@ body{
 }
 
 /* --------- PROJECT CARD --------- */
-/* --------- PROJECT CARD --------- */
+
 .project-card{
   display: flex;
   flex-direction: column;
@@ -544,6 +544,18 @@ body{
 .project-card--minimal .project-card__body{
   gap: 14px;
 }
+
+
+.project-card--minimal{
+  height: auto;
+  align-self: start;
+}
+
+.project-card--minimal .project-card__body{
+  flex: 0 0 auto;
+}
+
+
 
 .project-card--minimal .project-card__signal{
   margin: 0;
@@ -1553,4 +1565,4 @@ body{
   .process-grid{
     grid-template-columns:1fr;
   }
-} 
+}
