@@ -459,6 +459,7 @@ body{
 }
 
 /* --------- PROJECT CARD --------- */
+/* --------- PROJECT CARD --------- */
 .project-card{
   display: flex;
   flex-direction: column;
@@ -583,11 +584,11 @@ body{
   align-items: flex-end;
   padding: 24px;
   background:
-    radial-gradient(120% 90% at 18% 12%, rgba(255,255,255,0.58), rgba(255,255,255,0) 58%),
-    linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%),
+    radial-gradient(140% 110% at 18% 14%, rgba(255,255,255,0.72), rgba(255,255,255,0) 54%),
+    radial-gradient(90% 80% at 82% 22%, rgba(42,42,40,0.035), rgba(42,42,40,0) 58%),
+    linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.05) 100%),
     #F3F0E8;
   border-bottom: 1px solid rgba(42,42,40,0.08);
-  border-top: 3px solid var(--forest-deep);
 }
 
 .project-card__media--editorial::before{
@@ -600,11 +601,26 @@ body{
   z-index:1;
 }
 
+.project-card__media--editorial::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(42,42,40,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42,42,40,0.035) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.16), rgba(0,0,0,0));
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.16), rgba(0,0,0,0));
+  pointer-events:none;
+  z-index:1;
+}
+
 .project-card--minimal:hover .project-card__media--editorial{
   background:
-    radial-gradient(120% 90% at 18% 12%, rgba(255,255,255,0.44), rgba(255,255,255,0) 58%),
-    linear-gradient(180deg, rgba(7,23,18,0.08) 0%, rgba(255,255,255,0.05) 100%),
-    #F1EEE7;
+    radial-gradient(140% 110% at 18% 14%, rgba(255,255,255,0.78), rgba(255,255,255,0) 54%),
+    radial-gradient(90% 80% at 82% 22%, rgba(42,42,40,0.05), rgba(42,42,40,0) 58%),
+    linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.06) 100%),
+    #F4F1EA;
 }
 
 .editorial-cover{
@@ -626,7 +642,7 @@ body{
   margin: 0 0 10px;
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(1.15rem, 1rem + 0.45vw, 1.4rem);
+  font-size: clamp(1.25rem, 1.05rem + 0.55vw, 1.55rem);
   line-height: 1.2;
   letter-spacing: -0.01em;
   color: var(--fg);
