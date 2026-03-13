@@ -3,23 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Experiment — Minimal Portfolio System | jnuru.studio</title>
+  <title>Minimal Portfolio System | jnuru.studio</title>
 
-  <!-- Base site styles -->
   <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="minimal-portfolio-doc.css" />
 
-  <!-- Page-specific override styles -->
-  <link rel="stylesheet" href="minimal-portfolio.css" />
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 
-<body class="exp">
-  <header class="site-header exp-header">
-    <div class="wrap">
+<body class="doc-page">
+  <header class="site-header doc-header">
+    <div class="wrap doc-wrap">
       <div class="topbar">
         <div class="brand">
           <a class="brand__name" href="../../index.html">jnuru.studio</a>
@@ -38,203 +34,256 @@
     </div>
   </header>
 
-  <main class="exp-main">
+  <main class="doc-main">
     <!-- HERO -->
-    <section class="exp-hero">
-      <div class="wrap exp-wrap">
-        <p class="kicker exp-kicker">EXPERIMENT</p>
+    <section class="doc-hero">
+      <div class="wrap doc-wrap">
+        <p class="doc-kicker">SYSTEM STUDY</p>
 
-        <h1 class="exp-title">
-          Minimal portfolio system<br />
-          <span class="exp-title__sub">(static, fast, calm)</span>
-        </h1>
+        <div class="doc-hero__grid">
+          <div class="doc-hero__main">
+            <h1 class="doc-title">Minimal portfolio system.</h1>
+            <p class="doc-lead">
+              A calm, editorial framework for presenting design and development work with structure, restraint, and clarity.
+            </p>
+          </div>
 
-        <div class="exp-meta">
-          <p class="exp-signal">VISUAL RHYTHM • GRID TENSION • SYSTEM RESTRAINT</p>
-          <p class="exp-voice">
-            A controlled study in editorial pacing, image hierarchy, and static composition — built to test how little a portfolio needs to feel complete.
-          </p>
-        </div>
-
-        <div class="exp-actions">
-          <a class="button exp-btn" href="#sections">Begin →</a>
-          <a class="exp-quietlink" href="../../index.html#work">Back to Work</a>
+          <div class="doc-hero__meta">
+            <p class="doc-meta-label">Intent</p>
+            <p class="doc-meta-copy">
+              This page documents how jnuru.studio should feel: minimal, system-led, quiet, and human.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- HERO IMAGE -->
-    <section class="exp-strip" aria-label="Hero image">
-      <div class="wrap exp-wrap">
-        <div class="exp-strip__grid">
-          <figure class="exp-img exp-img--hero">
-            <img
-              src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1800&q=80"
-              alt="Desk, materials, and calm working environment"
-              loading="lazy"
-            />
-            <figcaption>Process, structure, restraint</figcaption>
-          </figure>
-        </div>
+    <section class="doc-proof">
+      <div class="wrap doc-wrap">
+        <figure class="doc-proof__figure">
+          <img
+            src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1800&q=80"
+            alt="Desk, materials, and calm working environment"
+            loading="lazy"
+          />
+          <figcaption>Proof image — process, structure, restraint.</figcaption>
+        </figure>
       </div>
     </section>
 
-    <!-- SECTION INDEX -->
-    <section class="exp-index" id="sections">
-      <div class="wrap exp-wrap">
-        <div class="exp-index__head">
-          <h2 class="exp-h2">A small set of sections.</h2>
-          <p class="exp-muted">Not a case study. A controlled experiment.</p>
+    <!-- INDEX -->
+    <section class="doc-index" id="sections">
+      <div class="wrap doc-wrap">
+        <div class="doc-index__head">
+          <h2 class="doc-index__title">Sections</h2>
+          <p class="doc-index__note">A small documentation page, not a showcase layout.</p>
         </div>
 
-        <div class="exp-cards">
-          <a class="exp-card" href="#foundation">
-            <p class="exp-card__num">01</p>
-            <p class="exp-card__title">Foundation</p>
-            <p class="exp-card__sub">type, spacing, and tonal restraint</p>
+        <div class="doc-index__grid">
+          <a class="doc-index-card" href="#foundation">
+            <span class="doc-index-card__num">01</span>
+            <span class="doc-index-card__title">Foundation</span>
+            <span class="doc-index-card__sub">tone, restraint, and intent</span>
           </a>
 
-          <a class="exp-card" href="#layout">
-            <p class="exp-card__num">02</p>
-            <p class="exp-card__title">Layout study</p>
-            <p class="exp-card__sub">controlled asymmetry and pacing</p>
+          <a class="doc-index-card" href="#structure">
+            <span class="doc-index-card__num">02</span>
+            <span class="doc-index-card__title">Structure</span>
+            <span class="doc-index-card__sub">document rhythm and layout</span>
           </a>
 
-          <a class="exp-card" href="#images">
-            <p class="exp-card__num">03</p>
-            <p class="exp-card__title">Image language</p>
-            <p class="exp-card__sub">visual identity without explanation</p>
+          <a class="doc-index-card" href="#imagery">
+            <span class="doc-index-card__num">03</span>
+            <span class="doc-index-card__title">Imagery</span>
+            <span class="doc-index-card__sub">proof, not decoration</span>
           </a>
 
-          <a class="exp-card" href="#principles">
-            <p class="exp-card__num">04</p>
-            <p class="exp-card__title">Principles</p>
-            <p class="exp-card__sub">rules that protect the system</p>
+          <a class="doc-index-card" href="#principles">
+            <span class="doc-index-card__num">04</span>
+            <span class="doc-index-card__title">Principles</span>
+            <span class="doc-index-card__sub">rules that protect the system</span>
           </a>
         </div>
       </div>
     </section>
 
     <!-- FOUNDATION -->
-    <section class="exp-section" id="foundation">
-      <div class="wrap exp-wrap exp-two">
-        <div class="exp-block">
-          <p class="kicker">FOUNDATION</p>
-          <h2 class="exp-h2">Restraint with intent.</h2>
-          <p class="exp-body">
-            This page tests whether restraint can still feel alive. Fewer elements, stronger hierarchy, and imagery used only where it adds meaning.
-          </p>
+    <section class="doc-section" id="foundation">
+      <div class="wrap doc-wrap">
+        <div class="doc-section__line"></div>
 
-          <ul class="exp-list">
-            <li>Type does the leadership.</li>
-            <li>Spacing is the personality.</li>
-            <li>Color is a whisper, not a banner.</li>
-          </ul>
-        </div>
+        <div class="doc-section__grid">
+          <div class="doc-section__main">
+            <p class="doc-kicker">FOUNDATION</p>
+            <h2 class="doc-section__title">Design before decoration.</h2>
+            <p class="doc-body">
+              The system should feel structured before it feels styled. Typography carries hierarchy, spacing creates rhythm, and color stays secondary.
+            </p>
 
-        <aside class="exp-aside">
-          <p class="exp-aside__label">Brand voice</p>
-          <p class="exp-aside__mono">
-            calm • precise • human<br />
-            structure before styling<br />
-            proof in the work, not the pitch
-          </p>
-        </aside>
-      </div>
-    </section>
-
-    <!-- LAYOUT STUDY -->
-    <section class="exp-section" id="layout">
-      <div class="wrap exp-wrap">
-        <p class="kicker">TECHNICAL LAYOUT STUDY</p>
-        <h2 class="exp-h2">Grid tension, controlled.</h2>
-        <p class="exp-body exp-body--narrow">
-          Slight offsets create motion without animation. The eye keeps moving even when nothing moves.
-        </p>
-
-        <div class="exp-layout">
-          <div class="exp-panel exp-panel--a">
-            <p class="exp-panel__kicker">Rule</p>
-            <p class="exp-panel__title">One dominant move per section.</p>
-            <p class="exp-panel__body">Everything else should support the read, not compete with it.</p>
+            <ul class="doc-list">
+              <li>Type leads the page.</li>
+              <li>Spacing does the emotional work.</li>
+              <li>Color supports, never dominates.</li>
+            </ul>
           </div>
 
-          <div class="exp-panel exp-panel--b exp-panel--feature">
-            <p class="exp-panel__kicker">Anchor</p>
-            <p class="exp-panel__title">Images are structure, not decoration.</p>
-            <p class="exp-panel__body">If an image does not explain tone, process, or identity, it is taking space instead of earning it.</p>
-          </div>
-
-          <div class="exp-panel exp-panel--c">
-            <p class="exp-panel__kicker">Rule</p>
-            <p class="exp-panel__title">Accent stays rare.</p>
-            <p class="exp-panel__body">Color should guide attention lightly, never become the page’s main event.</p>
-          </div>
+          <aside class="doc-section__aside">
+            <p class="doc-aside__label">Brand voice</p>
+            <p class="doc-aside__body">
+              calm • precise • human<br />
+              structure before styling<br />
+              proof in the work, not the pitch
+            </p>
+          </aside>
         </div>
       </div>
     </section>
 
-    <!-- IMAGES -->
-    <section class="exp-section" id="images">
-      <div class="wrap exp-wrap">
-        <p class="kicker">IMAGE LANGUAGE</p>
-        <h2 class="exp-h2">A “you” in pictures.</h2>
-        <p class="exp-body exp-body--narrow">
-          Choose images that reveal your way of seeing: process, materials, unfinished work, and physical traces of the craft.
-        </p>
+    <!-- STRUCTURE -->
+    <section class="doc-section" id="structure">
+      <div class="wrap doc-wrap">
+        <div class="doc-section__line"></div>
 
-        <div class="exp-gallery">
-          <figure class="exp-shot">
-            <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58?auto=format&fit=crop&w=1400&q=80" alt="Process workspace" loading="lazy">
-            <figcaption>Process</figcaption>
-          </figure>
+        <div class="doc-section__grid">
+          <div class="doc-section__main">
+            <p class="doc-kicker">STRUCTURE</p>
+            <h2 class="doc-section__title">A document, not a landing page.</h2>
+            <p class="doc-body">
+              The page should read like a guideline. Each section repeats a clear pattern: title, explanation, and supporting context. That repetition creates trust.
+            </p>
 
-          <figure class="exp-shot exp-shot--tall">
-            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1400&q=80" alt="Build and development environment" loading="lazy">
-            <figcaption>Build</figcaption>
-          </figure>
+            <div class="doc-rule-grid">
+              <article class="doc-rule">
+                <p class="doc-rule__label">Rule</p>
+                <h3 class="doc-rule__title">Use a stable reading column.</h3>
+                <p class="doc-rule__body">
+                  Main content lives on the left. Supporting context sits on the right.
+                </p>
+              </article>
 
-          <figure class="exp-shot">
-            <img src="https://images.unsplash.com/photo-1526481280695-3c687fd5432c?auto=format&fit=crop&w=1400&q=80" alt="Calm portrait and presence" loading="lazy">
-            <figcaption>Presence</figcaption>
-          </figure>
+              <article class="doc-rule doc-rule--feature">
+                <p class="doc-rule__label">Anchor</p>
+                <h3 class="doc-rule__title">One dominant move per section.</h3>
+                <p class="doc-rule__body">
+                  A strong title, a proof image, or a key rule. Not three things competing at once.
+                </p>
+              </article>
+
+              <article class="doc-rule">
+                <p class="doc-rule__label">Rule</p>
+                <h3 class="doc-rule__title">Section rhythm stays predictable.</h3>
+                <p class="doc-rule__body">
+                  Consistency makes the page feel authored and system-driven.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <aside class="doc-section__aside">
+            <p class="doc-aside__label">Layout pattern</p>
+            <p class="doc-aside__body">
+              kicker<br />
+              title<br />
+              explanation<br />
+              supporting note
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMAGERY -->
+    <section class="doc-section" id="imagery">
+      <div class="wrap doc-wrap">
+        <div class="doc-section__line"></div>
+
+        <div class="doc-section__grid">
+          <div class="doc-section__main">
+            <p class="doc-kicker">IMAGERY</p>
+            <h2 class="doc-section__title">Images should prove your way of working.</h2>
+            <p class="doc-body">
+              Use imagery to reveal process, materials, and authorship. A portfolio image should explain how you think, not just create mood.
+            </p>
+
+            <div class="doc-example-grid">
+              <article class="doc-example">
+                <p class="doc-example__label">Good</p>
+                <p class="doc-example__body">A real workspace with actual project work visible.</p>
+              </article>
+
+              <article class="doc-example">
+                <p class="doc-example__label">Good</p>
+                <p class="doc-example__body">A close crop of layout, type, code, or process material.</p>
+              </article>
+
+              <article class="doc-example">
+                <p class="doc-example__label">Avoid</p>
+                <p class="doc-example__body">Generic moodboard shots that say nothing about the work.</p>
+              </article>
+            </div>
+          </div>
+
+          <aside class="doc-section__aside">
+            <p class="doc-aside__label">Image criteria</p>
+            <p class="doc-aside__body">
+              real<br />
+              specific<br />
+              calm<br />
+              process-led<br />
+              non-generic
+            </p>
+          </aside>
         </div>
       </div>
     </section>
 
     <!-- PRINCIPLES -->
-    <section class="exp-section" id="principles">
-      <div class="wrap exp-wrap exp-notes">
-        <p class="kicker">PRINCIPLES</p>
-        <h2 class="exp-h2">Rules that protect the system.</h2>
+    <section class="doc-section" id="principles">
+      <div class="wrap doc-wrap">
+        <div class="doc-section__line"></div>
 
-        <div class="exp-notes__grid">
-          <div class="exp-note">
-            <p class="exp-note__title">Every section must earn its place.</p>
-            <p class="exp-note__body">If a block adds no proof, no clarity, or no rhythm, cut it or merge it.</p>
+        <div class="doc-section__stack">
+          <p class="doc-kicker">PRINCIPLES</p>
+          <h2 class="doc-section__title">Rules that protect the system.</h2>
+          <p class="doc-body doc-body--wide">
+            The page should stay quiet, neutral, and disciplined. Once the system is working, visual personality can emerge from restraint instead of effects.
+          </p>
+
+          <div class="doc-principles-grid">
+            <article class="doc-principle">
+              <h3 class="doc-principle__title">Every section must earn its place.</h3>
+              <p class="doc-principle__body">
+                If a block adds no clarity, no proof, or no rhythm, remove it.
+              </p>
+            </article>
+
+            <article class="doc-principle">
+              <h3 class="doc-principle__title">Motion comes from structure.</h3>
+              <p class="doc-principle__body">
+                Use layout rhythm and spacing before reaching for animation.
+              </p>
+            </article>
+
+            <article class="doc-principle">
+              <h3 class="doc-principle__title">Typography stays disciplined.</h3>
+              <p class="doc-principle__body">
+                Variation should come from hierarchy and composition, not novelty.
+              </p>
+            </article>
           </div>
 
-          <div class="exp-note">
-            <p class="exp-note__title">Motion comes from structure.</p>
-            <p class="exp-note__body">Use offsets, spacing, and hierarchy before reaching for animation.</p>
+          <div class="doc-actions">
+            <a class="doc-button" href="../../index.html#work">Back to Work</a>
           </div>
-
-          <div class="exp-note">
-            <p class="exp-note__title">Typography stays disciplined.</p>
-            <p class="exp-note__body">Variation should come from composition, not from random changes in type behavior.</p>
-          </div>
-        </div>
-
-        <div class="exp-end">
-          <a class="button exp-btn" href="../../index.html#work">Back to Work →</a>
         </div>
       </div>
     </section>
 
-    <footer class="footer exp-footer">
-      <div class="wrap footer__inner">
+    <footer class="footer doc-footer">
+      <div class="wrap footer__inner doc-wrap">
         <p class="muted">© <span id="year"></span> jnuru.studio</p>
-        <p class="muted">Minimal system • intentional deviations</p>
+        <p class="muted">Minimal system • structured restraint</p>
       </div>
     </footer>
   </main>
