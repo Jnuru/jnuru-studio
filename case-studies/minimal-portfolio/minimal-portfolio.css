@@ -1,690 +1,258 @@
-/* =========================================================
-   jnuru.studio — Muse-inspired editorial system page
-   Direction: pale background, giant type, sparse structure,
-   floating proof images, calm brand-document feeling
-========================================================= */
-
-:root{
-  --jn-bg: #ecece7;
-  --jn-surface: #f6f5f1;
-  --jn-surface-2: #efeee8;
-  --jn-card: #f5f4ef;
-
-  --jn-text: #171714;
-  --jn-muted: #7a7a72;
-  --jn-soft: #a7a69d;
-
-  --jn-line: rgba(23, 23, 20, 0.11);
-  --jn-line-strong: rgba(23, 23, 20, 0.18);
-
-  --jn-accent: #314b3a;
-  --jn-accent-soft: rgba(49, 75, 58, 0.08);
-  --jn-accent-line: rgba(49, 75, 58, 0.22);
-
-  --jn-radius: 18px;
-  --jn-shadow-soft: 0 10px 26px rgba(18, 18, 16, 0.04);
-  --jn-shadow-card: 0 12px 32px rgba(18, 18, 16, 0.06);
-
-  --jn-shell: 1680px;
-  --jn-content: 1500px;
-}
-
-body.jn-system-page{
-  background: var(--jn-bg);
-  color: var(--jn-text);
-}
-
-.jn-shell{
-  width: min(calc(100% - 32px), var(--jn-shell));
-  margin: 0 auto;
-}
-
-/* header */
-.jn-hero-header{
-  position: relative;
-  z-index: 20;
-  padding-top: 12px;
-}
-
-.jn-hero-header__bar{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 24px;
-  align-items: start;
-}
-
-.jn-hero-header__left,
-.jn-hero-header__center,
-.jn-hero-header__right{
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.jn-hero-header__center{
-  justify-self: center;
-}
-
-.jn-hero-header__right{
-  justify-self: end;
-  max-width: 19ch;
-}
-
-.jn-hero-header a,
-.jn-hero-header p{
-  margin: 0;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.92rem;
-  line-height: 1.25;
-  color: var(--jn-text);
-  text-decoration: none;
-}
-
-.jn-hero-header a:hover{
-  color: var(--jn-muted);
-}
-
-/* hero */
-.jn-hero{
-  position: relative;
-  padding: 24px 0 88px;
-  min-height: 860px;
-}
-
-.jn-hero__inner{
-  position: relative;
-}
-
-.jn-kicker{
-  margin: 0 0 12px;
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 12px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--jn-muted);
-}
-
-.jn-hero__headline{
-  max-width: 1460px;
-}
-
-.jn-display{
-  margin: 0;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: clamp(4.4rem, 8vw, 8.4rem);
-  line-height: 0.93;
-  letter-spacing: -0.075em;
-  font-weight: 500;
-  color: var(--jn-text);
-}
-
-.jn-display__line{
-  display: block;
-}
-
-.jn-display__line--dark{
-  color: var(--jn-text);
-}
-
-.jn-display__line--soft{
-  color: var(--jn-soft);
-}
-
-.jn-hero__sub{
-  margin: 26px 0 0;
-  max-width: 32ch;
-  font-family: "Libre Baskerville", serif;
-  font-size: 1.02rem;
-  line-height: 1.75;
-  color: var(--jn-text);
-}
-
-.jn-hero__cluster{
-  position: relative;
-  min-height: 360px;
-  margin-top: 48px;
-}
-
-.jn-floating{
-  position: absolute;
-  margin: 0;
-  overflow: hidden;
-  background: #ddd;
-  box-shadow: var(--jn-shadow-card);
-}
-
-.jn-floating img{
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.jn-floating--one{
-  right: 255px;
-  top: 54px;
-  width: 180px;
-  height: 220px;
-}
-
-.jn-floating--two{
-  right: 70px;
-  top: 0;
-  width: 140px;
-  height: 110px;
-}
-
-.jn-floating--three{
-  right: -56px;
-  top: 136px;
-  width: 340px;
-  height: 240px;
-}
-
-/* statement */
-.jn-statement{
-  padding: 40px 0 64px;
-}
-
-.jn-statement__grid{
-  display: grid;
-  grid-template-columns: 140px minmax(0, 1fr);
-  gap: 24px;
-  align-items: start;
-}
-
-.jn-statement__eyebrow{
-  margin: 0;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.92rem;
-  font-weight: 600;
-  text-decoration: underline;
-  color: var(--jn-text);
-}
-
-.jn-statement__quote{
-  margin: 0;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: clamp(2.8rem, 6vw, 6.4rem);
-  line-height: 0.95;
-  letter-spacing: -0.065em;
-  color: var(--jn-text);
-  max-width: 17ch;
-}
-
-.jn-statement__attribution{
-  grid-column: 2;
-  margin: 18px 0 0;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.98rem;
-  color: var(--jn-soft);
-  justify-self: center;
-}
-
-/* sections */
-.jn-section{
-  padding: 12px 0 0;
-}
-
-.jn-section__line{
-  height: 1px;
-  background: var(--jn-line);
-  margin-bottom: 42px;
-}
-
-.jn-section--centered{
-  padding-top: 24px;
-}
-
-.jn-centered-head{
-  text-align: center;
-  padding: 36px 0 20px;
-}
-
-.jn-centered-head__title{
-  margin: 0;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: clamp(3rem, 5.3vw, 5.6rem);
-  line-height: 0.95;
-  letter-spacing: -0.07em;
-  font-weight: 500;
-  color: var(--jn-soft);
-}
-
-.jn-centered-head__title span{
-  display: block;
-  color: var(--jn-text);
-}
-
-.jn-centered-head__body{
-  max-width: 28ch;
-  margin: 22px auto 0;
-  font-family: "Libre Baskerville", serif;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--jn-text);
-}
-
-.jn-section-title{
-  margin: 0;
-  max-width: 13ch;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: clamp(3.4rem, 6vw, 5.7rem);
-  line-height: 0.95;
-  letter-spacing: -0.075em;
-  font-weight: 500;
-  color: var(--jn-text);
-}
-
-.jn-section-title span{
-  color: var(--jn-soft);
-}
-
-/* benefits */
-.jn-benefits{
-  margin-top: 70px;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.jn-benefit{
-  padding-left: 18px;
-  border-left: 1px solid var(--jn-line);
-}
-
-.jn-benefit__image{
-  width: 220px;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  background: #ddd;
-  margin-bottom: 18px;
-}
-
-.jn-benefit__image img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.jn-benefit__title{
-  margin: 0 0 8px;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 1.02rem;
-  line-height: 1.3;
-  font-weight: 600;
-  color: var(--jn-text);
-}
-
-.jn-benefit__body{
-  margin: 0;
-  max-width: 22ch;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.98rem;
-  line-height: 1.45;
-  color: var(--jn-soft);
-}
-
-/* discover */
-.jn-discover{
-  padding: 6px 0 28px;
-}
-
-.jn-discover__title{
-  margin: 0 0 30px;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 1.12rem;
-  font-weight: 600;
-  color: var(--jn-text);
-}
-
-.jn-discover__grid{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 28px 30px;
-}
-
-.jn-foundation-card__media{
-  background: #ddd;
-  overflow: hidden;
-  aspect-ratio: 1 / 0.84;
-  margin-bottom: 12px;
-}
-
-.jn-foundation-card__media--tall{
-  aspect-ratio: 1 / 1.12;
-}
-
-.jn-foundation-card__media img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* specimen */
-.jn-foundation-card__media--dark{
-  background: #141311;
-  display: grid;
-  place-items: center;
-}
-
-.jn-foundation-card__media--cream{
-  background: #e8e5d9;
-  display: grid;
-  place-items: center;
-}
-
-.jn-specimen{
-  width: 66%;
-  aspect-ratio: 1 / 1.18;
-  background:
-    linear-gradient(to right, rgba(166, 189, 219, 0.35) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(166, 189, 219, 0.35) 1px, transparent 1px),
-    #f4f3ef;
-  background-size: 16% 16%;
-  border: 1px solid rgba(255,255,255,0.7);
-  position: relative;
-  padding: 16px;
-}
-
-.jn-specimen__frame{
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.jn-specimen__name{
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 2rem;
-  line-height: 0.95;
-  letter-spacing: -0.05em;
-  color: #161513;
-}
-
-.jn-specimen__sub{
-  font-family: "Libre Baskerville", serif;
-  font-size: 0.85rem;
-  color: #4b4a46;
-}
-
-.jn-type-specimen{
-  width: 100%;
-  height: 100%;
-  padding: 20px 18px;
-}
-
-.jn-type-specimen p{
-  margin: 0 0 16px;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.84rem;
-  color: #3e3d38;
-}
-
-.jn-type-specimen h4{
-  margin: 0;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: clamp(2rem, 2.8vw, 3.2rem);
-  line-height: 0.95;
-  letter-spacing: -0.06em;
-  font-weight: 700;
-  color: #151412;
-}
-
-.jn-type-specimen h5{
-  margin: 0 0 2px;
-  font-family: "Libre Baskerville", serif;
-  font-size: clamp(1.5rem, 2vw, 2.3rem);
-  line-height: 1;
-  font-style: italic;
-  font-weight: 400;
-  color: #171614;
-}
-
-.jn-wireframe{
-  width: 70%;
-  aspect-ratio: 0.72 / 1;
-  border: 2px solid #d8e4ee;
-  background: #f8f7f3;
-  display: grid;
-  place-items: center;
-  position: relative;
-}
-
-.jn-wireframe::before,
-.jn-wireframe::after{
-  content: "";
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border: 1px solid #d8e4ee;
-}
-
-.jn-wireframe::before{
-  top: -5px;
-  left: -5px;
-}
-
-.jn-wireframe::after{
-  top: -5px;
-  right: -5px;
-}
-
-.jn-wireframe__grid{
-  width: 100%;
-  height: 100%;
-  background:
-    linear-gradient(to right, rgba(166, 189, 219, 0.35) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(166, 189, 219, 0.35) 1px, transparent 1px);
-  background-size: 20% 20%;
-}
-
-.jn-foundation-card__title{
-  margin: 0 0 6px;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 1.02rem;
-  line-height: 1.3;
-  font-weight: 600;
-  color: var(--jn-text);
-}
-
-.jn-foundation-card__body{
-  margin: 0;
-  max-width: 31ch;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.98rem;
-  line-height: 1.45;
-  color: var(--jn-muted);
-}
-
-/* closing */
-.jn-closing{
-  padding: 8px 0 46px;
-}
-
-.jn-closing__body{
-  margin: 20px 0 0;
-  max-width: 50ch;
-  font-family: "Libre Baskerville", serif;
-  font-size: 1rem;
-  line-height: 1.75;
-  color: var(--jn-text);
-}
-
-.jn-button{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 26px;
-  min-height: 48px;
-  padding: 0 18px;
-  border-radius: 999px;
-  border: 1px solid var(--jn-line-strong);
-  background: var(--jn-surface);
-  color: var(--jn-text);
-  text-decoration: none;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
-  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
-}
-
-.jn-button:hover{
-  background: white;
-  border-color: var(--jn-accent-line);
-  transform: translateY(-1px);
-}
-
-/* footer */
-.jn-footer{
-  margin-top: 32px;
-  border-top: 1px solid var(--jn-line);
-  background: transparent;
-}
-
-/* responsive */
-@media (max-width: 1400px){
-  .jn-display{
-    font-size: clamp(3.8rem, 7vw, 7rem);
-  }
-
-  .jn-statement__quote{
-    font-size: clamp(2.5rem, 5.5vw, 5.3rem);
-  }
-
-  .jn-benefits{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .jn-discover__grid{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .jn-floating--one{
-    right: 230px;
-  }
-
-  .jn-floating--three{
-    right: 0;
-  }
-}
-
-@media (max-width: 980px){
-  .jn-hero-header__bar{
-    grid-template-columns: 1fr;
-  }
-
-  .jn-hero-header__center,
-  .jn-hero-header__right{
-    justify-self: start;
-  }
-
-  .jn-hero{
-    min-height: auto;
-    padding-bottom: 48px;
-  }
-
-  .jn-display{
-    font-size: clamp(3rem, 10vw, 5.4rem);
-    line-height: 0.96;
-  }
-
-  .jn-hero__cluster{
-    min-height: 520px;
-  }
-
-  .jn-floating--one{
-    left: 0;
-    right: auto;
-    top: 40px;
-  }
-
-  .jn-floating--two{
-    right: 40px;
-    top: 0;
-  }
-
-  .jn-floating--three{
-    right: 0;
-    top: 210px;
-    width: 280px;
-    height: 200px;
-  }
-
-  .jn-statement__grid{
-    grid-template-columns: 1fr;
-  }
-
-  .jn-statement__attribution{
-    grid-column: auto;
-    justify-self: start;
-  }
-
-  .jn-benefits,
-  .jn-discover__grid{
-    grid-template-columns: 1fr;
-  }
-
-  .jn-benefit__image{
-    width: 100%;
-    max-width: 320px;
-  }
-}
-
-@media (max-width: 640px){
-  .jn-shell{
-    width: min(calc(100% - 22px), var(--jn-shell));
-  }
-
-  .jn-hero{
-    padding-top: 18px;
-  }
-
-  .jn-display{
-    font-size: clamp(2.5rem, 13vw, 4rem);
-    letter-spacing: -0.07em;
-  }
-
-  .jn-hero__sub{
-    font-size: 0.94rem;
-    max-width: 28ch;
-  }
-
-  .jn-hero__cluster{
-    min-height: 420px;
-    margin-top: 28px;
-  }
-
-  .jn-floating--one{
-    width: 120px;
-    height: 150px;
-    top: 40px;
-  }
-
-  .jn-floating--two{
-    width: 100px;
-    height: 80px;
-    right: 16px;
-  }
-
-  .jn-floating--three{
-    width: 200px;
-    height: 140px;
-    top: 170px;
-    right: -8px;
-  }
-
-  .jn-statement__quote{
-    font-size: clamp(2rem, 11vw, 3.2rem);
-    line-height: 0.98;
-  }
-
-  .jn-centered-head__title{
-    font-size: clamp(2.2rem, 10vw, 3.5rem);
-  }
-
-  .jn-section-title{
-    font-size: clamp(2.4rem, 11vw, 3.6rem);
-  }
-}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>jnuru.studio — Minimal Portfolio System</title>
+
+  <link rel="stylesheet" href="../../styles.css" />
+ <link rel="stylesheet" href="minimal-portfolio.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+
+<body class="jn-system-page">
+  <header class="jn-hero-header">
+    <div class="jn-shell">
+      <div class="jn-hero-header__bar">
+        <div class="jn-hero-header__left">
+          <a href="../../index.html">jnuru.studio</a>
+          <a href="../../index.html#work">Work</a>
+          <a href="../../index.html#philosophy">Philosophy</a>
+        </div>
+
+        <div class="jn-hero-header__center">
+          <p>© 2026 jnuru.studio</p>
+          <a href="../../index.html#contact">Contact</a>
+          <a href="../../index.html#work">Selected Work</a>
+        </div>
+
+        <div class="jn-hero-header__right">
+          <p>Calm systems for design and development.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="jn-main">
+    <!-- HERO -->
+    <section class="jn-hero">
+      <div class="jn-shell">
+        <div class="jn-hero__inner">
+          <p class="jn-kicker">SYSTEM STUDY</p>
+
+          <div class="jn-hero__headline">
+            <h1 class="jn-display">
+              <span class="jn-display__line jn-display__line--dark">jnuru builds</span>
+              <span class="jn-display__line jn-display__line--soft">calm systems</span>
+              <span class="jn-display__line jn-display__line--soft">for digital work.</span>
+            </h1>
+
+            <p class="jn-hero__sub">
+              A minimal portfolio direction shaped by editorial scale, structured restraint, and a quieter sense of authorship.
+            </p>
+          </div>
+
+          <div class="jn-hero__cluster" aria-label="Visual references">
+            <figure class="jn-floating jn-floating--one">
+              <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80" alt="Workspace and process" loading="lazy">
+            </figure>
+
+            <figure class="jn-floating jn-floating--two">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80" alt="Design process detail" loading="lazy">
+            </figure>
+
+            <figure class="jn-floating jn-floating--three">
+              <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1400&q=80" alt="Interior and material tone" loading="lazy">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATEMENT -->
+    <section class="jn-statement">
+      <div class="jn-shell">
+        <div class="jn-statement__grid">
+          <p class="jn-statement__eyebrow">Positioning</p>
+
+          <blockquote class="jn-statement__quote">
+            “The site should feel like a brand system, not a template — clear, spacious, typographic, and deliberate.”
+          </blockquote>
+
+          <p class="jn-statement__attribution">jnuru.studio direction study</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY THIS DIRECTION -->
+    <section class="jn-section jn-section--centered" id="why">
+      <div class="jn-shell">
+        <div class="jn-section__line"></div>
+
+        <div class="jn-centered-head">
+          <h2 class="jn-centered-head__title">
+            Why jnuru is moving
+            <span>toward calmer systems</span>
+          </h2>
+          <p class="jn-centered-head__body">
+            Loud portfolio tricks age fast. Clear type, quiet spacing, and controlled image use hold up longer and say more.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFITS / PRINCIPLES -->
+    <section class="jn-section" id="principles">
+      <div class="jn-shell">
+        <div class="jn-section__line"></div>
+
+        <p class="jn-kicker">FOUNDATION</p>
+
+        <h2 class="jn-section-title">
+          The system should make the work feel
+          <span>clearer, calmer, and more premium.</span>
+        </h2>
+
+        <div class="jn-benefits">
+          <article class="jn-benefit">
+            <div class="jn-benefit__image">
+              <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80" alt="Editorial workspace" loading="lazy">
+            </div>
+            <h3 class="jn-benefit__title">Stronger first impression</h3>
+            <p class="jn-benefit__body">Large type and clean contrast make the brand feel intentional before the user even reads deeply.</p>
+          </article>
+
+          <article class="jn-benefit">
+            <div class="jn-benefit__image">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Code and layout" loading="lazy">
+            </div>
+            <h3 class="jn-benefit__title">Clearer system thinking</h3>
+            <p class="jn-benefit__body">The layout should show that the work is built on structure, not decoration or random visual moves.</p>
+          </article>
+
+          <article class="jn-benefit">
+            <div class="jn-benefit__image">
+              <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Quiet interior" loading="lazy">
+            </div>
+            <h3 class="jn-benefit__title">A calmer tone</h3>
+            <p class="jn-benefit__body">Neutral surfaces and restrained color create a quieter identity that fits your site better than mood-heavy backgrounds.</p>
+          </article>
+
+          <article class="jn-benefit">
+            <div class="jn-benefit__image">
+              <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=80" alt="Architecture and movement" loading="lazy">
+            </div>
+            <h3 class="jn-benefit__title">Better portfolio proof</h3>
+            <p class="jn-benefit__body">Images can support the narrative without turning the page into a collage of unrelated aesthetic gestures.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOUNDATION GRID -->
+    <section class="jn-section" id="foundation-grid">
+      <div class="jn-shell">
+        <div class="jn-section__line"></div>
+
+        <div class="jn-discover">
+          <h2 class="jn-discover__title">Discover the foundation</h2>
+
+          <div class="jn-discover__grid">
+            <article class="jn-foundation-card">
+              <div class="jn-foundation-card__media jn-foundation-card__media--tall">
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80" alt="Color and material study" loading="lazy">
+              </div>
+              <h3 class="jn-foundation-card__title">Colour direction</h3>
+              <p class="jn-foundation-card__body">Warm neutral surfaces, soft grays, dark text, and only small moments of deep forest accent.</p>
+            </article>
+
+            <article class="jn-foundation-card">
+              <div class="jn-foundation-card__media">
+                <img src="https://images.unsplash.com/photo-1516321310764-8d6b0d9d08df?auto=format&fit=crop&w=1200&q=80" alt="Imagery direction" loading="lazy">
+              </div>
+              <h3 class="jn-foundation-card__title">Imagery</h3>
+              <p class="jn-foundation-card__body">Real process, real tools, close crops, and quiet atmosphere — never generic stock mood for its own sake.</p>
+            </article>
+
+            <article class="jn-foundation-card">
+              <div class="jn-foundation-card__media">
+                <img src="https://images.unsplash.com/photo-1517502474097-f9b30659dadb?auto=format&fit=crop&w=1200&q=80" alt="Brand system codes" loading="lazy">
+              </div>
+              <h3 class="jn-foundation-card__title">Brand codes</h3>
+              <p class="jn-foundation-card__body">Oversized headlines, spare structure, and enough empty space to make the system feel intentional.</p>
+            </article>
+
+            <article class="jn-foundation-card">
+              <div class="jn-foundation-card__media jn-foundation-card__media--dark">
+                <div class="jn-specimen">
+                  <div class="jn-specimen__frame">
+                    <span class="jn-specimen__name">jnuru.studio</span>
+                    <span class="jn-specimen__sub">Est. ongoing</span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="jn-foundation-card__title">Grid logic</h3>
+              <p class="jn-foundation-card__body">The page can feel expressive, but the underlying grid must stay rigid and repeatable.</p>
+            </article>
+
+            <article class="jn-foundation-card">
+              <div class="jn-foundation-card__media jn-foundation-card__media--cream">
+                <div class="jn-type-specimen">
+                  <p>Headlines</p>
+                  <h4>Calm</h4>
+                  <h5>forms</h5>
+                  <h4>built with</h4>
+                  <h4>reason.</h4>
+                </div>
+              </div>
+              <h3 class="jn-foundation-card__title">Typography</h3>
+              <p class="jn-foundation-card__body">Inter for scale and control. Libre Baskerville used only when it adds editorial tension, not nostalgia.</p>
+            </article>
+
+            <article class="jn-foundation-card">
+              <div class="jn-foundation-card__media jn-foundation-card__media--dark">
+                <div class="jn-wireframe">
+                  <div class="jn-wireframe__grid"></div>
+                </div>
+              </div>
+              <h3 class="jn-foundation-card__title">Layout frame</h3>
+              <p class="jn-foundation-card__body">Big hero, clean section blocks, and structured content rhythm underneath the emotional opening move.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="jn-section" id="closing">
+      <div class="jn-shell">
+        <div class="jn-section__line"></div>
+
+        <div class="jn-closing">
+          <p class="jn-kicker">NEXT MOVE</p>
+          <h2 class="jn-section-title">
+            The hero can create presence.
+            <span>The portfolio still has to prove the thinking.</span>
+          </h2>
+          <p class="jn-closing__body">
+            This direction works only if the homepage, project cards, and case pages continue the same logic: restraint, hierarchy, and proof over noise.
+          </p>
+
+          <a class="jn-button" href="../../index.html#work">Back to Work</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer jn-footer">
+      <div class="wrap footer__inner">
+        <p class="muted">© <span id="year"></span> jnuru.studio</p>
+        <p class="muted">brand study • editorial system</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="../../script.js" defer></script>
+</body>
+</html>
