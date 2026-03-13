@@ -5,38 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>jnuru.studio — Minimal Portfolio System</title>
 
-  <link rel="stylesheet" href="../../styles.css" />
- <link rel="stylesheet" href="minimal-portfolio.css" />
+  <link rel="stylesheet" href="minimal-portfolio.css" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 
 <body class="jn-system-page">
-  <header class="jn-hero-header">
-    <div class="jn-shell">
-      <div class="jn-hero-header__bar">
-        <div class="jn-hero-header__left">
-          <a href="../../index.html">jnuru.studio</a>
-          <a href="../../index.html#work">Work</a>
-          <a href="../../index.html#philosophy">Philosophy</a>
-        </div>
+  <header class="jn-site-header" id="siteHeader">
+    <div class="jn-site-header__inner">
+      <div class="jn-site-header__left">
+        <a class="jn-site-header__brand" href="../../index.html">jnuru.studio</a>
+        <p class="jn-site-header__meta">systems • form • reason</p>
+      </div>
 
-        <div class="jn-hero-header__center">
-          <p>© 2026 jnuru.studio</p>
-          <a href="../../index.html#contact">Contact</a>
-          <a href="../../index.html#work">Selected Work</a>
-        </div>
+      <nav class="jn-site-header__nav" aria-label="Primary">
+        <a href="../../index.html#work">Work</a>
+        <a href="../../index.html#philosophy">Philosophy</a>
+        <a href="../../index.html#about">About</a>
+        <a href="../../index.html#contact">Contact</a>
+      </nav>
 
-        <div class="jn-hero-header__right">
-          <p>Calm systems for design and development.</p>
-        </div>
+      <div class="jn-site-header__right">
+        <button class="jn-site-header__toggle" type="button" aria-label="Toggle theme"></button>
       </div>
     </div>
   </header>
 
   <main class="jn-main">
-    <!-- HERO -->
     <section class="jn-hero">
       <div class="jn-shell">
         <div class="jn-hero__inner">
@@ -71,7 +68,6 @@
       </div>
     </section>
 
-    <!-- STATEMENT -->
     <section class="jn-statement">
       <div class="jn-shell">
         <div class="jn-statement__grid">
@@ -86,7 +82,6 @@
       </div>
     </section>
 
-    <!-- WHY THIS DIRECTION -->
     <section class="jn-section jn-section--centered" id="why">
       <div class="jn-shell">
         <div class="jn-section__line"></div>
@@ -103,7 +98,6 @@
       </div>
     </section>
 
-    <!-- BENEFITS / PRINCIPLES -->
     <section class="jn-section" id="principles">
       <div class="jn-shell">
         <div class="jn-section__line"></div>
@@ -151,7 +145,6 @@
       </div>
     </section>
 
-    <!-- FOUNDATION GRID -->
     <section class="jn-section" id="foundation-grid">
       <div class="jn-shell">
         <div class="jn-section__line"></div>
@@ -225,7 +218,6 @@
       </div>
     </section>
 
-    <!-- CLOSING -->
     <section class="jn-section" id="closing">
       <div class="jn-shell">
         <div class="jn-section__line"></div>
@@ -245,14 +237,26 @@
       </div>
     </section>
 
-    <footer class="footer jn-footer">
-      <div class="wrap footer__inner">
-        <p class="muted">© <span id="year"></span> jnuru.studio</p>
-        <p class="muted">brand study • editorial system</p>
+    <footer class="jn-footer">
+      <div class="jn-footer__inner">
+        <p>© <span id="year"></span> jnuru.studio</p>
+        <p>brand study • editorial system</p>
       </div>
     </footer>
   </main>
 
-  <script src="../../script.js" defer></script>
+  <script>
+    const siteHeader = document.getElementById("siteHeader");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 20) {
+        siteHeader.classList.add("is-scrolled");
+      } else {
+        siteHeader.classList.remove("is-scrolled");
+      }
+    });
+
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
