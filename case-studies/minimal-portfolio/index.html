@@ -6,232 +6,116 @@
   <title>Minimal Portfolio System | jnuru.studio</title>
 
   <link rel="stylesheet" href="../../styles.css" />
-  <link rel="stylesheet" href="minimal-portfolio-doc.css" />
+  <link rel="stylesheet" href="minimal-portfolio-poster.css" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 
-<body class="doc-page">
-  <header class="site-header doc-header">
-    <div class="wrap doc-wrap">
-      <div class="topbar">
-        <div class="brand">
-          <a class="brand__name" href="../../index.html">jnuru.studio</a>
-          <p class="brand__meta">systems • form • reason</p>
-        </div>
-
-        <nav class="nav">
+<body class="poster-page">
+  <header class="site-header poster-header">
+    <div class="wrap poster-wrap">
+      <div class="poster-topbar">
+        <div class="poster-util poster-util--left">
+          <a href="../../index.html">jnuru.studio</a>
           <a href="../../index.html#work">Work</a>
           <a href="../../index.html#philosophy">Philosophy</a>
-          <a href="../../index.html#contact">Contact</a>
-          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
-            <span aria-hidden="true">◐</span>
-          </button>
-        </nav>
+        </div>
+
+        <div class="poster-util poster-util--right">
+          <p>systems • form • reason</p>
+          <p>2026</p>
+        </div>
       </div>
     </div>
   </header>
 
-  <main class="doc-main">
+  <main class="poster-main">
     <!-- HERO -->
-    <section class="doc-hero">
-      <div class="wrap doc-wrap">
-        <p class="doc-kicker">SYSTEM STUDY</p>
+    <section class="poster-hero">
+      <div class="poster-hero__bg">
+        <img
+          src="https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?auto=format&fit=crop&w=2200&q=80"
+          alt="Soft atmospheric sky"
+          loading="eager"
+        />
+      </div>
 
-        <div class="doc-hero__grid">
-          <div class="doc-hero__main">
-            <h1 class="doc-title">Minimal portfolio system.</h1>
-            <p class="doc-lead">
-              A calm, editorial framework for presenting design and development work with structure, restraint, and clarity.
-            </p>
-          </div>
+      <div class="wrap poster-wrap poster-hero__inner">
+        <div class="poster-hero__meta poster-hero__meta--left">
+          <p>Minimal portfolio system</p>
+          <p>editorial restraint for design + development</p>
+        </div>
 
-          <div class="doc-hero__meta">
-            <p class="doc-meta-label">Intent</p>
-            <p class="doc-meta-copy">
-              This page documents how jnuru.studio should feel: minimal, system-led, quiet, and human.
-            </p>
+        <div class="poster-hero__meta poster-hero__meta--right">
+          <p>A calm, oversized brand-led study for how jnuru.studio should feel.</p>
+        </div>
+
+        <div class="poster-hero__word" aria-hidden="true">jnuru</div>
+
+        <div class="poster-hero__bottom">
+          <div class="poster-block"></div>
+
+          <div class="poster-hero__cta">
+            <a class="poster-link" href="#overview">Enter system</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- HERO IMAGE -->
-    <section class="doc-proof">
-      <div class="wrap doc-wrap">
-        <figure class="doc-proof__figure">
-          <img
-            src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1800&q=80"
-            alt="Desk, materials, and calm working environment"
-            loading="lazy"
-          />
-          <figcaption>Proof image — process, structure, restraint.</figcaption>
-        </figure>
-      </div>
-    </section>
+    <!-- INTRO -->
+    <section class="poster-intro" id="overview">
+      <div class="wrap poster-wrap">
+        <div class="poster-intro__grid">
+          <div class="poster-intro__main">
+            <p class="poster-kicker">OVERVIEW</p>
+            <h1 class="poster-title">A portfolio should feel authored before it feels optimized.</h1>
+            <p class="poster-body poster-body--lead">
+              This page explores a calmer direction for jnuru.studio — one where scale, restraint, and structure carry the brand more than decorative UI moves.
+            </p>
+          </div>
 
-    <!-- INDEX -->
-    <section class="doc-index" id="sections">
-      <div class="wrap doc-wrap">
-        <div class="doc-index__head">
-          <h2 class="doc-index__title">Sections</h2>
-          <p class="doc-index__note">A small documentation page, not a showcase layout.</p>
-        </div>
-
-        <div class="doc-index__grid">
-          <a class="doc-index-card" href="#foundation">
-            <span class="doc-index-card__num">01</span>
-            <span class="doc-index-card__title">Foundation</span>
-            <span class="doc-index-card__sub">tone, restraint, and intent</span>
-          </a>
-
-          <a class="doc-index-card" href="#structure">
-            <span class="doc-index-card__num">02</span>
-            <span class="doc-index-card__title">Structure</span>
-            <span class="doc-index-card__sub">document rhythm and layout</span>
-          </a>
-
-          <a class="doc-index-card" href="#imagery">
-            <span class="doc-index-card__num">03</span>
-            <span class="doc-index-card__title">Imagery</span>
-            <span class="doc-index-card__sub">proof, not decoration</span>
-          </a>
-
-          <a class="doc-index-card" href="#principles">
-            <span class="doc-index-card__num">04</span>
-            <span class="doc-index-card__title">Principles</span>
-            <span class="doc-index-card__sub">rules that protect the system</span>
-          </a>
+          <aside class="poster-intro__aside">
+            <p class="poster-aside__label">Intent</p>
+            <p class="poster-aside__body">
+              large type<br />
+              quiet atmosphere<br />
+              editorial framing<br />
+              systems underneath
+            </p>
+          </aside>
         </div>
       </div>
     </section>
 
     <!-- FOUNDATION -->
-    <section class="doc-section" id="foundation">
-      <div class="wrap doc-wrap">
-        <div class="doc-section__line"></div>
+    <section class="poster-section" id="foundation">
+      <div class="wrap poster-wrap">
+        <div class="poster-section__line"></div>
 
-        <div class="doc-section__grid">
-          <div class="doc-section__main">
-            <p class="doc-kicker">FOUNDATION</p>
-            <h2 class="doc-section__title">Design before decoration.</h2>
-            <p class="doc-body">
-              The system should feel structured before it feels styled. Typography carries hierarchy, spacing creates rhythm, and color stays secondary.
+        <div class="poster-section__grid">
+          <div class="poster-section__main">
+            <p class="poster-kicker">FOUNDATION</p>
+            <h2 class="poster-section__title">The page leads with presence, then earns trust with structure.</h2>
+            <p class="poster-body">
+              The hero should feel like a campaign poster. After that, the page shifts into a disciplined editorial system: explanation, principle, example, and proof.
             </p>
 
-            <ul class="doc-list">
-              <li>Type leads the page.</li>
-              <li>Spacing does the emotional work.</li>
-              <li>Color supports, never dominates.</li>
+            <ul class="poster-list">
+              <li>Hero = identity and atmosphere.</li>
+              <li>Body = clarity and repeatable structure.</li>
+              <li>Accent = rare, not thematic.</li>
             </ul>
           </div>
 
-          <aside class="doc-section__aside">
-            <p class="doc-aside__label">Brand voice</p>
-            <p class="doc-aside__body">
-              calm • precise • human<br />
-              structure before styling<br />
-              proof in the work, not the pitch
-            </p>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <!-- STRUCTURE -->
-    <section class="doc-section" id="structure">
-      <div class="wrap doc-wrap">
-        <div class="doc-section__line"></div>
-
-        <div class="doc-section__grid">
-          <div class="doc-section__main">
-            <p class="doc-kicker">STRUCTURE</p>
-            <h2 class="doc-section__title">A document, not a landing page.</h2>
-            <p class="doc-body">
-              The page should read like a guideline. Each section repeats a clear pattern: title, explanation, and supporting context. That repetition creates trust.
-            </p>
-
-            <div class="doc-rule-grid">
-              <article class="doc-rule">
-                <p class="doc-rule__label">Rule</p>
-                <h3 class="doc-rule__title">Use a stable reading column.</h3>
-                <p class="doc-rule__body">
-                  Main content lives on the left. Supporting context sits on the right.
-                </p>
-              </article>
-
-              <article class="doc-rule doc-rule--feature">
-                <p class="doc-rule__label">Anchor</p>
-                <h3 class="doc-rule__title">One dominant move per section.</h3>
-                <p class="doc-rule__body">
-                  A strong title, a proof image, or a key rule. Not three things competing at once.
-                </p>
-              </article>
-
-              <article class="doc-rule">
-                <p class="doc-rule__label">Rule</p>
-                <h3 class="doc-rule__title">Section rhythm stays predictable.</h3>
-                <p class="doc-rule__body">
-                  Consistency makes the page feel authored and system-driven.
-                </p>
-              </article>
-            </div>
-          </div>
-
-          <aside class="doc-section__aside">
-            <p class="doc-aside__label">Layout pattern</p>
-            <p class="doc-aside__body">
-              kicker<br />
-              title<br />
-              explanation<br />
-              supporting note
-            </p>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <!-- IMAGERY -->
-    <section class="doc-section" id="imagery">
-      <div class="wrap doc-wrap">
-        <div class="doc-section__line"></div>
-
-        <div class="doc-section__grid">
-          <div class="doc-section__main">
-            <p class="doc-kicker">IMAGERY</p>
-            <h2 class="doc-section__title">Images should prove your way of working.</h2>
-            <p class="doc-body">
-              Use imagery to reveal process, materials, and authorship. A portfolio image should explain how you think, not just create mood.
-            </p>
-
-            <div class="doc-example-grid">
-              <article class="doc-example">
-                <p class="doc-example__label">Good</p>
-                <p class="doc-example__body">A real workspace with actual project work visible.</p>
-              </article>
-
-              <article class="doc-example">
-                <p class="doc-example__label">Good</p>
-                <p class="doc-example__body">A close crop of layout, type, code, or process material.</p>
-              </article>
-
-              <article class="doc-example">
-                <p class="doc-example__label">Avoid</p>
-                <p class="doc-example__body">Generic moodboard shots that say nothing about the work.</p>
-              </article>
-            </div>
-          </div>
-
-          <aside class="doc-section__aside">
-            <p class="doc-aside__label">Image criteria</p>
-            <p class="doc-aside__body">
-              real<br />
-              specific<br />
+          <aside class="poster-section__aside">
+            <p class="poster-aside__label">Tone</p>
+            <p class="poster-aside__body">
               calm<br />
-              process-led<br />
-              non-generic
+              premium<br />
+              minimal<br />
+              deliberate
             </p>
           </aside>
         </div>
@@ -239,51 +123,114 @@
     </section>
 
     <!-- PRINCIPLES -->
-    <section class="doc-section" id="principles">
-      <div class="wrap doc-wrap">
-        <div class="doc-section__line"></div>
+    <section class="poster-section" id="principles">
+      <div class="wrap poster-wrap">
+        <div class="poster-section__line"></div>
 
-        <div class="doc-section__stack">
-          <p class="doc-kicker">PRINCIPLES</p>
-          <h2 class="doc-section__title">Rules that protect the system.</h2>
-          <p class="doc-body doc-body--wide">
-            The page should stay quiet, neutral, and disciplined. Once the system is working, visual personality can emerge from restraint instead of effects.
+        <div class="poster-section__stack">
+          <p class="poster-kicker">PRINCIPLES</p>
+          <h2 class="poster-section__title">Rules that keep the system from turning into decoration.</h2>
+          <p class="poster-body poster-body--wide">
+            Once the hero sets the tone, everything else should become cleaner, quieter, and more exact. That contrast is what makes the page feel composed instead of merely styled.
           </p>
 
-          <div class="doc-principles-grid">
-            <article class="doc-principle">
-              <h3 class="doc-principle__title">Every section must earn its place.</h3>
-              <p class="doc-principle__body">
-                If a block adds no clarity, no proof, or no rhythm, remove it.
+          <div class="poster-card-grid">
+            <article class="poster-card poster-card--feature">
+              <p class="poster-card__label">Rule</p>
+              <h3 class="poster-card__title">One oversized move is enough.</h3>
+              <p class="poster-card__body">
+                The hero can be dramatic. The rest of the page should not compete with it.
               </p>
             </article>
 
-            <article class="doc-principle">
-              <h3 class="doc-principle__title">Motion comes from structure.</h3>
-              <p class="doc-principle__body">
-                Use layout rhythm and spacing before reaching for animation.
+            <article class="poster-card">
+              <p class="poster-card__label">Rule</p>
+              <h3 class="poster-card__title">Atmosphere needs restraint.</h3>
+              <p class="poster-card__body">
+                Use pale imagery, soft contrast, and neutral surfaces instead of loud color or effects.
               </p>
             </article>
 
-            <article class="doc-principle">
-              <h3 class="doc-principle__title">Typography stays disciplined.</h3>
-              <p class="doc-principle__body">
-                Variation should come from hierarchy and composition, not novelty.
+            <article class="poster-card">
+              <p class="poster-card__label">Rule</p>
+              <h3 class="poster-card__title">The body should read like a document.</h3>
+              <p class="poster-card__body">
+                Stable sections, consistent spacing, and clear reading columns build authority.
               </p>
             </article>
-          </div>
-
-          <div class="doc-actions">
-            <a class="doc-button" href="../../index.html#work">Back to Work</a>
           </div>
         </div>
       </div>
     </section>
 
-    <footer class="footer doc-footer">
-      <div class="wrap footer__inner doc-wrap">
+    <!-- IMAGE LANGUAGE -->
+    <section class="poster-section" id="imagery">
+      <div class="wrap poster-wrap">
+        <div class="poster-section__line"></div>
+
+        <div class="poster-section__grid">
+          <div class="poster-section__main">
+            <p class="poster-kicker">IMAGE LANGUAGE</p>
+            <h2 class="poster-section__title">Images should feel like evidence, not stock decoration.</h2>
+            <p class="poster-body">
+              The best images for jnuru.studio will likely be soft, neutral, and real: workspace details, process, close crops of work, materials, and light.
+            </p>
+
+            <div class="poster-example-grid">
+              <article class="poster-example">
+                <p class="poster-example__label">Good</p>
+                <p class="poster-example__body">A real desk with active design or code visible.</p>
+              </article>
+
+              <article class="poster-example">
+                <p class="poster-example__label">Good</p>
+                <p class="poster-example__body">A close crop of typography, layout, or process artifacts.</p>
+              </article>
+
+              <article class="poster-example">
+                <p class="poster-example__label">Avoid</p>
+                <p class="poster-example__body">Generic “creative studio” shots with no connection to the work.</p>
+              </article>
+            </div>
+          </div>
+
+          <aside class="poster-section__aside">
+            <p class="poster-aside__label">Filter</p>
+            <p class="poster-aside__body">
+              pale<br />
+              soft<br />
+              real<br />
+              tactile<br />
+              specific
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEXT MOVE -->
+    <section class="poster-section" id="next">
+      <div class="wrap poster-wrap">
+        <div class="poster-section__line"></div>
+
+        <div class="poster-section__stack">
+          <p class="poster-kicker">NEXT MOVE</p>
+          <h2 class="poster-section__title">The hero can carry the emotion. The portfolio must still carry the proof.</h2>
+          <p class="poster-body poster-body--wide">
+            This direction works only if the rest of the site stays disciplined. Big type and atmosphere can open the door, but the project system, case pages, and writing must still justify the brand.
+          </p>
+
+          <div class="poster-actions">
+            <a class="poster-button" href="../../index.html#work">Back to Work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer poster-footer">
+      <div class="wrap footer__inner poster-wrap">
         <p class="muted">© <span id="year"></span> jnuru.studio</p>
-        <p class="muted">Minimal system • structured restraint</p>
+        <p class="muted">poster hero • editorial system</p>
       </div>
     </footer>
   </main>
