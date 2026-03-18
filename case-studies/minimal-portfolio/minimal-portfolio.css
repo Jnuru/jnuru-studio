@@ -770,3 +770,89 @@ img{
     font-size: clamp(2.4rem, 11vw, 3.6rem);
   }
 }
+
+
+/* =========================
+NAV FIX ONLY
+========================= */
+
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  background: rgba(236,236,231,0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.wrap{
+  width: min(calc(100% - 80px), 1400px);
+  margin: 0 auto;
+}
+
+.topbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 90px;
+}
+
+/* LEFT (brand) */
+.brand{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.brand__name{
+  font-family: "Libre Baskerville", serif;
+  font-size: 26px;
+  color: #1a1a18;
+  text-decoration: none;
+}
+
+.brand__meta{
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #8a8a82;
+  margin: 0;
+}
+
+/* RIGHT (nav) */
+.nav{
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+/* links */
+.nav a{
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #5a5a55;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav a:hover{
+  color: #1a1a18;
+}
+
+/* toggle button */
+.theme-toggle{
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: 6px;
+}
