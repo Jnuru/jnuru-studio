@@ -39,7 +39,11 @@ body{
   line-height:1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 180ms ease, color 180ms ease;
+  transition:
+    background-color 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
 }
 
 .wrap{
@@ -65,10 +69,10 @@ body{
   -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(42,42,40,0.10);
   transition:
-    background-color 180ms ease,
-    border-color 180ms ease,
-    backdrop-filter 180ms ease,
-    -webkit-backdrop-filter 180ms ease;
+    background-color 220ms ease,
+    border-color 220ms ease,
+    backdrop-filter 220ms ease,
+    -webkit-backdrop-filter 220ms ease;
 }
 
 .site-header.is-scrolled{
@@ -134,7 +138,11 @@ body{
   justify-content:center;
   padding:0;
   position: relative;
-  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .theme-toggle span{
@@ -802,30 +810,149 @@ THEME — DARK MODE
 ========================= */
 
 body.dark{
-  --bg:#121212;
+  --bg:#0b0b0a;
   --fg:#f1f1ee;
   --muted:#b5b3ad;
   --divider:#2b2b2b;
 
-  --jn-bg: #11110f;
+  --jn-bg: #0b0b0a;
   --jn-text: #f2f2ee;
   --jn-muted: #a5a59c;
-  --jn-soft: #7a7a72;
+  --jn-soft: #74726b;
   --jn-line: rgba(255,255,255,0.08);
   --jn-line-strong: rgba(255,255,255,0.14);
-  --jn-surface-strong: rgba(28,28,26,0.95);
+  --jn-surface-strong: rgba(24,24,22,0.96);
   --jn-accent-line: rgba(255,255,255,0.18);
+  --jn-shadow-card: 0 18px 48px rgba(0,0,0,0.42);
 }
 
 body.dark .site-header{
-  background: rgba(18,18,18,0.62);
-  border-bottom-color: rgba(255,255,255,0.10);
+  position: sticky;
+  background: linear-gradient(
+    to bottom,
+    #0c0c0b 0%,
+    #0a0a09 100%
+  );
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+body.dark .site-header::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120% 100% at 50% 0%,
+    rgba(255,255,255,0.04),
+    rgba(0,0,0,0)
+  );
+  pointer-events: none;
+}
+
+body.dark .site-header.is-scrolled{
+  background: linear-gradient(
+    to bottom,
+    rgba(12,12,11,0.96) 0%,
+    rgba(10,10,9,0.96) 100%
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+body.dark .brand__name{
+  color: rgba(255,255,255,0.92);
+}
+
+body.dark .brand__meta{
+  color: rgba(255,255,255,0.55);
+}
+
+body.dark .nav a{
+  color: rgba(255,255,255,0.65);
+}
+
+body.dark .nav a:hover{
+  color: rgba(255,255,255,0.95);
+}
+
+body.dark .theme-toggle{
+  border-color: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.02);
 }
 
 body.dark .theme-toggle span{
-  color: var(--fg);
+  color: rgba(255,255,255,0.85);
+}
+
+body.dark .jn-benefit{
+  border-left-color: rgba(255,255,255,0.10);
+}
+
+body.dark .jn-benefit__image,
+body.dark .jn-floating,
+body.dark .jn-foundation-card__media{
+  background: #1a1a18;
+}
+
+body.dark .jn-foundation-card__media--dark{
+  background: #0f0f0e;
+}
+
+body.dark .jn-foundation-card__media--cream{
+  background: #161615;
+}
+
+body.dark .jn-specimen{
+  background:
+    linear-gradient(to right, rgba(98, 112, 131, 0.22) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(98, 112, 131, 0.22) 1px, transparent 1px),
+    #181816;
+  border-color: rgba(255,255,255,0.10);
+}
+
+body.dark .jn-specimen__name{
+  color: rgba(255,255,255,0.92);
+}
+
+body.dark .jn-specimen__sub{
+  color: rgba(255,255,255,0.58);
+}
+
+body.dark .jn-type-specimen p{
+  color: rgba(255,255,255,0.55);
+}
+
+body.dark .jn-type-specimen h4,
+body.dark .jn-type-specimen h5{
+  color: rgba(255,255,255,0.92);
+}
+
+body.dark .jn-wireframe{
+  background: #141413;
+  border-color: rgba(188,205,224,0.22);
+}
+
+body.dark .jn-wireframe::before,
+body.dark .jn-wireframe::after{
+  border-color: rgba(188,205,224,0.22);
+}
+
+body.dark .jn-wireframe__grid{
+  background:
+    linear-gradient(to right, rgba(166, 189, 219, 0.14) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(166, 189, 219, 0.14) 1px, transparent 1px);
+  background-size: 20% 20%;
+}
+
+body.dark .jn-button{
+  background: rgba(255,255,255,0.04);
+  color: var(--jn-text);
+  border-color: rgba(255,255,255,0.14);
 }
 
 body.dark .jn-button:hover{
   background: rgba(255,255,255,0.08);
+}
+
+body.dark .jn-footer{
+  border-top-color: rgba(255,255,255,0.08);
 }
