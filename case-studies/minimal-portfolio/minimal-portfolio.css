@@ -809,7 +809,7 @@ RESPONSIVE
 THEME — DARK MODE
 ========================= */
 
-body.dark{
+html.dark{
   --bg:#0b0b0a;
   --fg:#f1f1ee;
   --muted:#b5b3ad;
@@ -826,7 +826,7 @@ body.dark{
   --jn-shadow-card: 0 18px 48px rgba(0,0,0,0.42);
 }
 
-body.dark .site-header{
+html.dark .site-header{
   position: sticky;
   background: linear-gradient(
     to bottom,
@@ -836,7 +836,7 @@ body.dark .site-header{
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-body.dark .site-header::after{
+html.dark .site-header::after{
   content: "";
   position: absolute;
   inset: 0;
@@ -848,7 +848,7 @@ body.dark .site-header::after{
   pointer-events: none;
 }
 
-body.dark .site-header.is-scrolled{
+html.dark .site-header.is-scrolled{
   background: linear-gradient(
     to bottom,
     rgba(12,12,11,0.96) 0%,
@@ -858,50 +858,50 @@ body.dark .site-header.is-scrolled{
   -webkit-backdrop-filter: blur(10px);
 }
 
-body.dark .brand__name{
+html.dark .brand__name{
   color: rgba(255,255,255,0.92);
 }
 
-body.dark .brand__meta{
+html.dark .brand__meta{
   color: rgba(255,255,255,0.55);
 }
 
-body.dark .nav a{
+html.dark .nav a{
   color: rgba(255,255,255,0.65);
 }
 
-body.dark .nav a:hover{
+html.dark .nav a:hover{
   color: rgba(255,255,255,0.95);
 }
 
-body.dark .theme-toggle{
+html.dark .theme-toggle{
   border-color: rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.02);
 }
 
-body.dark .theme-toggle span{
+html.dark .theme-toggle span{
   color: rgba(255,255,255,0.85);
 }
 
-body.dark .jn-benefit{
+html.dark .jn-benefit{
   border-left-color: rgba(255,255,255,0.10);
 }
 
-body.dark .jn-benefit__image,
-body.dark .jn-floating,
-body.dark .jn-foundation-card__media{
+html.dark .jn-benefit__image,
+html.dark .jn-floating,
+html.dark .jn-foundation-card__media{
   background: #1a1a18;
 }
 
-body.dark .jn-foundation-card__media--dark{
+html.dark .jn-foundation-card__media--dark{
   background: #0f0f0e;
 }
 
-body.dark .jn-foundation-card__media--cream{
+html.dark .jn-foundation-card__media--cream{
   background: #161615;
 }
 
-body.dark .jn-specimen{
+html.dark .jn-specimen{
   background:
     linear-gradient(to right, rgba(98, 112, 131, 0.22) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(98, 112, 131, 0.22) 1px, transparent 1px),
@@ -909,50 +909,50 @@ body.dark .jn-specimen{
   border-color: rgba(255,255,255,0.10);
 }
 
-body.dark .jn-specimen__name{
+html.dark .jn-specimen__name{
   color: rgba(255,255,255,0.92);
 }
 
-body.dark .jn-specimen__sub{
+html.dark .jn-specimen__sub{
   color: rgba(255,255,255,0.58);
 }
 
-body.dark .jn-type-specimen p{
+html.dark .jn-type-specimen p{
   color: rgba(255,255,255,0.55);
 }
 
-body.dark .jn-type-specimen h4,
-body.dark .jn-type-specimen h5{
+html.dark .jn-type-specimen h4,
+html.dark .jn-type-specimen h5{
   color: rgba(255,255,255,0.92);
 }
 
-body.dark .jn-wireframe{
+html.dark .jn-wireframe{
   background: #141413;
   border-color: rgba(188,205,224,0.22);
 }
 
-body.dark .jn-wireframe::before,
-body.dark .jn-wireframe::after{
+html.dark .jn-wireframe::before,
+html.dark .jn-wireframe::after{
   border-color: rgba(188,205,224,0.22);
 }
 
-body.dark .jn-wireframe__grid{
+html.dark .jn-wireframe__grid{
   background:
     linear-gradient(to right, rgba(166, 189, 219, 0.14) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(166, 189, 219, 0.14) 1px, transparent 1px);
   background-size: 20% 20%;
 }
 
-body.dark .jn-button{
+html.dark .jn-button{
   background: rgba(255,255,255,0.04);
   color: var(--jn-text);
   border-color: rgba(255,255,255,0.14);
 }
 
-body.dark .jn-button:hover{
+html.dark .jn-button:hover{
   background: rgba(255,255,255,0.08);
 }
 
-body.dark .jn-footer{
+html.dark .jn-footer{
   border-top-color: rgba(255,255,255,0.08);
 }
