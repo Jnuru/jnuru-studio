@@ -1,37 +1,21 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>jnuru.studio — Minimal Portfolio System</title>
-
-  <link rel="stylesheet" href="minimal-portfolio.css" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-</head>
-
-<body class="jn-system-page">
-  <header class="jn-site-header" id="siteHeader">
-    <div class="jn-site-header__inner">
-      <div class="jn-site-header__left">
-        <a class="jn-site-header__brand" href="../../index.html">jnuru.studio</a>
-        <p class="jn-site-header__meta">systems • form • reason</p>
+<header class="site-header" id="siteHeader">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <a class="brand__name" href="../../index.html">jnuru.studio</a>
+        <p class="brand__meta">systems • form • reason</p>
       </div>
 
-      <nav class="jn-site-header__nav" aria-label="Primary">
+      <nav class="nav" aria-label="Primary">
         <a href="../../index.html#work">Work</a>
         <a href="../../index.html#philosophy">Philosophy</a>
         <a href="../../index.html#about">About</a>
         <a href="../../index.html#contact">Contact</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle theme"></button>
       </nav>
-
-      <div class="jn-site-header__right">
-        <button class="jn-site-header__toggle" type="button" aria-label="Toggle theme"></button>
-      </div>
     </div>
-  </header>
+  </div>
+</header>
 
   <main class="jn-main">
     <section class="jn-hero">
