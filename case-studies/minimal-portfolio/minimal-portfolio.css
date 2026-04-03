@@ -124,7 +124,6 @@ body{
   color: var(--fg);
 }
 
-/* keep HTML icon only — no pseudo-element icon */
 .theme-toggle{
   border: 1px solid var(--divider);
   background: transparent;
@@ -171,6 +170,30 @@ HERO
 
 .jn-hero__inner{
   position: relative;
+  overflow: hidden;
+}
+
+/* ---- Hero background image ---- */
+.jn-hero__bg{
+  position: absolute;
+  inset: -40px -60px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.jn-hero__bg img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  opacity: 0.13;
+  filter: saturate(0.7);
+}
+
+/* push all hero content above the bg */
+.jn-hero__inner > *:not(.jn-hero__bg){
+  position: relative;
+  z-index: 1;
 }
 
 .jn-kicker{
@@ -739,6 +762,10 @@ RESPONSIVE
     justify-content: center;
     padding: 18px 0;
   }
+
+  .jn-hero__bg{
+    inset: -20px -16px;
+  }
 }
 
 @media (max-width: 640px){
@@ -824,6 +851,11 @@ html.dark{
   --jn-surface-strong: rgba(24,24,22,0.96);
   --jn-accent-line: rgba(255,255,255,0.18);
   --jn-shadow-card: 0 18px 48px rgba(0,0,0,0.42);
+}
+
+html.dark .jn-hero__bg img{
+  opacity: 0.07;
+  filter: saturate(0.4);
 }
 
 html.dark .site-header{
