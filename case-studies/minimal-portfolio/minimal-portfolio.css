@@ -170,24 +170,25 @@ HERO
 
 .jn-hero__inner{
   position: relative;
-  overflow: hidden;
 }
 
 /* ---- Hero background image ---- */
 .jn-hero__bg{
   position: absolute;
-  inset: -40px -60px;
+  inset: 0;
   z-index: 0;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .jn-hero__bg img{
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
-  opacity: 0.13;
-  filter: saturate(0.7);
+  object-position: center 20%;
+  opacity: 0.18;
+  filter: saturate(0.6) brightness(1.05);
+  display: block;
 }
 
 /* push all hero content above the bg */
@@ -764,7 +765,7 @@ RESPONSIVE
   }
 
   .jn-hero__bg{
-    inset: -20px -16px;
+    inset: 0;
   }
 }
 
