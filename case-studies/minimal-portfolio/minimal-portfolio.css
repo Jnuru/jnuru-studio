@@ -188,13 +188,7 @@ HERO
   display: block;
 }
 
-/* Warm overlay so text reads cleanly */
-.jn-hero__bg::after{
-  content: "";
-  position: absolute;
-  inset: 0;
-  
-}
+
 
 /* Shell and inner sit above bg */
 .jn-hero .jn-shell{
