@@ -193,7 +193,7 @@ HERO
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(247, 244, 238, 0.52);
+  background: rgba(247, 244, 238, 0);
 }
 
 /* Shell and inner sit above bg */
