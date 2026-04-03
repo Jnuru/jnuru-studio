@@ -277,44 +277,6 @@
     </footer>
   </main>
 
-  <style>
-    /* =========================
-    HERO BACKGROUND IMAGE
-    ========================= */
-
-    .jn-hero__inner {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .jn-hero__bg {
-      position: absolute;
-      inset: -40px -60px;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .jn-hero__bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 30%;
-      opacity: 0.13;
-      filter: saturate(0.7);
-    }
-
-    /* push all hero content above the bg */
-    .jn-hero__inner > *:not(.jn-hero__bg) {
-      position: relative;
-      z-index: 1;
-    }
-
-    html.dark .jn-hero__bg img {
-      opacity: 0.07;
-      filter: saturate(0.4);
-    }
-  </style>
-
   <script src="../../script.js" defer></script>
 </body>
 </html>
