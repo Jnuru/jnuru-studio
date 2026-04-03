@@ -165,36 +165,47 @@ HERO
 ========================= */
 
 .jn-hero{
-  padding: 34px 0 88px;
-}
-
-.jn-hero__inner{
+  padding: 0;
   position: relative;
+  overflow: hidden;
+  min-height: 92vh;
+  display: flex;
+  align-items: stretch;
 }
 
-/* ---- Hero background image ---- */
+/* Full-bleed background image */
 .jn-hero__bg{
   position: absolute;
   inset: 0;
   z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
 }
 
 .jn-hero__bg img{
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%;
-  opacity: 0.18;
-  filter: saturate(0.6) brightness(1.05);
+  object-position: center 30%;
   display: block;
 }
 
-/* push all hero content above the bg */
-.jn-hero__inner > *:not(.jn-hero__bg){
+/* Warm overlay so text reads cleanly */
+.jn-hero__bg::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(247, 244, 238, 0.52);
+}
+
+/* Shell and inner sit above bg */
+.jn-hero .jn-shell{
   position: relative;
   z-index: 1;
+  padding-top: 52px;
+  padding-bottom: 88px;
+}
+
+.jn-hero__inner{
+  position: relative;
 }
 
 .jn-kicker{
@@ -764,9 +775,6 @@ RESPONSIVE
     padding: 18px 0;
   }
 
-  .jn-hero__bg{
-    inset: 0;
-  }
 }
 
 @media (max-width: 640px){
@@ -854,9 +862,8 @@ html.dark{
   --jn-shadow-card: 0 18px 48px rgba(0,0,0,0.42);
 }
 
-html.dark .jn-hero__bg img{
-  opacity: 0.07;
-  filter: saturate(0.4);
+html.dark .jn-hero__bg::after{
+  background: rgba(11, 11, 10, 0.55);
 }
 
 html.dark .site-header{
