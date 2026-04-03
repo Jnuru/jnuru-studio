@@ -44,6 +44,11 @@
     <section class="jn-hero">
       <div class="jn-shell">
         <div class="jn-hero__inner">
+
+          <!-- Hero background image -->
+          <div class="jn-hero__bg" aria-hidden="true">
+            <img src="https://res.cloudinary.com/drnccrw0a/image/upload/v1775250563/AdobeStock_1804171652_uqkkdu.jpg" alt="">
+          </div>
           <p class="jn-kicker">SYSTEM STUDY</p>
 
           <div class="jn-hero__headline">
@@ -270,6 +275,44 @@
       </div>
     </footer>
   </main>
+
+  <style>
+    /* =========================
+    HERO BACKGROUND IMAGE
+    ========================= */
+
+    .jn-hero__inner {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .jn-hero__bg {
+      position: absolute;
+      inset: -40px -60px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .jn-hero__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      opacity: 0.13;
+      filter: saturate(0.7);
+    }
+
+    /* push all hero content above the bg */
+    .jn-hero__inner > *:not(.jn-hero__bg) {
+      position: relative;
+      z-index: 1;
+    }
+
+    html.dark .jn-hero__bg img {
+      opacity: 0.07;
+      filter: saturate(0.4);
+    }
+  </style>
 
   <script src="../../script.js" defer></script>
 </body>
