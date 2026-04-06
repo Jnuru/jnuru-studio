@@ -193,7 +193,7 @@ HERO
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(247, 244, 238, 0);
+  background: rgba(20, 18, 14, 0.38);
 }
 
 /* Shell and inner sit above bg */
@@ -207,6 +207,23 @@ HERO
 .jn-hero__inner{
   position: relative;
 }
+/* Hero text colors — white over image */
+.jn-hero .jn-kicker{
+  color: rgba(255,255,255,0.65);
+}
+
+.jn-hero .jn-display__line--dark{
+  color: rgba(255,255,255,0.96);
+}
+
+.jn-hero .jn-display__line--soft{
+  color: rgba(255,255,255,0.55);
+}
+
+.jn-hero .jn-hero__sub{
+  color: rgba(255,255,255,0.80);
+}
+
 
 .jn-kicker{
   margin: 0 0 12px;
