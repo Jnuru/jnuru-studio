@@ -795,6 +795,53 @@ RESPONSIVE
   }
 }
 
+
+/* =========================
+CODE BLOCK — Brand codes card
+========================= */
+
+.jn-code-block{
+  width: 100%;
+  padding: 20px 22px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+}
+
+.jn-code-block p{
+  margin: 0;
+}
+
+.jn-code-block__gap{
+  margin-top: 10px !important;
+}
+
+.jn-code-block__comment{
+  color: #9e9b92;
+  margin-bottom: 8px !important;
+}
+
+.jn-code-block__prop{
+  color: #3f5445;
+}
+
+.jn-code-block__colon{
+  color: #9e9b92;
+}
+
+.jn-code-block__value{
+  color: #2A2A28;
+}
+
+.jn-code-block__string{
+  color: #7a5c3a;
+}
+
+.jn-code-block__semi{
+  color: #9e9b92;
+}
+
 /* =========================
 THEME — DARK MODE
 ========================= */
