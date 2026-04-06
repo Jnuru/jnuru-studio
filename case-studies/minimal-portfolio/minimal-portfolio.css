@@ -251,46 +251,17 @@ HERO
   color: var(--jn-text);
 }
 
-.jn-hero__cluster{
-  position: relative;
-  min-height: 360px;
-  margin-top: 48px;
-}
 
-.jn-floating{
-  position: absolute;
-  margin: 0;
-  overflow: hidden;
-  background: #ddd;
-  box-shadow: var(--jn-shadow-card);
-}
 
-.jn-floating img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 
-.jn-floating--one{
-  right: 255px;
-  top: 54px;
-  width: 180px;
-  height: 220px;
-}
 
-.jn-floating--two{
-  right: 70px;
-  top: 0;
-  width: 140px;
-  height: 110px;
-}
 
-.jn-floating--three{
-  right: -56px;
-  top: 136px;
-  width: 340px;
-  height: 240px;
-}
+
+
+
+
+
+
 
 /* =========================
 STATEMENT
@@ -690,13 +661,9 @@ RESPONSIVE
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .jn-floating--one{
-    right: 230px;
-  }
+  
 
-  .jn-floating--three{
-    right: 0;
-  }
+  
 }
 
 @media (max-width: 980px){
@@ -727,27 +694,13 @@ RESPONSIVE
     line-height: 0.96;
   }
 
-  .jn-hero__cluster{
-    min-height: 520px;
-  }
+  
 
-  .jn-floating--one{
-    left: 0;
-    right: auto;
-    top: 40px;
-  }
+  
 
-  .jn-floating--two{
-    right: 40px;
-    top: 0;
-  }
+  
 
-  .jn-floating--three{
-    right: 0;
-    top: 210px;
-    width: 280px;
-    height: 200px;
-  }
+  
 
   .jn-statement__grid{
     grid-template-columns: 1fr;
@@ -803,29 +756,13 @@ RESPONSIVE
     max-width: 28ch;
   }
 
-  .jn-hero__cluster{
-    min-height: 420px;
-    margin-top: 28px;
-  }
+  
 
-  .jn-floating--one{
-    width: 120px;
-    height: 150px;
-    top: 40px;
-  }
+  
 
-  .jn-floating--two{
-    width: 100px;
-    height: 80px;
-    right: 16px;
-  }
+  
 
-  .jn-floating--three{
-    width: 200px;
-    height: 140px;
-    top: 170px;
-    right: -8px;
-  }
+  
 
   .jn-statement__quote{
     font-size: clamp(2rem, 11vw, 3.2rem);
