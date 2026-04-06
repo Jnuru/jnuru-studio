@@ -1505,6 +1505,9 @@ body{
 .about-identity__image img{
   width:100%;
   height:auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
   border-radius:6px;
 }
 
@@ -1514,7 +1517,7 @@ body{
 
 .about-identity__content p{
   margin-top:14px;
-  color:var(--muted);
+  color:var(--fg);
   line-height:1.7;
 }
 
