@@ -141,6 +141,23 @@ body{
 
 .theme-toggle:hover{ color: var(--fg); }
 
+@media (max-width: 760px){
+  .topbar{
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav{
+    flex-wrap: wrap;
+    gap: 10px 14px;
+  }
+
+  .nav a{
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+  }
+}
+
 /* --------- HERO --------- */
 .hero{
   position: relative;
@@ -295,6 +312,74 @@ body{
 
 @media (max-width: 860px){
   .two-col{ grid-template-columns: 1fr; }
+}
+
+/* --------- Services --------- */
+.services__intro{
+  margin: 0 0 var(--s4);
+  max-width: 72ch;
+  color: var(--muted);
+  font-size: var(--body);
+}
+
+.service-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+  margin-top: var(--s4);
+}
+
+.service-card{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 100%;
+  padding: clamp(18px, 2vw, 24px);
+  border-radius: calc(var(--radius) + 2px);
+  border: 1px solid rgba(42,42,40,0.10);
+  background: rgba(255,255,255,0.18);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.06);
+}
+
+.service-card__kicker{
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(42,42,40,0.55);
+}
+
+.service-card__title{
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.08rem, 1rem + 0.45vw, 1.32rem);
+  line-height: 1.24;
+}
+
+.service-card__body{
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--small);
+}
+
+.service-card__list{
+  margin: auto 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+}
+
+.service-card__list li{
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 920px){
+  .service-grid{
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Callout */
@@ -885,6 +970,21 @@ body{
 
 .dark .project-card:hover .project-card__title{
   color: rgba(255,255,255,0.96);
+}
+
+.dark .service-card{
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.10);
+  box-shadow: 0 22px 70px rgba(0,0,0,0.38);
+}
+
+.dark .service-card__kicker{
+  color: rgba(255,255,255,0.60);
+}
+
+.dark .service-card__body,
+.dark .service-card__list li{
+  color: rgba(255,255,255,0.72);
 }
 
 .dark .editorial-cover__kicker,
