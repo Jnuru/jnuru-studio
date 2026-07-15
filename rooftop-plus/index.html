@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rooftop+</title>
+    <meta name="description" content="Rooftop+ — a model-page pipeline dashboard for a fictional auto dealer group. Portfolio demo with fictional data." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232563a9'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='18' fill='white'>R+</text></svg>" />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/workbench.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/wins.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  </head>
+  <body data-auth="signed_out" data-theme="system">
+  <div id="app-veil">
+    <div class="veil-logo">
+      <span class="veil-name">Rooftop</span><span class="veil-plus">+</span>
+    </div>
+    <div class="veil-dots">
+      <span class="veil-dot"></span>
+      <span class="veil-dot"></span>
+      <span class="veil-dot"></span>
+    </div>
+  </div>
+    <section id="authScreen" class="auth-screen" aria-label="Rooftop+ demo sign-in">
+      <!-- Auth shell — populated by configureInviteOnboarding() in events.js -->
+      <div class="auth-shell"></div>
+    </section>
+
+    <button id="navBackdrop" class="nav-backdrop" type="button" aria-label="Close navigation"></button>
+
+    <aside id="appSidebar" class="app-sidebar" aria-label="Workspace navigation">
+      <div class="sidebar-head">
+        <strong class="sidebar-logo">Rooftop<span class="sidebar-logo-plus">+</span></strong>
+        <button id="navCloseButton" class="nav-close-button" type="button" aria-label="Close navigation">Close</button>
+      </div>
+      <nav class="sidebar-nav">
+        <button class="sidebar-link is-active" type="button" data-workspace-view="my_work" data-mobile-label="Work">My Work</button>
+        <button class="sidebar-link" type="button" data-workspace-view="team_board" data-mobile-label="Team">Team Pipeline</button>
+        <button class="sidebar-link" type="button" data-workspace-view="wins" data-mobile-label="Wins">Wins</button>
+      </nav>
+      <div class="sidebar-controls">
+        <label class="sidebar-theme-control">
+          <span>Appearance</span>
+          <select id="settingsThemeSelect">
+            <option value="system">System</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </label>
+        <button id="signOutButton" class="sidebar-switch-role" type="button">Switch role</button>
+      </div>
+      <span class="sidebar-footer">Redwood Motors Group · Demo</span>
+    </aside>
+
+    <header class="app-header">
+      <div>
+        <button id="mobileMenuButton" class="mobile-menu-button" type="button" aria-controls="appSidebar" aria-expanded="false">Menu</button>
+        <h1 id="pageTitle">Builder Workspace</h1>
+        <p id="userContext" class="header-context">Builder workspace</p>
+      </div>
+      <div class="header-actions">
+        <input id="searchInput" class="header-search" type="search" placeholder="Search model, dealer, owner" />
+        <span id="rolePill" class="user-pill">Builder</span>
+        <button id="scanButton" class="button button-primary" type="button">Run Scan</button>
+        <button id="digestButton" class="button" data-demo-only type="button">Preview Digest</button>
+        <button id="restartDemoButton" class="button" data-demo-only type="button">Restart Demo</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="summary-grid" aria-label="Pipeline summary">
+        <div class="metric">
+          <span class="metric-label" id="metricLabelDetected">Ready to build</span>
+          <strong id="metricDetected">0</strong>
+        </div>
+        <div class="metric">
+          <span class="metric-label" id="metricLabelSeo">Live checks</span>
+          <strong id="metricSeo">0</strong>
+        </div>
+        <div class="metric">
+          <span class="metric-label" id="metricLabelAeo">Blocked</span>
+          <strong id="metricAeo">0</strong>
+        </div>
+        <div class="metric">
+          <span class="metric-label" id="metricLabelLive">Built month</span>
+          <strong id="metricLive">0</strong>
+        </div>
+      </section>
+
+      <section id="focusPanel" class="focus-panel" aria-label="Focus view">
+        <div>
+          <p class="eyebrow">Next best action</p>
+          <h2 id="focusTitle">No task selected</h2>
+          <p id="focusMeta" class="focus-meta"></p>
+        </div>
+        <div id="focusTags" class="tag-stack"></div>
+        <div id="focusActions" class="focus-actions"></div>
+      </section>
+
+      <section id="myWorkPanel" class="workspace-panel" aria-label="My work">
+        <div class="builder-panel builder-queue-panel">
+          <div class="section-heading">
+            <h2 id="myWorkQueueTitle">My build queue</h2>
+            <span id="myWorkCount" class="count-pill">0</span>
+          </div>
+          <div id="myWorkList" class="my-work-grid"></div>
+        </div>
+        <div id="builderDetailPanel" class="builder-panel builder-detail-panel">
+          <div id="builderDetailContent"></div>
+        </div>
+      </section>
+
+      <section id="winsPanel" class="workspace-panel" aria-label="Team wins and achievements"></section>
+
+      <section class="toolbar" aria-label="Filters">
+        <label>
+          Year
+          <select id="yearFilter"></select>
+        </label>
+        <label>
+          Dealership
+          <select id="dealerFilter"></select>
+        </label>
+        <label>
+          Status
+          <select id="statusFilter">
+            <option value="all">All statuses</option>
+            <option value="needs_seo">Needs SEO</option>
+            <option value="seo_in_progress">SEO In Progress</option>
+            <option value="seo_done">SEO Done</option>
+            <option value="not_started">AEO Not Started</option>
+            <option value="in_progress">AEO In Progress</option>
+            <option value="done">AEO Done</option>
+            <option value="not_needed">AEO Not Needed</option>
+            <option value="needs_build">Needs Page Build</option>
+            <option value="page_built">Page Built</option>
+            <option value="live">Live / Checked</option>
+            <option value="ignored">Ignored</option>
+            <option value="snoozed">Snoozed</option>
+          </select>
+        </label>
+        <label>
+          Owner
+          <select id="ownerFilter">
+            <option value="all">All owners</option>
+          </select>
+        </label>
+        <button id="clearFiltersButton" class="button button-quiet" type="button">Clear filters</button>
+      </section>
+
+      <section class="achievement-strip" aria-label="Team progress">
+        <div class="achievement">
+          <span class="achievement-icon">SEO</span>
+          <div>
+            <strong id="achievementWritten">0</strong>
+            <span>SEO completed</span>
+          </div>
+        </div>
+        <div class="achievement">
+          <span class="achievement-icon">LIVE</span>
+          <div>
+            <strong id="achievementLive">0</strong>
+            <span>pages live</span>
+          </div>
+        </div>
+        <div class="achievement">
+          <span class="achievement-icon">TODO</span>
+          <div>
+            <strong id="achievementRemaining">0</strong>
+            <span>remaining tasks</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="board" aria-label="Work queues">
+        <div>
+          <div class="section-heading">
+            <h2>SEO Queue</h2>
+            <span id="seoCount" class="count-pill">0</span>
+          </div>
+          <div id="seoQueue" class="task-list"></div>
+        </div>
+        <div>
+          <div class="section-heading">
+            <h2>AEO Queue</h2>
+            <span id="aeoCount" class="count-pill">0</span>
+          </div>
+          <div id="aeoQueue" class="task-list"></div>
+        </div>
+        <div>
+          <div class="section-heading">
+          <h2>Build Queue</h2>
+            <span id="buildCount" class="count-pill">0</span>
+          </div>
+          <div id="buildQueue" class="task-list"></div>
+        </div>
+      </section>
+
+      <section class="table-section" aria-label="All model tasks">
+        <div class="section-heading">
+          <h2 id="tableTitle">Team Pipeline</h2>
+          <span id="visibleCount" class="count-pill">0</span>
+        </div>
+        <div id="pipelineGroups" class="pipeline-groups"></div>
+      </section>
+    </main>
+
+    <dialog id="digestDialog">
+      <form method="dialog">
+        <div class="dialog-header">
+          <h2>Daily Digest Preview</h2>
+          <button class="icon-button" value="close" aria-label="Close" type="submit">x</button>
+        </div>
+        <pre id="digestText"></pre>
+      </form>
+    </dialog>
+
+    <dialog id="taskDialog">
+      <form method="dialog">
+        <div class="dialog-header">
+          <h2 id="taskDialogTitle">Task details</h2>
+          <button class="icon-button" value="close" aria-label="Close" type="submit">x</button>
+        </div>
+        <div class="details-grid">
+          <label>
+            Inventory Signal
+            <select id="detailSignalSelect">
+              <option value="upcoming">Upcoming</option>
+              <option value="shipped">Shipped</option>
+              <option value="on_lot">On lot</option>
+            </select>
+          </label>
+          <label>
+            AEO Status
+            <select id="detailAeoSelect">
+              <option value="not_started">AEO Not Started</option>
+              <option value="in_progress">AEO In Progress</option>
+              <option value="done">AEO Done</option>
+              <option value="not_needed">AEO Not Needed</option>
+            </select>
+          </label>
+          <label>
+            SEO Owner
+            <input id="seoOwnerInput" type="text" placeholder="Name" />
+          </label>
+          <label>
+            AEO Owner
+            <input id="aeoOwnerInput" type="text" placeholder="Name" />
+          </label>
+          <label>
+            Build Owner
+            <input id="buildOwnerInput" type="text" placeholder="Name" />
+          </label>
+          <label class="details-note details-aeo-note">
+            AEO notes
+            <span class="details-field-hint">AEO writer: describe what answer engine optimization was applied — schema added, questions targeted, or why it was skipped. This doesn't block anything, it's just visible to the whole team.</span>
+            <textarea id="aeoNotesInput" rows="3" placeholder="e.g. Added FAQ schema for top 3 questions. Targeted 'best midsize SUV 2027' intent. No structured data needed — page is informational only."></textarea>
+          </label>
+          <label class="details-note">
+            General notes
+            <span class="details-field-hint">Blockers, handoff context, anything the next person needs to know.</span>
+            <textarea id="taskNotesInput" rows="3" placeholder="e.g. Waiting on OEM hero image. Copy approved but images pending."></textarea>
+          </label>
+        </div>
+        <div class="dialog-actions">
+          <button class="button" id="saveTaskDetailsButton" type="button">Save details</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script defer src="js/demo-auth.js"></script>
+    <script defer src="js/data.js"></script>
+    <script defer src="js/state.js"></script>
+    <script defer src="js/renderers.js"></script>
+    <script defer src="js/navigation.js"></script>
+    <script defer src="js/theme.js"></script>
+    <script defer src="js/events.js"></script>
+    <script defer src="js/wins.js"></script>
+    <script defer src="js/app.js"></script>
+  </body>
+</html>

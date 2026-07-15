@@ -1,0 +1,2285 @@
+/* =================================================================
+   workbench.css  —  all component styles previously injected via JS
+   Consolidated from: my-work-workbench.js, rooftop-implementation.js,
+                      renderers.js, data.js
+   ================================================================= */
+
+/* ---------------------------------------------------------------
+   My Work workbench queue + detail panel
+   --------------------------------------------------------------- */
+body[data-workspace-view="my_work"] .summary-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+body[data-workspace-view="my_work"] .summary-grid .metric:nth-child(4) {
+  display: none;
+}
+
+body[data-workspace-view="my_work"] #myWorkPanel {
+  grid-template-columns: minmax(340px, 1.25fr) minmax(280px, .85fr);
+  gap: 20px;
+  max-width: min(1200px, 100%);
+}
+
+/* Focus entry button — appears in section heading when builder is in queue mode */
+.focus-entry-btn {
+  margin-left: auto;
+  padding: 5px 13px;
+  border: 1px solid var(--blue);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--blue);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: .01em;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.focus-entry-btn:hover {
+  background: var(--blue);
+  color: #fff;
+}
+
+/* Focus mode — full-width single column, hide detail panel */
+body[data-workspace-view="my_work"] #myWorkPanel.is-focus-mode {
+  grid-template-columns: 1fr;
+}
+
+body[data-workspace-view="my_work"] #myWorkPanel.is-focus-mode #builderDetailPanel {
+  display: none;
+}
+
+body[data-workspace-view="my_work"] .builder-panel {
+  border-radius: 10px;
+}
+
+body[data-workspace-view="my_work"] .builder-queue-panel {
+  min-height: 292px;
+  padding: 0;
+  overflow: hidden;
+}
+
+body[data-workspace-view="my_work"] .builder-queue-panel .section-heading {
+  margin: 0;
+  padding: 20px 22px 14px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+body[data-workspace-view="my_work"] .builder-queue-panel .section-heading h2 {
+  font-size: 22px;
+  letter-spacing: -.02em;
+}
+
+body[data-workspace-view="my_work"] .builder-queue-panel .count-pill {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-height: 22px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.workbench-queue {
+  display: grid;
+}
+
+.workbench-section {
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.workbench-section:last-child {
+  border-bottom: 0;
+}
+
+.workbench-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px 7px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.workbench-section-head span:last-child {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  padding: 2px 7px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  opacity: .6;
+}
+
+.workbench-row {
+  display: grid;
+  grid-template-columns: 3px minmax(0, 1fr);
+  gap: 13px;
+  align-items: center;
+  min-height: 64px;
+  padding: 10px 14px 10px 0;
+  border-top: 1px solid var(--line);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+
+.workbench-row:hover:not(.is-selected) {
+  background: rgba(255, 255, 255, .025);
+}
+
+.workbench-row.is-selected {
+  background: rgba(47, 114, 214, .09);
+  box-shadow: inset 3px 0 0 var(--action-blue, var(--blue));
+}
+
+.workbench-dot {
+  align-self: stretch;
+  width: 3px;
+  height: auto;
+  border-radius: 0;
+  background: var(--row-accent, var(--amber));
+}
+
+.workbench-dot.is-dim {
+  opacity: .3;
+}
+
+.workbench-dot.is-verify {
+  background: var(--row-accent, var(--blue));
+}
+
+.workbench-dot.is-blocked {
+  background: var(--red);
+}
+
+.workbench-title,
+.workbench-meta {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.workbench-title {
+  margin-bottom: 3px;
+  font-size: 14px;
+  font-weight: 850;
+  line-height: 1.25;
+  letter-spacing: -.01em;
+}
+
+.workbench-meta {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+body[data-workspace-view="my_work"] .builder-detail-panel {
+  position: sticky;
+  top: 16px;
+  padding: 22px 22px 0;
+}
+
+.workbench-detail-subtitle {
+  margin: 6px 0 18px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: .01em;
+}
+
+body[data-workspace-view="my_work"] .selected-task-status {
+  margin-bottom: 12px;
+}
+
+.workbench-next-step {
+  margin: 0 0 16px;
+  padding: 12px 14px 12px 16px;
+  border-left: 3px solid var(--action-blue, var(--blue));
+  border-radius: 0 8px 8px 0;
+  background: rgba(47, 114, 214, .09);
+}
+
+.workbench-next-step span,
+.workbench-ai-result span {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.workbench-next-step strong {
+  display: block;
+  margin-top: 5px;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.workbench-next-step small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.workbench-resources {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.workbench-resource-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--blue-soft);
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.workbench-resource-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.workbench-resource-link {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.workbench-checklist {
+  margin: 0 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--panel);
+  overflow: hidden;
+}
+
+.workbench-step {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  min-height: 37px;
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.workbench-step:last-child {
+  border-bottom: 0;
+}
+
+.workbench-step.is-current {
+  color: var(--text);
+  font-weight: 850;
+}
+
+.workbench-step:has(.workbench-check.is-done) {
+  background: var(--green-soft);
+  color: var(--muted);
+}
+
+.workbench-check {
+  display: inline-grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: transparent;
+  font-size: 8px;
+  line-height: 1;
+}
+
+.workbench-check.is-done {
+  border-color: rgba(78, 216, 149, .42);
+  background: rgba(78, 216, 149, .1);
+  color: var(--green);
+}
+
+.workbench-ai-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.workbench-ai-result,
+.workbench-return-note {
+  display: none;
+  margin-top: 9px;
+}
+
+.workbench-ai-result.is-visible,
+.workbench-return-note.is-visible {
+  display: block;
+}
+
+.workbench-ai-result {
+  padding: 9px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.workbench-return-note label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.workbench-return-note textarea {
+  width: 100%;
+  min-height: 64px;
+  padding: 9px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  resize: vertical;
+}
+
+.workbench-detail-actions {
+  display: grid;
+  grid-template-columns: minmax(0, .35fr) minmax(0, .65fr);
+  gap: 10px;
+  margin: 18px -26px 0;
+  padding: 15px 26px 26px;
+  border-top: 1px solid var(--line);
+  border-radius: 0 0 10px 10px;
+  background: var(--panel);
+}
+
+.workbench-detail-actions .button {
+  justify-content: center;
+  min-height: 44px;
+}
+
+@media (max-width: 960px) {
+  body[data-workspace-view="my_work"] #myWorkPanel {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    max-width: none;
+  }
+
+  body[data-workspace-view="my_work"] .builder-detail-panel {
+    position: static;
+  }
+}
+
+/* Light theme overrides — scoped here so injected style wins cascade */
+html body[data-theme="light"] .workbench-section,
+html body[data-theme="light"] .workbench-queue {
+  background: #fffcf8 !important;
+  border-color: var(--line) !important;
+}
+
+html body[data-theme="light"] .workbench-row {
+  background: transparent !important;
+  border-top-color: var(--line) !important;
+  color: var(--ink) !important;
+}
+
+body[data-theme="light"] .workbench-section-head {
+  background: #ede9e4 !important;
+  color: var(--muted) !important;
+  border-bottom-color: var(--line) !important;
+}
+
+body[data-theme="light"] .workbench-row:hover:not(.is-selected) {
+  background: #f2ede7 !important;
+}
+
+body[data-theme="light"] .workbench-row.is-selected {
+  background: var(--blue-soft) !important;
+  box-shadow: inset 3px 0 0 var(--blue) !important;
+}
+
+body[data-theme="light"] .workbench-checklist {
+  background: #f5f1eb !important;
+  border-color: var(--line) !important;
+}
+
+body[data-theme="light"] .workbench-step:has(.workbench-check.is-done) {
+  background: var(--green-soft) !important;
+}
+
+body[data-theme="light"] .workbench-ai-result {
+  background: #f5f1eb !important;
+  border-color: var(--line) !important;
+  color: var(--muted) !important;
+}
+
+body[data-theme="light"] .workbench-return-note textarea {
+  background: #fffcf8 !important;
+  color: var(--ink) !important;
+  border-color: var(--line) !important;
+}
+
+body[data-theme="light"] .workbench-detail-actions {
+  background: #ede9e4 !important;
+  border-top-color: var(--line) !important;
+}
+
+
+/* --- Detail panel polish --- */
+.workbench-detail-content .eyebrow {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.workbench-detail-content h2 {
+  margin: 0 0 4px;
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.workbench-detail-subtitle {
+  margin: 4px 0 14px;
+}
+
+.selected-task-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+/* Tighter checklist steps */
+.workbench-step {
+  min-height: 34px;
+  padding: 7px 10px;
+}
+
+/* Rounder check circles */
+.workbench-check {
+  flex-shrink: 0;
+}
+
+/* Next step block — slightly warmer in light */
+body[data-theme="light"] .workbench-next-step {
+  background: var(--blue-soft) !important;
+  border-left-color: var(--blue) !important;
+}
+
+/* Resource primary button — full width */
+.workbench-resource-primary {
+  width: 100%;
+}
+
+/* AI pill — subtle */
+.workbench-ai-pill {
+  border-radius: 6px;
+  background: var(--bg);
+  font-size: 11px;
+  transition: background 120ms ease;
+}
+
+.workbench-ai-pill:hover {
+  background: var(--blue-soft);
+  color: var(--blue);
+  border-color: var(--blue-soft);
+}
+
+body[data-theme="light"] .workbench-ai-pill {
+  background: #f5f1eb !important;
+  border-color: var(--line) !important;
+}
+
+body[data-theme="light"] .workbench-ai-pill:hover {
+  background: var(--blue-soft) !important;
+  color: var(--blue) !important;
+}
+
+/* Section head — slightly tighter */
+.workbench-section-head {
+  padding: 7px 14px 6px;
+}
+
+
+/* --- Focus card: "Your next action" orientation anchor --- */
+.workbench-focus {
+  display: grid;
+  gap: 3px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+
+.workbench-focus:hover {
+  background: var(--blue-soft);
+}
+
+.workbench-focus-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+  color: var(--blue);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.workbench-focus-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.workbench-focus-title {
+  font-size: 15px;
+  font-weight: 850;
+  color: var(--ink);
+  letter-spacing: -.015em;
+  line-height: 1.25;
+}
+
+.workbench-focus-step {
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.workbench-focus-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 11px;
+}
+
+.workbench-focus-cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 7px;
+  background: var(--action-blue, var(--blue));
+  color: #fff;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 120ms ease;
+}
+
+.workbench-focus-cta:hover {
+  opacity: .88;
+}
+
+.workbench-focus-ghost {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 750;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 120ms ease;
+}
+
+.workbench-focus-ghost:hover {
+  background: rgba(255, 255, 255, .06);
+}
+
+body[data-theme="light"] .workbench-focus {
+  background: #fffcf8 !important;
+  border-bottom-color: var(--line) !important;
+}
+
+body[data-theme="light"] .workbench-focus:hover {
+  background: var(--blue-soft) !important;
+}
+
+body[data-theme="light"] .workbench-focus-ghost {
+  border-color: var(--line) !important;
+  color: var(--muted) !important;
+  background: transparent !important;
+}
+
+body[data-theme="light"] .workbench-focus-ghost:hover {
+  background: var(--soft-line) !important;
+}
+
+/* Focus card left accent — brand color */
+.workbench-focus {
+  border-left: 3px solid var(--blue);
+}
+
+@media (max-width: 760px) {
+  body[data-workspace-view="my_work"] #myWorkPanel {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    max-width: none;
+  }
+
+  body[data-workspace-view="my_work"] .builder-panel {
+    border-radius: 10px;
+  }
+
+  body[data-workspace-view="my_work"] .builder-queue-panel .section-heading {
+    padding: 11px 12px;
+  }
+
+  body[data-workspace-view="my_work"] .builder-queue-panel .section-heading h2 {
+    font-size: 16px;
+  }
+
+  .workbench-row {
+    min-height: 55px;
+    padding: 8px 12px;
+  }
+
+  .workbench-title {
+    font-size: 13px;
+  }
+
+  .workbench-meta {
+    font-size: 11px;
+  }
+
+  body[data-workspace-view="my_work"] .builder-detail-panel {
+    position: static;
+    padding: 13px 12px 0;
+  }
+
+  .workbench-detail-actions {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    margin: 16px -12px 0;
+    padding: 10px 12px 14px;
+    border-radius: 10px 10px 0 0;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Implementation / settings pages
+   --------------------------------------------------------------- */
+.board,
+.table-section {
+  display: none !important;
+}
+
+body[data-workspace-view="team_board"] .board {
+  display: grid !important;
+}
+
+body[data-workspace-view="team_board"] .table-section {
+  display: block !important;
+}
+
+body[data-workspace-view="team_board"] .task-list {
+  gap: 16px;
+}
+
+body[data-workspace-view="team_board"] .task {
+  display: grid;
+  gap: 12px;
+  padding: 18px 18px 20px;
+  overflow: visible;
+}
+
+body[data-workspace-view="team_board"] .task-state {
+  margin: 0;
+}
+
+body[data-workspace-view="team_board"] .task-card-title {
+  margin: 0;
+  line-height: 1.28;
+}
+
+body[data-workspace-view="team_board"] .queue-reason {
+  margin: 0;
+  line-height: 1.45;
+}
+
+body[data-workspace-view="team_board"] .task-meta {
+  gap: 10px 12px;
+  margin: 0;
+  min-width: 0;
+}
+
+body[data-workspace-view="team_board"] .task-meta .table-dealer {
+  max-width: 100%;
+}
+
+body[data-workspace-view="team_board"] .task-meta .status,
+body[data-workspace-view="team_board"] .task-meta .signal {
+  margin-top: 0;
+}
+
+body[data-workspace-view="team_board"] .task-actions {
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+body[data-workspace-view="team_board"] .task-actions .button {
+  flex: 0 1 auto;
+  min-width: 112px;
+}
+
+body[data-workspace-view="team_board"] .task-actions .button-primary-action,
+body[data-workspace-view="team_board"] .task-actions .button-secondary-action {
+  min-width: 148px;
+}
+
+.feed-health-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 12px 0 14px;
+}
+
+.feed-health-list div {
+  min-height: 56px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.feed-health-list span,
+.feed-health-list strong {
+  display: block;
+}
+
+.feed-health-list span {
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.feed-health-list strong {
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.resource-status.status-amber {
+  border-color: rgba(255, 206, 91, 0.28);
+  background: rgba(255, 206, 91, 0.08);
+  color: var(--amber); /* amber token — theme-aware */
+}
+
+.rooftops-manager {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.rooftops-manager .section-heading {
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.rooftops-manager h3 {
+  margin: 2px 0 0;
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.rooftop-form {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 12px;
+  padding: 12px;
+  border: 1px solid rgba(79, 156, 255, 0.22);
+  border-radius: 8px;
+  background: rgba(47, 114, 214, 0.08);
+}
+
+.rooftop-form[hidden] {
+  display: none;
+}
+
+.rooftop-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.rooftop-form label:last-child {
+  grid-column: 1 / -1;
+}
+
+.rooftop-form input {
+  width: 100%;
+  min-height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--bg);
+  color: var(--ink);
+  box-sizing: border-box;
+}
+
+.rooftop-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.rooftops-list {
+  display: grid;
+  gap: 8px;
+}
+
+.rooftop-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.rooftop-row strong,
+.rooftop-row span {
+  display: block;
+}
+
+.rooftop-row strong {
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.rooftop-row span {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.rooftop-status-switch {
+  position: relative;
+  display: inline-flex;
+  justify-self: end;
+  width: 36px;
+  min-width: 36px;
+  height: 24px;
+  min-height: 24px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--soft-line);
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.rooftop-status-switch::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--ink);
+  transition: transform 160ms ease;
+}
+
+.rooftop-status-switch.is-active {
+  border-color: rgba(78, 216, 149, 0.42);
+  background: rgba(78, 216, 149, 0.85);
+}
+
+.rooftop-status-switch.is-active::after {
+  transform: translateX(12px);
+}
+
+.rooftop-status-switch:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+body[data-theme="light"] .feed-health-list div {
+  background: #ede9e4 !important;
+  border-color: var(--line) !important;
+}
+
+body[data-theme="light"] .rooftop-form {
+  background: var(--blue-soft) !important;
+  border-color: rgba(37, 99, 169, 0.22) !important;
+}
+
+body[data-theme="light"] .rooftop-form input {
+  background: #fffcf8 !important;
+  color: var(--ink) !important;
+}
+
+@media (max-width: 760px) {
+  .feed-health-list,
+  .rooftop-row,
+  .rooftop-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rooftop-status-switch {
+    justify-self: start;
+  }
+}
+
+/* ---------------------------------------------------------------
+   My Work brand group headers
+   --------------------------------------------------------------- */
+.workbench-group {
+  border-top: 1px solid var(--line);
+}
+
+.workbench-group-head {
+  display: grid;
+  grid-template-columns: 3px 22px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 0 14px 0 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition: background 120ms ease;
+}
+
+.workbench-group-head:hover {
+  background: color-mix(in srgb, var(--group-accent, var(--blue)) 6%, var(--bg));
+}
+
+/* Brand accent bar — left edge */
+.workbench-group-bar {
+  align-self: stretch;
+  width: 3px;
+  background: var(--group-accent, var(--muted));
+  opacity: .7;
+  transition: opacity 120ms ease;
+}
+
+.workbench-group-head:hover .workbench-group-bar,
+.workbench-group-head[aria-expanded="true"] .workbench-group-bar {
+  opacity: 1;
+}
+
+/* CSS chevron — no unicode needed */
+.workbench-group-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: transform 160ms ease;
+}
+
+.workbench-group-chevron::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+}
+
+.workbench-group-chevron.collapsed {
+  transform: rotate(-90deg);
+}
+
+.workbench-group-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+
+.workbench-group-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  padding: 2px 7px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.workbench-group-count.heavy {
+  border-color: transparent;
+  background: var(--amber-soft);
+  color: var(--amber);
+  font-weight: 800;
+}
+
+.workbench-group-items[hidden] {
+  display: none;
+}
+
+.workbench-group-more {
+  min-height: 36px;
+  padding: 9px 14px;
+  border-top: 1px solid var(--line);
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 750;
+}
+
+body[data-theme="light"] .workbench-group-head {
+  background: #ede9e4 !important;
+  color: var(--ink) !important;
+}
+
+body[data-theme="light"] .workbench-group-head:hover {
+  background: color-mix(in srgb, var(--group-accent, var(--blue)) 8%, #ede9e4) !important;
+}
+
+body[data-theme="light"] .workbench-group-count.heavy {
+  background: var(--amber-soft) !important;
+  color: var(--amber) !important;
+}
+
+/* ---------------------------------------------------------------
+   My Work live-check card
+   --------------------------------------------------------------- */
+body[data-workspace-view="my_work"] .workbench-live-card {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 12px 15px;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: var(--panel); /* dark panel — flips to white in light theme */
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+body[data-workspace-view="my_work"] .workbench-live-card:hover {
+  background: rgba(47, 114, 214, .08);
+}
+
+body[data-workspace-view="my_work"] .workbench-live-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+body[data-workspace-view="my_work"] .workbench-live-count {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: rgba(255, 206, 91, .12);
+  color: var(--amber); /* amber token — theme-aware */
+  font-size: 11px;
+  font-weight: 950;
+}
+
+body[data-workspace-view="my_work"] .workbench-live-title {
+  display: block;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+body[data-workspace-view="my_work"] .workbench-live-meta {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+body[data-workspace-view="my_work"] .workbench-live-action {
+  justify-self: start;
+  color: var(--blue); /* blue token — theme-aware */
+  font-size: 12px;
+  font-weight: 850;
+}
+
+body[data-theme="light"][data-workspace-view="my_work"] .workbench-live-card {
+  background: #fffcf8 !important;
+  color: var(--ink) !important;
+  border-top-color: var(--line) !important;
+}
+
+body[data-theme="light"][data-workspace-view="my_work"] .workbench-live-card:hover {
+  background: var(--blue-soft) !important;
+}
+
+body[data-theme="light"][data-workspace-view="my_work"] .workbench-live-count {
+  background: var(--amber-soft) !important;
+  color: var(--amber) !important;
+}
+
+body[data-theme="light"][data-workspace-view="my_work"] .workbench-live-title {
+  color: var(--ink) !important;
+}
+
+body[data-theme="light"][data-workspace-view="my_work"] .workbench-live-action {
+  color: var(--blue) !important;
+}
+
+
+/* ─── Interactive state completeness pass ────────────────────────────────────
+   Audit 2026-06-30: all interactive workbench elements now have visible
+   hover / focus-visible feedback. Previously missing states listed below.
+─────────────────────────────────────────────────────────────────────────────── */
+
+/* Brand group toggle button — native <button> but no focus ring */
+.workbench-group-head:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--blue) 42%, transparent);
+  outline-offset: -2px;
+}
+
+/* Focus card CTA (<button>) */
+.workbench-focus-cta:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--blue) 42%, transparent);
+  outline-offset: 2px;
+}
+
+/* Focus card ghost (<a>) */
+.workbench-focus-ghost:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--blue) 42%, transparent);
+  outline-offset: 2px;
+}
+
+/* Resource primary link — looks like a button, needs hover + focus */
+.workbench-resource-primary:hover {
+  background: color-mix(in srgb, var(--blue) 22%, transparent);
+  color: var(--blue);
+}
+
+.workbench-resource-primary:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--blue) 42%, transparent);
+  outline-offset: 2px;
+}
+
+/* Secondary resource links */
+.workbench-resource-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.workbench-resource-link:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--blue) 42%, transparent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* AI pill — has hover, was missing focus */
+.workbench-ai-pill:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--blue) 42%, transparent);
+  outline-offset: 2px;
+}
+
+/* Return note textarea — visible border on focus */
+.workbench-return-note textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+
+/* ── Empty queue celebration ─────────────────────────────────── */
+.workbench-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+  gap: 12px;
+}
+.workbench-empty-icon {
+  font-size: 32px;
+  color: var(--accent, #2563a9);
+  margin: 0;
+  line-height: 1;
+}
+.workbench-empty-msg {
+  font-size: 14px;
+  color: var(--text-2, #555);
+  max-width: 260px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ===============================================================
+   FOCUS HERO — new My Work layout for builders
+   =============================================================== */
+
+.focus-hero-wrapper {
+  grid-column: 1 / -1; /* span full panel width */
+}
+
+.focus-hero {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  overflow: hidden;
+}
+
+/* ---- Header bar ---- */
+.focus-hero-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.focus-hero-wordmark {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -.01em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.focus-mode-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 7px;
+  margin-left: 6px;
+  border-radius: 4px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.focus-hero-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.focus-progress-text {
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.focus-progress-track {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line);
+  overflow: hidden;
+  max-width: 160px;
+}
+
+.focus-progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--green, #22c55e);
+  transition: width 400ms ease;
+}
+
+.focus-exit-btn {
+  flex-shrink: 0;
+  padding: 5px 13px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.focus-exit-btn:hover {
+  background: var(--soft-line, rgba(255,255,255,.06));
+  color: var(--ink);
+}
+
+/* ---- Centered content column ---- */
+.focus-hero-content {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 28px 44px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ---- Hero body ---- */
+.focus-hero-body {
+  /* padding handled by .focus-hero-content */
+}
+
+.focus-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 0 0 14px;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.focus-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.focus-eyebrow-sep {
+  opacity: .5;
+}
+
+.focus-task-title {
+  margin: 0 0 8px;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+  color: var(--ink);
+  text-align: center;
+}
+
+.focus-task-meta {
+  margin: 0 0 32px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---- Checklist card ---- */
+.focus-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 28px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(0,0,0,.18);
+}
+
+.focus-check-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--line);
+  transition: background 120ms ease;
+}
+
+.focus-check-row:last-child {
+  border-bottom: 0;
+}
+
+/* Inactive rows: muted text only, no opacity */
+.focus-check-row:not(.is-done):not(.is-active) .focus-check-label {
+  color: var(--muted);
+}
+
+.focus-check-row.is-done {
+  background: rgba(79,191,139,.05);
+}
+
+.focus-check-row.is-active {
+  /* no special bg — just the blue circle signals current step */
+}
+
+.focus-check-icon {
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: #10131a;
+  flex-shrink: 0;
+  transition: background 150ms ease, border-color 150ms ease;
+  box-sizing: border-box;
+}
+
+.focus-check-row.is-done .focus-check-icon {
+  background: var(--green, #4fbf8b);
+  border-color: var(--green, #4fbf8b);
+}
+
+.focus-check-row.is-active .focus-check-icon {
+  border-color: var(--blue);
+  border-width: 1.5px;
+  background: transparent;
+}
+
+.focus-check-label {
+  flex: 1;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.focus-check-link {
+  margin-left: auto;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.focus-check-link:hover {
+  text-decoration: underline;
+}
+
+/* ---- Action buttons ---- */
+.focus-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.focus-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 13px 22px;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 120ms ease, background 120ms ease;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.focus-btn-ghost {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+}
+
+.focus-btn-ghost:hover {
+  background: var(--soft-line, rgba(255,255,255,.06));
+  color: var(--ink);
+}
+
+.focus-btn-primary {
+  border: 0;
+  background: var(--blue);
+  color: #fff;
+  font-weight: 700;
+  padding: 13px 30px;
+}
+
+.focus-btn-primary:hover {
+  opacity: .88;
+}
+
+/* ---- Keyboard hint ---- */
+.focus-shortcuts {
+  margin: 14px 0 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  opacity: .6;
+  text-align: center;
+  letter-spacing: .01em;
+}
+
+/* ---- UP NEXT ---- */
+.focus-up-next {
+  margin-top: 44px;
+}
+
+.focus-up-next-label {
+  margin: 0 0 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.focus-up-next-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.focus-up-next-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background 120ms ease;
+  width: 100%;
+}
+
+.focus-up-next-item:hover {
+  background: var(--soft-line, rgba(255,255,255,.05));
+}
+
+.focus-up-next-accent {
+  width: 3px;
+  height: 28px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.focus-up-next-body {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.focus-up-next-title {
+  font-size: 13px;
+  font-weight: 750;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+}
+
+.focus-up-next-meta {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.focus-up-next-time {
+  font-size: 11px;
+  font-weight: 650;
+  color: var(--muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ---- Build queue header ---- */
+.build-queue-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 0 16px;
+  flex-wrap: wrap;
+}
+
+.build-queue-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -.01em;
+}
+
+.build-queue-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.build-queue-chip {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  background: var(--soft-line, rgba(255,255,255,.07));
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 2px 10px;
+  white-space: nowrap;
+}
+
+.build-queue-chip--blocked {
+  color: var(--red, #ef4444);
+  border-color: rgba(239,68,68,.3);
+  background: rgba(239,68,68,.08);
+}
+
+body[data-theme="light"] .build-queue-chip {
+  background: rgba(0,0,0,.04);
+  border-color: rgba(0,0,0,.1);
+}
+
+body[data-theme="gray"] .build-queue-chip {
+  background: rgba(0,0,0,.06);
+  border-color: rgba(0,0,0,.12);
+}
+
+/* ---- Light theme overrides ---- */
+body[data-theme="light"] .focus-hero {
+  background: #fffcf8;
+}
+
+body[data-theme="light"] .focus-checklist {
+  background: #fff;
+}
+
+body[data-theme="light"] .focus-check-row.is-active {
+  background: rgba(59,130,246,.05);
+}
+
+body[data-theme="light"] .focus-btn-ghost {
+  color: var(--muted);
+  background: transparent;
+}
+
+body[data-theme="light"] .focus-btn-ghost:hover {
+  background: rgba(0,0,0,.04);
+  color: var(--ink);
+}
+
+body[data-theme="light"] .focus-up-next-item:hover {
+  background: rgba(0,0,0,.04);
+}
+
+body[data-theme="light"] .focus-exit-btn:hover {
+  background: rgba(0,0,0,.05);
+}
+
+/* ── Brand accordion (My Work queue) ─────────────────────── */
+.wb-brand-group {
+  border-bottom: 1px solid var(--border, rgba(255,255,255,.07));
+}
+.wb-brand-group:last-child { border-bottom: none; }
+.wb-brand-toggle {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  width: 100%;
+  padding: .55rem 1rem;
+  /* reset browser + components.css button base */
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  min-height: unset;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  color: var(--text-primary, #e8e3dc);
+  font: inherit;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  text-align: left;
+  transition: background .15s;
+}
+.wb-brand-toggle:hover {
+  background: rgba(255,255,255,.05);
+  border-color: transparent;
+  transform: none;
+  box-shadow: none;
+}
+.wb-brand-chevron {
+  font-size: .65rem;
+  color: var(--text-muted, rgba(255,255,255,.35));
+  flex-shrink: 0;
+  width: .8rem;
+}
+.wb-brand-name { flex: 1; }
+.wb-brand-count {
+  background: rgba(255,255,255,.1);
+  color: var(--text-muted, rgba(255,255,255,.45));
+  font-size: .68rem;
+  font-weight: 700;
+  padding: .1rem .45rem;
+  border-radius: 999px;
+  min-width: 1.4rem;
+  text-align: center;
+}
+.wb-brand-rows .workbench-row { padding-left: 2rem; }
+
+/* Light / cream theme overrides */
+html body[data-theme="light"] .wb-brand-toggle,
+html body[data-theme="gray"]  .wb-brand-toggle {
+  color: var(--text-primary);
+}
+html body[data-theme="light"] .wb-brand-toggle:hover,
+html body[data-theme="gray"]  .wb-brand-toggle:hover {
+  background: rgba(0,0,0,.04);
+}
+html body[data-theme="light"] .wb-brand-count,
+html body[data-theme="gray"]  .wb-brand-count {
+  background: rgba(0,0,0,.08);
+  color: var(--text-muted);
+}
+html body[data-theme="light"] .wb-brand-group,
+html body[data-theme="gray"]  .wb-brand-group {
+  border-bottom-color: var(--border, rgba(0,0,0,.08));
+}
+
+/* ── Build queue hierarchy polish ──────────────────────────────────────────
+   Audit findings: brand rows competed visually with section headers,
+   chevron too small/faint, no breathing room after group expansion,
+   section counts hard to read at .6 opacity.
+   ─────────────────────────────────────────────────────────────────────── */
+
+/* 1. Brand name — reduce size/weight so it reads as a label, not a heading.
+      Positive letter-spacing reinforces the "group label" role vs section heads. */
+.workbench-group-name {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+/* 2. Group head background — subtle warm tint differentiates parent rows
+      from both the section background (--panel) and item rows (transparent). */
+.workbench-group-head {
+  background: color-mix(in srgb, var(--ink) 6%, var(--bg));
+}
+
+.workbench-group-head:hover {
+  background: color-mix(in srgb, var(--group-accent, var(--blue)) 8%, var(--bg));
+}
+
+/* 3. Chevron — bigger hit target, more contrast */
+.workbench-group-chevron {
+  width: 24px;
+  height: 24px;
+  color: var(--ink);
+  opacity: .55;
+}
+
+.workbench-group-chevron::before {
+  width: 8px;
+  height: 8px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+}
+
+.workbench-group-head[aria-expanded="true"] .workbench-group-chevron,
+.workbench-group-head:hover .workbench-group-chevron {
+  opacity: .85;
+}
+
+/* 4. First item in an expanded group — extra top breathing room
+      so the item doesn't butt directly against the group header row. */
+.workbench-group-items > .workbench-row:first-child {
+  padding-top: 14px;
+}
+
+/* 5. Section head counts — full opacity, amber for heavy-count sections */
+.workbench-section-head span:last-child {
+  opacity: 1;
+  font-weight: 800;
+}
+
+.workbench-section-head span.heavy {
+  border-color: transparent;
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+
+/* Light-theme overrides for the group head tint */
+body[data-theme="light"] .workbench-group-head {
+  background: color-mix(in srgb, var(--ink) 6%, #ede9e4) !important;
+}
+
+body[data-theme="light"] .workbench-group-head:hover {
+  background: color-mix(in srgb, var(--group-accent, var(--blue)) 8%, #ede9e4) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Build Queue — Editorial Rail
+   Hierarchy via typography scale + whitespace + continuous brand rail.
+   No boxes, row borders, or full-width dividers.
+   All rules scoped to .builder-queue-panel.
+   Fonts: Bricolage Grotesque (display) · IBM Plex Mono (meta/labels).
+   Colors: uses existing CSS variables; brand rails via data-attr selectors.
+══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Queue header ─────────────────────────────────────────────────────── */
+.builder-queue-panel .section-heading {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  padding: 0 0 14px;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.builder-queue-panel .section-heading h2 {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -.03em;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1;
+  flex: 0 0 100%;         /* own row above stats + Focus */
+}
+
+/* Count summary — mono editorial text, no pill chrome
+   NOTE: must beat body[data-workspace-view="my_work"] .builder-queue-panel .count-pill
+   rule (specificity 0,3,1) so we use the same prefix — cascade order wins */
+body[data-workspace-view="my_work"] .builder-queue-panel .count-pill {
+  display: block;
+  flex: 1 1 auto;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  min-height: auto;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: .01em;
+  line-height: 1.4;
+}
+
+/* Focus → — text link, no pill border */
+.builder-queue-panel .focus-entry-btn {
+  margin-left: auto;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  color: var(--blue);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: .01em;
+  cursor: pointer;
+  transition: color 120ms ease;
+}
+
+.builder-queue-panel .focus-entry-btn:hover {
+  background: none;
+  color: var(--ink);
+}
+
+/* List container — match section-heading's 22px horizontal indent */
+.builder-queue-panel .workbench-queue {
+  padding: 0 22px 22px;
+}
+
+/* ── Section headers ─────────────────────────────────────────────────── */
+.builder-queue-panel .workbench-section {
+  background: transparent;
+  border-bottom: none;
+}
+
+.builder-queue-panel .workbench-section-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 0 10px;
+  background: transparent;
+  border-bottom: none;
+  color: var(--ink);
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+/* Hairline fill between label and count */
+.builder-queue-panel .workbench-section-head::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+  order: 1;
+}
+.builder-queue-panel .workbench-section-head span:first-child { order: 0; }
+
+/* Count — bare display number, no pill */
+.builder-queue-panel .workbench-section-head span:last-child {
+  order: 2;
+  display: inline;
+  min-width: auto;
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: 0;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--muted);
+  opacity: 1;
+  letter-spacing: 0;
+}
+
+/* ── Brand groups — continuous vertical rail ─────────────────────────── */
+.builder-queue-panel .wb-brand-group {
+  position: relative;
+  padding-left: 16px;
+  border-bottom: none;
+  margin-bottom: 12px;
+}
+
+/* 3px rounded rail spanning full group height */
+.builder-queue-panel .wb-brand-group::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  border-radius: 99px;
+  background: var(--brand-rail, var(--muted));
+  opacity: .55;
+  transition: opacity 160ms ease;
+}
+.builder-queue-panel .wb-brand-group:hover::before { opacity: 1; }
+
+/* Per-brand rail colors via data attribute */
+.builder-queue-panel .wb-brand-group[data-wb-brand-key*="chevrolet" i] { --brand-rail: #d4af37; }
+.builder-queue-panel .wb-brand-group[data-wb-brand-key*="ford" i]      { --brand-rail: #4a7fd4; }
+.builder-queue-panel .wb-brand-group[data-wb-brand-key*="gmc" i]       { --brand-rail: #8a8f98; }
+.builder-queue-panel .wb-brand-group[data-wb-brand-key*="jeep" i]      { --brand-rail: #5a8a4a; }
+.builder-queue-panel .wb-brand-group[data-wb-brand-key*="kia" i]       { --brand-rail: #c0392b; }
+.builder-queue-panel .wb-brand-group[data-wb-brand-key*="mazda" i]     { --brand-rail: #6d9eeb; }
+.builder-queue-panel .wb-brand-group[data-wb-brand-key*="ram" i]       { --brand-rail: #a04040; }
+.builder-queue-panel .wb-brand-group[data-wb-brand-key*="toyota" i]    { --brand-rail: #e05050; }
+.builder-queue-panel .wb-brand-group[data-wb-brand-key*="buick" i]     { --brand-rail: #6b8fb5; }
+.builder-queue-panel .wb-brand-group[data-wb-brand-key*="cadillac" i]  { --brand-rail: #9b8a6a; }
+.builder-queue-panel .wb-brand-group[data-wb-brand-key*="honda" i]     { --brand-rail: #cc2222; }
+.builder-queue-panel .wb-brand-group[data-wb-brand-key*="hyundai" i]   { --brand-rail: #3d6aad; }
+.builder-queue-panel .wb-brand-group[data-wb-brand-key*="nissan" i]    { --brand-rail: #c0392b; }
+.builder-queue-panel .wb-brand-group[data-wb-brand-key*="subaru" i]    { --brand-rail: #3355aa; }
+.builder-queue-panel .wb-brand-group[data-wb-brand-key*="dodge" i]     { --brand-rail: #c0392b; }
+.builder-queue-panel .wb-brand-group[data-wb-brand-key*="lincoln" i]   { --brand-rail: #8a9bb5; }
+.builder-queue-panel .wb-brand-group[data-wb-brand-key*="volkswagen" i]{ --brand-rail: #2244aa; }
+.builder-queue-panel .wb-brand-group[data-wb-brand-key*="chrysler" i]  { --brand-rail: #2255aa; }
+
+/* Brand group toggle — mono label, no background */
+.builder-queue-panel .wb-brand-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0 4px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  min-height: unset;
+  box-shadow: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: opacity 120ms ease;
+}
+.builder-queue-panel .wb-brand-toggle:hover {
+  background: transparent;
+  opacity: .7;
+}
+
+/* Brand name tinted with rail color */
+.builder-queue-panel .wb-brand-name {
+  flex: 1;
+  color: color-mix(in srgb, var(--brand-rail, var(--blue)) 75%, var(--ink));
+}
+
+/* Caret — smaller, subtler */
+.builder-queue-panel .wb-brand-chevron {
+  font-size: 9px;
+  color: var(--muted);
+  opacity: .6;
+  width: auto;
+}
+
+/* Count — bare Bricolage number, no pill */
+.builder-queue-panel .wb-brand-count {
+  margin-left: auto;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  min-width: auto;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+
+/* ── Item rows — no dot, no border ───────────────────────────────────── */
+.builder-queue-panel .workbench-dot { display: none; }
+
+.builder-queue-panel .wb-brand-rows .workbench-row {
+  display: block;
+  padding: 10px 0;
+  padding-left: 0;
+  border-top: none;
+  min-height: auto;
+  background: transparent;
+  transition: opacity 120ms ease;
+}
+.builder-queue-panel .wb-brand-rows .workbench-row:hover:not(.is-selected) {
+  background: transparent;
+  opacity: .68;
+}
+
+.builder-queue-panel .workbench-title {
+  display: block;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-size: 15.5px;
+  font-weight: 800;
+  letter-spacing: -.025em;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 3px;
+  white-space: normal;      /* allow wrapping on long model names */
+}
+
+.builder-queue-panel .workbench-meta {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  line-height: 1.3;
+  white-space: normal;
+}
+
+/* Selected — floating card, not a full-width stripe */
+.builder-queue-panel .workbench-row.is-selected {
+  background: color-mix(in srgb, var(--blue) 14%, transparent);
+  border-radius: 8px;
+  box-shadow: none;
+  margin: 2px -12px;
+  padding: 10px 12px;
+}
+.builder-queue-panel .workbench-row.is-selected .workbench-meta {
+  color: color-mix(in srgb, var(--blue) 55%, var(--muted));
+}
+
+/* Light theme — rail colors stay; tint brand names to work on cream bg */
+body[data-theme="light"] .builder-queue-panel .wb-brand-name {
+  color: color-mix(in srgb, var(--brand-rail, var(--blue)) 85%, #000);
+}
+body[data-theme="light"] .builder-queue-panel .workbench-section-head {
+  color: var(--ink);
+}
+body[data-theme="light"] .builder-queue-panel .wb-brand-toggle {
+  color: var(--muted);
+}
+body[data-theme="light"] .builder-queue-panel .wb-brand-toggle:hover {
+  background: transparent;
+}
+
+/* ── Mobile ≤ 480px ─────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .builder-queue-panel .section-heading h2 { font-size: 20px; }
+  .builder-queue-panel .wb-brand-group { margin-bottom: 10px; }
+  .builder-queue-panel .wb-brand-toggle { min-height: 44px; padding: 0; }
+  .builder-queue-panel .wb-brand-rows .workbench-row {
+    min-height: 44px;
+    padding: 11px 0;
+  }
+  .builder-queue-panel .workbench-title { font-size: 15px; }
+  .builder-queue-panel .workbench-meta  { font-size: 11.5px; }
+  .builder-queue-panel .workbench-row.is-selected {
+    margin: 2px -16px;
+    padding: 10px 16px;
+    border-radius: 0;
+  }
+}
+
+/* ── Inline quick action button on queue rows ─────────────────────── */
+.workbench-row-quick-action {
+  /* reset components.css button base */
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 6px;
+  background: rgba(255,255,255,.07);
+  box-shadow: none;
+  min-height: unset;
+  /* layout */
+  flex-shrink: 0;
+  padding: .25rem .6rem;
+  font: inherit;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--text-primary, #e8e3dc);
+  cursor: pointer;
+  transition: background .13s, border-color .13s;
+  white-space: nowrap;
+}
+.workbench-row-quick-action:hover {
+  background: rgba(255,255,255,.13);
+  border-color: rgba(255,255,255,.28);
+  transform: none;
+  box-shadow: none;
+}
+/* builder panel — matches editorial rail style */
+.builder-queue-panel .workbench-row-quick-action {
+  border-color: rgba(255,255,255,.1);
+  background: rgba(255,255,255,.06);
+  font-size: .68rem;
+  color: var(--muted);
+}
+.builder-queue-panel .workbench-row-quick-action:hover {
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.2);
+  color: var(--ink);
+}
+/* light / cream theme */
+html body[data-theme="light"] .workbench-row-quick-action,
+html body[data-theme="gray"]  .workbench-row-quick-action {
+  border-color: rgba(0,0,0,.12);
+  background: rgba(0,0,0,.05);
+  color: var(--text-primary);
+}
+html body[data-theme="light"] .workbench-row-quick-action:hover,
+html body[data-theme="gray"]  .workbench-row-quick-action:hover {
+  background: rgba(0,0,0,.1);
+  border-color: rgba(0,0,0,.2);
+}
+/* position inside the row — sits after .workbench-row-body */
+.workbench-row-body {
+  min-width: 0;
+}

@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study — Rooftop+ | jnuru.studio</title>
+  <meta
+    name="description"
+    content="A playable case study: how a weekly chore — checking 17 dealership sites by hand — became Rooftop+, a pipeline dashboard for a three-person content team. Do the old job, then watch the app take over."
+  />
+  <meta property="og:title" content="Case Study — Rooftop+ | jnuru.studio" />
+  <meta
+    property="og:description"
+    content="A playable case study. Do my old job for twenty seconds, then meet the app that replaced it."
+  />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://jnuru.studio/case-studies/rooftop-plus" />
+  <link rel="canonical" href="https://jnuru.studio/case-studies/rooftop-plus" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body class="page--case">
+  <header class="site-header">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <a class="brand__name" href="/">jnuru.studio</a>
+          <p class="brand__meta">systems • form • reason</p>
+        </div>
+
+        <nav class="nav">
+          <a href="/#work">Work</a>
+          <a href="/#services">Services</a>
+          <a href="/#philosophy">Philosophy</a>
+          <a href="/about/">About</a>
+          <a href="/#contact">Contact</a>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
+            <span aria-hidden="true">◐</span>
+          </button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <nav class="case-rail" aria-label="Case study progress">
+    <a class="case-rail__dot" href="#top"><span>Start</span></a>
+    <a class="case-rail__dot" href="#job"><span>The Job</span></a>
+    <a class="case-rail__dot" href="#wall"><span>The Wall</span></a>
+    <a class="case-rail__dot" href="#build"><span>The Build</span></a>
+    <a class="case-rail__dot" href="#product"><span>The Product</span></a>
+    <a class="case-rail__dot" href="#outcome"><span>Outcome</span></a>
+  </nav>
+
+  <main id="top">
+    <!-- CASE HERO -->
+    <section class="case-hero">
+      <div class="wrap">
+        <div class="case-hero__top">
+          <p class="kicker">CASE STUDY · PLAYABLE</p>
+
+          <h1 class="case-title">
+            Building the thing nobody asked for
+          </h1>
+
+          <p class="case-lede">
+            How a weekly chore — checking seventeen dealership websites by hand — became
+            Rooftop+, a pipeline dashboard my three-person team lives in. This case study is
+            playable. In a moment, you'll be doing my old job.
+          </p>
+
+          <div class="case-meta">
+            <div class="case-meta__row">
+              <span class="case-meta__label">Role</span>
+              <span class="case-meta__value">UI/UX • Front-end • AI pair-programming</span>
+            </div>
+            <div class="case-meta__row">
+              <span class="case-meta__label">Scope</span>
+              <span class="case-meta__value">Internal pipeline tool • 3 roles • 17 rooftops</span>
+            </div>
+            <div class="case-meta__row">
+              <span class="case-meta__label">Stack</span>
+              <span class="case-meta__value">HTML • CSS • vanilla JS • GitHub + Netlify</span>
+            </div>
+            <div class="case-meta__row">
+              <span class="case-meta__label">Timeline</span>
+              <span class="case-meta__value">Late 2025 → ongoing</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-hero__down">
+          <a class="case-down" href="#job">Play the story →</a>
+          <a class="story-skip story-skip--hero" href="#product">or skip to the product</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 01 THE JOB -->
+    <section class="case-section" id="job">
+      <div class="wrap">
+        <p class="case-step">01 — The Job</p>
+        <h2 class="case-h2 case-h2--wide">First, do my old job.</h2>
+
+        <div class="case-prose case-prose--wide">
+          <p>
+            By 2025 I'd been at the company two years — and that's the year the model pages
+            were handed to me. An inherited codebase, a build process I was still learning,
+            and I was slow at it. Not all of the 2025 model pages got finished, and the
+            dealerships noticed. <em>"Where's our page? Why hasn't it been built?"</em> That
+            sting is where this project starts.
+          </p>
+          <p>
+            But before any pages could be built, someone had to know a car existed. Here's what
+            that looked like. A new model just arrived at one of our seventeen rooftops.
+            Find it.
+          </p>
+        </div>
+
+        <div class="story-game" id="storyGame">
+          <a class="story-skip" href="#wall">skip →</a>
+
+          <div class="story-browser" role="group" aria-label="Simulated rooftop website check">
+            <div class="story-browser__chrome">
+              <span class="story-browser__dot"></span>
+              <span class="story-browser__dot"></span>
+              <span class="story-browser__dot"></span>
+              <span class="story-browser__addr" id="storyAddr">redwood-rooftops · 17 sites open</span>
+            </div>
+            <div class="story-tabs" id="storyTabs" role="tablist" aria-label="Rooftop websites"></div>
+            <div class="story-pane" id="storyPane" aria-live="polite">
+              <p class="story-pane__hint">↑ Click a rooftop. Any rooftop.</p>
+            </div>
+            <p class="story-status" id="storyStatus">Somewhere in these seventeen sites is one new model.</p>
+          </div>
+
+          <div class="story-email" id="storyEmail" hidden>
+            <p class="story-email__lead">You found it. Now do what I did next:</p>
+            <div class="story-email__card">
+              <div class="story-email__row"><span>To</span><strong>bob@dealergroup.example</strong></div>
+              <div class="story-email__row"><span>Subject</span><strong>New model on the lot</strong></div>
+              <p class="story-email__body">Hey Bob — the 2027 Telluride just showed up at Redwood Kia.
+              Can you add it to the sheet so we don't lose track?</p>
+              <button class="story-email__send" id="storySend" type="button">Send</button>
+            </div>
+          </div>
+
+          <div class="story-sheet" id="storySheet" hidden>
+            <p class="story-sheet__label">bob's tracking sheet.xlsx</p>
+            <table>
+              <thead><tr><th>Model</th><th>Rooftop</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>2027 CX-50</td><td>Redwood Mazda</td><td>page built</td></tr>
+                <tr><td>2027 Crosstrek</td><td>Redwood Subaru</td><td>needs SEO</td></tr>
+                <tr class="story-sheet__new" id="storySheetRow"><td>2027 Telluride</td><td>Redwood Kia</td><td>needs page</td></tr>
+              </tbody>
+            </table>
+            <p class="story-sheet__caption" id="storyDone">
+              That was the whole system of record for a seventeen-store dealer group.
+              Every model. Every rooftop. Every week. Keep scrolling ↓
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 THE WALL -->
+    <section class="case-section" id="wall">
+      <div class="wrap">
+        <p class="case-step">02 — The Wall</p>
+        <h2 class="case-h2 case-h2--wide">"Can we get a feed?" — "No."</h2>
+
+        <div class="case-prose case-prose--wide">
+          <p>
+            The obvious fix existed. Dealership websites run on inventory feeds — the data was
+            right there, powering the very pages I was checking by hand. So we asked if we could
+            be added to one. The answer was no. We asked again later. No. Every route to the
+            data came back closed, and the weekly chore stayed a chore.
+          </p>
+          <p>
+            Months later — mid-build, momentum running hot — I went at the wall directly:
+            find the one person at the site vendor who could actually hand over feed access.
+            And not one feed, it turned out — seventeen, one per rooftop.
+          </p>
+        </div>
+
+        <div class="story-inbox" aria-label="The email chase, abridged">
+          <div class="story-inbox__row"><span>Mon</span><strong>Inventory feed access — quick question</strong></div>
+          <div class="story-inbox__row"><span>Wed</span><strong>Re: Inventory feed access — quick question</strong></div>
+          <div class="story-inbox__row"><span>Fri</span><strong>Fwd: Re: Inventory feed access — "try support?"</strong></div>
+          <div class="story-inbox__row"><span>Tue</span><strong>Re: Fwd: Re: Inventory feed access — "not my team"</strong></div>
+          <div class="story-inbox__row story-inbox__row--fade"><span>+8</span><strong>more of these</strong></div>
+        </div>
+
+        <div class="case-prose case-prose--wide">
+          <p>
+            The chase worked. Seventeen feeds landed — which raised one last question:
+            where do they live? And that's the twist. The answer had been sitting in-house the
+            whole time: a hosting server the company already ran, quietly capable of serving all
+            seventeen feeds at stable URLs. I pointed my scan script at them and it came alive.
+            The last problem was solved years before I asked the first question.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 THE BUILD -->
+    <section class="case-section" id="build">
+      <div class="wrap">
+        <p class="case-step">03 — The Build</p>
+        <h2 class="case-h2 case-h2--wide">Three months of "what if I just built it?"</h2>
+
+        <div class="case-prose case-prose--wide">
+          <p>
+            The idea sat in the back of my head for months before I wrote a line. What tipped it:
+            I realized I'd already answered the hard questions without noticing. I'd shipped this
+            very portfolio on GitHub and Netlify — so hosting a static app was a solved problem.
+            The only open question was the code, and I answered that with AI as a pair programmer:
+            I drove the product decisions, the interaction design, and the data model; it helped
+            me move at the speed of my ideas instead of the speed of my syntax.
+          </p>
+
+          <div class="case-cards">
+            <div class="case-card">
+              <p class="case-card__kicker">Hosting</p>
+              <p class="case-card__title">Already solved</p>
+              <p class="case-card__body">GitHub + Netlify, no build step. One HTML file, hand-written CSS, vanilla JS modules.</p>
+            </div>
+
+            <div class="case-card">
+              <p class="case-card__kicker">Code</p>
+              <p class="case-card__title">AI as pair programmer</p>
+              <p class="case-card__body">Design vision mine, syntax shared. Three months of evenings — data model first, then queues, roles, polish.</p>
+            </div>
+
+            <div class="case-card">
+              <p class="case-card__kicker">Data</p>
+              <p class="case-card__title">Seventeen feeds, one scan</p>
+              <p class="case-card__body">One feed per rooftop, hosted on a server we already owned, plugged into a scan script — every lot checked in one click.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 THE PRODUCT -->
+    <section class="case-section" id="product">
+      <div class="wrap">
+        <p class="case-step">04 — The Product</p>
+        <h2 class="case-h2 case-h2--wide">Remember the seventeen tabs? Watch this.</h2>
+
+        <div class="story-scan" id="storyScan">
+          <div class="story-scan__gate" id="storyScanGate">
+            <p class="story-scan__copy">This button replaced section 01 of this page.</p>
+            <button class="story-scan__button" id="storyScanButton" type="button">Run Scan</button>
+          </div>
+          <figure class="case-embed story-scan__result" id="storyScanResult" hidden>
+            <iframe
+              title="Rooftop+ live demo — My Work queue, builder role"
+              data-embed-src="../rooftop-plus/index.html?embed=avery&view=my_work"
+            ></iframe>
+            <figcaption class="case-caption">
+              Live — every new model found, queued, and owned. This is My Work, the builder's view.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="case-prose case-prose--wide">
+          <p>
+            Rooftop+ opens to <strong>My Work</strong> — not a dashboard, not a settings page,
+            your queue. Every role gets their own: the builder sees pages ready to build, the SEO
+            writer sees pages that need copy, the AEO writer sees the answer-engine layer. Tasks
+            group by brand, clicking one opens a full-width focus mode with next steps and
+            one-click actions, and owners assign themselves the moment someone touches a task.
+            The design bet of the whole app: nobody should have to ask "what should I be doing?"
+          </p>
+          <p>
+            The second bet came straight from the 2025 sting. The reason missed pages hurt is
+            that a car on the lot with no page is invisible <em>money</em> — so the shared board
+            sorts by consequence, not by date.
+          </p>
+        </div>
+
+        <figure class="case-embed">
+          <iframe
+            title="Rooftop+ live demo — Team Pipeline grouped by urgency"
+            data-embed-src="../rooftop-plus/index.html?embed=avery&view=team_board"
+            loading="lazy"
+          ></iframe>
+          <figcaption class="case-caption">
+            Live — Team Pipeline. The red tier is "on the lot, no page" — the exact miss that used to sting, now impossible to not see.
+          </figcaption>
+        </figure>
+
+        <div class="case-prose case-prose--wide">
+          <p>
+            And because a three-person team shipping hundreds of pages a year deserves to see it:
+            <strong>Wins</strong>. Counters, a brand trophy shelf, a leaderboard computed from
+            real task ownership. The chore got automated; the pride got a page.
+          </p>
+        </div>
+
+        <figure class="case-embed">
+          <iframe
+            title="Rooftop+ live demo — Wins page"
+            data-embed-src="../rooftop-plus/index.html?embed=devon&view=wins"
+            loading="lazy"
+          ></iframe>
+          <figcaption class="case-caption">
+            Live — the Wins page. Every number on it is computed from the pipeline, not typed in.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 05 OUTCOME -->
+    <section class="case-section" id="outcome">
+      <div class="wrap">
+        <p class="case-step">05 — Outcome</p>
+        <h2 class="case-h2 case-h2--wide">Demo day.</h2>
+
+        <div class="case-prose case-prose--wide">
+          <p>
+            I gave the first build to Bob — my manager — and James, our SEO writer.
+            They loved it. Bob's words: <em>"This is a great idea!"</em> I appreciated that,
+            but I'd known it was a good idea for months, for one specific reason:
+          </p>
+        </div>
+
+        <blockquote class="story-thesis">
+          It wasn't something people were asking for.<br />
+          It was something we needed.
+        </blockquote>
+
+        <div class="case-outcomes">
+          <div class="case-outcome">
+            <p class="case-outcome__num">01</p>
+            <p class="case-outcome__title">The chore became a click</p>
+            <p class="case-outcome__body">Seventeen websites checked by hand became one scan across seventeen feeds we finally won access to.</p>
+          </div>
+
+          <div class="case-outcome">
+            <p class="case-outcome__num">02</p>
+            <p class="case-outcome__title">The sheet retired</p>
+            <p class="case-outcome__body">Statuses, owners, and notes live in the pipeline now — glanceable, not emailable.</p>
+          </div>
+
+          <div class="case-outcome">
+            <p class="case-outcome__num">03</p>
+            <p class="case-outcome__title">Nothing sits unseen</p>
+            <p class="case-outcome__body">The 2025 miss became a design rule: on-lot models with no page go to the top, in red.</p>
+          </div>
+        </div>
+
+        <div class="case-prose case-prose--wide">
+          <p>
+            Three months in, still fine-tuning. The pages this pipeline feeds have a system of
+            their own — that's the <a href="vehicle-system.html">vehicle page system case study</a>,
+            and it's the other half of this story: 2025 taught me to build pages faster;
+            this app made sure I always know which page to build next.
+          </p>
+          <p>
+            <strong>About this demo:</strong> the embedded app is the real product with one swap —
+            "Redwood Motors Group," its rooftops, team, and data are fictional, and names here
+            are changed. The production build runs privately with live feeds, Google sign-in,
+            and real-time sync.
+          </p>
+        </div>
+
+        <p class="case-links">
+          <a class="card__link" href="../rooftop-plus/" target="_blank" rel="noopener">
+            Open the full demo →
+          </a>
+        </p>
+
+        <div class="case-footer-nav">
+          <a class="button" href="/#work">← Back to Work</a>
+          <a class="button" href="vehicle-system.html">Next Case →</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <p class="muted">© <span id="year"></span> jnuru.studio</p>
+        <p class="muted">Independent web systems studio • St. Louis</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="../script.js" defer></script>
+  <script src="rooftop-story.js" defer></script>
+</body>
+</html>
