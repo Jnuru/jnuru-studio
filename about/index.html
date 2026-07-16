@@ -59,6 +59,16 @@
 </head>
 
 <body class="page--about">
+  <script>document.documentElement.classList.add("av2-js");</script>
+
+  <!-- masthead ticker -->
+  <div class="av2-ticker" aria-hidden="true">
+    <div class="av2-ticker__track">
+      <span>CLEAR WEBSITES</span><span>•</span><span>CONTENT</span><span>•</span><span>STRUCTURE</span><span>•</span><span>PHOTOGRAPHY</span><span>•</span><span>ST. LOUIS</span><span>•</span>
+      <span>CLEAR WEBSITES</span><span>•</span><span>CONTENT</span><span>•</span><span>STRUCTURE</span><span>•</span><span>PHOTOGRAPHY</span><span>•</span><span>ST. LOUIS</span><span>•</span>
+    </div>
+  </div>
+
   <header class="site-header">
     <div class="wrap">
       <div class="topbar">
@@ -81,211 +91,244 @@
     </div>
   </header>
 
-  <main>
+  <main class="av2">
     <!-- HERO -->
-    <section class="about-hero about-hero--image">
-      <div class="about-hero__media" aria-hidden="true">
-        <img
-          src="https://res.cloudinary.com/drnccrw0a/image/upload/v1771969222/AdobeStock_1584645119_okv4j8.jpg"
-          alt=""
-          loading="eager"
-        />
+    <section class="av2-hero">
+      <div class="av2-rail" aria-hidden="true">
+        <span>JNURU.STUDIO — ST. LOUIS</span>
       </div>
-      <span class="about-hero__fig">FIG. 01 — STUDIO LIGHT</span>
 
-      <div class="wrap about-hero__inner">
-        <p class="kicker about-hero__kicker">ABOUT / 01</p>
+      <div class="av2-hero__grid">
+        <div class="av2-hero__copy av2-reveal">
+          <p class="av2-kicker">ABOUT / 01</p>
+          <h1 class="av2-hero__headline">I build<br />clear<br /><em>websites.</em></h1>
+          <p class="av2-hero__lead">
+            I help small businesses and founders turn their ideas into websites that feel
+            clear, polished, and easy to manage.
+          </p>
+        </div>
 
-        <h1 class="about-hero__headline">
-          I'm a designer who builds clear websites.
-        </h1>
-
-        <p class="about-hero__lead">
-          I help small businesses and founders turn their ideas into websites that feel clear,
-          polished, and easy to manage.
-        </p>
+        <div class="av2-hero__media">
+          <img
+            src="https://res.cloudinary.com/drnccrw0a/image/upload/v1771969222/AdobeStock_1584645119_okv4j8.jpg"
+            alt=""
+            loading="eager"
+          />
+          <span class="av2-fig">FIG. 01 — STUDIO LIGHT</span>
+        </div>
       </div>
     </section>
-
-    <div class="divider"></div>
 
     <!-- PROCESS -->
-    <section class="section process">
-      <div class="wrap">
-        <div class="process-header">
-          <p class="kicker">THE PROCESS / 02</p>
-          <h2 class="display italic">How I work</h2>
+    <section class="av2-section av2-process av2-reveal">
+      <div class="av2-process__header">
+        <div>
+          <p class="av2-kicker">THE PROCESS / 02</p>
+          <h2 class="av2-display">How I work</h2>
         </div>
-
-        <div class="process-grid">
-          <div class="process-card">
-            <span class="process-number">01</span>
-            <h3>Discovery</h3>
-            <p>Understand the business, the audience, and what the site needs to make clear.</p>
-          </div>
-
-          <div class="process-card">
-            <span class="process-number">02</span>
-            <h3>Clarity</h3>
-            <p>Organize the offer, pages, and next step so visitors know what to do.</p>
-          </div>
-
-          <div class="process-card">
-            <span class="process-number">03</span>
-            <h3>Structure</h3>
-            <p>Build reusable sections that are clean, responsive, and easy to update.</p>
-          </div>
-
-          <div class="process-card">
-            <span class="process-number">04</span>
-            <h3>Delivery</h3>
-            <p>Launch the site polished, tested, and ready to share.</p>
-          </div>
-        </div>
+        <p class="av2-process__intro">Four moves, in order, every time — no shortcuts, no guesswork.</p>
       </div>
+
+      <ol class="av2-steps">
+        <li class="av2-step">
+          <span class="av2-step__num" aria-hidden="true">01</span>
+          <h3 class="av2-step__title">Discovery</h3>
+          <p class="av2-step__desc">Understand the business, the audience, and what the site needs to make clear.</p>
+        </li>
+        <li class="av2-step">
+          <span class="av2-step__num" aria-hidden="true">02</span>
+          <h3 class="av2-step__title">Clarity</h3>
+          <p class="av2-step__desc">Organize the offer, pages, and next step so visitors know what to do.</p>
+        </li>
+        <li class="av2-step">
+          <span class="av2-step__num" aria-hidden="true">03</span>
+          <h3 class="av2-step__title">Structure</h3>
+          <p class="av2-step__desc">Build reusable sections that are clean, responsive, and easy to update.</p>
+        </li>
+        <li class="av2-step">
+          <span class="av2-step__num" aria-hidden="true">04</span>
+          <h3 class="av2-step__title">Delivery</h3>
+          <p class="av2-step__desc">Launch the site polished, tested, and ready to share.</p>
+        </li>
+      </ol>
     </section>
 
-    <div class="divider"></div>
+    <!-- WHO I AM (bento) -->
+    <section class="av2-section av2-who av2-reveal">
+      <p class="av2-kicker av2-who__kicker">WHO I AM / 03</p>
 
-    <!-- WHO I AM -->
-    <section class="section about-identity">
-      <div class="wrap about-identity__grid">
-        <div class="about-identity__image">
+      <div class="av2-bento">
+        <div class="av2-bento__portrait">
           <img
             src="https://res.cloudinary.com/drnccrw0a/image/upload/v1775509220/IMG_5572_yxxutu.jpg"
             alt="Portrait of Jnuru"
             loading="lazy"
           />
-          <p class="fig-caption">FIG. 02 — ON THE ROAD</p>
+          <span class="av2-fig">FIG. 02 — ON THE ROAD</span>
         </div>
 
-        <div class="about-identity__content">
-          <p class="kicker">WHO I AM / 03</p>
+        <div class="av2-bento__quote">
+          <p>"Patient decisions, clean structure, and no shortcuts."</p>
+        </div>
 
-          <p class="about-quote">"Patient decisions, clean structure, and no shortcuts."</p>
-
-          <h2 class="display italic">
-            A designer focused on clear websites that hold up.
-          </h2>
-
+        <div class="av2-bento__bio">
+          <h2>A designer focused on clear websites that hold up.</h2>
           <p>
             I'm based in St. Louis and work where design, content, and website structure meet.
             By day I build digital experiences for Lou Fusz, a large family-owned automotive
-            network based in St. Louis. Outside of that, I run jnuru.studio for small businesses
-            that need a web presence they can trust and manage.
+            network. Outside of that, I run jnuru.studio for small businesses that need a web
+            presence they can trust.
           </p>
-
           <p>
-            Outside the screen, I run. Ultras, marathons, early mornings, long miles.
-            That discipline shows up in the work: patient decisions, clean structure,
-            and no shortcuts.
+            Outside the screen, I run — ultras, marathons, early mornings, long miles.
+            That discipline shows up in the work.
           </p>
         </div>
       </div>
     </section>
 
-    <div class="divider"></div>
-
-    <!-- PHOTOGRAPHY -->
-    <section class="section about-photos">
-      <div class="wrap">
-        <p class="kicker">PHOTOGRAPHY / 04</p>
-        <h2 class="display italic">I carry a camera.</h2>
-        <p class="about-photos__intro">
-          Photography is available as part of any website project. Real photos of your
-          business, your team, and your product — so your site doesn't look like
-          everyone else's stock library.
+    <!-- PHOTOGRAPHY — dark filmstrip -->
+    <section class="av2-camera av2-reveal">
+      <div class="av2-camera__header">
+        <div>
+          <p class="av2-kicker av2-kicker--onink">04 / PHOTOGRAPHY</p>
+          <h2 class="av2-display">I carry a camera.</h2>
+        </div>
+        <p class="av2-camera__intro">
+          Photography is available as part of any website project — real photos of your
+          business, team, and product.
         </p>
       </div>
-      <div class="photo-strip" aria-label="Selected photography">
-        <figure class="photo-strip__item photo-strip__item--portrait">
-          <img src="https://res.cloudinary.com/drnccrw0a/image/upload/f_auto,q_auto,w_1200/v1784216041/DSC_0014_hywqij.jpg" alt="Photographer mid-shot, Nikon in hand" loading="lazy" />
-          <figcaption>Event coverage</figcaption>
-        </figure>
-        <figure class="photo-strip__item">
-          <img src="https://res.cloudinary.com/drnccrw0a/image/upload/f_auto,q_auto,w_1200/v1784216041/DSC_0035_cqyrj0.jpg" alt="Espresso in a double-walled glass, coffee shop product shot" loading="lazy" />
-          <figcaption>Product · coffee shop</figcaption>
-        </figure>
-        <figure class="photo-strip__item photo-strip__item--portrait">
-          <img src="https://res.cloudinary.com/drnccrw0a/image/upload/f_auto,q_auto,w_1200/v1784216041/DSC_0060_vawccv.jpg" alt="Basketball coach headshot in the gym" loading="lazy" />
-          <figcaption>Team headshots · athletics</figcaption>
-        </figure>
-        <figure class="photo-strip__item">
-          <img src="https://res.cloudinary.com/drnccrw0a/image/upload/f_auto,q_auto,w_1200/v1784216041/DSC_0199_xleiga.jpg" alt="Barista working through espresso-machine steam" loading="lazy" />
-          <figcaption>Environment · coffee shop</figcaption>
-        </figure>
-        <figure class="photo-strip__item">
-          <img src="https://res.cloudinary.com/drnccrw0a/image/upload/f_auto,q_auto,w_1200/v1784216041/Garment_of_Praise_ewm1pq.jpg" alt="Single cover art: photo with stacked typography, Garment of Praise" loading="lazy" />
-          <figcaption>Single cover · photo + type</figcaption>
-        </figure>
+
+      <div class="av2-gallery-shell">
+        <div class="av2-gallery" data-av2-gallery aria-label="Selected photography">
+          <figure class="av2-shot" style="--w:38vw">
+            <img src="https://res.cloudinary.com/drnccrw0a/image/upload/f_auto,q_auto,w_1200/v1784216041/DSC_0014_hywqij.jpg" alt="Photographer mid-shot, Nikon in hand" loading="lazy" />
+            <figcaption>EVENT COVERAGE</figcaption>
+          </figure>
+          <figure class="av2-shot" style="--w:30vw">
+            <img src="https://res.cloudinary.com/drnccrw0a/image/upload/f_auto,q_auto,w_1200/v1784216041/DSC_0035_cqyrj0.jpg" alt="Espresso in a double-walled glass, coffee shop product shot" loading="lazy" />
+            <figcaption>PRODUCT · COFFEE SHOP</figcaption>
+          </figure>
+          <figure class="av2-shot" style="--w:26vw">
+            <img src="https://res.cloudinary.com/drnccrw0a/image/upload/f_auto,q_auto,w_1200/v1784216041/DSC_0060_vawccv.jpg" alt="Basketball coach headshot in the gym" loading="lazy" />
+            <figcaption>TEAM HEADSHOTS · ATHLETICS</figcaption>
+          </figure>
+          <figure class="av2-shot" style="--w:34vw">
+            <img src="https://res.cloudinary.com/drnccrw0a/image/upload/f_auto,q_auto,w_1200/v1784216041/DSC_0199_xleiga.jpg" alt="Barista working through espresso-machine steam" loading="lazy" />
+            <figcaption>ENVIRONMENT · COFFEE SHOP</figcaption>
+          </figure>
+          <figure class="av2-shot" style="--w:26vw">
+            <img src="https://res.cloudinary.com/drnccrw0a/image/upload/f_auto,q_auto,w_1200/v1784216041/Garment_of_Praise_ewm1pq.jpg" alt="Single cover art: photo with stacked typography, Garment of Praise" loading="lazy" />
+            <figcaption>SINGLE COVER · PHOTO + TYPE</figcaption>
+          </figure>
+        </div>
+
+        <button class="av2-gallery__btn av2-gallery__btn--prev" type="button" data-av2-prev aria-label="Previous photo">‹</button>
+        <button class="av2-gallery__btn av2-gallery__btn--next" type="button" data-av2-next aria-label="Next photo">›</button>
+      </div>
+
+      <div class="av2-progress" aria-hidden="true">
+        <div class="av2-progress__bar" data-av2-progress></div>
       </div>
     </section>
 
-    <div class="divider"></div>
+    <!-- PRINCIPLES — zig zag -->
+    <section class="av2-section av2-principles av2-reveal">
+      <div class="av2-principles__header">
+        <p class="av2-kicker">05 / WHAT DRIVES ME</p>
+        <h2 class="av2-display">Principles</h2>
+        <p class="av2-principles__intro">
+          Good websites should be easy to understand, easy to use, and built with enough
+          structure to grow.
+        </p>
+      </div>
 
-    <!-- VALUES -->
-    <section class="section about-values">
-      <div class="wrap values-layout">
-        <div class="values-intro">
-          <p class="kicker">WHAT DRIVES ME / 05</p>
-          <h2 class="display italic">Principles</h2>
-
-          <p class="values-intro__text">
-            Good websites should be easy to understand, easy to use, and built with enough structure to grow.
-          </p>
+      <div class="av2-principle">
+        <span class="av2-principle__num" aria-hidden="true">01</span>
+        <div class="av2-principle__body">
+          <h3>Authenticity</h3>
+          <p>The work should sound like the business behind it, not like a template someone filled in.</p>
         </div>
-
-        <div class="values-list">
-          <div class="value">
-            <h3 class="value__title">Authenticity</h3>
-            <p class="value__body">
-              The work should sound like the business behind it, not like a template someone filled in.
-            </p>
-          </div>
-
-          <div class="value">
-            <h3 class="value__title">Discipline</h3>
-            <p class="value__body">
-              Strong decisions, repeatable systems, and a clear reason for every section.
-            </p>
-          </div>
-
-          <div class="value">
-            <h3 class="value__title">Intentionality</h3>
-            <p class="value__body">
-              Every section should have a job: explain the offer, build trust, or help someone take the next step.
-            </p>
-          </div>
+      </div>
+      <div class="av2-principle av2-principle--flip">
+        <span class="av2-principle__num" aria-hidden="true">02</span>
+        <div class="av2-principle__body">
+          <h3>Discipline</h3>
+          <p>Strong decisions, repeatable systems, and a clear reason for every section.</p>
+        </div>
+      </div>
+      <div class="av2-principle">
+        <span class="av2-principle__num" aria-hidden="true">03</span>
+        <div class="av2-principle__body">
+          <h3>Intentionality</h3>
+          <p>Every section should have a job: explain the offer, build trust, or help someone take the next step.</p>
         </div>
       </div>
     </section>
-
-    <div class="divider"></div>
 
     <!-- CONTACT -->
-    <section class="section" id="contact">
-      <div class="wrap">
-        <p class="kicker">CONTACT / 06</p>
-
-        <h2 class="display">
-          Tell me what you're building. I'll help choose the simplest path that still gives it room to grow.
+    <section class="av2-contact av2-reveal" id="contact">
+      <div class="av2-contact__glow" aria-hidden="true"></div>
+      <div class="av2-contact__inner">
+        <p class="av2-kicker av2-kicker--onink">06 / CONTACT</p>
+        <h2 class="av2-contact__headline">
+          Tell me what you're building. I'll help choose the simplest path that still gives
+          it room to grow.
         </h2>
-
-        <div class="contact">
-          <a class="button button--pill" href="mailto:hello@jnuru.studio">hello@jnuru.studio</a>
-          <p class="muted">Based in St. Louis • Available for select projects</p>
-        </div>
+        <a class="av2-pill" href="mailto:hello@jnuru.studio">HELLO@JNURU.STUDIO ↗</a>
+        <p class="av2-contact__meta">Based in St. Louis • Available for select projects</p>
       </div>
+
+      <footer class="av2-footer">
+        <p>© <span id="year"></span> jnuru.studio</p>
+        <p>Independent web systems studio • St. Louis</p>
+      </footer>
     </section>
-
-    <footer class="footer">
-      <div class="wrap footer__inner">
-        <p class="muted">© <span id="year"></span> jnuru.studio</p>
-        <p class="muted">Independent web systems studio • St. Louis</p>
-      </div>
-    </footer>
   </main>
 
   <script src="../script.js" defer></script>
+  <script>
+    (function () {
+      // Scroll reveal
+      var revealEls = document.querySelectorAll(".av2-reveal");
+      if ("IntersectionObserver" in window) {
+        var obs = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-in");
+                obs.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+        revealEls.forEach(function (el) { obs.observe(el); });
+      } else {
+        revealEls.forEach(function (el) { el.classList.add("is-in"); });
+      }
+
+      // Filmstrip controls + progress
+      var gallery = document.querySelector("[data-av2-gallery]");
+      var prev = document.querySelector("[data-av2-prev]");
+      var next = document.querySelector("[data-av2-next]");
+      var bar = document.querySelector("[data-av2-progress]");
+      if (gallery) {
+        var step = function () { return Math.min(gallery.clientWidth * 0.7, 500); };
+        prev && prev.addEventListener("click", function () {
+          gallery.scrollBy({ left: -step(), behavior: "smooth" });
+        });
+        next && next.addEventListener("click", function () {
+          gallery.scrollBy({ left: step(), behavior: "smooth" });
+        });
+        gallery.addEventListener("scroll", function () {
+          if (!bar) return;
+          var max = gallery.scrollWidth - gallery.clientWidth;
+          bar.style.width = (max > 0 ? (gallery.scrollLeft / max) * 100 : 0) + "%";
+        }, { passive: true });
+      }
+    })();
+  </script>
 </body>
 </html>
