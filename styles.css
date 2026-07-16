@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap");
 
 :root{
   /* Core palette */
@@ -22,8 +22,8 @@
   --glass-blur: 26px;
 
   /* Fonts */
-  --serif:"Libre Baskerville", Georgia, "Times New Roman", serif;
-  --sans:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans:"Work Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 
   /* Layout */
@@ -2131,4 +2131,42 @@ body{
 .dark .photo-strip__item img{ border-color: rgba(255,255,255,0.12); }
 @media (max-width: 720px){
   .photo-strip__item img{ height: 300px; }
+}
+
+
+/* ── About v2 refinements ───────────────────────────────────── */
+.about-quote{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  color: var(--muted);
+  margin: 0 0 var(--s2);
+}
+.fig-caption{
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 10px;
+}
+.about-hero__fig{
+  position: absolute;
+  left: var(--pad);
+  bottom: 18px;
+  z-index: 2;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(42,42,40,0.55);
+}
+.dark .about-hero__fig{ color: rgba(255,255,255,0.55); }
+.button--pill{
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 14px 26px;
 }
