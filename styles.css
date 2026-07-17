@@ -2895,18 +2895,3 @@ body{
 }
 .card-ghost--step{ font-size:92px; top:-14px; }
 .service-card > *:not(.card-ghost), .process-step > *:not(.card-ghost){ position:relative; z-index:1; }
-
-/* ghost numeral breathing room on service cards */
-.card-ghost{ top:-24px; right:-8px; opacity:.75; }
-.service-card__title{ padding-right:96px; }
-.card-ghost--step{ opacity:1; right:6px; top:-14px; }
-
-/* ghost numerals: fully contained, no cropping */
-.card-ghost{
-  top:14px;
-  right:20px;
-  font-size:88px;
-  opacity:1;
-}
-.card-ghost--step{ font-size:80px; top:2px; right:12px; }
-.service-card__title{ padding-right:88px; }
