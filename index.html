@@ -70,10 +70,29 @@
 }
   </script>
 
+  <script>
+    try {
+      if (sessionStorage.getItem("jnuru_seen") || matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("no-loader");
+      } else {
+        document.documentElement.classList.add("loader-lock");
+      }
+    } catch (e) {}
+  </script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+
+  <!-- loading screen -->
+  <div class="loader" data-loader aria-hidden="true">
+    <div class="loader__inner">
+      <p class="loader__brand">jnuru.studio</p>
+      <p class="loader__meta">systems • form • reason</p>
+      <div class="loader__line"><div class="loader__bar" data-loader-bar></div></div>
+      <p class="loader__count"><span data-loader-count>0</span></p>
+    </div>
+  </div>
   <header class="site-header">
     <div class="wrap">
       <div class="topbar">
@@ -407,5 +426,37 @@
   </main>
 
   <script src="script.js" defer></script>
+  <script>
+    (function () {
+      var el = document.querySelector("[data-loader]");
+      if (!el || document.documentElement.classList.contains("no-loader")) return;
+      var bar = document.querySelector("[data-loader-bar]");
+      var count = document.querySelector("[data-loader-count]");
+      var start = performance.now();
+      var DURATION = 1100;
+      var loaded = false;
+      window.addEventListener("load", function () { loaded = true; });
+      function tick(now) {
+        var t = Math.min((now - start) / DURATION, 1);
+        // ease-out, but never finish before 55% unless page assets are ready
+        var pct = Math.round(100 * (1 - Math.pow(1 - t, 3)));
+        if (!loaded && pct > 92) pct = 92;
+        count.textContent = pct;
+        bar.style.width = pct + "%";
+        if (pct >= 100) { finish(); return; }
+        requestAnimationFrame(tick);
+      }
+      function finish() {
+        try { sessionStorage.setItem("jnuru_seen", "1"); } catch (e) {}
+        el.classList.add("loader--done");
+        document.documentElement.classList.remove("loader-lock");
+        el.addEventListener("transitionend", function () { el.remove(); });
+        setTimeout(function () { if (el.parentNode) el.remove(); }, 1200);
+      }
+      requestAnimationFrame(tick);
+      // hard cap: never hold the page longer than 2.5s no matter what
+      setTimeout(function () { if (el.parentNode && !el.classList.contains("loader--done")) finish(); }, 2500);
+    })();
+  </script>
 </body>
 </html>
