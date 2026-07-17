@@ -2916,3 +2916,11 @@ body{
   color:rgba(164,148,105,.12);
 }
 .dark .service-card .card-ghost{ color:rgba(228,216,186,.09); }
+
+/* ghost numerals: final nudge — right, fainter, hair smaller */
+.service-card .card-ghost{
+  right:0;                                  /* 12px farther right */
+  font-size:clamp(8rem, 8.5vw, 9.5rem);     /* ~5% smaller */
+  color:rgba(164,148,105,.10);              /* ~17% less opacity */
+}
+.dark .service-card .card-ghost{ color:rgba(228,216,186,.075); }
