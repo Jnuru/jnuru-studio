@@ -2895,3 +2895,15 @@ body{
 }
 .card-ghost--step{ font-size:92px; top:-14px; }
 .service-card > *:not(.card-ghost), .process-step > *:not(.card-ghost){ position:relative; z-index:1; }
+
+/* ghost numerals: service cards only — upper-right, faded, intentionally cropped */
+.service-card .card-ghost{
+  top:-44px;               /* ~26px farther up from previous -18px */
+  right:-6px;              /* ~12px farther right from previous 6px */
+  font-size:100px;         /* ~9% smaller than previous 110px */
+  font-weight:500;
+  line-height:.8;
+  letter-spacing:-.06em;
+  color:rgba(164,148,105,.09);  /* warm beige @ 9% */
+}
+.dark .service-card .card-ghost{ color:rgba(228,216,186,.07); }
