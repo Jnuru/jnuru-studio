@@ -302,9 +302,13 @@
               }
             });
           },
-          { threshold: 0.12 }
+          { threshold: 0, rootMargin: "0px 0px -8% 0px" }
         );
-        revealEls.forEach(function (el) { obs.observe(el); });
+        revealEls.forEach(function (el) {
+          var r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight * 0.9) { el.classList.add("is-in"); }
+          else { obs.observe(el); }
+        });
       } else {
         revealEls.forEach(function (el) { el.classList.add("is-in"); });
       }
