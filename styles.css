@@ -2855,3 +2855,25 @@ body{
   opacity:0;
   transition:opacity .22s ease;
 }
+
+/* --- contact copy-address fallback --- */
+.av2-contact__actions{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.av2-copy{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.14em;
+  color:var(--av2-on-ink-muted);
+  background:none;
+  border:none;
+  border-bottom:1px solid var(--av2-ink-line);
+  padding:4px 2px;
+  cursor:pointer;
+  transition:color .2s ease;
+}
+.av2-copy:hover{ color:var(--av2-on-ink); }
+.av2-copy.is-copied{ color:var(--av2-on-ink); border-bottom-color:var(--av2-on-ink); }

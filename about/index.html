@@ -276,7 +276,10 @@
           Tell me what you're building. I'll help choose the simplest path that still gives
           it room to grow.
         </h2>
-        <a class="av2-pill" href="mailto:hello@jnuru.studio">HELLO@JNURU.STUDIO ↗</a>
+        <div class="av2-contact__actions">
+          <a class="av2-pill" href="mailto:hello@jnuru.studio">HELLO@JNURU.STUDIO ↗</a>
+          <button class="av2-copy" type="button" data-copy-email="hello@jnuru.studio">COPY ADDRESS</button>
+        </div>
         <p class="av2-contact__meta">Based in St. Louis • Available for select projects</p>
       </div>
 
@@ -331,6 +334,31 @@
           var max = gallery.scrollWidth - gallery.clientWidth;
           bar.style.width = (max > 0 ? (gallery.scrollLeft / max) * 100 : 0) + "%";
         }, { passive: true });
+      }
+
+      // copy email fallback
+      var copyBtn = document.querySelector("[data-copy-email]");
+      if (copyBtn) {
+        copyBtn.addEventListener("click", function () {
+          var addr = copyBtn.getAttribute("data-copy-email");
+          function done() {
+            var orig = copyBtn.textContent;
+            copyBtn.textContent = "COPIED ✓";
+            copyBtn.classList.add("is-copied");
+            setTimeout(function () {
+              copyBtn.textContent = orig;
+              copyBtn.classList.remove("is-copied");
+            }, 1800);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(addr).then(done);
+          } else {
+            var ta = document.createElement("textarea");
+            ta.value = addr; document.body.appendChild(ta);
+            ta.select(); document.execCommand("copy");
+            document.body.removeChild(ta); done();
+          }
+        });
       }
     })();
   </script>
