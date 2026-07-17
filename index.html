@@ -86,6 +86,8 @@
 
   <!-- loading screen -->
   <div class="loader" data-loader aria-hidden="true">
+    <div class="loader__panels"><span></span><span></span><span></span><span></span></div>
+    <div class="loader__ghost" aria-hidden="true"><span data-loader-ghost>0</span></div>
     <div class="loader__inner">
       <p class="loader__brand">jnuru.studio</p>
       <p class="loader__meta">systems • form • reason</p>
@@ -432,6 +434,7 @@
       if (!el || document.documentElement.classList.contains("no-loader")) return;
       var bar = document.querySelector("[data-loader-bar]");
       var count = document.querySelector("[data-loader-count]");
+      var ghost = document.querySelector("[data-loader-ghost]");
       var start = performance.now();
       var DURATION = 1100;
       var loaded = false;
@@ -443,6 +446,7 @@
         if (!loaded && pct > 92) pct = 92;
         count.textContent = pct;
         bar.style.width = pct + "%";
+        ghost.textContent = pct;
         if (pct >= 100) { finish(); return; }
         requestAnimationFrame(tick);
       }
@@ -450,8 +454,9 @@
         try { sessionStorage.setItem("jnuru_seen", "1"); } catch (e) {}
         el.classList.add("loader--done");
         document.documentElement.classList.remove("loader-lock");
-        el.addEventListener("transitionend", function () { el.remove(); });
-        setTimeout(function () { if (el.parentNode) el.remove(); }, 1200);
+        var last = el.querySelector(".loader__panels span:last-child");
+        last.addEventListener("transitionend", function () { el.remove(); });
+        setTimeout(function () { if (el.parentNode) el.remove(); }, 1600);
       }
       requestAnimationFrame(tick);
       // hard cap: never hold the page longer than 2.5s no matter what

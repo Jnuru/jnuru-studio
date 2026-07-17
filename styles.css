@@ -2817,3 +2817,41 @@ body{
   text-align:right;
 }
 .loader__count span::after{ content:"%"; }
+
+/* --- loader v2: ghost numeral + staggered curtain --- */
+.loader{ background:transparent; }
+.loader--done{ transform:none; }
+.loader__panels span{
+  position:absolute;
+  top:0; bottom:0;
+  width:25.5%;
+  background:var(--av2-ink);
+  transition:transform .62s cubic-bezier(.76,0,.24,1);
+}
+.loader__panels span:nth-child(1){ left:0; }
+.loader__panels span:nth-child(2){ left:25%; }
+.loader__panels span:nth-child(3){ left:50%; }
+.loader__panels span:nth-child(4){ left:75%; }
+.loader--done .loader__panels span{ transform:translateY(-101%); }
+.loader--done .loader__panels span:nth-child(2){ transition-delay:.08s; }
+.loader--done .loader__panels span:nth-child(3){ transition-delay:.16s; }
+.loader--done .loader__panels span:nth-child(4){ transition-delay:.24s; }
+.loader__ghost{
+  position:absolute;
+  right:-1vw;
+  bottom:-6vh;
+  font-family:var(--serif);
+  font-size:clamp(200px, 38vw, 540px);
+  font-weight:700;
+  line-height:1;
+  color:#33312A;
+  user-select:none;
+  letter-spacing:-.03em;
+}
+.loader__inner, .loader__ghost{ position:relative; z-index:2; }
+.loader__ghost{ position:absolute; }
+.loader--done .loader__inner,
+.loader--done .loader__ghost{
+  opacity:0;
+  transition:opacity .22s ease;
+}
