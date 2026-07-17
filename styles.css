@@ -2907,3 +2907,12 @@ body{
   color:rgba(164,148,105,.09);  /* warm beige @ 9% */
 }
 .dark .service-card .card-ghost{ color:rgba(228,216,186,.07); }
+
+/* ghost numerals: service cards — corrected, 75-85% visible, slight crop only */
+.service-card .card-ghost{
+  top:-4px;
+  right:12px;
+  font-size:clamp(8.5rem, 9vw, 10rem);
+  color:rgba(164,148,105,.12);
+}
+.dark .service-card .card-ghost{ color:rgba(228,216,186,.09); }
