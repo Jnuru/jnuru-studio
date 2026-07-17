@@ -2877,3 +2877,21 @@ body{
 }
 .av2-copy:hover{ color:var(--av2-on-ink); }
 .av2-copy.is-copied{ color:var(--av2-on-ink); border-bottom-color:var(--av2-on-ink); }
+
+/* --- ghost numerals on home cards --- */
+.service-card, .process-step{ position:relative; overflow:hidden; }
+.card-ghost{
+  position:absolute;
+  top:-18px;
+  right:6px;
+  font-family:var(--serif);
+  font-size:110px;
+  font-weight:700;
+  line-height:1;
+  color:var(--av2-ghost);
+  pointer-events:none;
+  user-select:none;
+  z-index:0;
+}
+.card-ghost--step{ font-size:92px; top:-14px; }
+.service-card > *:not(.card-ghost), .process-step > *:not(.card-ghost){ position:relative; z-index:1; }
