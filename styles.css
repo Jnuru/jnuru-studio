@@ -2924,3 +2924,226 @@ body{
   color:rgba(164,148,105,.10);              /* ~17% less opacity */
 }
 .dark .service-card .card-ghost{ color:rgba(228,216,186,.075); }
+
+/* =========================================
+   2026 rework: hero secondary CTA, trust strip,
+   FAQ, contact form. Uses existing tokens only.
+   ========================================= */
+
+/* Hero: two actions, primary reads as a pill */
+.hero__actions{
+  display:flex;
+  align-items:center;
+  gap: var(--s3);
+  flex-wrap: wrap;
+}
+
+.hero__cta--primary{
+  border: 1px solid rgba(255,255,255,0.55);
+  border-radius: 999px;
+  border-bottom: 1px solid rgba(255,255,255,0.55);
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+.hero__cta--primary:hover{
+  background: rgba(255,255,255,0.22);
+  border-bottom-color: rgba(255,255,255,0.90);
+}
+
+/* Trust strip */
+.trust-stats{
+  margin-top: var(--s4);
+  display:flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+}
+
+.trust-stat{
+  font-family: var(--mono);
+  font-size: var(--label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--divider);
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: var(--glass-fill);
+}
+
+/* Work head note */
+.work-head__note{
+  margin-top: 6px;
+  font-size: var(--small);
+}
+
+/* FAQ */
+.faq-list{
+  margin-top: var(--s4);
+  border-top: 1px solid var(--divider);
+  max-width: 760px;
+}
+
+.faq-item{
+  border-bottom: 1px solid var(--divider);
+}
+
+.faq-item__q{
+  cursor: pointer;
+  list-style: none;
+  padding: var(--s3) 0;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--fg);
+  position: relative;
+  padding-right: 40px;
+}
+
+.faq-item__q::-webkit-details-marker{ display:none; }
+
+.faq-item__q::after{
+  content: "+";
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--mono);
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.faq-item[open] .faq-item__q::after{ content: "−"; }
+
+.faq-item__a{
+  margin: 0;
+  padding: 0 0 var(--s3);
+  color: var(--muted);
+  max-width: 640px;
+}
+
+/* Contact form */
+.contact-form{
+  display:flex;
+  flex-direction: column;
+  gap: var(--s3);
+  max-width: 640px;
+  width: 100%;
+}
+
+.contact-form__hp{ display:none; }
+
+.contact-form__row{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s3);
+}
+
+@media (max-width: 640px){
+  .contact-form__row{ grid-template-columns: 1fr; }
+}
+
+.contact-form__field{
+  display:flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-form__label{
+  font-family: var(--mono);
+  font-size: var(--label);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form select,
+.contact-form textarea{
+  font-family: var(--sans);
+  font-size: var(--body);
+  color: var(--fg);
+  background: var(--glass-fill);
+  border: 1px solid var(--divider);
+  border-radius: 10px;
+  padding: 12px 14px;
+  outline: none;
+  width: 100%;
+}
+
+.contact-form select{ appearance: none; }
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus{
+  border-color: var(--forest);
+}
+
+.contact-form textarea{ resize: vertical; }
+
+.contact-form .button{
+  cursor: pointer;
+  margin-top: var(--s1);
+}
+
+.contact__mail{ color: var(--link); }
+
+/* Service card link */
+.service-card__link{
+  display:inline-block;
+  margin-top: var(--s2);
+  font-family: var(--mono);
+  font-size: var(--label);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg);
+  text-decoration: none;
+  border-bottom: 1px solid var(--divider);
+  padding-bottom: 3px;
+}
+
+.service-card__link:hover{ border-bottom-color: var(--forest); }
+
+/* Case study closing CTA */
+.cs-cta{
+  margin-top: var(--s5);
+  padding: var(--s4);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius);
+  background: var(--glass-fill);
+}
+
+.cs-cta__title{
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 var(--s1);
+}
+
+.cs-cta__body{
+  color: var(--muted);
+  margin: 0 0 var(--s2);
+}
+
+.cs-cta__links{
+  display:flex;
+  gap: var(--s3);
+  flex-wrap: wrap;
+}
+
+/* About: entity paragraph under the lead */
+.av2-hero__entity{
+  margin-top: var(--s2);
+  font-size: var(--small);
+  color: var(--muted);
+  max-width: 52ch;
+}
+
+/* Case study: plain-terms line */
+.case-lede--plain{
+  font-size: var(--small);
+  max-width: 640px;
+}
