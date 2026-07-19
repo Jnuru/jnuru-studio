@@ -137,9 +137,39 @@ body{
   width: 38px;
   height: 38px;
   cursor: pointer;
+  transition: transform .15s ease;
 }
 
 .theme-toggle:hover{ color: var(--fg); }
+
+/* Hidden: 5 fast clicks glitches the page and sends you to /play/?broke=1 (see script.js) */
+.theme-toggle.warm{ transform: rotate(8deg); }
+.theme-toggle.shaking{ animation: toggle-shake .35s ease; }
+@keyframes toggle-shake{
+  0%, 100% { transform: rotate(8deg) translateX(0); }
+  25% { transform: rotate(8deg) translateX(-4px); }
+  50% { transform: rotate(8deg) translateX(4px); }
+  75% { transform: rotate(8deg) translateX(-3px); }
+}
+body.glitching > *{ animation: page-jitter .9s steps(2) both; }
+@keyframes page-jitter{
+  0%   { transform: translate(0,0); filter: none; }
+  15%  { transform: translate(-6px, 2px) skewX(-1.5deg); filter: invert(1); }
+  30%  { transform: translate(5px, -3px); filter: none; }
+  45%  { transform: translate(-3px, 5px) skewX(2deg); filter: invert(1) hue-rotate(40deg); }
+  60%  { transform: translate(7px, 1px); filter: none; }
+  75%  { transform: translate(-5px, -4px) skewX(-1deg); filter: invert(1); }
+  100% { transform: translate(0,0); filter: none; }
+}
+body.glitching::after{
+  content: ""; position: fixed; inset: 0; z-index: 9998; pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent 0 2px, color-mix(in srgb, var(--forest) 14%, transparent) 2px 3px);
+  animation: page-scan .9s linear both;
+}
+@keyframes page-scan{ 0% { opacity: 0 } 20% { opacity: 1 } 100% { opacity: 0 } }
+@media (prefers-reduced-motion: reduce){
+  body.glitching > *, body.glitching::after, .theme-toggle.shaking { animation: none; }
+}
 
 @media (max-width: 760px){
   .topbar{
