@@ -7,16 +7,18 @@
 <meta name="robots" content="noindex">
 <style>
   /* ============================================================
-     PLAY — hidden page for jnuru.studio  (v5)
-     Flow: 5 fast toggle clicks (rotate @3, shake @4, break @5)
-           → glitch → break screen → [Keep going]
-           → brief PLAY flash (~700ms) → vault.
+     PLAY — hidden vault page for jnuru.studio
+     Reached two ways:
+       1. Direct visit to /play/ — drops straight into the vault below.
+       2. /play/?broke=1 — the real entry point. The sitewide toggle
+          click-counter (5 fast clicks on [data-theme-toggle], see
+          script.js) redirects here with this flag, which plays the
+          glitch/break-screen/loader sequence first, then reveals
+          the same vault.
      Pong lives INSIDE the vault as the "Broken Toggle" tile.
-     Integration notes:
-       1. DELETE the [demo-shell] section — preview scaffolding only.
-       2. Wire the click counter into your real theme toggle.
-       3. Swap --sans/--mono for your brand fonts.
-       4. ART SLOTS: replace .art-* gradients with your images.
+     Open TODOs:
+       - Swap --sans/--mono for the site brand fonts if desired.
+       - ART SLOTS: .art-* gradients can be swapped for real images.
      ============================================================ */
   :root {
     --ink: #0b0b0f;
@@ -499,7 +501,6 @@
   document.getElementById('viewerClose').addEventListener('click', closeViewer);
 
   /* ---------- screens & state ---------- */
-  const toggle = document.getElementById('themeToggle');
   const breakScreen = document.getElementById('break');
   const loaderScreen = document.getElementById('loader');
   const playScreen = document.getElementById('play');
@@ -511,40 +512,7 @@
   const gameActions = document.getElementById('gameActions');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  let clicks = [];
   let broken = false;
-  let themeBeforeBreak = "";
-
-  /* progressive clue: rotate @3, shake @4, break @5 */
-  if (toggle) toggle.addEventListener("click", () => {
-    const html = document.documentElement; // demo theme flip — replace with your real logic
-    html.dataset.theme = html.dataset.theme === 'light' ? '' : 'light';
-
-    const now = Date.now();
-    clicks = clicks.filter(t => now - t < 3000);
-    clicks.push(now);
-    const n = clicks.length;
-    toggle.classList.toggle('warm', n >= 3);
-    if (n === 4 && !reduced) {
-      toggle.classList.remove('shaking');
-      void toggle.offsetWidth; // restart animation
-      toggle.classList.add('shaking');
-    }
-    if (n >= 5 && !broken) breakSite();
-  });
-
-  function breakSite() {
-    broken = true;
-    clicks = [];
-    toggle.classList.remove('warm', 'shaking');
-    themeBeforeBreak = document.documentElement.dataset.theme || "";
-    document.body.classList.add('glitching', 'locked');
-    setTimeout(() => {
-      document.body.classList.remove('glitching');
-      breakScreen.classList.add('on');
-      typeLines();
-    }, reduced ? 100 : 900);
-  }
 
   function typeText(el, text, speed) {
     return new Promise(resolve => {
@@ -573,19 +541,11 @@
   }
 
   function restore() {
-    broken = false;
-    closeGame();
-    closeViewer();
-    breakScreen.classList.remove('on');
-    loaderScreen.classList.remove('on');
-    playScreen.classList.remove('on');
-    document.body.classList.remove('locked');
-    document.documentElement.dataset.theme = themeBeforeBreak;
-    toggle?.focus();
+    window.location.href = "/";
   }
 
   document.getElementById('restoreBtn').addEventListener('click', restore);
-  document.getElementById("restoreLink").addEventListener("click", () => { window.location.href = "/"; });
+  document.getElementById('restoreLink').addEventListener('click', restore);
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && broken) {
       if (viewer.classList.contains('on')) closeViewer();
@@ -828,13 +788,20 @@
     if (e.key === 'ArrowUp' || e.key === 'ArrowDown') keys[e.key] = false;
   });
 
-  /* standalone /play/ entry point: skip the break sequence, drop straight into the vault */
-  loaderScreen.classList.add("on");
-  setTimeout(() => {
-    loaderScreen.classList.remove("on");
-    playScreen.classList.add("on");
-    playScreen.scrollTop = 0;
-  }, reduced ? 100 : 700);
+  /* standalone /play/ entry point: ?broke=1 (arrived via the sitewide toggle gag) plays the break sequence; a bare visit drops straight into the vault */
+  broken = true;
+  if (new URLSearchParams(location.search).get("broke") === "1") {
+    document.body.classList.add("locked");
+    breakScreen.classList.add("on");
+    typeLines();
+  } else {
+    loaderScreen.classList.add("on");
+    setTimeout(() => {
+      loaderScreen.classList.remove("on");
+      playScreen.classList.add("on");
+      playScreen.scrollTop = 0;
+    }, reduced ? 100 : 700);
+  }
 </script>
 </body>
 </html>
