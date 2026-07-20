@@ -596,6 +596,7 @@
         <div class="contact">
           <form class="contact-form" name="project-inquiry" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="project-inquiry" />
+            <input type="hidden" name="came_from" id="came_from" />
             <p class="contact-form__hp" aria-hidden="true">
               <label>Don't fill this out: <input name="bot-field" /></label>
             </p>
@@ -633,6 +634,23 @@
             </label>
 
             <button class="button" type="submit">Send it →</button>
+
+            <script>
+              // Records where this visitor came from so it arrives with the inquiry email.
+              (function () {
+                var KEY = 'jnuru_came_from';
+                var stored = null;
+                try { stored = sessionStorage.getItem(KEY); } catch (e) {}
+                if (!stored) {
+                  var ref = document.referrer || 'direct';
+                  if (ref.indexOf(location.hostname) !== -1) ref = 'direct';
+                  stored = ref + ' | ' + (location.search || 'no tag');
+                  try { sessionStorage.setItem(KEY, stored); } catch (e) {}
+                }
+                var f = document.getElementById('came_from');
+                if (f) { f.value = stored; }
+              })();
+            </script>
           </form>
 
           <p class="muted">I reply within one business day. Email works too: <a class="contact__mail" href="mailto:hello@jnuru.studio">hello@jnuru.studio</a></p>
