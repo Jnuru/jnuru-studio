@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8K06S8YCWJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8K06S8YCWJ');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Jnuru Studio</title>
+<meta name="description" content="Thinking out loud about design, the web, and whatever's bugging me.">
+<link rel="canonical" href="https://jnuru.studio/blog/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog — Jnuru Studio">
+<meta property="og:description" content="Thinking out loud about design, the web, and whatever's bugging me.">
+<meta property="og:url" content="https://jnuru.studio/blog/">
+
+<!-- Two fonts only. Swap these if you want, but keep it to two. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&display=swap" rel="stylesheet">
+
+<style>
+  /* =========================================================
+     BRAND SWAP POINTS — change these three to match jnuru.studio
+     ========================================================= */
+  :root{
+    --paper:  #FBFAF7;   /* page background */
+    --ink:    #191817;   /* main text */
+    --accent: #2B4A3F;   /* your brand accent (links, hover). deep pine placeholder */
+
+    --muted:  #6E6A63;
+    --line:   #E4E0D8;
+    --display: "Bricolage Grotesque", system-ui, sans-serif;
+    --body:    "Newsreader", Georgia, serif;
+    --wrap: 1100px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:18px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img{ display:block; width:100%; height:100%; object-fit:cover; }
+
+  /* ---------- Nav ---------- */
+  header{
+    max-width:var(--wrap);
+    margin:0 auto;
+    padding:28px 28px;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    border-bottom:1px solid var(--line);
+  }
+  .wordmark{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:-.02em;
+  }
+  nav ul{ list-style:none; display:flex; gap:26px; font-family:var(--display); font-size:15px; }
+  nav a{ color:var(--muted); transition:color .15s ease; }
+  nav a:hover, nav a[aria-current="page"]{ color:var(--ink); }
+  nav a[aria-current="page"]{ font-weight:600; }
+
+  /* ---------- Intro ---------- */
+  .intro{
+    max-width:var(--wrap);
+    margin:0 auto;
+    padding:72px 28px 40px;
+  }
+  .intro h1{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(34px, 6vw, 60px);
+    line-height:1.02;
+    letter-spacing:-.03em;
+    max-width:16ch;
+  }
+  .intro p{
+    color:var(--muted);
+    margin-top:18px;
+    max-width:46ch;
+    font-size:19px;
+  }
+
+  /* ---------- Post grid ---------- */
+  .grid{
+    max-width:var(--wrap);
+    margin:0 auto;
+    padding:20px 28px 100px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px 40px;
+  }
+  .post{ display:block; }
+  .cover{
+    position:relative;
+    aspect-ratio:4/3;
+    overflow:hidden;
+    background:var(--line);   /* shows while image loads */
+  }
+  .cover img{ transition:transform .5s ease; }
+  .post:hover .cover img{ transform:scale(1.03); }
+
+  /* the headline plate that overlaps the image, magazine-cover style */
+  .plate{
+    position:absolute;
+    left:0; bottom:0;
+    max-width:88%;
+    background:var(--paper);
+    padding:16px 22px 14px;
+  }
+  .plate h2{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(20px, 2.4vw, 27px);
+    line-height:1.08;
+    letter-spacing:-.02em;
+  }
+  .hook{
+    margin-top:14px;
+    color:var(--muted);
+    font-size:17px;
+    max-width:44ch;
+  }
+  .post:hover h2{ color:var(--accent); }
+
+  /* ---------- Footer CTA ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    max-width:var(--wrap);
+    margin:0 auto;
+    padding:40px 28px 70px;
+  }
+  .cta{
+    font-family:var(--display);
+    font-size:clamp(20px, 3vw, 30px);
+    font-weight:600;
+    letter-spacing:-.02em;
+  }
+  .cta a{ color:var(--accent); }
+  .cta a:hover{ text-decoration:underline; text-underline-offset:4px; }
+  footer small{ display:block; color:var(--muted); margin-top:14px; font-size:15px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:720px){
+    .grid{ grid-template-columns:1fr; gap:44px; padding-bottom:70px; }
+    .intro{ padding-top:52px; }
+    nav ul{ gap:18px; }
+  }
+
+  /* ---------- Accessibility ---------- */
+  a:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+  @media (prefers-reduced-motion:reduce){
+    *{ transition:none !important; scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="wordmark">JNURU</a>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/blog/" aria-current="page">Blog</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="intro">
+  <h1>Thinking out loud about design, the web, and whatever's bugging me.</h1>
+  <p>Short reads on the stuff clients actually run into. Some of it useful, some of it just me working an idea out on the page.</p>
+</section>
+
+<!-- ============================================================
+     POSTS. Copy one <a class="post"> block per article.
+     Newest goes at the TOP. Swap the image for your Cloudinary URL.
+     ============================================================ -->
+<main class="grid">
+
+  <a class="post" href="/blog/youre-not-just-a-small-business/">
+    <div class="cover">
+      <img src="https://res.cloudinary.com/drnccrw0a/image/upload/e_trim/w_800,ar_4:3,c_fill/v1784659293/Drews-Donuts-After-Page-1_oes8xu.png" alt="Drew's Donuts redesigned website, clean and playful with real decorated donuts front and center">
+    </div>
+    <div class="plate"><h2>You're not just a small business</h2></div>
+    <p class="hook">Most small businesses are thriving in real life but never put why they matter online. Here's how a website can finally show the craft.</p>
+  </a>
+
+</main>
+
+<footer>
+  <p class="cta">I build these for people too. <a href="/#contact">Let's talk →</a></p>
+  <small>Jnuru Studio — web design, development, and strategy.</small>
+</footer>
+
+</body>
+</html>

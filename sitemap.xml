@@ -24,4 +24,12 @@
     <loc>https://jnuru.studio/case-studies/service-center</loc>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://jnuru.studio/blog/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jnuru.studio/blog/youre-not-just-a-small-business/</loc>
+    <priority>0.7</priority>
+  </url>
 </urlset>
