@@ -59,10 +59,10 @@
   img{ display:block; width:100%; height:auto; }
 
   /* hero */
-  .hero{ max-width:720px; margin:0 auto; padding:90px 28px 24px; }
-  .hero .kicker{ font-family:var(--mono); font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:22px; }
-  .hero h1{ font-family:var(--serif); font-weight:600; font-size:clamp(38px, 7.6vw, 58px); line-height:1.05; letter-spacing:-0.01em; }
-  .hero .rule{ width:64px; height:4px; background:var(--accent); border-radius:2px; margin-top:28px; }
+  .post-hero{ max-width:720px; margin:0 auto; padding:90px 28px 24px; }
+  .post-hero .kicker{ font-family:var(--mono); font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:22px; }
+  .post-hero h1{ font-family:var(--serif); font-weight:600; font-size:clamp(38px, 7.6vw, 58px); line-height:1.05; letter-spacing:-0.01em; }
+  .post-hero .rule{ width:64px; height:4px; background:var(--accent); border-radius:2px; margin-top:28px; }
 
   /* article */
   article{ max-width:720px; margin:0 auto; padding:20px 28px 40px; }
@@ -92,7 +92,7 @@
 
   @media (max-width:640px){
     body{ font-size:19px; }
-    .hero{ padding-top:56px; }
+    .post-hero{ padding-top:56px; }
     .pair{ grid-template-columns:1fr; }
     .compare{ padding:18px; }
   }
@@ -125,7 +125,7 @@
   </div>
 </header>
 
-<section class="hero">
+<section class="post-hero">
   <div class="kicker">Jnuru Studio</div>
   <h1>You're not just a small business</h1>
   <div class="rule"></div>
