@@ -41,70 +41,60 @@
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
 
 <style>
   :root{
-    --paper:  #FBFAF7;
-    --ink:    #191817;
-    --accent: #2B4A3F;
-    --muted:  #6E6A63;
-    --line:   #E4E0D8;
+    --paper:  #F7F4EE;
+    --ink:    #2A2A28;
+    --accent: #3F4F45;
+    --muted:  #6B6A66;
+    --line:   #D6D3CC;
     --panel:  #F4EFE6;
-    --display: "Bricolage Grotesque", system-ui, sans-serif;
-    --body:    "Newsreader", Georgia, serif;
-    --wrap: 720px;
   }
   *{ box-sizing:border-box; margin:0; padding:0; }
   html{ scroll-behavior:smooth; }
-  body{ background:var(--paper); color:var(--ink); font-family:var(--body); font-size:20px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  body{ background:var(--paper); color:var(--ink); font-family:var(--serif); font-size:20px; line-height:1.6; -webkit-font-smoothing:antialiased; }
   a{ color:inherit; }
   img{ display:block; width:100%; height:auto; }
 
-  header{ max-width:1100px; margin:0 auto; padding:28px; display:flex; align-items:baseline; justify-content:space-between; border-bottom:1px solid var(--line); }
-  .wordmark{ font-family:var(--display); font-weight:700; font-size:22px; letter-spacing:-.02em; text-decoration:none; }
-  nav ul{ list-style:none; display:flex; gap:26px; font-family:var(--display); font-size:15px; }
-  nav a{ color:var(--muted); text-decoration:none; transition:color .15s ease; }
-  nav a:hover{ color:var(--ink); }
-
   /* hero */
-  .hero{ max-width:var(--wrap); margin:0 auto; padding:90px 28px 24px; }
-  .hero .kicker{ font-family:var(--display); font-size:14px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:22px; }
-  .hero h1{ font-family:var(--display); font-weight:600; font-size:clamp(40px, 8vw, 68px); line-height:1.0; letter-spacing:-.03em; }
+  .hero{ max-width:720px; margin:0 auto; padding:90px 28px 24px; }
+  .hero .kicker{ font-family:var(--mono); font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:22px; }
+  .hero h1{ font-family:var(--serif); font-weight:600; font-size:clamp(38px, 7.6vw, 58px); line-height:1.05; letter-spacing:-0.01em; }
   .hero .rule{ width:64px; height:4px; background:var(--accent); border-radius:2px; margin-top:28px; }
 
   /* article */
-  article{ max-width:var(--wrap); margin:0 auto; padding:20px 28px 40px; }
+  article{ max-width:720px; margin:0 auto; padding:20px 28px 40px; }
   article p{ margin:0 0 26px; }
   .lead{ font-size:23px; line-height:1.5; }
-  .lead::first-letter{ font-family:var(--display); font-weight:700; font-size:3.4em; line-height:.8; float:left; margin:6px 10px 0 0; color:var(--accent); }
+  .lead::first-letter{ font-family:var(--serif); font-weight:700; font-size:3.4em; line-height:.8; float:left; margin:6px 10px 0 0; color:var(--accent); }
 
   /* pull quote */
-  .pull{ font-family:var(--display); font-weight:600; font-size:clamp(24px,4.4vw,32px); line-height:1.15; letter-spacing:-.02em; color:var(--ink); border-left:4px solid var(--accent); padding:6px 0 6px 22px; margin:38px 0; }
+  .pull{ font-family:var(--serif); font-weight:600; font-size:clamp(24px,4.4vw,32px); line-height:1.15; letter-spacing:-0.005em; color:var(--ink); border-left:4px solid var(--accent); padding:6px 0 6px 22px; margin:38px 0; }
   .pull span{ color:var(--accent); }
 
   /* before / after */
   .compare{ background:var(--panel); border-radius:10px; padding:26px; margin:44px 0; }
-  .pair{ display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start; }
-  .shot .tag{ font-family:var(--display); font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
-  .shot .frame{ background:#fff; padding:8px; border-radius:10px; border:1px solid var(--line); box-shadow:0 10px 26px rgba(25,20,15,.12); }
-  .shot .frame img{ border-radius:5px; display:block; }
-  .compare .note{ font-family:var(--display); font-size:15px; color:var(--muted); text-align:center; margin-top:20px; }
+  .pair{ display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:stretch; }
+  .shot{ display:flex; flex-direction:column; }
+  .shot .tag{ font-family:var(--mono); font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+  .shot .frame{ background:#fff; padding:8px; border-radius:10px; border:1px solid var(--line); box-shadow:0 10px 26px rgba(25,20,15,.12); flex:1; display:flex; }
+  .shot .frame img{ width:100%; height:100%; object-fit:cover; border-radius:5px; display:block; }
+  .compare .note{ font-family:var(--mono); font-size:13px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); text-align:center; margin-top:20px; }
+  .compare .note a{ color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
 
-  footer{ border-top:1px solid var(--line); max-width:var(--wrap); margin:40px auto 0; padding:40px 28px 80px; }
-  .cta{ font-family:var(--display); font-size:clamp(22px, 4vw, 30px); font-weight:600; letter-spacing:-.02em; }
+  footer{ border-top:1px solid var(--line); max-width:720px; margin:40px auto 0; padding:40px 28px 80px; }
+  .cta{ font-family:var(--serif); font-size:clamp(22px, 4vw, 28px); font-weight:600; letter-spacing:-0.005em; }
   .cta a{ color:var(--accent); }
   .cta a:hover{ text-decoration:underline; text-underline-offset:4px; }
-  footer small{ display:block; color:var(--muted); margin-top:14px; font-size:15px; font-family:var(--display); }
+  footer small{ display:block; color:var(--muted); margin-top:14px; font-size:12px; font-family:var(--mono); text-transform:uppercase; letter-spacing:.08em; }
 
   @media (max-width:640px){
     body{ font-size:19px; }
     .hero{ padding-top:56px; }
     .pair{ grid-template-columns:1fr; }
     .compare{ padding:18px; }
-    nav ul{ gap:16px; }
   }
   a:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
   @media (prefers-reduced-motion:reduce){ *{ transition:none !important; scroll-behavior:auto; } }
@@ -112,16 +102,27 @@
 </head>
 <body>
 
-<header>
-  <a href="/" class="wordmark">JNURU</a>
-  <nav>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/#work">Work</a></li>
-      <li><a href="/blog/">Blog</a></li>
-      <li><a href="/#contact">Contact</a></li>
-    </ul>
-  </nav>
+<header class="site-header">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <a class="brand__name" href="/">jnuru.studio</a>
+        <p class="brand__meta">systems • form • reason</p>
+      </div>
+
+      <nav class="nav">
+        <a href="/#work">Work</a>
+        <a href="/#services">Services</a>
+        <a href="/services/website-redesign/">Redesigns</a>
+        <a href="/about/">About</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#contact">Contact</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
+          <span aria-hidden="true">◐</span>
+        </button>
+      </nav>
+    </div>
+  </div>
 </header>
 
 <section class="hero">
@@ -147,11 +148,11 @@
       <figure class="shot">
         <div class="tag">After</div>
         <div class="frame">
-          <img src="https://res.cloudinary.com/drnccrw0a/image/upload/e_trim,w_1000/v1784659293/Drews-Donuts-After-Page-1_oes8xu.png" alt="Drew's Donuts redesigned website, clean and playful with real decorated donuts front and center">
+          <img src="https://res.cloudinary.com/drnccrw0a/image/upload/e_trim,w_1000,ar_820:740,c_fill,g_north/v1784659293/Drews-Donuts-After-Page-1_oes8xu.png" alt="Drew's Donuts redesigned website, clean and playful with real decorated donuts front and center">
         </div>
       </figure>
     </div>
-    <div class="note">Same shop. Same donuts. One of these finally shows the craft.</div>
+    <div class="note">Same shop. Same donuts. One of these finally shows the craft. Cropped for comparison — <a href="https://res.cloudinary.com/drnccrw0a/image/upload/e_trim,w_1600/v1784659293/Drews-Donuts-After-Page-1_oes8xu.png">see the full redesign</a>.</div>
   </figure>
 
   <p>And here's the thing. It's not Drew's fault. Most small businesses do way better on the physical front than the digital one. And it's not because they don't have a $50k agency behind them or a web designer on retainer. It's the grip of that expensive upfront cost. People pay a high price just to host their story on the interwebs, and it doesn't even translate. The sites I keep finding never carry the craftsmanship these businesses actually hold. Strong brand in person, digital brand nowhere to be found.</p>
@@ -169,5 +170,6 @@
   <small>Jnuru Studio — web design, development, and strategy.</small>
 </footer>
 
+<script src="../../script.js" defer></script>
 </body>
 </html>

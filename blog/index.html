@@ -19,25 +19,15 @@
 <meta property="og:description" content="Thinking out loud about design, the web, and whatever's bugging me.">
 <meta property="og:url" content="https://jnuru.studio/blog/">
 
-<!-- Two fonts only. Swap these if you want, but keep it to two. -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
 
 <style>
-  /* =========================================================
-     BRAND SWAP POINTS — change these three to match jnuru.studio
-     ========================================================= */
   :root{
-    --paper:  #FBFAF7;   /* page background */
-    --ink:    #191817;   /* main text */
-    --accent: #2B4A3F;   /* your brand accent (links, hover). deep pine placeholder */
-
-    --muted:  #6E6A63;
-    --line:   #E4E0D8;
-    --display: "Bricolage Grotesque", system-ui, sans-serif;
-    --body:    "Newsreader", Georgia, serif;
-    --wrap: 1100px;
+    --paper:  #F7F4EE;
+    --ink:    #2A2A28;
+    --accent: #3F4F45;
+    --muted:  #6B6A66;
+    --line:   #D6D3CC;
   }
 
   *{ box-sizing:border-box; margin:0; padding:0; }
@@ -45,7 +35,7 @@
   body{
     background:var(--paper);
     color:var(--ink);
-    font-family:var(--body);
+    font-family:var(--serif);
     font-size:18px;
     line-height:1.5;
     -webkit-font-smoothing:antialiased;
@@ -53,39 +43,18 @@
   a{ color:inherit; text-decoration:none; }
   img{ display:block; width:100%; height:100%; object-fit:cover; }
 
-  /* ---------- Nav ---------- */
-  header{
-    max-width:var(--wrap);
-    margin:0 auto;
-    padding:28px 28px;
-    display:flex;
-    align-items:baseline;
-    justify-content:space-between;
-    border-bottom:1px solid var(--line);
-  }
-  .wordmark{
-    font-family:var(--display);
-    font-weight:700;
-    font-size:22px;
-    letter-spacing:-.02em;
-  }
-  nav ul{ list-style:none; display:flex; gap:26px; font-family:var(--display); font-size:15px; }
-  nav a{ color:var(--muted); transition:color .15s ease; }
-  nav a:hover, nav a[aria-current="page"]{ color:var(--ink); }
-  nav a[aria-current="page"]{ font-weight:600; }
-
   /* ---------- Intro ---------- */
   .intro{
-    max-width:var(--wrap);
+    max-width:1100px;
     margin:0 auto;
     padding:72px 28px 40px;
   }
   .intro h1{
-    font-family:var(--display);
+    font-family:var(--serif);
     font-weight:600;
-    font-size:clamp(34px, 6vw, 60px);
-    line-height:1.02;
-    letter-spacing:-.03em;
+    font-size:clamp(34px, 6vw, 58px);
+    line-height:1.05;
+    letter-spacing:-0.01em;
     max-width:16ch;
   }
   .intro p{
@@ -97,21 +66,21 @@
 
   /* ---------- Post grid ---------- */
   .grid{
-    max-width:var(--wrap);
+    max-width:1100px;
     margin:0 auto;
     padding:20px 28px 100px;
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:56px 40px;
   }
-  .post{ display:block; }
+  .post{ display:block; text-decoration:none; color:inherit; }
   .cover{
     position:relative;
     aspect-ratio:4/3;
     overflow:hidden;
     background:var(--line);   /* shows while image loads */
   }
-  .cover img{ transition:transform .5s ease; }
+  .cover img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
   .post:hover .cover img{ transform:scale(1.03); }
 
   /* the headline plate that overlaps the image, magazine-cover style */
@@ -123,11 +92,11 @@
     padding:16px 22px 14px;
   }
   .plate h2{
-    font-family:var(--display);
+    font-family:var(--serif);
     font-weight:600;
-    font-size:clamp(20px, 2.4vw, 27px);
-    line-height:1.08;
-    letter-spacing:-.02em;
+    font-size:clamp(22px, 2.4vw, 26px);
+    line-height:1.12;
+    letter-spacing:-0.005em;
   }
   .hook{
     margin-top:14px;
@@ -135,30 +104,37 @@
     font-size:17px;
     max-width:44ch;
   }
-  .post:hover h2{ color:var(--accent); }
+  .post:hover .plate h2{ color:var(--accent); }
 
   /* ---------- Footer CTA ---------- */
   footer{
     border-top:1px solid var(--line);
-    max-width:var(--wrap);
+    max-width:1100px;
     margin:0 auto;
     padding:40px 28px 70px;
   }
   .cta{
-    font-family:var(--display);
-    font-size:clamp(20px, 3vw, 30px);
+    font-family:var(--serif);
+    font-size:clamp(20px, 3vw, 28px);
     font-weight:600;
-    letter-spacing:-.02em;
+    letter-spacing:-0.005em;
   }
   .cta a{ color:var(--accent); }
   .cta a:hover{ text-decoration:underline; text-underline-offset:4px; }
-  footer small{ display:block; color:var(--muted); margin-top:14px; font-size:15px; }
+  footer small{
+    display:block;
+    color:var(--muted);
+    margin-top:14px;
+    font-size:12px;
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+  }
 
   /* ---------- Responsive ---------- */
   @media (max-width:720px){
     .grid{ grid-template-columns:1fr; gap:44px; padding-bottom:70px; }
     .intro{ padding-top:52px; }
-    nav ul{ gap:18px; }
   }
 
   /* ---------- Accessibility ---------- */
@@ -170,16 +146,27 @@
 </head>
 <body>
 
-<header>
-  <a href="/" class="wordmark">JNURU</a>
-  <nav>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/#work">Work</a></li>
-      <li><a href="/blog/" aria-current="page">Blog</a></li>
-      <li><a href="/#contact">Contact</a></li>
-    </ul>
-  </nav>
+<header class="site-header">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <a class="brand__name" href="/">jnuru.studio</a>
+        <p class="brand__meta">systems • form • reason</p>
+      </div>
+
+      <nav class="nav">
+        <a href="/#work">Work</a>
+        <a href="/#services">Services</a>
+        <a href="/services/website-redesign/">Redesigns</a>
+        <a href="/about/">About</a>
+        <a class="is-active" href="/blog/">Blog</a>
+        <a href="/#contact">Contact</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
+          <span aria-hidden="true">◐</span>
+        </button>
+      </nav>
+    </div>
+  </div>
 </header>
 
 <section class="intro">
@@ -195,10 +182,10 @@
 
   <a class="post" href="/blog/youre-not-just-a-small-business/">
     <div class="cover">
-      <img src="https://res.cloudinary.com/drnccrw0a/image/upload/e_trim/w_800,ar_4:3,c_fill/v1784659293/Drews-Donuts-After-Page-1_oes8xu.png" alt="Drew's Donuts redesigned website, clean and playful with real decorated donuts front and center">
+      <img src="https://res.cloudinary.com/drnccrw0a/image/upload/e_trim,w_800,ar_4:3,c_fill,g_north/v1784659293/Drews-Donuts-After-Page-1_oes8xu.png" alt="Drew's Donuts redesigned website, clean and playful with real decorated donuts front and center">
+      <div class="plate"><h2>You're not just a small business</h2></div>
     </div>
-    <div class="plate"><h2>You're not just a small business</h2></div>
-    <p class="hook">Most small businesses are thriving in real life but never put why they matter online. Here's how a website can finally show the craft.</p>
+    <p class="hook">Most small businesses are thriving in real life. They just never put why they matter online.</p>
   </a>
 
 </main>
@@ -208,5 +195,6 @@
   <small>Jnuru Studio — web design, development, and strategy.</small>
 </footer>
 
+<script src="../script.js" defer></script>
 </body>
 </html>
