@@ -45,11 +45,11 @@
 
 <style>
   :root{
-    --paper:  #F7F4EE;
-    --ink:    #2A2A28;
-    --accent: #3F4F45;
-    --line:   #D6D3CC;
-    --panel:  #F4EFE6;
+    --paper:  var(--bg);
+    --ink:    var(--fg);
+    --accent: var(--forest);
+    --line:   var(--divider);
+    --panel:  color-mix(in srgb, var(--fg) 5%, var(--bg));
   }
   *{ box-sizing:border-box; margin:0; padding:0; }
   html{ scroll-behavior:smooth; }
