@@ -70,25 +70,42 @@
     padding:20px 28px 100px;
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:56px 40px;
+    gap:64px 40px;
   }
   .post{ display:block; text-decoration:none; color:inherit; }
   .cover{
     position:relative;
-    aspect-ratio:4/3;
+    aspect-ratio:16/10;
     overflow:hidden;
-    background:var(--line);   /* shows while image loads */
+    background:var(--line);
+    border:1px solid var(--line);
   }
-  .cover img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
+  .cover img{ width:100%; height:100%; object-fit:cover; object-position:center top; display:block; transition:transform .5s ease; }
   .post:hover .cover img{ transform:scale(1.03); }
 
-  /* the headline plate that overlaps the image, magazine-cover style */
-  .plate{
-    position:absolute;
-    left:0; bottom:0;
-    max-width:88%;
+  .post__body{
+    position:relative;
+    width:calc(100% - 30px);
+    margin:-28px 0 0 15px;
     background:var(--paper);
-    padding:16px 22px 14px;
+    padding:19px 22px 0;
+  }
+  .post__meta{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    margin-bottom:10px;
+    color:var(--accent);
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .post__meta .dot{ color:var(--line); }
+
+  /* headline plate, intentionally offset like an editorial clipping */
+  .plate{
+    max-width:92%;
   }
   .plate h2{
     font-family:var(--serif);
@@ -98,7 +115,7 @@
     letter-spacing:-0.005em;
   }
   .hook{
-    margin-top:14px;
+    margin-top:12px;
     color:var(--muted);
     font-size:17px;
     max-width:44ch;
@@ -134,6 +151,7 @@
   @media (max-width:720px){
     .grid{ grid-template-columns:1fr; gap:44px; padding-bottom:70px; }
     .intro{ padding-top:52px; }
+    .post__body{ width:calc(100% - 20px); margin:-20px 0 0 10px; padding:16px 16px 0; }
   }
 
   /* ---------- Accessibility ---------- */
@@ -181,10 +199,13 @@
 
   <a class="post" href="/blog/youre-not-just-a-small-business/">
     <div class="cover">
-      <img src="https://res.cloudinary.com/drnccrw0a/image/upload/e_trim/w_800,ar_4:3,c_fill,g_north/v1784659293/Drews-Donuts-After-Page-1_oes8xu.png" alt="Drew's Donuts redesigned website, clean and playful with real decorated donuts front and center">
-      <div class="plate"><h2>You're not just a small business</h2></div>
+      <img src="https://res.cloudinary.com/drnccrw0a/image/upload/e_trim,w_1200,ar_16:10,c_fill,g_north/v1784659293/Drews-Donuts-After-Page-1_oes8xu.png" alt="Drew's Donuts redesigned website, clean and playful with real decorated donuts front and center">
     </div>
-    <p class="hook">Most small businesses are thriving in real life. They just never put why they matter online.</p>
+    <div class="post__body">
+      <div class="post__meta"><span>Web strategy</span><span class="dot">•</span><span>4 min read</span></div>
+      <div class="plate"><h2>You're not just a small business</h2></div>
+      <p class="hook">Most small businesses are thriving in real life. They just never put why they matter online.</p>
+    </div>
   </a>
 
 </main>

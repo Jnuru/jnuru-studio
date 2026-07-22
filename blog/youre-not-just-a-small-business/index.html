@@ -61,6 +61,8 @@
   .post-hero{ max-width:720px; margin:0 auto; padding:90px 28px 24px; }
   .post-hero .kicker{ font-family:var(--mono); font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:22px; }
   .post-hero h1{ font-family:var(--serif); font-weight:600; font-size:clamp(38px, 7.6vw, 58px); line-height:1.05; letter-spacing:-0.01em; }
+  .post-meta{ display:flex; flex-wrap:wrap; align-items:center; gap:9px; margin-top:20px; color:var(--muted); font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+  .post-meta .dot{ color:var(--line); }
   .post-hero .rule{ width:64px; height:4px; background:var(--accent); border-radius:2px; margin-top:28px; }
 
   /* article */
@@ -70,21 +72,31 @@
   .lead::first-letter{ font-family:var(--serif); font-weight:700; font-size:3.4em; line-height:.8; float:left; margin:6px 10px 0 0; color:var(--accent); }
 
   /* pull quote */
-  .pull{ font-family:var(--serif); font-weight:600; font-size:clamp(24px,4.4vw,32px); line-height:1.15; letter-spacing:-0.005em; color:var(--ink); border-left:4px solid var(--accent); padding:6px 0 6px 22px; margin:38px 0; }
+  .pull-wrap{ border-left:4px solid var(--accent); padding:4px 0 7px 22px; margin:52px 0; }
+  .pull-label{ display:block; margin-bottom:11px; color:var(--accent); font-family:var(--mono); font-size:11px; font-style:normal; font-weight:600; letter-spacing:.1em; text-transform:uppercase; }
+  .pull{ font-family:var(--serif); font-weight:600; font-size:clamp(27px,4.4vw,35px); line-height:1.12; letter-spacing:-0.005em; color:var(--ink); margin:0; }
   .pull span{ color:var(--accent); }
 
   /* before / after */
-  .compare{ background:var(--panel); border-radius:10px; padding:26px; margin:44px 0; }
-  .pair{ display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:stretch; }
+  .compare{ width:min(1040px, calc(100vw - 48px)); margin:52px 0 52px 50%; transform:translateX(-50%); background:var(--panel); border-radius:10px; padding:30px; }
+  .pair{ display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:stretch; }
   .shot{ display:flex; flex-direction:column; }
   .shot .tag{ font-family:var(--mono); font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
   .shot .frame{ background:#fff; padding:8px; border-radius:10px; border:1px solid var(--line); box-shadow:0 10px 26px rgba(25,20,15,.12); flex:1; display:flex; }
   .shot .frame img{ width:100%; height:100%; object-fit:cover; border-radius:5px; display:block; }
-  .compare .note{ font-family:var(--mono); font-size:13px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); text-align:center; margin-top:20px; }
+  .compare .note{ max-width:74ch; margin:22px auto 0; font-family:var(--mono); font-size:12px; line-height:1.6; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); text-align:center; }
   .compare .note a{ color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
 
-  footer{ border-top:1px solid var(--line); max-width:720px; margin:40px auto 0; padding:40px 28px 80px; }
+  /* visual detail break */
+  .detail{ width:min(900px, calc(100vw - 48px)); margin:50px 0 52px 50%; transform:translateX(-50%); }
+  .detail__frame{ overflow:hidden; border:1px solid var(--line); background:var(--panel); box-shadow:0 16px 38px rgba(25,20,15,.1); }
+  .detail__frame img{ aspect-ratio:16/9; object-fit:cover; object-position:center top; }
+  .detail figcaption{ max-width:56ch; margin:16px auto 0; color:var(--muted); font-family:var(--mono); font-size:12px; line-height:1.6; letter-spacing:.05em; text-align:center; text-transform:uppercase; }
+
+  footer{ border-top:1px solid var(--line); max-width:720px; margin:48px auto 0; padding:44px 28px 80px; }
   .cta{ font-family:var(--serif); font-size:clamp(22px, 4vw, 28px); font-weight:600; letter-spacing:-0.005em; }
+  .cta-copy{ max-width:54ch; margin-top:12px; color:var(--muted); font-size:17px; line-height:1.55; }
+  .cta-link{ display:inline-block; margin-top:18px; color:var(--accent); font-family:var(--mono); font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; text-decoration:underline; text-underline-offset:5px; }
   .cta a{ color:var(--accent); }
   .cta a:hover{ text-decoration:underline; text-underline-offset:4px; }
   footer small{ display:block; color:var(--muted); margin-top:14px; font-size:12px; font-family:var(--mono); text-transform:uppercase; letter-spacing:.08em; }
@@ -93,7 +105,9 @@
     body{ font-size:19px; }
     .post-hero{ padding-top:56px; }
     .pair{ grid-template-columns:1fr; }
-    .compare{ padding:18px; }
+    .compare{ width:calc(100vw - 28px); padding:18px; margin-top:42px; margin-bottom:42px; }
+    .detail{ width:calc(100vw - 28px); margin-top:42px; margin-bottom:44px; }
+    .pull-wrap{ margin:42px 0; padding-left:18px; }
   }
   a:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
   @media (prefers-reduced-motion:reduce){ *{ transition:none !important; scroll-behavior:auto; } }
@@ -127,6 +141,7 @@
 <section class="post-hero">
   <div class="kicker">Jnuru Studio</div>
   <h1>You're not just a small business</h1>
+  <div class="post-meta"><span>Web strategy</span><span class="dot">•</span><span>4 min read</span></div>
   <div class="rule"></div>
 </section>
 
@@ -156,7 +171,17 @@
 
   <p>And here's the thing. It's not Drew's fault. Most small businesses do way better on the physical front than the digital one. And it's not because they don't have a $50k agency behind them or a web designer on retainer. It's the grip of that expensive upfront cost. People pay a high price just to host their story on the interwebs, and it doesn't even translate. The sites I keep finding never carry the craftsmanship these businesses actually hold. Strong brand in person, digital brand nowhere to be found.</p>
 
-  <p class="pull">Am I pitching this because I need leads? Yes. <span>But so are you.</span></p>
+  <figure class="detail">
+    <div class="detail__frame">
+      <img src="https://res.cloudinary.com/drnccrw0a/image/upload/e_trim,w_1600,ar_16:9,c_fill,g_north/v1784659293/Drews-Donuts-After-Page-1_oes8xu.png" alt="The redesigned Drew's Donuts homepage highlighting handmade donuts, ordering options, and store information">
+    </div>
+    <figcaption>The business already had personality. The website simply needed to stop hiding it.</figcaption>
+  </figure>
+
+  <aside class="pull-wrap" aria-label="The honest part">
+    <span class="pull-label">The honest part</span>
+    <p class="pull">Am I pitching this because I need leads? Yes. <span>But so are you.</span></p>
+  </aside>
 
   <p>The difference is I'm the GPS that gets you to the destination. The arrow pointing to your site, to the audience you need and want, so you can keep being a hometown hero in your area.</p>
 
@@ -165,7 +190,9 @@
 </article>
 
 <footer>
-  <p class="cta">I build these for people too. <a href="/#contact">Let's talk →</a></p>
+  <p class="cta">Your business already has a story. Your website should finally show it.</p>
+  <p class="cta-copy">If the real experience is better than the digital one, let's fix that.</p>
+  <a class="cta-link" href="/#contact">Talk about your website →</a>
   <small>Jnuru Studio — web design, development, and strategy.</small>
 </footer>
 
