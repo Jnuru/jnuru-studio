@@ -3252,6 +3252,7 @@ body.glitching::after{
   border-radius: var(--radius);padding:16px 18px;
   color:var(--fg);font-family:var(--sans);font-size:var(--body);
   text-align:left;cursor:pointer;
+  user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;
   transition:border-color .18s,background .18s,transform .12s;
 }
 .inquiry-opt:hover{border-color: var(--iq-accent)}
@@ -3286,7 +3287,9 @@ body.glitching::after{
   margin-top:var(--s4);background:var(--iq-accent);color:var(--iq-accent-fg);
   border:0;border-radius:999px;padding:14px 26px;
   font-family:var(--mono);font-size:0.78rem;letter-spacing:.1em;text-transform:uppercase;
-  font-weight:500;cursor:pointer;transition:opacity .18s,transform .12s;
+  font-weight:500;cursor:pointer;
+  user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;
+  transition:opacity .18s,transform .12s;
 }
 .inquiry-cta:hover{opacity:.87}
 .inquiry-cta:active{transform:scale(.985)}
