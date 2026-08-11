@@ -2984,15 +2984,13 @@ body.glitching::after{
   border-radius: 999px;
   border-bottom: 1px solid rgba(255,255,255,0.20);
   padding: 13px 22px;
-  color: #F7F4EE;
-  background: var(--forest-deep);
+  color: var(--bg);
+  background: var(--forest);
   box-shadow: 0 12px 40px rgba(0,0,0,0.28);
 }
 
 .hero__cta--primary:hover{
-  color: #FFFFFF;
-  background: #0C241C;
-  border-bottom-color: rgba(255,255,255,0.45);
+  opacity: .87;
 }
 
 /* Secondary hero link: readable on bright areas */
@@ -3196,3 +3194,127 @@ body.glitching::after{
   font-size: var(--small);
   max-width: 640px;
 }
+
+/* --------- Inquiry form (multi-step) --------- */
+.inquiry{
+  --iq-accent: var(--forest);
+  --iq-accent-fg: var(--bg);
+  --iq-err: #c1614a;
+  max-width: 640px;
+  width: 100%;
+}
+
+.inquiry-progress{
+  height:2px;background:var(--divider);border-radius:2px;
+  overflow:hidden;margin-bottom:8px;
+}
+.inquiry-progress span{
+  display:block;height:100%;width:0;background:var(--iq-accent);
+  transition:width .45s cubic-bezier(.4,0,.2,1);
+}
+.inquiry-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  font-family: var(--mono);
+  font-size: 0.72rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:var(--s4);min-height:20px;
+}
+.inquiry-meta button{
+  background:none;border:0;color:var(--muted);cursor:pointer;
+  font:inherit;padding:2px 0;
+}
+.inquiry-meta button:hover{color:var(--fg)}
+.inquiry-meta button[hidden]{display:none}
+
+.inquiry-step{display:none;animation:inquiry-in .4s cubic-bezier(.2,0,.2,1)}
+.inquiry-step.active{display:block}
+@keyframes inquiry-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .inquiry-step{animation:none}
+  .inquiry-progress span{transition:none}
+}
+
+.inquiry-eyebrow{
+  font-family: var(--mono);
+  font-size: 0.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:14px;
+}
+.inquiry h2{
+  font-family: var(--serif);
+  font-size: clamp(24px,4.4vw,30px);line-height:1.25;
+}
+.inquiry-helper{color:var(--muted);font-size:var(--small);line-height:1.55;margin-top:12px;max-width:46ch}
+
+/* option cards */
+.inquiry-options{display:flex;flex-direction:column;gap:9px;margin-top:var(--s3)}
+.inquiry-opt{
+  display:flex;align-items:center;gap:14px;width:100%;
+  background:var(--glass-fill);border:1px solid var(--divider);
+  border-radius: var(--radius);padding:16px 18px;
+  color:var(--fg);font-family:var(--sans);font-size:var(--body);
+  text-align:left;cursor:pointer;
+  transition:border-color .18s,background .18s,transform .12s;
+}
+.inquiry-opt:hover{border-color: var(--iq-accent)}
+.inquiry-opt:active{transform:scale(.994)}
+.inquiry-opt:focus-visible{outline:2px solid var(--iq-accent);outline-offset:2px}
+.inquiry-opt.sel{border-color:var(--iq-accent);background:var(--forest-soft)}
+.inquiry-key{
+  flex:none;width:24px;height:24px;border-radius:5px;
+  border:1px solid var(--divider);display:grid;place-items:center;
+  font-family:var(--mono);font-size:11px;color:var(--muted);
+}
+.inquiry-opt.sel .inquiry-key{background:var(--iq-accent);color:var(--iq-accent-fg);border-color:var(--iq-accent)}
+.inquiry-opt-text{display:flex;flex-direction:column;gap:3px}
+.inquiry-opt-text b{font-weight:600;font-size:0.97rem}
+.inquiry-opt-text small{color:var(--muted);font-size:var(--small)}
+
+/* text fields */
+.inquiry-fields{display:flex;flex-direction:column;gap:20px;margin-top:var(--s3)}
+.inquiry-fields label{display:block;font-family:var(--mono);font-size:0.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.inquiry-fields label i{font-style:normal;opacity:.7;text-transform:none;letter-spacing:0}
+.inquiry-fields input,.inquiry-fields textarea{
+  width:100%;background:transparent;border:0;border-bottom:1px solid var(--divider);
+  color:var(--fg);font-family:var(--sans);font-size:var(--body);padding:9px 0;
+  border-radius:0;transition:border-color .18s;
+}
+.inquiry-fields textarea{resize:vertical;min-height:64px;line-height:1.5}
+.inquiry-fields input:focus,.inquiry-fields textarea:focus{outline:none;border-bottom-color:var(--iq-accent)}
+.inquiry-err{color:var(--iq-err);font-size:0.78rem;margin-top:7px;min-height:16px}
+
+/* buttons */
+.inquiry-cta{
+  margin-top:var(--s4);background:var(--iq-accent);color:var(--iq-accent-fg);
+  border:0;border-radius:999px;padding:14px 26px;
+  font-family:var(--mono);font-size:0.78rem;letter-spacing:.1em;text-transform:uppercase;
+  font-weight:500;cursor:pointer;transition:opacity .18s,transform .12s;
+}
+.inquiry-cta:hover{opacity:.87}
+.inquiry-cta:active{transform:scale(.985)}
+.inquiry-cta:disabled{opacity:.45;cursor:default;transform:none}
+.inquiry-cta:focus-visible{outline:2px solid var(--iq-accent);outline-offset:3px}
+.inquiry-hint{font-family:var(--mono);font-size:0.68rem;color:var(--muted);margin-top:16px}
+.inquiry-hint kbd{
+  background:var(--divider);border-radius:3px;padding:2px 5px;
+  font-family:inherit;font-size:0.65rem;
+}
+
+/* done screen */
+.inquiry-timeline{list-style:none;margin-top:var(--s4);display:flex;flex-direction:column;gap:2px}
+.inquiry-timeline li{display:flex;gap:16px;padding:15px 0;border-top:1px solid var(--divider)}
+.inquiry-timeline li:last-child{border-bottom:1px solid var(--divider)}
+.inquiry-num{
+  flex:none;width:22px;height:22px;border-radius:50%;border:1px solid var(--divider);
+  display:grid;place-items:center;font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:1px;
+}
+.inquiry-timeline b{display:block;font-weight:600;font-size:var(--small);margin-bottom:4px}
+.inquiry-timeline small{color:var(--muted);font-size:var(--small);line-height:1.5}
+
+.inquiry-cal{margin-top:var(--s4)}
+.inquiry-cal-embed{width:100%;min-height:480px;border-radius:var(--radius);overflow:hidden}
+.inquiry-fallback{color:var(--muted);font-size:var(--small);margin-top:22px;line-height:1.6}
+
+.inquiry-soft{margin-top:var(--s3);padding:22px;border:1px solid var(--divider);border-radius:var(--radius)}
+.inquiry-soft p{color:var(--muted);font-size:var(--body);line-height:1.6}
+
+/* honeypot — off-screen, not display:none (some bots skip that) */
+.inquiry-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
