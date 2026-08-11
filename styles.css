@@ -3318,6 +3318,15 @@ body.glitching::after{
 
 .inquiry-soft{margin-top:var(--s3);padding:22px;border:1px solid var(--divider);border-radius:var(--radius)}
 .inquiry-soft p{color:var(--muted);font-size:var(--body);line-height:1.6}
+.inquiry-soft p + p{margin-top:12px}
+
+.inquiry-decline-actions{display:flex;align-items:center;gap:var(--s3);flex-wrap:wrap;margin-top:var(--s4)}
+.inquiry-cta-secondary{
+  font-family:var(--mono);font-size:0.72rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--fg);text-decoration:none;position:relative;padding-bottom:3px;
+  border-bottom:1px solid var(--divider);
+}
+.inquiry-cta-secondary:hover{color:var(--iq-accent);border-bottom-color:var(--iq-accent)}
 
 /* honeypot — off-screen, not display:none (some bots skip that) */
 .inquiry-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
