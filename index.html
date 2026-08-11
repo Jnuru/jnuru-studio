@@ -595,68 +595,471 @@
         </h2>
 
         <div class="contact">
-          <form class="contact-form" name="project-inquiry" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="project-inquiry" />
-            <input type="hidden" name="came_from" id="came_from" />
-            <p class="contact-form__hp" aria-hidden="true">
-              <label>Don't fill this out: <input name="bot-field" /></label>
-            </p>
-
-            <div class="contact-form__row">
-              <label class="contact-form__field">
-                <span class="contact-form__label">Name</span>
-                <input type="text" name="name" required autocomplete="name" />
-              </label>
-              <label class="contact-form__field">
-                <span class="contact-form__label">Email</span>
-                <input type="email" name="email" required autocomplete="email" />
-              </label>
+          <div class="inquiry">
+            <div class="inquiry-progress" role="progressbar" aria-label="Form progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span id="iq-bar"></span>
+            </div>
+            <div class="inquiry-meta">
+              <button type="button" id="iq-back" hidden>← Back</button>
+              <span id="iq-count"></span>
             </div>
 
-            <div class="contact-form__row">
-              <label class="contact-form__field">
-                <span class="contact-form__label">Business or project name</span>
-                <input type="text" name="business" autocomplete="organization" />
-              </label>
-              <label class="contact-form__field">
-                <span class="contact-form__label">What do you need?</span>
-                <select name="need">
-                  <option>Website redesign</option>
-                  <option>New website</option>
-                  <option>Shopify store</option>
-                  <option>Not sure yet</option>
-                </select>
-              </label>
-            </div>
+            <form id="iq-form" name="inquiry" method="POST"
+                  data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
 
-            <label class="contact-form__field">
-              <span class="contact-form__label">Tell me a little about it</span>
-              <textarea name="message" rows="5"></textarea>
-            </label>
+              <input type="hidden" name="form-name" value="inquiry">
+              <input type="hidden" name="came_from" id="came_from" />
 
-            <button class="button" type="submit">Send it →</button>
+              <p class="inquiry-hp"><label>Don't fill this out <input name="bot-field" tabindex="-1"></label></p>
 
-            <script>
-              // Records where this visitor came from so it arrives with the inquiry email.
-              (function () {
-                var KEY = 'jnuru_came_from';
-                var stored = null;
-                try { stored = sessionStorage.getItem(KEY); } catch (e) {}
-                if (!stored) {
-                  var ref = document.referrer || 'direct';
-                  if (ref.indexOf(location.hostname) !== -1) ref = 'direct';
-                  stored = ref + ' | ' + (location.search || 'no tag');
-                  try { sessionStorage.setItem(KEY, stored); } catch (e) {}
-                }
-                var f = document.getElementById('came_from');
-                if (f) { f.value = stored; }
-              })();
-            </script>
-          </form>
+              <input type="hidden" name="projectType" id="iq-f-projectType">
+              <input type="hidden" name="budget"      id="iq-f-budget">
+              <input type="hidden" name="timeline"    id="iq-f-timeline">
+              <input type="hidden" name="submittedAt" id="iq-f-submittedAt">
+              <input type="hidden" name="source"      id="iq-f-source">
+
+              <!-- ============ INTRO ============ -->
+              <section class="inquiry-step active" data-step="intro">
+                <div class="inquiry-eyebrow">jnuru.studio</div>
+                <h2>Let's see if we're a fit.</h2>
+                <p class="inquiry-helper">Five quick questions — about 60 seconds. Then you'll book a call right here.</p>
+                <button type="button" class="inquiry-cta" data-next>Start →</button>
+              </section>
+
+              <!-- ============ 1 · PROJECT ============ -->
+              <section class="inquiry-step" data-step="q" data-field="projectType" data-required>
+                <h2>What are you looking for?</h2>
+                <p class="inquiry-helper">Pick the closest one.</p>
+                <div class="inquiry-options" role="radiogroup" aria-label="Project type">
+                  <button type="button" class="inquiry-opt" data-value="Brand identity">
+                    <span class="inquiry-key">1</span><span class="inquiry-opt-text"><b>Brand identity</b><small>Logo, type, color, guidelines</small></span>
+                  </button>
+                  <button type="button" class="inquiry-opt" data-value="Website">
+                    <span class="inquiry-key">2</span><span class="inquiry-opt-text"><b>Website</b><small>Design and build</small></span>
+                  </button>
+                  <button type="button" class="inquiry-opt" data-value="Brand + website">
+                    <span class="inquiry-key">3</span><span class="inquiry-opt-text"><b>Brand + website</b><small>The full package</small></span>
+                  </button>
+                  <button type="button" class="inquiry-opt" data-value="Something else">
+                    <span class="inquiry-key">4</span><span class="inquiry-opt-text"><b>Something else</b><small>Tell me more on the call</small></span>
+                  </button>
+                </div>
+                <p class="inquiry-hint">Press <kbd>1</kbd>–<kbd>4</kbd> to choose</p>
+              </section>
+
+              <!-- ============ 2 · BUDGET ============ -->
+              <section class="inquiry-step" data-step="q" data-field="budget" data-required>
+                <h2>What's your budget for this?</h2>
+                <p class="inquiry-helper">Ballpark is fine. This helps me shape a realistic scope before we talk.</p>
+                <div class="inquiry-options" role="radiogroup" aria-label="Budget">
+                  <button type="button" class="inquiry-opt" data-value="Under $1,000" data-low>
+                    <span class="inquiry-key">1</span><span class="inquiry-opt-text"><b>Under $1,000</b></span>
+                  </button>
+                  <button type="button" class="inquiry-opt" data-value="$1,000 – $3,000">
+                    <span class="inquiry-key">2</span><span class="inquiry-opt-text"><b>$1,000 – $3,000</b></span>
+                  </button>
+                  <button type="button" class="inquiry-opt" data-value="$3,000 – $7,000">
+                    <span class="inquiry-key">3</span><span class="inquiry-opt-text"><b>$3,000 – $7,000</b></span>
+                  </button>
+                  <button type="button" class="inquiry-opt" data-value="$7,000+">
+                    <span class="inquiry-key">4</span><span class="inquiry-opt-text"><b>$7,000+</b></span>
+                  </button>
+                  <button type="button" class="inquiry-opt" data-value="Not sure yet">
+                    <span class="inquiry-key">5</span><span class="inquiry-opt-text"><b>Not sure yet</b><small>I'll walk you through options</small></span>
+                  </button>
+                </div>
+                <p class="inquiry-hint">Press <kbd>1</kbd>–<kbd>5</kbd> to choose</p>
+              </section>
+
+              <!-- ============ 3 · TIMELINE ============ -->
+              <section class="inquiry-step" data-step="q" data-field="timeline" data-required>
+                <h2>When do you want to start?</h2>
+                <div class="inquiry-options" role="radiogroup" aria-label="Timeline">
+                  <button type="button" class="inquiry-opt" data-value="ASAP">
+                    <span class="inquiry-key">1</span><span class="inquiry-opt-text"><b>ASAP</b><small>Ready to go now</small></span>
+                  </button>
+                  <button type="button" class="inquiry-opt" data-value="Within a month">
+                    <span class="inquiry-key">2</span><span class="inquiry-opt-text"><b>Within a month</b></span>
+                  </button>
+                  <button type="button" class="inquiry-opt" data-value="2–3 months out">
+                    <span class="inquiry-key">3</span><span class="inquiry-opt-text"><b>2–3 months out</b></span>
+                  </button>
+                  <button type="button" class="inquiry-opt" data-value="Just exploring">
+                    <span class="inquiry-key">4</span><span class="inquiry-opt-text"><b>Just exploring</b><small>No firm date</small></span>
+                  </button>
+                </div>
+                <p class="inquiry-hint">Press <kbd>1</kbd>–<kbd>4</kbd> to choose</p>
+              </section>
+
+              <!-- ============ 4 · BRAND ============ -->
+              <section class="inquiry-step" data-step="input">
+                <h2>Tell me about your brand.</h2>
+                <div class="inquiry-fields">
+                  <div>
+                    <label for="iq-brand">Brand or company name</label>
+                    <input id="iq-brand" name="brand" placeholder="Acme Co." autocomplete="organization" data-required>
+                    <div class="inquiry-err" data-err="iq-brand"></div>
+                  </div>
+                  <div>
+                    <label for="iq-site">Current website or Instagram <i>(optional)</i></label>
+                    <input id="iq-site" name="site" placeholder="acme.co or @acme" autocomplete="url">
+                  </div>
+                </div>
+                <button type="button" class="inquiry-cta" data-next>Continue →</button>
+              </section>
+
+              <!-- ============ 5 · CONTACT ============ -->
+              <section class="inquiry-step" data-step="input">
+                <h2>Last thing — where can I reach you?</h2>
+                <div class="inquiry-fields">
+                  <div>
+                    <label for="iq-name">Your name</label>
+                    <input id="iq-name" name="name" placeholder="Jane" autocomplete="given-name" data-required>
+                    <div class="inquiry-err" data-err="iq-name"></div>
+                  </div>
+                  <div>
+                    <label for="iq-email">Email</label>
+                    <input id="iq-email" name="email" type="email" placeholder="jane@acme.co" autocomplete="email" data-required data-email>
+                    <div class="inquiry-err" data-err="iq-email"></div>
+                  </div>
+                  <div>
+                    <label for="iq-notes">Anything else I should know? <i>(optional)</i></label>
+                    <textarea id="iq-notes" name="notes" rows="3" placeholder="Links, references, context — whatever's on your mind."></textarea>
+                  </div>
+                </div>
+                <button type="submit" class="inquiry-cta" id="iq-submit">Send inquiry →</button>
+                <div class="inquiry-err" data-err="iq-submit-fail"></div>
+              </section>
+
+              <!-- ============ DONE ============ -->
+              <section class="inquiry-step" data-step="done">
+                <div class="inquiry-eyebrow">Inquiry received</div>
+                <h2 id="iq-doneTitle">Got it.</h2>
+                <p class="inquiry-helper">I read every inquiry myself. Here's what happens next.</p>
+                <ol class="inquiry-timeline">
+                  <li><span class="inquiry-num">1</span><div><b>Book a call</b><small>20 minutes, no pitch. Pick a time below that works for you.</small></div></li>
+                  <li><span class="inquiry-num">2</span><div><b>I send a proposal</b><small>Within 48 hours of our call: scope, timeline, and a fixed price.</small></div></li>
+                  <li><span class="inquiry-num">3</span><div><b>We start</b><small>50% deposit, then straight into the work.</small></div></li>
+                </ol>
+
+                <div class="inquiry-cal">
+                  <div class="inquiry-cal-embed" id="iq-cal-embed"></div>
+                </div>
+
+                <p class="inquiry-fallback">Rather not book yet? No problem — I'll email you within one business day.</p>
+              </section>
+
+              <!-- ============ SOFT DECLINE ============ -->
+              <section class="inquiry-step" data-step="decline">
+                <div class="inquiry-eyebrow">Thanks for being upfront</div>
+                <h2>We're probably not a fit right now.</h2>
+                <div class="inquiry-soft">
+                  <p>My project minimum is $1,500, so I'd rather tell you now than take up your time. If your budget changes, come back anytime — I'd be glad to talk then.</p>
+                </div>
+                <button type="button" class="inquiry-cta" onclick="location.href='/#work'">See my work →</button>
+              </section>
+
+            </form>
+          </div>
 
           <p class="muted">I reply within one business day. Email works too: <a class="contact__mail" href="mailto:hello@jnuru.studio">hello@jnuru.studio</a></p>
           <p class="muted">Based in St. Louis • Available for select freelance projects</p>
         </div>
+
+        <script>
+        (function(){
+          // Records where this visitor came from so it arrives with the inquiry email.
+          var KEY = 'jnuru_came_from';
+          var stored = null;
+          try { stored = sessionStorage.getItem(KEY); } catch (e) {}
+          if (!stored) {
+            var ref = document.referrer || 'direct';
+            if (ref.indexOf(location.hostname) !== -1) ref = 'direct';
+            stored = ref + ' | ' + (location.search || 'no tag');
+            try { sessionStorage.setItem(KEY, stored); } catch (e) {}
+          }
+          var cf = document.getElementById('came_from');
+          if (cf) { cf.value = stored; }
+        })();
+
+        (function(){
+          /* =============================================================
+             CONFIG
+             ============================================================= */
+          var CONFIG = {
+            endpoint: '/',              // Netlify Forms: POST to any path on this site
+            softDecline: true,          // "Under $1,000" routes to the decline screen
+            autoAdvanceMs: 260,
+            calLink: 'jnuru-goodwin-qhx2ee'
+          };
+
+          var form   = document.getElementById('iq-form');
+          if (!form) return;
+          var steps  = Array.prototype.slice.call(form.querySelectorAll('.inquiry-step'));
+          var bar    = document.getElementById('iq-bar');
+          var back   = document.getElementById('iq-back');
+          var count  = document.getElementById('iq-count');
+          var submit = document.getElementById('iq-submit');
+          var progressEl = bar.parentElement;
+          var failSlot = form.querySelector('[data-err="iq-submit-fail"]');
+
+          var TERMINAL = ['done','decline'];
+          var counted = steps.filter(function(s){
+            return ['q','input'].indexOf(s.dataset.step) > -1;
+          });
+
+          var data = {};
+          var i = 0;
+          var history = [];
+          var calEmbedded = false;
+
+          function type(idx){ return steps[idx].dataset.step; }
+          function isTerminal(idx){ return TERMINAL.indexOf(type(idx)) > -1; }
+
+          /* -----------------------------------------------------------
+             CAL.COM — inline embed, loaded lazily once the done screen
+             is actually visible (an embed sized inside a display:none
+             container can't size itself correctly).
+             ----------------------------------------------------------- */
+          function loadCalEmbed(){
+            if (calEmbedded) return;
+            calEmbedded = true;
+            (function (C, A, L) {
+              let p = function (a, ar) { a.q.push(ar); };
+              let d = C.document;
+              C.Cal = C.Cal || function () {
+                let cal = C.Cal; let ar = arguments;
+                if (!cal.loaded) {
+                  cal.ns = {}; cal.q = cal.q || [];
+                  d.head.appendChild(d.createElement("script")).src = A;
+                  cal.loaded = true;
+                }
+                if (ar[0] === L) {
+                  const api = function () { p(api, arguments); };
+                  const namespace = ar[1];
+                  api.q = api.q || [];
+                  if (typeof namespace === "string") {
+                    cal.ns[namespace] = cal.ns[namespace] || api;
+                    p(cal.ns[namespace], ar);
+                    p(cal, ["initNamespace", namespace]);
+                  } else p(cal, ar);
+                  return;
+                }
+                p(cal, ar);
+              };
+            })(window, "https://app.cal.com/embed/embed.js", "init");
+
+            Cal("init", { origin: "https://cal.com" });
+            Cal("inline", {
+              elementOrSelector: "#iq-cal-embed",
+              calLink: CONFIG.calLink,
+              layout: "month_view"
+            });
+            Cal("ui", { theme: "auto", styles: { branding: { brandColor: "#3F4F45" } } });
+          }
+
+          /* -----------------------------------------------------------
+             RENDER
+             ----------------------------------------------------------- */
+          function show(idx){
+            steps.forEach(function(s,n){ s.classList.toggle('active', n===idx); });
+            i = idx;
+
+            var pos = counted.indexOf(steps[idx]);
+            var pct;
+
+            if(isTerminal(idx)){
+              pct = 100;
+              count.textContent = '';
+              back.hidden = true;
+              if (type(idx) === 'done') loadCalEmbed();
+            } else if(pos > -1){
+              pct = ((pos + 1) / counted.length) * 100;
+              count.textContent = 'Question ' + (pos+1) + ' of ' + counted.length;
+              back.hidden = history.length === 0;
+            } else {
+              pct = 0;
+              count.textContent = '';
+              back.hidden = true;
+            }
+
+            bar.style.width = pct + '%';
+            progressEl.setAttribute('aria-valuenow', Math.round(pct));
+
+            var target = steps[idx].querySelector('input, textarea') ||
+                         steps[idx].querySelector('.inquiry-opt, .inquiry-cta');
+            if(target && !isTerminal(idx)){
+              setTimeout(function(){ target.focus({preventScroll:true}); }, 60);
+            }
+          }
+
+          function goto(idx){ history.push(i); show(idx); }
+          function next(){ goto(i+1); }
+
+          back.addEventListener('click', function(){
+            if(!history.length) return;
+            show(history.pop());
+          });
+
+          /* -----------------------------------------------------------
+             VALIDATION
+             ----------------------------------------------------------- */
+          var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+          function validate(step){
+            var ok = true;
+            step.querySelectorAll('[data-required]').forEach(function(el){
+              if(el.tagName !== 'INPUT' && el.tagName !== 'TEXTAREA') return;
+              var msg = '';
+              var v = el.value.trim();
+              if(!v){
+                msg = el.id === 'iq-email' ? 'I need an email to reply to.' : 'This one’s required.';
+              } else if(el.hasAttribute('data-email') && !EMAIL.test(v)){
+                msg = 'That doesn’t look like a valid email.';
+              }
+              var slot = step.querySelector('[data-err="'+el.id+'"]');
+              if(slot) slot.textContent = msg;
+              if(msg){
+                el.style.borderBottomColor = 'var(--iq-err)';
+                if(ok) el.focus();
+                ok = false;
+              } else {
+                el.style.borderBottomColor = '';
+              }
+            });
+            return ok;
+          }
+
+          form.addEventListener('input', function(e){
+            var el = e.target;
+            if(!el.hasAttribute('data-required')) return;
+            var slot = form.querySelector('[data-err="'+el.id+'"]');
+            if(slot && slot.textContent){ slot.textContent = ''; el.style.borderBottomColor = ''; }
+          });
+
+          /* -----------------------------------------------------------
+             NAVIGATION — "Next" buttons
+             ----------------------------------------------------------- */
+          form.querySelectorAll('[data-next]').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var step = steps[i];
+              if(step.dataset.step === 'input' && !validate(step)) return;
+              collect(step);
+              next();
+            });
+          });
+
+          function collect(step){
+            step.querySelectorAll('input, textarea').forEach(function(el){
+              if(el.name) data[el.name] = el.value.trim();
+            });
+          }
+
+          /* -----------------------------------------------------------
+             OPTION CARDS — select, then auto-advance
+             ----------------------------------------------------------- */
+          var locked = false;
+
+          function choose(opt){
+            if(locked) return;
+            var step = opt.closest('.inquiry-step');
+            step.querySelectorAll('.inquiry-opt').forEach(function(o){
+              o.classList.toggle('sel', o === opt);
+              o.setAttribute('aria-checked', o === opt ? 'true' : 'false');
+            });
+            data[step.dataset.field] = opt.dataset.value;
+
+            var mirror = document.getElementById('iq-f-' + step.dataset.field);
+            if (mirror) mirror.value = opt.dataset.value;
+
+            locked = true;
+            setTimeout(function(){
+              locked = false;
+              if(CONFIG.softDecline && opt.hasAttribute('data-low')){
+                goto(steps.findIndex(function(s){ return s.dataset.step === 'decline'; }));
+                return;
+              }
+              next();
+            }, CONFIG.autoAdvanceMs);
+          }
+
+          form.querySelectorAll('.inquiry-opt').forEach(function(opt){
+            opt.setAttribute('role','radio');
+            opt.setAttribute('aria-checked','false');
+            opt.addEventListener('click', function(){ choose(opt); });
+          });
+
+          /* -----------------------------------------------------------
+             KEYBOARD — number keys select, Enter advances
+             ----------------------------------------------------------- */
+          document.addEventListener('keydown', function(e){
+            var step = steps[i];
+            if(!step || isTerminal(i)) return;
+
+            if(step.dataset.step === 'q' && /^[1-9]$/.test(e.key)){
+              var opts = step.querySelectorAll('.inquiry-opt');
+              var opt = opts[parseInt(e.key,10) - 1];
+              if(opt){ e.preventDefault(); choose(opt); }
+              return;
+            }
+
+            if(e.key === 'Enter' && e.target.tagName !== 'TEXTAREA'){
+              var cta = step.querySelector('[data-next]');
+              if(cta){ e.preventDefault(); cta.click(); }
+            }
+          });
+
+          /* -----------------------------------------------------------
+             SUBMIT
+             ----------------------------------------------------------- */
+          form.addEventListener('submit', function(e){
+            e.preventDefault();
+            var step = steps[i];
+            if(!validate(step)) return;
+            collect(step);
+
+            if (failSlot) failSlot.textContent = '';
+
+            data.submittedAt = new Date().toISOString();
+            data.source = location.href;
+            document.getElementById('iq-f-submittedAt').value = data.submittedAt;
+            document.getElementById('iq-f-source').value = data.source;
+
+            submit.disabled = true;
+            submit.textContent = 'Sending…';
+
+            // Netlify Forms expects url-encoded body, not JSON, and needs form-name.
+            var body = new URLSearchParams(new FormData(form)).toString();
+
+            fetch(CONFIG.endpoint, {
+              method:'POST',
+              headers:{'Content-Type':'application/x-www-form-urlencoded'},
+              body: body
+            })
+            .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r; })
+            .then(done)
+            .catch(function(err){
+              // Real failure — surface it instead of faking success.
+              console.error('Inquiry form submit failed:', err);
+              submit.disabled = false;
+              submit.textContent = 'Send inquiry →';
+              if (failSlot) failSlot.textContent = 'Something went wrong sending that — mind trying again, or emailing hello@jnuru.studio directly?';
+            });
+          });
+
+          function done(){
+            var first = (data.name || '').split(' ')[0];
+            document.getElementById('iq-doneTitle').textContent =
+              first ? 'Got it, ' + first + '.' : 'Got it.';
+            history = [];
+            show(steps.findIndex(function(s){ return s.dataset.step === 'done'; }));
+            submit.disabled = false;
+            submit.textContent = 'Send inquiry →';
+          }
+
+          show(0);
+        })();
+        </script>
       </div>
     </section>
 
