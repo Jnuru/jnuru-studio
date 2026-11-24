@@ -48,7 +48,15 @@
   "areaServed": [
     {
       "@type": "City",
+      "name": "Overland"
+    },
+    {
+      "@type": "City",
       "name": "St. Louis"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "St. Louis County"
     },
     {
       "@type": "State",
@@ -96,6 +104,14 @@
         "name": "Shopify Store Setup",
         "url": "https://jnuru.studio/#services"
       }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Website Care Plans",
+        "url": "https://jnuru.studio/care/"
+      }
     }
   ],
   "sameAs": [
@@ -139,7 +155,7 @@
       "name": "Can I update the website myself after launch?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. That is the point. Every build is handed off with a walkthrough so you can edit text, swap images, and publish on your own. You own the domain, the site, and everything in it. No retainers required to touch your own website."
+        "text": "Yes. Every build is handed off with a walkthrough so you can edit text, swap images, and publish on your own. You own the domain, the site, and everything in it. If you'd rather not deal with it, a monthly care plan from $25 covers hosting and edits, and I make the changes for you."
       }
     },
     {
@@ -155,7 +171,15 @@
       "name": "Do you only work with St. Louis businesses?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "St. Louis is home and local projects get on-site photography and in-person working sessions. But the process runs fine remotely, and I take select projects from anywhere."
+        "text": "I'm based in Overland and work with businesses across St. Louis and St. Louis County, including North County. Local projects get on-site photography and in-person working sessions. The process also runs fine remotely, and I take select projects from anywhere."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you host websites and handle updates after launch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Care plans start at $25 a month and cover hosting, SSL, backups, monitoring, and a set amount of edit time. Text or email the change and it gets done. Cancel anytime and you keep your full site code."
       }
     }
   ]
@@ -199,6 +223,7 @@
           <a href="#work">Work</a>
           <a href="#services">Services</a>
           <a href="services/website-redesign/">Redesigns</a>
+          <a href="care/">Care</a>
           <a href="about/">About</a>
           <a href="blog/">Blog</a>
           <a href="#contact">Contact</a>
@@ -312,6 +337,10 @@
           </article>
 
         </div>
+
+        <p class="services__care">
+          After launch, keep it handled: <a class="service-card__link" href="care/">care plans from $25/month →</a>
+        </p>
 
         <div class="process">
           <p class="process__label">HOW A PROJECT RUNS</p>
@@ -556,9 +585,10 @@
           <details class="faq-item">
             <summary class="faq-item__q">Can I update the website myself after launch?</summary>
             <p class="faq-item__a">
-              Yes. That is the point. Every build is handed off with a walkthrough so you can
-              edit text, swap images, and publish on your own. You own the domain, the site, and
-              everything in it. No retainers required to touch your own website.
+              Yes. Every build is handed off with a walkthrough so you can edit text, swap images,
+              and publish on your own. You own the domain, the site, and everything in it. If
+              you'd rather not deal with it, a <a href="care/">monthly care plan</a> from $25
+              covers hosting and edits, and I make the changes for you.
             </p>
           </details>
 
@@ -574,9 +604,19 @@
           <details class="faq-item">
             <summary class="faq-item__q">Do you only work with St. Louis businesses?</summary>
             <p class="faq-item__a">
-              St. Louis is home and local projects get on-site photography and in-person working
-              sessions. But the process runs fine remotely, and I take select projects from
+              I'm based in Overland and work with businesses across St. Louis and St. Louis County,
+              including North County. Local projects get on-site photography and in-person working
+              sessions. The process also runs fine remotely, and I take select projects from
               anywhere.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-item__q">Do you host websites and handle updates after launch?</summary>
+            <p class="faq-item__a">
+              Yes. <a href="care/">Care plans</a> start at $25 a month and cover hosting, SSL,
+              backups, monitoring, and a set amount of edit time. Text or email the change and it
+              gets done. Cancel anytime and you keep your full site code.
             </p>
           </details>
         </div>
@@ -652,7 +692,7 @@
                     <span class="inquiry-key">1</span><span class="inquiry-opt-text"><b>Under $2,500</b></span>
                   </button>
                   <button type="button" class="inquiry-opt" data-value="$2,500 – $5,000">
-                    <span class="inquiry-key">2</span><span class="inquiry-opt-text"><b>$2,500 – $5,000</b><small>Launch sites and focused redesigns</small></span>
+                    <span class="inquiry-key">2</span><span class="inquiry-opt-text"><b>$2,500 – $5,000</b><small>Launch sites and most redesigns</small></span>
                   </button>
                   <button type="button" class="inquiry-opt" data-value="$5,000 – $8,000">
                     <span class="inquiry-key">3</span><span class="inquiry-opt-text"><b>$5,000 – $8,000</b><small>Full redesigns and Shopify builds</small></span>
@@ -1066,7 +1106,7 @@
     <footer class="footer">
       <div class="wrap footer__inner">
         <p class="muted">© <span id="year"></span> jnuru.studio</p>
-        <p class="muted">Independent web systems studio • St. Louis</p>
+        <p class="muted">Independent web systems studio • Overland, St. Louis</p>
       </div>
     </footer>
   </main>
